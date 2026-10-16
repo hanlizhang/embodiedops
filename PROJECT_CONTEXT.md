@@ -258,6 +258,17 @@ Important OpenCV note:
 `gym-pusht` declares `opencv-python`, while LeRobot uses `opencv-python-headless`.
 Do not install both merely to make `pip check` clean.
 
+## Phase 1A static verification — 2026-10-16
+
+A new isolated `embodiedops-robocasa` environment (Python 3.12.15, LeRobot 0.6.1)
+loaded pinned SmolVLA / CloseFridge artifacts. A real CloseFridge dataset
+episode/sample was loaded and inspected; saved preprocessing, forward-only
+flow-matching loss, and static `[1,50,12]` action generation were verified
+on the local RTX 3060. See `environment/phase1a.md` for revisions,
+measured tensors, memory, timing, and limitations. No RoboCasa/robosuite installation,
+simulation, backward pass, or training occurred. `RESUME_EVIDENCE.md` remains
+unchanged at the user's explicit request. Phase 1B needs separate approval.
+
 ## Verified simulation environment
 
 Conda environment: `embodiedops-mujoco`

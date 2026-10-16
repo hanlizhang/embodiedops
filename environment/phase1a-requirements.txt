@@ -1,0 +1,9 @@
+# Install only in the approved embodiedops-robocasa Python 3.12 environment.
+# Install CUDA torch/torchvision from the cu128 index first.
+lerobot[smolvla,dataset,evaluation]==0.6.1
+torch==2.11.0+cu128
+torchvision==0.26.0+cu128
+numpy==2.2.6
+opencv-python-headless==4.13.0.92
+torchcodec==0.11.1
+av==15.1.0
