@@ -6,7 +6,8 @@ Do not convert planned work into resume claims.
 
 ## Verified setup / pipeline
 
-- [x] NVIDIA RTX 3060 CUDA PyTorch environment
+- [x] NVIDIA RTX 3060 Laptop GPU available for CUDA workloads
+- [x] PyTorch 2.11.0+cu128 with CUDA enabled
 - [x] Hugging Face LeRobot 0.6.1
 - [x] PushT simulation and RGB rendering
 - [x] Diffusion Policy forward/backward training on GPU
@@ -15,25 +16,47 @@ Do not convert planned work into resume claims.
 - [x] PushT rollout-video generation
 - [x] MuJoCo 3.3.7
 - [x] robosuite 1.5.2
-- [x] Panda Lift simulation
+- [x] Panda `Lift` simulation
 
-## Not yet implemented
+## Not yet verified
 
-- [ ] Full / meaningful Diffusion Policy baseline training
-- [ ] Quantitative baseline benchmark across multiple episodes / seeds
-- [ ] Robustness / perturbation evaluation suite
-- [ ] Failure taxonomy
-- [ ] Agent tool interface
-- [ ] NVIDIA / Nebius reasoning agent integration
-- [ ] Autonomous experiment-selection loop
-- [ ] Policy-improvement / bounded retraining loop
-- [ ] Before / after improvement benchmark
-- [ ] SmolVLA integration
-- [ ] pi0 integration
 - [ ] RoboCasa integration
+- [ ] SmolVLA baseline evaluation
+- [ ] SmolVLA fine-tuning / post-training
+- [ ] CloseFridge success-rate benchmark
+- [ ] VLA inference-latency benchmark
+- [ ] Controlled fault injection
+- [ ] Diagnostic probe library
+- [ ] NVIDIA / Nebius reasoning-agent integration
+- [ ] Agentic root-cause diagnosis
+- [ ] Automatic repair routing
+- [ ] Targeted VLA post-training triggered by diagnosis
+- [ ] Before/after repair benchmark
+- [ ] pi0 integration
+- [ ] RL-based policy improvement
 
 ## Resume claim status
 
-Current status: environment and robot-policy pipeline validation only.
+Current status: environment, simulation, and robot-policy pipeline validation only.
 
-Do **not** yet claim that EmbodiedOps autonomously diagnoses or improves robot policies.
+It is accurate to say that the project has:
+- run LeRobot-based Diffusion Policy training and evaluation on CUDA,
+- generated simulation rollout videos,
+- established a MuJoCo/robosuite Panda manipulation environment.
+
+Do **not** yet claim:
+- SmolVLA/VLA fine-tuning,
+- RoboCasa policy training,
+- agentic diagnosis,
+- autonomous policy repair,
+- measured policy improvement,
+
+until those results are actually implemented and verified.
+
+## Update rule
+
+After each milestone:
+1. add only facts supported by actual runs / artifacts,
+2. include the measured metric or artifact where possible,
+3. keep planned work in the "Not yet verified" section,
+4. do not promote planned features into resume bullets before verification.

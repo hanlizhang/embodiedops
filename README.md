@@ -1,36 +1,112 @@
 # EmbodiedOps
 
-**An autonomous AI engineer for robot policy evaluation and improvement.**
+**Agentic debugging and repair for learned robot policies.**
 
-EmbodiedOps is an open-source robotics / Physical AI project exploring a closed-loop workflow in which an AI agent can evaluate learned robot policies, inspect failures, choose follow-up experiments, launch bounded training or configuration changes, and compare results.
+> Diagnose why a robot policy fails, choose the right repair, and verify the fix.
+
+EmbodiedOps is an experimental open-source framework for closing the loop between robot-policy evaluation and repair.
+
+The core question is:
+
+> A robot policy failed in rollout. Why did it fail, what should we change, and did that change actually make it better?
+
+Rather than assuming every failure requires another training run, EmbodiedOps aims to use controlled simulation evidence to distinguish between issues such as:
+
+- instruction / task-conditioning mismatch,
+- camera or observation-pipeline errors,
+- preprocessing / normalization mismatch,
+- action-scaling or temporal issues,
+- environment distribution shift,
+- insufficient demonstration coverage,
+- genuine policy limitations.
+
+The intended closed loop is:
+
+```text
+ROLLOUT
+  ↓
+DIAGNOSE
+  ↓
+CONTROLLED PROBE
+  ↓
+REPAIR ROUTING
+  ├─ pipeline / config fix
+  ├─ targeted data
+  ├─ augmentation
+  ├─ VLA post-training
+  └─ RL-based improvement later
+  ↓
+VERIFY
+```
 
 ## Current status
 
-Environment and pipeline validation is complete for the first two backends:
+Verified locally:
 
-- Hugging Face LeRobot + Diffusion Policy + PushT
-- MuJoCo + robosuite + Panda Lift
+- PyTorch + CUDA on an RTX 3060 Laptop GPU
+- Hugging Face LeRobot 0.6.1
+- PushT simulation
+- Diffusion Policy forward / backward training on GPU
+- checkpoint saving
+- PushT evaluation and rollout-video generation
+- MuJoCo 3.3.7
+- robosuite 1.5.2
+- Panda `Lift` simulation
 
-The autonomous agent loop is **not implemented yet**.
+PushT is a lightweight development / regression backend, not the intended headline demo.
 
-## Planned MVP
+The immediate project milestone is:
 
-1. Train and evaluate a Diffusion Policy baseline.
-2. Add reproducible robustness / perturbation evaluations.
-3. Expose narrow typed tools for evaluation, comparison, and training.
-4. Connect an NVIDIA / Nebius reasoning agent to those tools.
-5. Let the agent choose follow-up experiments from real rollout metrics.
-6. Demonstrate before / after policy behavior in simulation.
+**SmolVLA + RoboCasa + CloseFridge**
 
-## Environments
+Before implementing the full diagnosis agent, the project will first establish a real VLA baseline and small post-training experiment with measurable success rate, inference latency, and rollout videos.
 
-The policy-training and 3D-simulation stacks intentionally use separate Conda environments because their current dependencies differ.
+## Planned roadmap
 
-See:
+1. **VLA baseline**
+   - SmolVLA
+   - RoboCasa / CloseFridge
+   - dataset / state / action inspection
+   - baseline evaluation
+   - small fine-tuning run
 
-- `environment/policy.md`
-- `environment/simulation.md`
+2. **Fault injection**
+   - instruction-conditioning faults
+   - camera / observation faults
+   - normalization / action faults
+   - controlled distribution shifts
 
-## Evidence policy
+3. **Diagnostic probes**
+   - controlled A/B tests
+   - pose / camera sweeps
+   - preprocessing / action checks
 
-`RESUME_EVIDENCE.md` tracks what has actually been implemented and verified. Planned work should not be presented as completed work.
+4. **Agentic diagnosis**
+   - NVIDIA / Nebius reasoning model
+   - observe → hypothesize → probe → update
+
+5. **Repair routing**
+   - config / pipeline fix
+   - targeted data
+   - VLA post-training
+   - other bounded repair operators
+
+6. **Verification**
+   - before / after success rate
+   - latency
+   - regression checks
+   - recovery metrics
+
+## Project documentation
+
+- `PROJECT_CONTEXT.md` — current direction, verified setup, project phases
+- `AGENTS.md` — rules for coding agents
+- `WORKFLOW.md` — ChatGPT / Codex / Git / training workflow
+- `RESUME_EVIDENCE.md` — evidence ledger for completed work
+- `environment/` — verified environment notes
+
+## Evidence discipline
+
+Planned features are not treated as completed features.
+
+`RESUME_EVIDENCE.md` is the authoritative record for what has actually been implemented and verified.
