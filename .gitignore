@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# ML / experiment outputs
+outputs/
+runs/
+checkpoints/
+wandb/
+
+# Model weights
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+
+# Generated evaluation videos
+*.mp4
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
