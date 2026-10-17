@@ -271,6 +271,23 @@ unchanged at the user's explicit request. Phase 1B needs separate approval.
 
 ## Verified simulation environment
 
+### Phase 1B simulator/controller verification — 2026-10-17
+
+The isolated `embodiedops-robocasa` environment now runs pinned RoboCasa
+`56e355cc` / robosuite `aaa8b9b2` with MuJoCo 3.3.1. RoboCasa required NumPy
+2.2.5; all other pre-existing package versions were retained. A seed-42
+CloseFridge reset rendered three 256x256 RGB cameras and exposed the matching
+16D state / 12D action contract. Exactly five neutral-command steps and four
+single-step controller probes completed with finite observations. Base/EEF
+neutral drift was small; the binary gripper interface commands opening or
+closing and cannot hold an arbitrary intermediate opening. See
+`environment/phase1b.md` and `environment/phase1b-results.json` for measured
+vectors, controller transformations, timing, success semantics, and artifacts.
+No learned-policy rollout or training occurred. Phase 1C requires separate
+approval. `RESUME_EVIDENCE.md` remains unchanged at the user's request.
+
+### Earlier standalone MuJoCo verification
+
 Conda environment: `embodiedops-mujoco`
 
 - Python 3.10
