@@ -2,6 +2,15 @@
 
 **Agentic debugging and repair for learned robot policies.**
 
+**2026-10-19: bounded deterministic workflow executed.** The CLI now connects
+historical VLA evidence, diagnostic tool selection, versioned instruction repair,
+SmolVLA training, checkpoint verification and matched RoboCasa evaluation.
+Four new episodes and 512 optimizer updates completed. Instruction repair increased
+diagnostic success from 0/2 to 1/2 but was rejected for regressions; the learning
+candidate was rejected for worse validation loss. No accepted improvement or LLM
+agent is claimed. See [the executable case study](environment/agent-workflow-v1.md)
+and `scripts/agent_workflow.py`. Earlier status/roadmap text below is historical.
+
 > Diagnose why a robot policy fails, choose the right repair, and verify the fix.
 
 EmbodiedOps is an experimental open-source framework for closing the loop between robot-policy evaluation and repair.

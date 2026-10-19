@@ -198,12 +198,18 @@ def main():
     parser.add_argument("--reference", type=Path, help="Paired baseline artifacts; verify reset before inference")
     parser.add_argument("--execution-horizon", type=int, choices=(20, 50), default=50)
     parser.add_argument("--control-diagnostics", action="store_true")
+    parser.add_argument("--workflow-diagnostics", action="store_true",
+                        help="New versioned workflow: contacts, RGB guards and matched per-chunk RNG")
     parser.add_argument("--instruction-contrast", action="store_true",
                         help="Explicit pretrained CloseFridge task-ID versus native-language reference")
     args = parser.parse_args()
     OUT = args.output.resolve()
     checkpoint = args.checkpoint
     revision = MODEL_REV if checkpoint == MODEL else None
+    if args.workflow_diagnostics:
+        assert not args.control_diagnostics and args.execution_horizon == 50
+        assert OUT.is_relative_to(ROOT / 'outputs/agent-workflow-v1')
+        os.environ['NUMBA_CACHE_DIR'] = str(OUT.parent / 'numba-cache')
     if args.control_diagnostics:
         assert args.reference and checkpoint == MODEL and args.instruction == "CloseFridge"
         assert args.seed in (42, 43, 44)
@@ -211,7 +217,7 @@ def main():
     assert args.execution_horizon == 50 or args.control_diagnostics
     if args.instruction_contrast:
         assert args.reference and checkpoint == MODEL and args.instruction == "CloseFridge"
-        assert OUT.is_relative_to(ROOT / "outputs/probes/instruction-distribution-v1")
+        assert args.workflow_diagnostics or OUT.is_relative_to(ROOT / "outputs/probes/instruction-distribution-v1")
         os.environ["NUMBA_CACHE_DIR"] = str(OUT.parent / "numba-cache")
     assert Path(sys.prefix).name == "embodiedops-robocasa", sys.prefix
     OUT.mkdir(parents=True, exist_ok=True)
@@ -264,6 +270,15 @@ def main():
         if name.endswith(".json") and (checkpoint == MODEL or name != "config.json"):
             assert json.loads(path.read_text()) == json.loads((ROOT / "outputs/phase1a" / name).read_text())
     manifest["checkpoint_file_hashes"] = processor_hashes
+    if args.workflow_diagnostics:
+        import control_diagnostics
+        weights = (Path(hf_hub_download(MODEL, 'model.safetensors', revision=MODEL_REV, local_files_only=True))
+                   if checkpoint == MODEL else Path(checkpoint)/'model.safetensors')
+        with weights.open('rb') as f:
+            manifest['model_sha256'] = hashlib.file_digest(f, 'sha256').hexdigest()
+        manifest.update(execution_horizon=50, workflow_diagnostics=True,
+                        rng_rule='manual_seed(seed * 100000 + action_index) before each new chunk',
+                        diagnostics_sha256=hashlib.sha256(Path(control_diagnostics.__file__).read_bytes()).hexdigest())
     if args.control_diagnostics:
         reference_manifest = json.loads((args.reference / "manifest.json").read_text())
         for key in ("model", "model_revision", "backbone_revision", "seed", "versions", "simulator_sources", "checkpoint_file_hashes"):
@@ -386,7 +401,7 @@ def main():
                  "unordered_metadata_field": "groups_containing_sampled_obj"})
         assert not low._check_success(), "Task already successful at reset"
         assert env.task_description == (environment_instruction if args.instruction == "environment" else args.instruction)
-        recorder = control_diagnostics.ContactRecorder(low.sim, OUT) if args.control_diagnostics else None
+        recorder = control_diagnostics.ContactRecorder(low.sim, OUT) if (args.control_diagnostics or args.workflow_diagnostics) else None
         previous_action = None
 
         def prepare(observation, first=False):
@@ -474,6 +489,18 @@ def main():
         rollout_start = time.perf_counter()
         with (OUT / "steps.jsonl").open("w", encoding="utf-8") as log, torch.inference_mode():
             for index in range(1, env._max_episode_steps + 1):
+                if args.workflow_diagnostics:
+                    health = {k: {'min': int(v.min()), 'max': int(v.max()),
+                                  'sha256': hashlib.sha256(v.tobytes()).hexdigest()}
+                              for k,v in obs['pixels'].items()}
+                    if any(v['max'] == 0 for v in health.values()):
+                        emit('invalid-camera', {'before_step': index, 'cameras': health})
+                        summary['termination_reason'] = 'invalid_observation_black_camera'
+                        break
+                    if not policy._queues['action']:
+                        torch.manual_seed(args.seed * 100000 + index)
+                        torch.cuda.manual_seed_all(args.seed * 100000 + index)
+                        emit(f'input-{index:04d}', {'before_step': index, 'cameras': health})
                 batch = prepare(obs, first=index == 1)
                 queue_before = len(policy._queues["action"])
                 calls_before = summary["inference_calls"]

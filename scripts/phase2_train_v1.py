@@ -62,6 +62,8 @@ def main():
     parser.add_argument('--config', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--verify', type=Path)
+    parser.add_argument('--dataset-cache', type=Path,
+                        help='Optional short generated-cache path to avoid Windows lock filename limits')
     args = parser.parse_args()
     settings = json.loads(args.config.read_text())
     out = args.output.resolve()
@@ -73,8 +75,10 @@ def main():
     else:
         out.mkdir(parents=True, exist_ok=False)
         dump(out/'settings.json', settings)
+    cache = args.dataset_cache.resolve() if args.dataset_cache else out/'datasets-cache'
+    assert cache.is_relative_to(ROOT/'outputs'), 'Generated cache must stay in project outputs'
     os.environ.update(HF_HOME=str(ROOT/'outputs/phase1a/hf-cache'),
-                      HF_DATASETS_CACHE=str(out/'datasets-cache'), HF_HUB_OFFLINE='1',
+                      HF_DATASETS_CACHE=str(cache), HF_HUB_OFFLINE='1',
                       HF_HUB_DISABLE_TELEMETRY='1', CUBLAS_WORKSPACE_CONFIG=':4096:8')
     import numpy as np
     import torch

@@ -1,5 +1,28 @@
 # Resume Evidence
 
+## Verified integrated workflow — 2026-10-19
+
+This dated entry supersedes the old unverified checklist only for these measured
+capabilities; it does not claim LLM reasoning or an accepted policy improvement.
+
+- Implemented an executable deterministic evidence/tool loop with a registry,
+  bounded subprocess adapters, versioned candidates and independent rejection gates.
+- Ran four new matched SmolVLA/RoboCasa episodes. Instruction repair changed
+  diagnostic success from 0/2 to 1/2 but was rejected for door-progress/contact-force
+  regressions. Reserved final seeds were not used.
+- Executed 512 mixed-instruction optimizer updates on 512 distinct anchors across
+  461 training episodes. All intended gradients were finite; 122 tensors changed,
+  frozen tensors stayed unchanged. A separate process verified the selected
+  checkpoint's 500 model tensors, optimizer, scheduler, processors and validation.
+- Rejected that learning candidate: held-out mean loss worsened 0.384626 -> 0.427864.
+  No robot-performance claim is made for it. Original checkpoints were hash-preserved.
+- Compared five adaptive offline probes with six fixed-order probes; no wall-time
+  or GPU-cost advantage was established. External reasoning backend is implemented
+  but untested and unused. The pre-update Windows cache-path recovery was operator
+  assisted, not an agent achievement.
+- Evidence: `environment/agent-workflow-v1.md`, `scripts/agent_workflow.py`,
+  `tests/test_agent_workflow.py`, and `outputs/agent-workflow-v1/run-01/audit.json`.
+
 This file tracks what has actually been implemented and verified in EmbodiedOps.
 
 Do not convert planned work into resume claims.

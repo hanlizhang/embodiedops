@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "diagnostic_seeds": [43, 44],
+  "final_seeds": [120, 121],
+  "max_episodes": 16,
+  "max_training_runs": 1,
+  "max_decisions_per_case": 10,
+  "max_wall_seconds": 5400,
+  "episode_timeout_seconds": 420,
+  "training_timeout_seconds": 1200,
+  "reload_timeout_seconds": 300,
+  "training": {
+    "sanity": false, "condition": "mixed", "seed": 142,
+    "steps": 512, "learning_rate": 0.0001, "end_learning_rate": 0.00001,
+    "warmup_steps": 26, "validation_samples": 64,
+    "probe_interval": 128, "checkpoint_interval": 256
+  },
+  "acceptance": {
+    "strict_success_gain": true,
+    "no_per_seed_success_loss": true,
+    "max_door_progress_regression_deg": 1.0,
+    "max_peak_force_ratio": 1.25,
+    "max_peak_force_slack_N": 25.0,
+    "no_new_guard_failure": true,
+    "require_valid_cameras_and_matched_reset": true,
+    "learning_requires_validation_improvement": true
+  },
+  "notes": "16 episodes is a hard ceiling across both cases, including diagnostic and gated final pairs. 512 updates visits all 461 train episodes but is not an epoch or demonstrated convergence. Final seeds are unused local scenes, not proven independent of pretraining. Force thresholds are conservative comparative gates, not certified robot safety limits. No energy estimate without valid power telemetry."
+}

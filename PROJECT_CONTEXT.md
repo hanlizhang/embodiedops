@@ -1,5 +1,21 @@
 # EmbodiedOps — Project Context
 
+## Current verified milestone — 2026-10-19
+
+The user's new authorization superseded the earlier agent/training deferrals below.
+A bounded deterministic evidence/tool loop now executes configuration and learning
+repair branches using the existing SmolVLA/RoboCasa runners. Four fresh paired
+episodes gave 0/2 NL versus 1/2 task-ID success, but the candidate was rejected for
+seed43 door/contact-force regressions. A new 512-update mixed-instruction run
+covered all 461 training episodes, reloaded successfully, and was rejected because
+mean held-out loss worsened 0.384626 -> 0.427864. No trained-policy rollout or final
+seed120/121 evaluation was warranted. Historical checkpoints remain unchanged.
+The backend is explicitly deterministic; no LLM API was used. A Windows cache-path
+failure before any update required recorded operator recovery. See
+`environment/agent-workflow-v1.md` and `outputs/agent-workflow-v1/run-01/` for the
+registered budget, tool traces, losses, robot metrics, tests and limitations.
+There is no accepted repair or generalization claim, and no automatic commit.
+
 ## One-line thesis
 
 **EmbodiedOps is an agentic debugging and repair framework for learned robot policies. It uses controlled simulation evidence to diagnose why a policy fails, routes the failure to an appropriate repair, and verifies whether the repair actually restores performance.**
