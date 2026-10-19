@@ -60,3 +60,21 @@ After each milestone:
 2. include the measured metric or artifact where possible,
 3. keep planned work in the "Not yet verified" section,
 4. do not promote planned features into resume bullets before verification.
+
+## Verified control evidence — 2026-10-19
+
+This dated entry supersedes the earlier baseline/RoboCasa "not yet verified"
+status for the narrowly measured work below; it does not claim an agent or
+generalization improvement.
+
+- Ran three pretrained SmolVLA/CloseFridge H20 episodes with fixed seeds 42–44,
+  50-action predictions, saved processors and task-ID instructions. One succeeded,
+  one reached the 600-action cap, and one stopped at the inherited motion guard.
+- Audited/reused three historical H50 episodes: also one success. Prefix numerical
+  differences and missing historical contact logs limit causal interpretation.
+- Implemented per-physics-substep MuJoCo contact-force logging, physical trajectory,
+  replan continuity and timing analysis without adding simulator state to policy
+  inputs. Native queue/force preflight and two instrumentation tests passed.
+- Evidence: `environment/control-horizon-v1.md`, its results JSON, and
+  `outputs/control-horizon-v1/verification.json`. No measured success-rate gain,
+  new training, autonomous diagnosis or repair claim follows from this experiment.

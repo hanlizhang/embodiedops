@@ -196,12 +196,19 @@ def main():
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--checkpoint", default=MODEL, help="Pinned base model or saved local full checkpoint")
     parser.add_argument("--reference", type=Path, help="Paired baseline artifacts; verify reset before inference")
+    parser.add_argument("--execution-horizon", type=int, choices=(20, 50), default=50)
+    parser.add_argument("--control-diagnostics", action="store_true")
     parser.add_argument("--instruction-contrast", action="store_true",
                         help="Explicit pretrained CloseFridge task-ID versus native-language reference")
     args = parser.parse_args()
     OUT = args.output.resolve()
     checkpoint = args.checkpoint
     revision = MODEL_REV if checkpoint == MODEL else None
+    if args.control_diagnostics:
+        assert args.reference and checkpoint == MODEL and args.instruction == "CloseFridge"
+        assert args.seed in (42, 43, 44)
+        os.environ["NUMBA_CACHE_DIR"] = str(OUT.parent / "numba-cache")
+    assert args.execution_horizon == 50 or args.control_diagnostics
     if args.instruction_contrast:
         assert args.reference and checkpoint == MODEL and args.instruction == "CloseFridge"
         assert OUT.is_relative_to(ROOT / "outputs/probes/instruction-distribution-v1")
@@ -257,6 +264,17 @@ def main():
         if name.endswith(".json") and (checkpoint == MODEL or name != "config.json"):
             assert json.loads(path.read_text()) == json.loads((ROOT / "outputs/phase1a" / name).read_text())
     manifest["checkpoint_file_hashes"] = processor_hashes
+    if args.control_diagnostics:
+        reference_manifest = json.loads((args.reference / "manifest.json").read_text())
+        for key in ("model", "model_revision", "backbone_revision", "seed", "versions", "simulator_sources", "checkpoint_file_hashes"):
+            assert manifest[key] == reference_manifest[key], f"Horizon protocol mismatch: {key}"
+        weights = Path(hf_hub_download(MODEL, "model.safetensors", revision=MODEL_REV, local_files_only=True))
+        with weights.open('rb') as f:
+            manifest['model_sha256'] = hashlib.file_digest(f, 'sha256').hexdigest()
+        assert manifest['model_sha256'] == '96ae6628166a7dc1b41f8a2d92176c48e394988294b0b44755409acbb3f9bc2b'
+        manifest['execution_horizon'] = args.execution_horizon
+        import control_diagnostics
+        manifest['diagnostics_sha256'] = hashlib.sha256(Path(control_diagnostics.__file__).read_bytes()).hexdigest()
     if args.instruction_contrast:
         weights = Path(hf_hub_download(MODEL, "model.safetensors", revision=MODEL_REV, local_files_only=True))
         with weights.open("rb") as f:
@@ -288,6 +306,12 @@ def main():
                     "postprocessor": [{"class": type(s).__name__, "config": s.get_config()} for s in post.steps]})
     if args.instruction_contrast:
         assert json.loads((OUT / "policy.json").read_text()) == json.loads((args.reference / "policy.json").read_text()), "Paired policy/processor mismatch"
+    if args.control_diagnostics:
+        assert json.loads((OUT / 'policy.json').read_text()) == json.loads((args.reference / 'policy.json').read_text())
+        # Change only the execution queue, after verifying the saved configuration.
+        cfg.n_action_steps = args.execution_horizon
+        emit('execution-config', {'chunk_size': cfg.chunk_size, 'n_action_steps': cfg.n_action_steps,
+                                  'num_steps': cfg.num_steps, 'checkpoint_modified': False})
 
     env = SingleEpisodeEnv("CloseFridge", camera_name=CAMERAS)
     video = None
@@ -362,6 +386,8 @@ def main():
                  "unordered_metadata_field": "groups_containing_sampled_obj"})
         assert not low._check_success(), "Task already successful at reset"
         assert env.task_description == (environment_instruction if args.instruction == "environment" else args.instruction)
+        recorder = control_diagnostics.ContactRecorder(low.sim, OUT) if args.control_diagnostics else None
+        previous_action = None
 
         def prepare(observation, first=False):
             assert set(observation["pixels"]) == set(CAMERAS)
@@ -451,14 +477,19 @@ def main():
                 batch = prepare(obs, first=index == 1)
                 queue_before = len(policy._queues["action"])
                 calls_before = summary["inference_calls"]
-                if index == 51:
+                if index == args.execution_horizon + 1:
                     frames(obs, "first-replan-input")
                 selected = policy.select_action(batch)
                 action = env_post({"action": post(selected)})["action"].cpu().numpy()[0]
                 gate = action_gate(env, action)
                 if index == 1:
                     emit("first-action-gate", {"action": action, **gate})
-                obs, trace = traced_step(env, action, index)
+                if recorder:
+                    with recorder.step(index):
+                        obs, trace = traced_step(env, action, index)
+                    assert recorder.last_sample_count == 25, 'Incomplete physics contact sampling'
+                else:
+                    obs, trace = traced_step(env, action, index)
                 summary["simulator_steps"] = index
                 summary["physics_steps"] += len(trace["substeps"])
                 record = {"step": index, "time": trace["after"]["time"],
@@ -469,6 +500,10 @@ def main():
                           "fridge": trace["fridge_after"], "reward": trace["reward"],
                           "terminated": trace["terminated"], "truncated": trace["truncated"],
                           "finite": trace["finite"], "guard_failures": trace["guard_failures"]}
+                if recorder:
+                    record['action_change'] = control_diagnostics.action_change(previous_action, action)
+                    record['simulation_step_seconds_including_diagnostics'] = recorder.last_step_seconds
+                    previous_action = action.copy()
                 log.write(json.dumps(serial(record)) + "\n")
                 log.flush()
                 video_frame(obs, f"STEP {index}")

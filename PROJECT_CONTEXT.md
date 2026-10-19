@@ -468,3 +468,16 @@ Before installing anything:
 - estimate local 6 GB VRAM feasibility,
 - determine what should run locally vs on Nebius,
 - propose the first small reproducible baseline and fine-tuning experiment.
+
+## Current control experiment — 2026-10-19
+
+The earlier Phase 1 planning sections above are historical. The current verified
+control work is recorded in `environment/control-horizon-v1.md`: three pretrained
+SmolVLA task-ID H=20 episodes, paired with contract-matched historical H=50 seeds
+42–44. Both have one success; H20 seed 42 stopped at the existing displacement
+guard after arm–fridge collision. Contact-force and trajectory diagnostics are
+implemented without privileged policy inputs. Historical prefixes are not
+bitwise identical, and H50 contact measurements are unavailable. No H10, extra
+seeds, training or dependency changes were made. Phase2 A/B training remains a
+deferred proposal. Next proposed work is contact-progress/controller-tracking
+analysis and execution safeguards, not an LLM diagnostic agent.

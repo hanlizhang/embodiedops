@@ -1,0 +1,1332 @@
+{
+  "episodes": [
+    {
+      "seed": 42,
+      "horizon": 50,
+      "artifacts": "outputs\\phase1d\\language-control-native",
+      "success": false,
+      "actions": 600,
+      "stop": "registered_horizon_600",
+      "inferences": 12,
+      "inference_seconds_total": 6.922315400000116,
+      "inference_seconds": {
+        "mean": 0.5768596166666763,
+        "max": 1.3190742999995564,
+        "p95": 0.9120878849995728
+      },
+      "warm_inference_seconds": {
+        "mean": 0.5093855545455054,
+        "max": 0.5790989999995872,
+        "p95": 0.5708525999998528
+      },
+      "wall_seconds": 49.724103300000024,
+      "simulated_seconds": 29.999999999993975,
+      "doors": {
+        "fridge_right_group_fridge_left_door_joint": {
+          "initial_deg": 87.38424848835186,
+          "final_deg": 87.86680548323142,
+          "min_deg": 87.24798238859603,
+          "max_deg": 88.32714947637724,
+          "net_closing_deg": -0.48255699487955894
+        },
+        "fridge_right_group_fridge_right_door_joint": {
+          "initial_deg": 82.55605458707858,
+          "final_deg": -6.077686342870898e-55,
+          "min_deg": -0.08371264010524686,
+          "max_deg": 82.55605458707858,
+          "net_closing_deg": 82.55605458707858
+        }
+      },
+      "trajectories": {
+        "robot0_eef_pos": {
+          "path_m": 3.1575453845825496,
+          "net_m": 0.4025940759573383,
+          "min_xyz_m": [
+            2.8669677236477247,
+            -3.3008913823949046,
+            1.2493606741099408
+          ],
+          "max_xyz_m": [
+            3.5463348479222403,
+            -2.422985522708019,
+            1.460234223010451
+          ]
+        },
+        "robot0_base_pos": {
+          "path_m": 0.010728162652222324,
+          "net_m": 0.003978307508445002,
+          "min_xyz_m": [
+            3.026273468086604,
+            -2.7974862915251664,
+            0.6999814311752264
+          ],
+          "max_xyz_m": [
+            3.0284967525905686,
+            -2.7924137426730975,
+            0.7001373413832258
+          ]
+        },
+        "robot0_base_to_eef_pos": {
+          "path_m": 3.1611887000652334,
+          "net_m": 0.407920222357288,
+          "min_xyz_m": [
+            -0.16070811590235934,
+            -0.5072513048993641,
+            0.5493263088815121
+          ],
+          "max_xyz_m": [
+            0.5212314424265503,
+            0.3748552760507673,
+            0.7602281841793503
+          ]
+        }
+      },
+      "guard_failures": [],
+      "continuity": {
+        "replan": {
+          "mean": 0.4960816725682317,
+          "max": 1.4343508161749512,
+          "p95": 1.110433930054085
+        },
+        "within_chunk": {
+          "mean": 0.14452712464292822,
+          "max": 0.6445626151511807,
+          "p95": 0.33268052567456097
+        },
+        "mode_switches": 0,
+        "gripper_switches": 0
+      },
+      "contacts": null
+    },
+    {
+      "seed": 42,
+      "horizon": 20,
+      "artifacts": "outputs\\control-horizon-v1\\h20-seed42",
+      "success": false,
+      "actions": 285,
+      "stop": "guard_failure: robot0_eef_pos: >=5cm one-step displacement",
+      "inferences": 15,
+      "inference_seconds_total": 8.48271510003542,
+      "inference_seconds": {
+        "mean": 0.5655143400023613,
+        "max": 1.3052337000117404,
+        "p95": 0.8295500300111591
+      },
+      "warm_inference_seconds": {
+        "mean": 0.5126772428588343,
+        "max": 0.625685600010911,
+        "p95": 0.6094311800094147
+      },
+      "wall_seconds": 44.40074880000611,
+      "simulated_seconds": 14.250000000001595,
+      "doors": {
+        "fridge_right_group_fridge_left_door_joint": {
+          "initial_deg": 87.38424848835186,
+          "final_deg": 86.70838944119373,
+          "min_deg": 86.70838944119373,
+          "max_deg": 87.38424848835186,
+          "net_closing_deg": 0.6758590471581272
+        },
+        "fridge_right_group_fridge_right_door_joint": {
+          "initial_deg": 82.55605458707858,
+          "final_deg": 82.49529968269363,
+          "min_deg": 82.49529968269363,
+          "max_deg": 82.55605458707858,
+          "net_closing_deg": 0.06075490438495024
+        }
+      },
+      "trajectories": {
+        "robot0_eef_pos": {
+          "path_m": 2.0449975626221706,
+          "net_m": 0.9435954409815058,
+          "min_xyz_m": [
+            2.9351031438712014,
+            -2.996366856895424,
+            0.9610679377130632
+          ],
+          "max_xyz_m": [
+            3.4137333645474626,
+            -1.9200461458907583,
+            1.3848548036480763
+          ]
+        },
+        "robot0_base_pos": {
+          "path_m": 0.017975901606795457,
+          "net_m": 0.014811227778175357,
+          "min_xyz_m": [
+            3.0132148285627047,
+            -2.7937943222056862,
+            0.6999663772214161
+          ],
+          "max_xyz_m": [
+            3.028070215214308,
+            -2.792414135245084,
+            0.7001608411898734
+          ]
+        },
+        "robot0_base_to_eef_pos": {
+          "path_m": 2.034918185435407,
+          "net_m": 0.9471933027206907,
+          "min_xyz_m": [
+            -0.09276539669248818,
+            -0.20386774787388617,
+            0.26090709652318966
+          ],
+          "max_xyz_m": [
+            0.3848996155993065,
+            0.8756771172371349,
+            0.6848456758409682
+          ]
+        }
+      },
+      "guard_failures": [
+        {
+          "step": 285,
+          "failures": [
+            "robot0_eef_pos: >=5cm one-step displacement"
+          ]
+        }
+      ],
+      "continuity": {
+        "replan": {
+          "mean": 0.4990638156374142,
+          "max": 0.8587828381245995,
+          "p95": 0.8449984243383666
+        },
+        "within_chunk": {
+          "mean": 0.18901693443081327,
+          "max": 0.7646666924186903,
+          "p95": 0.39784308945404545
+        },
+        "mode_switches": 0,
+        "gripper_switches": 2
+      },
+      "contacts": {
+        "sampling": "every 0.002s after solver; robot-involving contacts only",
+        "robot_fridge_loaded_steps": [
+          281,
+          282
+        ],
+        "pairs": {
+          "fridge_right_group_g57 <-> robot0_link4_collision": {
+            "fridge": true,
+            "samples": 36,
+            "loaded_samples": 33,
+            "max_normal_N": 2270.1581602774486,
+            "normal_impulse_Ns": 22.48414673137807,
+            "first_step": 281,
+            "last_step": 282
+          },
+          "fridge_right_group_fridge_left_door_main <-> robot0_link4_collision": {
+            "fridge": true,
+            "samples": 31,
+            "loaded_samples": 5,
+            "max_normal_N": 768.0118533992297,
+            "normal_impulse_Ns": 2.4041551248940425,
+            "first_step": 281,
+            "last_step": 282
+          },
+          "fridge_right_group_g57 <-> robot0_link3_collision": {
+            "fridge": true,
+            "samples": 24,
+            "loaded_samples": 14,
+            "max_normal_N": 1086.396825077277,
+            "normal_impulse_Ns": 12.429435523343479,
+            "first_step": 281,
+            "last_step": 282
+          },
+          "fridge_right_group_fridge_left_door_main <-> robot0_link3_collision": {
+            "fridge": true,
+            "samples": 19,
+            "loaded_samples": 3,
+            "max_normal_N": 126.61391674338601,
+            "normal_impulse_Ns": 0.5891647306310067,
+            "first_step": 281,
+            "last_step": 282
+          }
+        }
+      },
+      "simulation_step_seconds_including_diagnostics": 32.415656000041054
+    },
+    {
+      "seed": 43,
+      "horizon": 50,
+      "artifacts": "outputs\\probes\\instruction-distribution-v1\\approved-retry-1\\task-id-seed43",
+      "success": false,
+      "actions": 600,
+      "stop": "registered_horizon_600",
+      "inferences": 12,
+      "inference_seconds_total": 8.529529300009017,
+      "inference_seconds": {
+        "mean": 0.7107941083340847,
+        "max": 1.7008095000055619,
+        "p95": 1.1459214850023265
+      },
+      "warm_inference_seconds": {
+        "mean": 0.6207927090912232,
+        "max": 0.6919221999996807,
+        "p95": 0.6903581999940798
+      },
+      "wall_seconds": 65.58774470000935,
+      "simulated_seconds": 29.999999999993975,
+      "doors": {
+        "fridgebottomfreezer_main_group_1_fridge_door_joint": {
+          "initial_deg": 85.5238776175674,
+          "final_deg": 81.68723077575937,
+          "min_deg": 80.85591480812509,
+          "max_deg": 90.07756609555837,
+          "net_closing_deg": 3.836646841808019
+        }
+      },
+      "trajectories": {
+        "robot0_eef_pos": {
+          "path_m": 2.0285632303549996,
+          "net_m": 0.34339094903198725,
+          "min_xyz_m": [
+            0.8932253201681932,
+            -1.432770133708699,
+            1.2031550030599325
+          ],
+          "max_xyz_m": [
+            1.3462815897587244,
+            -0.9907772126714925,
+            1.3586393067450548
+          ]
+        },
+        "robot0_base_pos": {
+          "path_m": 0.010043094269877397,
+          "net_m": 0.003838076231910727,
+          "min_xyz_m": [
+            0.8865300356697149,
+            -1.4037690535256342,
+            0.6999901030944261
+          ],
+          "max_xyz_m": [
+            0.8896378078749473,
+            -1.4005249692387767,
+            0.7004642670354105
+          ]
+        },
+        "robot0_base_to_eef_pos": {
+          "path_m": 2.0397494693367415,
+          "net_m": 0.3402428065448091,
+          "min_xyz_m": [
+            -0.031595070076210874,
+            -0.4586150946335471,
+            0.5031302076742841
+          ],
+          "max_xyz_m": [
+            0.41766861860772175,
+            -0.003587617852431113,
+            0.6586361063057576
+          ]
+        }
+      },
+      "guard_failures": [],
+      "continuity": {
+        "replan": {
+          "mean": 0.4670369454134859,
+          "max": 1.0465247923029957,
+          "p95": 1.017778367314793
+        },
+        "within_chunk": {
+          "mean": 0.13235272860488323,
+          "max": 0.816479570424393,
+          "p95": 0.31764994433202065
+        },
+        "mode_switches": 2,
+        "gripper_switches": 0
+      },
+      "contacts": null
+    },
+    {
+      "seed": 43,
+      "horizon": 20,
+      "artifacts": "outputs\\control-horizon-v1\\h20-seed43",
+      "success": false,
+      "actions": 600,
+      "stop": "registered_horizon_600",
+      "inferences": 30,
+      "inference_seconds_total": 12.428056899967487,
+      "inference_seconds": {
+        "mean": 0.41426856333224954,
+        "max": 1.405287399989902,
+        "p95": 0.5636694199987686
+      },
+      "warm_inference_seconds": {
+        "mean": 0.3800954999992271,
+        "max": 0.5790119000012055,
+        "p95": 0.5342241399979684
+      },
+      "wall_seconds": 56.72985499999777,
+      "simulated_seconds": 29.999999999993975,
+      "doors": {
+        "fridgebottomfreezer_main_group_1_fridge_door_joint": {
+          "initial_deg": 85.5238776175674,
+          "final_deg": 83.35423396683049,
+          "min_deg": 77.81422379825781,
+          "max_deg": 90.02807131262877,
+          "net_closing_deg": 2.1696436507369015
+        }
+      },
+      "trajectories": {
+        "robot0_eef_pos": {
+          "path_m": 1.831278043009295,
+          "net_m": 0.33776275819495466,
+          "min_xyz_m": [
+            0.8932298209861796,
+            -1.46779587467943,
+            1.2346150026017881
+          ],
+          "max_xyz_m": [
+            1.381928321324896,
+            -0.918837960259006,
+            1.3330331894345229
+          ]
+        },
+        "robot0_base_pos": {
+          "path_m": 0.030242180552635077,
+          "net_m": 0.019910941627088403,
+          "min_xyz_m": [
+            0.871848745198088,
+            -1.4140305103193924,
+            0.6999723930313152
+          ],
+          "max_xyz_m": [
+            0.8896378078749473,
+            -1.400517929343359,
+            0.7003201775670316
+          ]
+        },
+        "robot0_base_to_eef_pos": {
+          "path_m": 1.8710996040912993,
+          "net_m": 0.3432629791903253,
+          "min_xyz_m": [
+            -0.0673916085019739,
+            -0.5005547732250789,
+            0.5342975728429803
+          ],
+          "max_xyz_m": [
+            0.5183765715151529,
+            -0.003591583836902501,
+            0.6330331546766169
+          ]
+        }
+      },
+      "guard_failures": [],
+      "continuity": {
+        "replan": {
+          "mean": 0.504732766076563,
+          "max": 1.4018395045452132,
+          "p95": 1.054733514666695
+        },
+        "within_chunk": {
+          "mean": 0.16017186783568618,
+          "max": 0.727311017213973,
+          "p95": 0.3591376162045595
+        },
+        "mode_switches": 0,
+        "gripper_switches": 0
+      },
+      "contacts": {
+        "sampling": "every 0.002s after solver; robot-involving contacts only",
+        "robot_fridge_loaded_steps": [
+          77,
+          78,
+          91,
+          92,
+          93,
+          94,
+          95,
+          96,
+          97,
+          98,
+          99,
+          100,
+          101,
+          102,
+          103,
+          104,
+          106,
+          107,
+          108,
+          109,
+          110,
+          111,
+          112,
+          113,
+          114,
+          115,
+          116,
+          117,
+          123,
+          124,
+          125,
+          126,
+          127,
+          128,
+          129,
+          130,
+          131,
+          132,
+          133,
+          134,
+          135,
+          136,
+          137,
+          138,
+          139,
+          140,
+          141,
+          142,
+          143,
+          144,
+          145,
+          146,
+          147,
+          148,
+          149,
+          150,
+          151,
+          152,
+          153,
+          154,
+          155,
+          156,
+          157,
+          158,
+          159,
+          160,
+          161,
+          162,
+          163,
+          164,
+          165,
+          166,
+          167,
+          168,
+          169,
+          170,
+          171,
+          172,
+          173,
+          174,
+          175,
+          176,
+          177,
+          178,
+          179,
+          180,
+          181,
+          182,
+          183,
+          184,
+          185,
+          186,
+          187,
+          188,
+          189,
+          190,
+          191,
+          192,
+          193,
+          194,
+          195,
+          196,
+          197,
+          198,
+          199,
+          200,
+          201,
+          202,
+          203,
+          204,
+          205,
+          206,
+          207,
+          208,
+          209,
+          210,
+          211,
+          212,
+          213,
+          214,
+          215,
+          216,
+          217,
+          218,
+          219,
+          220,
+          221,
+          222,
+          223,
+          224,
+          225,
+          226,
+          227,
+          232,
+          233,
+          244,
+          245,
+          246,
+          247,
+          248,
+          249,
+          250,
+          251,
+          252,
+          253,
+          254,
+          255,
+          256,
+          257,
+          258,
+          259,
+          264,
+          265,
+          266,
+          267,
+          268,
+          269,
+          271,
+          272,
+          273,
+          274,
+          275,
+          276,
+          277,
+          278,
+          279,
+          280,
+          281,
+          282,
+          283,
+          284,
+          285,
+          286,
+          287,
+          288,
+          290,
+          291,
+          292,
+          294,
+          295,
+          296,
+          297,
+          298,
+          299,
+          300,
+          302,
+          303,
+          304,
+          305,
+          306,
+          307,
+          310,
+          311,
+          312,
+          314,
+          315,
+          316,
+          318,
+          319,
+          320,
+          321,
+          322,
+          323,
+          324,
+          325,
+          326,
+          327,
+          329,
+          330,
+          331,
+          332,
+          334,
+          335,
+          336,
+          337,
+          338,
+          339,
+          340,
+          341,
+          342,
+          343,
+          344,
+          345,
+          346,
+          347,
+          348,
+          349,
+          350,
+          351,
+          353,
+          356,
+          357,
+          358,
+          359,
+          360,
+          361,
+          362,
+          363,
+          364,
+          365,
+          366,
+          367,
+          369,
+          411,
+          412,
+          413,
+          414,
+          415,
+          416,
+          417,
+          418,
+          419,
+          420,
+          421,
+          422,
+          423,
+          425,
+          426,
+          427,
+          428,
+          429,
+          430,
+          431,
+          432,
+          433,
+          434,
+          435,
+          436,
+          437,
+          438,
+          439,
+          440,
+          441,
+          442,
+          443,
+          444,
+          445,
+          446,
+          447,
+          448,
+          449,
+          450,
+          451,
+          452,
+          453,
+          454,
+          455,
+          456,
+          457,
+          458,
+          459,
+          460,
+          461,
+          462,
+          463,
+          464,
+          466,
+          467,
+          468,
+          469,
+          470,
+          471,
+          472,
+          473,
+          474,
+          475,
+          476,
+          477,
+          478,
+          479,
+          480,
+          481,
+          482,
+          483,
+          484,
+          485,
+          486,
+          487,
+          488,
+          489,
+          490,
+          491,
+          492,
+          493,
+          494,
+          497,
+          501,
+          502,
+          503,
+          557,
+          558,
+          561,
+          562,
+          576,
+          577,
+          578,
+          579,
+          580,
+          581,
+          583,
+          584,
+          585,
+          586,
+          587,
+          599
+        ],
+        "pairs": {
+          "fridgebottomfreezer_main_group_1_g47 <-> gripper0_right_hand_collision": {
+            "fridge": true,
+            "samples": 4064,
+            "loaded_samples": 4064,
+            "max_normal_N": 324.2418939002852,
+            "normal_impulse_Ns": 519.9141934825695,
+            "first_step": 77,
+            "last_step": 353
+          },
+          "fridgebottomfreezer_main_group_1_g47 <-> robot0_link7_collision": {
+            "fridge": true,
+            "samples": 529,
+            "loaded_samples": 526,
+            "max_normal_N": 208.44790820783416,
+            "normal_impulse_Ns": 54.863586357320074,
+            "first_step": 91,
+            "last_step": 117
+          },
+          "fridgebottomfreezer_main_group_1_g33 <-> gripper0_right_hand_collision": {
+            "fridge": true,
+            "samples": 1170,
+            "loaded_samples": 1169,
+            "max_normal_N": 174.79283386666557,
+            "normal_impulse_Ns": 78.60050018104182,
+            "first_step": 245,
+            "last_step": 369
+          },
+          "fridgebottomfreezer_main_group_1_g58 <-> gripper0_right_hand_collision": {
+            "fridge": true,
+            "samples": 1170,
+            "loaded_samples": 1169,
+            "max_normal_N": 174.15471084756845,
+            "normal_impulse_Ns": 78.31355026800146,
+            "first_step": 245,
+            "last_step": 369
+          },
+          "fridgebottomfreezer_main_group_1_g33 <-> robot0_link7_collision": {
+            "fridge": true,
+            "samples": 335,
+            "loaded_samples": 335,
+            "max_normal_N": 118.43665970437029,
+            "normal_impulse_Ns": 28.258072143850907,
+            "first_step": 271,
+            "last_step": 287
+          },
+          "fridgebottomfreezer_main_group_1_g58 <-> robot0_link7_collision": {
+            "fridge": true,
+            "samples": 335,
+            "loaded_samples": 335,
+            "max_normal_N": 117.95480252227925,
+            "normal_impulse_Ns": 28.143104742300185,
+            "first_step": 271,
+            "last_step": 287
+          },
+          "fridgebottomfreezer_main_group_1_g40 <-> gripper0_right_hand_collision": {
+            "fridge": true,
+            "samples": 127,
+            "loaded_samples": 127,
+            "max_normal_N": 123.56061749263563,
+            "normal_impulse_Ns": 12.753137680676248,
+            "first_step": 356,
+            "last_step": 367
+          },
+          "fridgebottomfreezer_main_group_1_g65 <-> gripper0_right_hand_collision": {
+            "fridge": true,
+            "samples": 127,
+            "loaded_samples": 127,
+            "max_normal_N": 123.10952992496077,
+            "normal_impulse_Ns": 12.70657930331186,
+            "first_step": 356,
+            "last_step": 367
+          },
+          "fridgebottomfreezer_main_group_1_g37 <-> robot0_link7_collision": {
+            "fridge": true,
+            "samples": 89,
+            "loaded_samples": 87,
+            "max_normal_N": 30.174219386412048,
+            "normal_impulse_Ns": 2.531700514681242,
+            "first_step": 411,
+            "last_step": 562
+          },
+          "fridgebottomfreezer_main_group_1_g62 <-> robot0_link7_collision": {
+            "fridge": true,
+            "samples": 89,
+            "loaded_samples": 87,
+            "max_normal_N": 30.051456178114673,
+            "normal_impulse_Ns": 2.5214003417538065,
+            "first_step": 411,
+            "last_step": 562
+          },
+          "fridgebottomfreezer_main_group_1_g37 <-> gripper0_right_hand_collision": {
+            "fridge": true,
+            "samples": 800,
+            "loaded_samples": 789,
+            "max_normal_N": 116.62091526812054,
+            "normal_impulse_Ns": 37.433748029108614,
+            "first_step": 423,
+            "last_step": 599
+          },
+          "fridgebottomfreezer_main_group_1_g62 <-> gripper0_right_hand_collision": {
+            "fridge": true,
+            "samples": 800,
+            "loaded_samples": 789,
+            "max_normal_N": 116.19516274214722,
+            "normal_impulse_Ns": 37.297087184495936,
+            "first_step": 423,
+            "last_step": 599
+          },
+          "fridgebottomfreezer_main_group_1_g36 <-> robot0_link5_collision": {
+            "fridge": true,
+            "samples": 309,
+            "loaded_samples": 307,
+            "max_normal_N": 244.3905266368609,
+            "normal_impulse_Ns": 26.182124278806505,
+            "first_step": 432,
+            "last_step": 489
+          },
+          "fridgebottomfreezer_main_group_1_g61 <-> robot0_link5_collision": {
+            "fridge": true,
+            "samples": 309,
+            "loaded_samples": 307,
+            "max_normal_N": 243.0788871187569,
+            "normal_impulse_Ns": 26.04160529329357,
+            "first_step": 432,
+            "last_step": 489
+          },
+          "fridgebottomfreezer_main_group_1_g33 <-> robot0_link6_collision": {
+            "fridge": true,
+            "samples": 112,
+            "loaded_samples": 112,
+            "max_normal_N": 143.37674216569653,
+            "normal_impulse_Ns": 8.070785062379043,
+            "first_step": 436,
+            "last_step": 503
+          },
+          "fridgebottomfreezer_main_group_1_g58 <-> robot0_link6_collision": {
+            "fridge": true,
+            "samples": 112,
+            "loaded_samples": 112,
+            "max_normal_N": 142.82490218321965,
+            "normal_impulse_Ns": 8.03972157313997,
+            "first_step": 436,
+            "last_step": 503
+          }
+        }
+      },
+      "simulation_step_seconds_including_diagnostics": 36.532920399913564
+    },
+    {
+      "seed": 44,
+      "horizon": 50,
+      "artifacts": "outputs\\probes\\instruction-distribution-v1\\approved-retry-1\\task-id-seed44",
+      "success": true,
+      "actions": 342,
+      "stop": "success",
+      "inferences": 7,
+      "inference_seconds_total": 5.026195500002359,
+      "inference_seconds": {
+        "mean": 0.7180279285717656,
+        "max": 1.4754334000026574,
+        "p95": 1.2163147300016128
+      },
+      "warm_inference_seconds": {
+        "mean": 0.5917936833332836,
+        "max": 0.6117044999991776,
+        "p95": 0.6113727749980171
+      },
+      "wall_seconds": 32.62523779999174,
+      "simulated_seconds": 17.100000000001124,
+      "doors": {
+        "fridgesidebyside_main_group_1_fridge_door_joint": {
+          "initial_deg": 83.3170929825454,
+          "final_deg": -0.08388957464971503,
+          "min_deg": -0.08388957464971503,
+          "max_deg": 83.38089803277414,
+          "net_closing_deg": 83.40098255719512
+        }
+      },
+      "trajectories": {
+        "robot0_eef_pos": {
+          "path_m": 1.418628873640185,
+          "net_m": 0.34023262133403703,
+          "min_xyz_m": [
+            4.359778359246813,
+            -1.494826219190272,
+            1.287204799454377
+          ],
+          "max_xyz_m": [
+            4.718257417754065,
+            -0.8522005975320713,
+            1.4207646258931939
+          ]
+        },
+        "robot0_base_pos": {
+          "path_m": 0.005267664119070362,
+          "net_m": 0.0031057485871266795,
+          "min_xyz_m": [
+            4.384917804080408,
+            -1.4268048616443307,
+            0.6999946999392208
+          ],
+          "max_xyz_m": [
+            4.387954289268078,
+            -1.4253877376980855,
+            0.7000704210851453
+          ]
+        },
+        "robot0_base_to_eef_pos": {
+          "path_m": 1.424332955671983,
+          "net_m": 0.3421317804289192,
+          "min_xyz_m": [
+            -0.06942637657458572,
+            -0.3330691191127384,
+            0.5872060754772359
+          ],
+          "max_xyz_m": [
+            0.574306916582862,
+            0.033697313448406874,
+            0.7207649312003627
+          ]
+        }
+      },
+      "guard_failures": [],
+      "continuity": {
+        "replan": {
+          "mean": 0.4236023792468258,
+          "max": 0.5729245694151394,
+          "p95": 0.5569850605392158
+        },
+        "within_chunk": {
+          "mean": 0.10220688551348704,
+          "max": 0.5212552142511983,
+          "p95": 0.274687088850705
+        },
+        "mode_switches": 0,
+        "gripper_switches": 0
+      },
+      "contacts": null
+    },
+    {
+      "seed": 44,
+      "horizon": 20,
+      "artifacts": "outputs\\control-horizon-v1\\h20-seed44",
+      "success": true,
+      "actions": 337,
+      "stop": "success",
+      "inferences": 17,
+      "inference_seconds_total": 6.597386199980974,
+      "inference_seconds": {
+        "mean": 0.38808154117535143,
+        "max": 1.267353200004436,
+        "p95": 0.5546183999977068
+      },
+      "warm_inference_seconds": {
+        "mean": 0.33312706249853363,
+        "max": 0.3764346999960253,
+        "p95": 0.3616511499931221
+      },
+      "wall_seconds": 28.427623600000516,
+      "simulated_seconds": 16.850000000001263,
+      "doors": {
+        "fridgesidebyside_main_group_1_fridge_door_joint": {
+          "initial_deg": 83.3170929825454,
+          "final_deg": 0.21966845958530767,
+          "min_deg": 0.21966845958530767,
+          "max_deg": 83.3170929825454,
+          "net_closing_deg": 83.0974245229601
+        }
+      },
+      "trajectories": {
+        "robot0_eef_pos": {
+          "path_m": 1.4602785927461384,
+          "net_m": 0.3578785565671221,
+          "min_xyz_m": [
+            4.3533737907653345,
+            -1.5209387044220748,
+            1.288281821217891
+          ],
+          "max_xyz_m": [
+            4.737672756618739,
+            -0.8350578404742912,
+            1.4228262892970953
+          ]
+        },
+        "robot0_base_pos": {
+          "path_m": 0.005381812123511575,
+          "net_m": 0.003064063024168914,
+          "min_xyz_m": [
+            4.384918367772255,
+            -1.4270604191204022,
+            0.6999978090434956
+          ],
+          "max_xyz_m": [
+            4.387735325634815,
+            -1.4253589182530297,
+            0.7003566616242252
+          ]
+        },
+        "robot0_base_to_eef_pos": {
+          "path_m": 1.4657856838514114,
+          "net_m": 0.36008709376072123,
+          "min_xyz_m": [
+            -0.09571557793979135,
+            -0.3524227298418259,
+            0.5879750642212977
+          ],
+          "max_xyz_m": [
+            0.5916402772425576,
+            0.04011920421171222,
+            0.722826042073239
+          ]
+        }
+      },
+      "guard_failures": [],
+      "continuity": {
+        "replan": {
+          "mean": 0.2857710020558516,
+          "max": 0.6533162076560144,
+          "p95": 0.5126445400483475
+        },
+        "within_chunk": {
+          "mean": 0.1134771167031596,
+          "max": 0.5573293307721595,
+          "p95": 0.2515121480006869
+        },
+        "mode_switches": 0,
+        "gripper_switches": 0
+      },
+      "contacts": {
+        "sampling": "every 0.002s after solver; robot-involving contacts only",
+        "robot_fridge_loaded_steps": [
+          210,
+          211,
+          212,
+          213,
+          214,
+          215,
+          216,
+          217,
+          218,
+          219,
+          220,
+          221,
+          223,
+          224,
+          225,
+          226,
+          227,
+          228,
+          229,
+          230,
+          231,
+          232,
+          233,
+          234,
+          235,
+          236,
+          237,
+          238,
+          239,
+          240,
+          241,
+          242,
+          243,
+          244,
+          245,
+          246,
+          247,
+          248,
+          249,
+          250,
+          251,
+          252,
+          253,
+          254,
+          255,
+          256,
+          257,
+          258,
+          259,
+          260,
+          261,
+          262,
+          263,
+          264,
+          265,
+          266,
+          267,
+          268,
+          269,
+          270,
+          271,
+          272,
+          273,
+          274,
+          275,
+          276,
+          280,
+          283,
+          286,
+          287,
+          288,
+          289,
+          290,
+          291,
+          292,
+          293,
+          294,
+          295,
+          296,
+          297,
+          298,
+          299,
+          300,
+          301,
+          302,
+          303,
+          304,
+          305,
+          306,
+          307,
+          308,
+          309,
+          310,
+          311,
+          312,
+          313,
+          314,
+          315,
+          316,
+          317,
+          318,
+          319,
+          320,
+          321,
+          322,
+          323,
+          324,
+          325,
+          326,
+          327,
+          328,
+          329,
+          330,
+          331,
+          332,
+          333,
+          334,
+          335,
+          336,
+          337
+        ],
+        "pairs": {
+          "fridgesidebyside_main_group_1_fridge_door_handle_main <-> gripper0_right_hand_collision": {
+            "fridge": true,
+            "samples": 1278,
+            "loaded_samples": 1273,
+            "max_normal_N": 78.5716484688718,
+            "normal_impulse_Ns": 31.481875159838037,
+            "first_step": 210,
+            "last_step": 304
+          },
+          "fridgesidebyside_main_group_1_g91 <-> gripper0_right_finger1_collision": {
+            "fridge": true,
+            "samples": 867,
+            "loaded_samples": 865,
+            "max_normal_N": 33.96094968620119,
+            "normal_impulse_Ns": 25.120454062967564,
+            "first_step": 286,
+            "last_step": 337
+          },
+          "fridgesidebyside_main_group_1_fridge_door_handle_main <-> gripper0_right_finger2_collision": {
+            "fridge": true,
+            "samples": 1181,
+            "loaded_samples": 1181,
+            "max_normal_N": 70.6699109530535,
+            "normal_impulse_Ns": 89.46494713118703,
+            "first_step": 288,
+            "last_step": 337
+          },
+          "fridgesidebyside_main_group_1_g97 <-> gripper0_right_finger1_collision": {
+            "fridge": true,
+            "samples": 829,
+            "loaded_samples": 829,
+            "max_normal_N": 68.97085358216357,
+            "normal_impulse_Ns": 57.64246912024824,
+            "first_step": 304,
+            "last_step": 337
+          },
+          "fridgesidebyside_main_group_1_g100 <-> gripper0_right_finger1_collision": {
+            "fridge": true,
+            "samples": 829,
+            "loaded_samples": 829,
+            "max_normal_N": 69.15149541017455,
+            "normal_impulse_Ns": 57.79344073292447,
+            "first_step": 304,
+            "last_step": 337
+          },
+          "fridgesidebyside_main_group_1_fridge_door_handle_main <-> gripper0_right_finger2_pad_collision": {
+            "fridge": true,
+            "samples": 314,
+            "loaded_samples": 314,
+            "max_normal_N": 38.29245111756362,
+            "normal_impulse_Ns": 11.90278745177223,
+            "first_step": 331,
+            "last_step": 337
+          }
+        }
+      },
+      "simulation_step_seconds_including_diagnostics": 17.44841769998311
+    }
+  ],
+  "prefix_comparison": [
+    {
+      "seed": 42,
+      "first_chunk_max_abs": {
+        "internal": 0.018381118774414062,
+        "normalized": 0.018381118774414062,
+        "final": 0.005097836256027222
+      },
+      "first20_action_max_abs": 0.002096414566040039,
+      "first20_qpos_max_abs": 0.0007203645921889379
+    },
+    {
+      "seed": 43,
+      "first_chunk_max_abs": {
+        "internal": 0.011999130249023438,
+        "normalized": 0.011999130249023438,
+        "final": 0.0042247772216796875
+      },
+      "first20_action_max_abs": 0.003329634666442871,
+      "first20_qpos_max_abs": 0.0006772175128302582
+    },
+    {
+      "seed": 44,
+      "first_chunk_max_abs": {
+        "internal": 0.026667237281799316,
+        "normalized": 0.026667237281799316,
+        "final": 0.01669710874557495
+      },
+      "first20_action_max_abs": 0.01669710874557495,
+      "first20_qpos_max_abs": 0.0007402674139065368
+    }
+  ],
+  "limitations": [
+    "H50 contact forces unavailable",
+    "Three known design seeds; no generalization claim",
+    "Wall times include unequal instrumentation; inference is synchronous, simulator pauses while planning",
+    "RNG seeded once per episode; after step20, replanning changes noise-to-simulation-time alignment",
+    "Mixed-unit continuous command L2 is descriptive, not a physical jerk metric"
+  ]
+}
