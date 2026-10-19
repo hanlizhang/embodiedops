@@ -1,0 +1,21 @@
+{
+  "status": "proposal_not_executed_requires_approval",
+  "task": "CloseFridge",
+  "checkpoints": ["pinned_pretrained", "natural_v1_validation_selected", "mixed_v1_validation_selected"],
+  "instructions": ["CloseFridge", "exact_environment_reset_instruction"],
+  "seeds": [100, 101, 102, 103, 104, 105, 106, 107, 108, 109],
+  "episodes": 60,
+  "confirmatory_seeds_if_promising": [110, 111, 112, 113, 114, 115, 116, 117, 118, 119],
+  "confirmatory_episodes_full_matrix": 60,
+  "maximum_actions": 600,
+  "chunk_size": 50,
+  "n_action_steps": 50,
+  "num_flow_steps": 10,
+  "reset_reference": "one canonical reset per seed; assert scene metadata, physical state and all three camera pixels match for all six arms",
+  "sampling": "same policy RNG seed per scene and per inference call across all arms; record explicit noise fingerprints without extra draws; prefix comparisons only after early success",
+  "selection": "lowest equally weighted NL/ID loss on fixed 64 validation frames among saved steps 500,1000,1500,2000,2500; earliest tie; report pretrained score separately; no test-based selection",
+  "stratification": "single/two door from reset fixture and relevant door joints, before examining outcomes; retain all consecutive seeds regardless of scene mix",
+  "metrics": ["actual_robocasa_success", "stop_reason", "initial_and_final_door_angles", "door_progress", "action_count", "inference_calls", "inference_latency", "physics_steps", "simulated_seconds", "wall_seconds", "failures", "videos"],
+  "preservation": "new exclusive outputs/phase2/evaluation-v1; never reuse Phase1D aggregates",
+  "limitation": "CloseFridge instruction robustness only; no claim of preserving all other pretrained tasks; original pretraining overlap unknown"
+}

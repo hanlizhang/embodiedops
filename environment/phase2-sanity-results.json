@@ -1,0 +1,72 @@
+{
+  "artifact_root": "outputs/phase2/sanity-v1",
+  "summary": {
+    "completed_updates": 512,
+    "seconds_including_probes_and_checkpoints": 282.7519573000027,
+    "peak_allocated": 1859713024,
+    "peak_reserved": 1981808640,
+    "initial_train_nl": 0.3797908433480188,
+    "final_train_nl": 0.23588142107473686,
+    "initial_validation": 0.3846258081321139,
+    "final_validation": 0.5249515525065362,
+    "selected": {
+      "step": 512,
+      "score": 0.5249515525065362,
+      "checkpoint": "checkpoints\\000512"
+    },
+    "sanity_loss_reduced": true,
+    "exception": null
+  },
+  "probe_table": [
+    {
+      "step": 0,
+      "train_natural_loss": 0.3797908433480188,
+      "validation_natural_loss": 0.4057923664804548,
+      "validation_task_id_loss": 0.363459249783773
+    },
+    {
+      "step": 128,
+      "train_natural_loss": 0.4180869795382023,
+      "validation_natural_loss": 0.5750674866139889,
+      "validation_task_id_loss": 0.580142781836912
+    },
+    {
+      "step": 256,
+      "train_natural_loss": 0.31128049129620194,
+      "validation_natural_loss": 0.5404723846586421,
+      "validation_task_id_loss": 0.5448835583520122
+    },
+    {
+      "step": 384,
+      "train_natural_loss": 0.24921906692907214,
+      "validation_natural_loss": 0.5275238475878723,
+      "validation_task_id_loss": 0.5336747001856565
+    },
+    {
+      "step": 512,
+      "train_natural_loss": 0.23588142107473686,
+      "validation_natural_loss": 0.522031186032109,
+      "validation_task_id_loss": 0.5278719189809635
+    }
+  ],
+  "reload_verification": {
+    "passed": true,
+    "step": 512,
+    "model_tensors_equal": 500,
+    "optimizer_state_equal": true,
+    "scheduler_state_equal": true,
+    "validation_equal": true,
+    "processors_byte_identical": true,
+    "checkpoint_sha256": "4b07c48525cb916be86b080501b5a23015dbda27f79869502bb378f786dd7407"
+  },
+  "changed_tensors": 122,
+  "unchanged_trainable_tensors": 33,
+  "all_frozen_unchanged": true,
+  "source_sha256": {
+    "outputs/phase2/sanity-v1/summary.json": "cd75f1de6067effb50852883e806a89ce3a0e6efff76182ad8c3cd56a86ec6da",
+    "outputs/phase2/sanity-v1/probes.jsonl": "4fc1e8ceafd6d48b1e2607937350aff40e1fbc995d8ef4ce6c3be2bfb2dd0f82",
+    "outputs/phase2/sanity-v1/reload-verification.json": "a39f7d03e77a8b83918fe7432962f3869753d2eb9bc469790b6ec9d479d77eed",
+    "outputs/phase2/sanity-v1/parameter-audit.json": "171eedc348deeef14dab5d5eec818f59abcd43c9bb44f89f31e358cd5133faba"
+  },
+  "interpretation": "Small-sample optimization only; held-out losses worsened. A/B training remains unexecuted."
+}
