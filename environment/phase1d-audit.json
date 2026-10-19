@@ -1,0 +1,280 @@
+{
+  "passed": true,
+  "episodes": 20,
+  "matched_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51
+  ],
+  "preservation": {
+    "pretrained-seed42": {
+      "expected": "5e4e0d40d3fc3ea9c5d74c36a8ee1d28af73bf11ba3fecd9f279d0a24e5fdb2d",
+      "actual": "5e4e0d40d3fc3ea9c5d74c36a8ee1d28af73bf11ba3fecd9f279d0a24e5fdb2d",
+      "match": true
+    },
+    "trained-seed42": {
+      "expected": "1ad90460066027313fc255699d8f349e930424bfae659f7c0239477dfba03dbe",
+      "actual": "1ad90460066027313fc255699d8f349e930424bfae659f7c0239477dfba03dbe",
+      "match": true
+    },
+    "pretrained-seed43": {
+      "expected": "59e6c4dc056ef70768ee7d2345364c58d0741355e9e043d2c82e8defc49cc9d6",
+      "actual": "59e6c4dc056ef70768ee7d2345364c58d0741355e9e043d2c82e8defc49cc9d6",
+      "match": true
+    },
+    "trained-seed43": {
+      "expected": "6e9fafcf9fc6923169ea49dd7e97cfa16f12260192c890e1d8589e508b37109e",
+      "actual": "6e9fafcf9fc6923169ea49dd7e97cfa16f12260192c890e1d8589e508b37109e",
+      "match": true
+    },
+    "pretrained-seed44": {
+      "expected": "28432260c0bee49c98d78b2fa804e0a7f3d128622cd79d067d7630b1eb0c5ac6",
+      "actual": "28432260c0bee49c98d78b2fa804e0a7f3d128622cd79d067d7630b1eb0c5ac6",
+      "match": true
+    },
+    "trained-seed44": {
+      "expected": "0ec9ed91b9adf5ffd849a7381db23268198c930e1b6253e63ccd75f9c579bc60",
+      "actual": "0ec9ed91b9adf5ffd849a7381db23268198c930e1b6253e63ccd75f9c579bc60",
+      "match": true
+    },
+    "pretrained-seed45": {
+      "expected": "932029885fe243fe7a4f5567981c5d53144b9d168aecb83da2a9e16f76f9598e",
+      "actual": "932029885fe243fe7a4f5567981c5d53144b9d168aecb83da2a9e16f76f9598e",
+      "match": true
+    },
+    "trained-seed45": {
+      "expected": "0d0bc5ed186f6eeb9781c8a64c031b1fe5529253e80918ee972189619141ce02",
+      "actual": "0d0bc5ed186f6eeb9781c8a64c031b1fe5529253e80918ee972189619141ce02",
+      "match": true
+    },
+    "pretrained-seed46": {
+      "expected": "53f0747ba59217a0c0f00d5628757813adf9dea12c0561956707dea89a883825",
+      "actual": "53f0747ba59217a0c0f00d5628757813adf9dea12c0561956707dea89a883825",
+      "match": true
+    },
+    "trained-seed46": {
+      "expected": "4ce7472181b3fea6043c4c38f66edc29f353ea042751c809e792e88d2ed74075",
+      "actual": "4ce7472181b3fea6043c4c38f66edc29f353ea042751c809e792e88d2ed74075",
+      "match": true
+    },
+    "pretrained-seed47": {
+      "expected": "506d06d8e4e521944ac14680e8ed2d1417d0025ce92ed1c5395a36095e808f6d",
+      "actual": "506d06d8e4e521944ac14680e8ed2d1417d0025ce92ed1c5395a36095e808f6d",
+      "match": true
+    },
+    "trained-seed47-interrupted-before-reset": {
+      "expected": "57fc962c50c87c517f57adf58261ebc847c0f1029279faf45f99e19e12fec6f1",
+      "actual": "57fc962c50c87c517f57adf58261ebc847c0f1029279faf45f99e19e12fec6f1",
+      "match": true
+    },
+    "trained-seed47-interrupted-before-reset.log": {
+      "expected": "87a4169ad16a2cfe4a499aad3f0a9bffac6eeb3c87775ff6db3461cfe1cd2fe5",
+      "actual": "87a4169ad16a2cfe4a499aad3f0a9bffac6eeb3c87775ff6db3461cfe1cd2fe5",
+      "match": true
+    },
+    "results-before-seed47-resume.json": {
+      "expected": "e1d719f3de725faf8c5e430c7f4a4fe88d03d9959cdcc55722c2339aa01becd5",
+      "actual": "e1d719f3de725faf8c5e430c7f4a4fe88d03d9959cdcc55722c2339aa01becd5",
+      "match": true
+    },
+    "evaluation-config-before-seed47-resume.json": {
+      "expected": "70dd22c8a153b64b3ea05e4f989e2710bc5094307be8a4259678c4ae75d06166",
+      "actual": "70dd22c8a153b64b3ea05e4f989e2710bc5094307be8a4259678c4ae75d06166",
+      "match": true
+    }
+  },
+  "videos": [
+    {
+      "seed": 42,
+      "checkpoint": "pretrained",
+      "frames": 601,
+      "width": 768,
+      "height": 288,
+      "last_timestamp_seconds": 30.0
+    },
+    {
+      "seed": 42,
+      "checkpoint": "trained",
+      "frames": 601,
+      "width": 768,
+      "height": 288,
+      "last_timestamp_seconds": 30.0
+    },
+    {
+      "seed": 43,
+      "checkpoint": "pretrained",
+      "frames": 601,
+      "width": 768,
+      "height": 288,
+      "last_timestamp_seconds": 30.0
+    },
+    {
+      "seed": 43,
+      "checkpoint": "trained",
+      "frames": 601,
+      "width": 768,
+      "height": 288,
+      "last_timestamp_seconds": 30.0
+    },
+    {
+      "seed": 44,
+      "checkpoint": "pretrained",
+      "frames": 601,
+      "width": 768,
+      "height": 288,
+      "last_timestamp_seconds": 30.0
+    },
+    {
+      "seed": 44,
+      "checkpoint": "trained",
+      "frames": 268,
+      "width": 768,
+      "height": 288,
+      "last_timestamp_seconds": 13.35
+    },
+    {
+      "seed": 45,
+      "checkpoint": "pretrained",
+      "frames": 601,
+      "width": 768,
+      "height": 288,
+      "last_timestamp_seconds": 30.0
+    },
+    {
+      "seed": 45,
+      "checkpoint": "trained",
+      "frames": 601,
+      "width": 768,
+      "height": 288,
+      "last_timestamp_seconds": 30.0
+    },
+    {
+      "seed": 46,
+      "checkpoint": "pretrained",
+      "frames": 601,
+      "width": 768,
+      "height": 288,
+      "last_timestamp_seconds": 30.0
+    },
+    {
+      "seed": 46,
+      "checkpoint": "trained",
+      "frames": 601,
+      "width": 768,
+      "height": 288,
+      "last_timestamp_seconds": 30.0
+    },
+    {
+      "seed": 47,
+      "checkpoint": "pretrained",
+      "frames": 601,
+      "width": 768,
+      "height": 288,
+      "last_timestamp_seconds": 30.0
+    },
+    {
+      "seed": 47,
+      "checkpoint": "trained",
+      "frames": 423,
+      "width": 768,
+      "height": 288,
+      "last_timestamp_seconds": 21.1
+    },
+    {
+      "seed": 48,
+      "checkpoint": "pretrained",
+      "frames": 601,
+      "width": 768,
+      "height": 288,
+      "last_timestamp_seconds": 30.0
+    },
+    {
+      "seed": 48,
+      "checkpoint": "trained",
+      "frames": 601,
+      "width": 768,
+      "height": 288,
+      "last_timestamp_seconds": 30.0
+    },
+    {
+      "seed": 49,
+      "checkpoint": "pretrained",
+      "frames": 601,
+      "width": 768,
+      "height": 288,
+      "last_timestamp_seconds": 30.0
+    },
+    {
+      "seed": 49,
+      "checkpoint": "trained",
+      "frames": 414,
+      "width": 768,
+      "height": 288,
+      "last_timestamp_seconds": 20.65
+    },
+    {
+      "seed": 50,
+      "checkpoint": "pretrained",
+      "frames": 601,
+      "width": 768,
+      "height": 288,
+      "last_timestamp_seconds": 30.0
+    },
+    {
+      "seed": 50,
+      "checkpoint": "trained",
+      "frames": 601,
+      "width": 768,
+      "height": 288,
+      "last_timestamp_seconds": 30.0
+    },
+    {
+      "seed": 51,
+      "checkpoint": "pretrained",
+      "frames": 601,
+      "width": 768,
+      "height": 288,
+      "last_timestamp_seconds": 30.0
+    },
+    {
+      "seed": 51,
+      "checkpoint": "trained",
+      "frames": 601,
+      "width": 768,
+      "height": 288,
+      "last_timestamp_seconds": 30.0
+    }
+  ],
+  "checkpoint_sha256": "0e011aa494e0d4e370b11feb5eec6e0c49af2fadd1f3f97ee03056909de0fe6d",
+  "tensor_hashes_verified": 500,
+  "changed_trainable_tensors": 122,
+  "frozen_tensors_unchanged": true,
+  "split_sizes": [
+    461,
+    52
+  ],
+  "source_hashes": {
+    "scripts/phase1c_demo_analysis.py": "350da1a307bd83e5fa6fad2ba2b8abc85e66563dc4a0dcc1884bccf4ae3d4955",
+    "scripts/phase1c_replay.py": "fbc5d4cdefafc03799d45d85d02d347de111896c6d7f9c558c2f4be581357524",
+    "scripts/phase1c_rollout.py": "fb63a7a4f64e8ec7dbaefe21c46d2a1017f93b2643f29335d5256552b2258bb7",
+    "scripts/phase1d_evaluate.py": "5de023242577b8f1de0e7e9e571dcaf6a43583f1f16a360982abeb836427754b",
+    "scripts/phase1d_report.py": "779d95e9ff6feeade90bbdc2b4dab97686c7fbb0ccaefd0e473b8acd6f121b98",
+    "scripts/phase1d_rollout.py": "050dfc80fffac39292958ebf3b53f85308bc2d840c46e951cf6c52cb702c34d2",
+    "scripts/phase1d_train.py": "b5f6c76293ada54a1af4041f78c9333cb7093e43e38992850b40c246dcc8d391"
+  },
+  "success_counts": {
+    "pretrained": 0,
+    "trained": 3
+  },
+  "reset_images_and_scene_metadata_rechecked": true,
+  "executed_script_snapshots_match_manifests": true,
+  "processors_match_original": true,
+  "results_sha256": "54d5b02186681065a540ea26b3f37d01111aedcbd19f409e6241d1ea2c899746"
+}

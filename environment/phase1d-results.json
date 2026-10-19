@@ -1,0 +1,854 @@
+{
+  "results_sha256": "54d5b02186681065a540ea26b3f37d01111aedcbd19f409e6241d1ea2c899746",
+  "episodes": [
+    {
+      "seed": 42,
+      "checkpoint": "pretrained",
+      "success": false,
+      "instruction": "Close the fridge doors.",
+      "door_degrees": {
+        "fridge_right_group_fridge_left_door_joint": 87.26492142627175,
+        "fridge_right_group_fridge_right_door_joint": 80.18330071754576
+      },
+      "door_normalized": {
+        "fridge_right_group_fridge_left_door_joint": 0.9696102380696862,
+        "fridge_right_group_fridge_right_door_joint": 0.8909255635282862
+      },
+      "actions": 600,
+      "inference_calls": 12,
+      "physics_steps": 15000,
+      "simulated_seconds": 29.999999999993975,
+      "wall_clock_rollout_seconds": 83.35512320001726,
+      "mean_chunk_inference_seconds": 0.7137514999994892,
+      "warm_chunk_inference_seconds": 0.6158512272707991,
+      "stop": "registered_horizon_600",
+      "exception": null,
+      "video": "outputs/phase1c/retry-20261018/rollout.mp4",
+      "artifacts": "outputs/phase1c/retry-20261018"
+    },
+    {
+      "seed": 42,
+      "checkpoint": "trained",
+      "success": false,
+      "instruction": "Close the fridge doors.",
+      "door_degrees": {
+        "fridge_right_group_fridge_left_door_joint": 87.26492142627175,
+        "fridge_right_group_fridge_right_door_joint": 69.08830754773449
+      },
+      "door_normalized": {
+        "fridge_right_group_fridge_left_door_joint": 0.9696102380696862,
+        "fridge_right_group_fridge_right_door_joint": 0.7676478616414943
+      },
+      "actions": 600,
+      "inference_calls": 12,
+      "physics_steps": 15000,
+      "simulated_seconds": 29.999999999993975,
+      "wall_clock_rollout_seconds": 83.29118780000135,
+      "mean_chunk_inference_seconds": 0.7147415166673454,
+      "warm_chunk_inference_seconds": 0.608144545455368,
+      "stop": "registered_horizon_600",
+      "exception": null,
+      "video": "outputs/phase1d/evaluation/trained-seed42/rollout.mp4",
+      "artifacts": "outputs/phase1d/evaluation/trained-seed42"
+    },
+    {
+      "seed": 43,
+      "checkpoint": "pretrained",
+      "success": false,
+      "instruction": "Close the fridge door.",
+      "door_degrees": {
+        "fridgebottomfreezer_main_group_1_fridge_door_joint": 89.9880854171089
+      },
+      "door_normalized": {
+        "fridgebottomfreezer_main_group_1_fridge_door_joint": 0.9998676157456545
+      },
+      "actions": 600,
+      "inference_calls": 12,
+      "physics_steps": 15000,
+      "simulated_seconds": 29.999999999993975,
+      "wall_clock_rollout_seconds": 75.77056989999983,
+      "mean_chunk_inference_seconds": 0.6652391000025091,
+      "warm_chunk_inference_seconds": 0.5636216181843668,
+      "stop": "registered_horizon_600",
+      "exception": null,
+      "video": "outputs/phase1d/evaluation/pretrained-seed43/rollout.mp4",
+      "artifacts": "outputs/phase1d/evaluation/pretrained-seed43"
+    },
+    {
+      "seed": 43,
+      "checkpoint": "trained",
+      "success": false,
+      "instruction": "Close the fridge door.",
+      "door_degrees": {
+        "fridgebottomfreezer_main_group_1_fridge_door_joint": 89.99533728426961
+      },
+      "door_normalized": {
+        "fridgebottomfreezer_main_group_1_fridge_door_joint": 0.9999481920474402
+      },
+      "actions": 600,
+      "inference_calls": 12,
+      "physics_steps": 15000,
+      "simulated_seconds": 29.999999999993975,
+      "wall_clock_rollout_seconds": 78.80809349999618,
+      "mean_chunk_inference_seconds": 0.7649193833355336,
+      "warm_chunk_inference_seconds": 0.6511547181838647,
+      "stop": "registered_horizon_600",
+      "exception": null,
+      "video": "outputs/phase1d/evaluation/trained-seed43/rollout.mp4",
+      "artifacts": "outputs/phase1d/evaluation/trained-seed43"
+    },
+    {
+      "seed": 44,
+      "checkpoint": "pretrained",
+      "success": false,
+      "instruction": "Close the fridge door.",
+      "door_degrees": {
+        "fridgesidebyside_main_group_1_fridge_door_joint": 89.96302403658699
+      },
+      "door_normalized": {
+        "fridgesidebyside_main_group_1_fridge_door_joint": 0.9995891559620776
+      },
+      "actions": 600,
+      "inference_calls": 12,
+      "physics_steps": 15000,
+      "simulated_seconds": 29.999999999993975,
+      "wall_clock_rollout_seconds": 65.88684049999574,
+      "mean_chunk_inference_seconds": 0.6465129333325118,
+      "warm_chunk_inference_seconds": 0.5841558909080711,
+      "stop": "registered_horizon_600",
+      "exception": null,
+      "video": "outputs/phase1d/evaluation/pretrained-seed44/rollout.mp4",
+      "artifacts": "outputs/phase1d/evaluation/pretrained-seed44"
+    },
+    {
+      "seed": 44,
+      "checkpoint": "trained",
+      "success": true,
+      "instruction": "Close the fridge door.",
+      "door_degrees": {
+        "fridgesidebyside_main_group_1_fridge_door_joint": 0.17323255798651174
+      },
+      "door_normalized": {
+        "fridgesidebyside_main_group_1_fridge_door_joint": 0.0019248061998501304
+      },
+      "actions": 267,
+      "inference_calls": 6,
+      "physics_steps": 6675,
+      "simulated_seconds": 13.350000000001295,
+      "wall_clock_rollout_seconds": 32.20261849999952,
+      "mean_chunk_inference_seconds": 0.8209765166672393,
+      "warm_chunk_inference_seconds": 0.6333065800004988,
+      "stop": "success",
+      "exception": null,
+      "video": "outputs/phase1d/evaluation/trained-seed44/rollout.mp4",
+      "artifacts": "outputs/phase1d/evaluation/trained-seed44"
+    },
+    {
+      "seed": 45,
+      "checkpoint": "pretrained",
+      "success": false,
+      "instruction": "Close the fridge doors.",
+      "door_degrees": {
+        "fridgefrenchdoor_main_group_1_fridge_left_door_joint": 85.45560136947222,
+        "fridgefrenchdoor_main_group_1_fridge_right_door_joint": 82.21221022928054
+      },
+      "door_normalized": {
+        "fridgefrenchdoor_main_group_1_fridge_left_door_joint": 0.9495066818830248,
+        "fridgefrenchdoor_main_group_1_fridge_right_door_joint": 0.9134690025475617
+      },
+      "actions": 600,
+      "inference_calls": 12,
+      "physics_steps": 15000,
+      "simulated_seconds": 29.999999999993975,
+      "wall_clock_rollout_seconds": 80.51945010000054,
+      "mean_chunk_inference_seconds": 0.6216636083324071,
+      "warm_chunk_inference_seconds": 0.5496305909083193,
+      "stop": "registered_horizon_600",
+      "exception": null,
+      "video": "outputs/phase1d/evaluation/pretrained-seed45/rollout.mp4",
+      "artifacts": "outputs/phase1d/evaluation/pretrained-seed45"
+    },
+    {
+      "seed": 45,
+      "checkpoint": "trained",
+      "success": false,
+      "instruction": "Close the fridge doors.",
+      "door_degrees": {
+        "fridgefrenchdoor_main_group_1_fridge_left_door_joint": 85.45560136947222,
+        "fridgefrenchdoor_main_group_1_fridge_right_door_joint": 75.1467586118521
+      },
+      "door_normalized": {
+        "fridgefrenchdoor_main_group_1_fridge_left_door_joint": 0.9495066818830248,
+        "fridgefrenchdoor_main_group_1_fridge_right_door_joint": 0.8349639845761345
+      },
+      "actions": 600,
+      "inference_calls": 12,
+      "physics_steps": 15000,
+      "simulated_seconds": 29.999999999993975,
+      "wall_clock_rollout_seconds": 83.10164369999984,
+      "mean_chunk_inference_seconds": 0.5990918166662595,
+      "warm_chunk_inference_seconds": 0.5578175999994115,
+      "stop": "registered_horizon_600",
+      "exception": null,
+      "video": "outputs/phase1d/evaluation/trained-seed45/rollout.mp4",
+      "artifacts": "outputs/phase1d/evaluation/trained-seed45"
+    },
+    {
+      "seed": 46,
+      "checkpoint": "pretrained",
+      "success": false,
+      "instruction": "Close the fridge door.",
+      "door_degrees": {
+        "fridgebottomfreezer_main_group_1_fridge_door_joint": 86.39873648151466
+      },
+      "door_normalized": {
+        "fridgebottomfreezer_main_group_1_fridge_door_joint": 0.9599859609057185
+      },
+      "actions": 600,
+      "inference_calls": 12,
+      "physics_steps": 15000,
+      "simulated_seconds": 29.999999999993975,
+      "wall_clock_rollout_seconds": 74.55698609999672,
+      "mean_chunk_inference_seconds": 0.6497168749998915,
+      "warm_chunk_inference_seconds": 0.6034490000000171,
+      "stop": "registered_horizon_600",
+      "exception": null,
+      "video": "outputs/phase1d/evaluation/pretrained-seed46/rollout.mp4",
+      "artifacts": "outputs/phase1d/evaluation/pretrained-seed46"
+    },
+    {
+      "seed": 46,
+      "checkpoint": "trained",
+      "success": false,
+      "instruction": "Close the fridge door.",
+      "door_degrees": {
+        "fridgebottomfreezer_main_group_1_fridge_door_joint": 86.28541149217692
+      },
+      "door_normalized": {
+        "fridgebottomfreezer_main_group_1_fridge_door_joint": 0.9587267943575213
+      },
+      "actions": 600,
+      "inference_calls": 12,
+      "physics_steps": 15000,
+      "simulated_seconds": 29.999999999993975,
+      "wall_clock_rollout_seconds": 80.16405959999975,
+      "mean_chunk_inference_seconds": 0.6413764499987641,
+      "warm_chunk_inference_seconds": 0.5824804181803219,
+      "stop": "registered_horizon_600",
+      "exception": null,
+      "video": "outputs/phase1d/evaluation/trained-seed46/rollout.mp4",
+      "artifacts": "outputs/phase1d/evaluation/trained-seed46"
+    },
+    {
+      "seed": 47,
+      "checkpoint": "pretrained",
+      "success": false,
+      "instruction": "Close the fridge door.",
+      "door_degrees": {
+        "fridgesidebyside_right_group_1_fridge_door_joint": 87.5378377078155
+      },
+      "door_normalized": {
+        "fridgesidebyside_right_group_1_fridge_door_joint": 0.97264264119795
+      },
+      "actions": 600,
+      "inference_calls": 12,
+      "physics_steps": 15000,
+      "simulated_seconds": 29.999999999993975,
+      "wall_clock_rollout_seconds": 79.12602580000384,
+      "mean_chunk_inference_seconds": 0.589455816665577,
+      "warm_chunk_inference_seconds": 0.5581810909081303,
+      "stop": "registered_horizon_600",
+      "exception": null,
+      "video": "outputs/phase1d/evaluation/pretrained-seed47/rollout.mp4",
+      "artifacts": "outputs/phase1d/evaluation/pretrained-seed47"
+    },
+    {
+      "seed": 47,
+      "checkpoint": "trained",
+      "success": true,
+      "instruction": "Close the fridge door.",
+      "door_degrees": {
+        "fridgesidebyside_right_group_1_fridge_door_joint": -0.3662565266880948
+      },
+      "door_normalized": {
+        "fridgesidebyside_right_group_1_fridge_door_joint": -0.004069516963201053
+      },
+      "actions": 422,
+      "inference_calls": 9,
+      "physics_steps": 10550,
+      "simulated_seconds": 21.099999999998907,
+      "wall_clock_rollout_seconds": 55.710941500001354,
+      "mean_chunk_inference_seconds": 0.6821136000006744,
+      "warm_chunk_inference_seconds": 0.5442232375007734,
+      "stop": "success",
+      "exception": null,
+      "video": "outputs/phase1d/evaluation/trained-seed47/rollout.mp4",
+      "artifacts": "outputs/phase1d/evaluation/trained-seed47"
+    },
+    {
+      "seed": 48,
+      "checkpoint": "pretrained",
+      "success": false,
+      "instruction": "Close the fridge door.",
+      "door_degrees": {
+        "fridge_main_group_fridge_door_joint": 87.52126623134261
+      },
+      "door_normalized": {
+        "fridge_main_group_fridge_door_joint": 0.9724585136815846
+      },
+      "actions": 600,
+      "inference_calls": 12,
+      "physics_steps": 15000,
+      "simulated_seconds": 29.999999999993975,
+      "wall_clock_rollout_seconds": 120.91528289999405,
+      "mean_chunk_inference_seconds": 0.7690097833334827,
+      "warm_chunk_inference_seconds": 0.6616282636367198,
+      "stop": "registered_horizon_600",
+      "exception": null,
+      "video": "outputs/phase1d/evaluation/pretrained-seed48/rollout.mp4",
+      "artifacts": "outputs/phase1d/evaluation/pretrained-seed48"
+    },
+    {
+      "seed": 48,
+      "checkpoint": "trained",
+      "success": false,
+      "instruction": "Close the fridge door.",
+      "door_degrees": {
+        "fridge_main_group_fridge_door_joint": 5.298253156974551
+      },
+      "door_normalized": {
+        "fridge_main_group_fridge_door_joint": 0.05886947952193945
+      },
+      "actions": 600,
+      "inference_calls": 12,
+      "physics_steps": 15000,
+      "simulated_seconds": 29.999999999993975,
+      "wall_clock_rollout_seconds": 87.5932490999985,
+      "mean_chunk_inference_seconds": 0.6510184166678906,
+      "warm_chunk_inference_seconds": 0.5517626818188794,
+      "stop": "registered_horizon_600",
+      "exception": null,
+      "video": "outputs/phase1d/evaluation/trained-seed48/rollout.mp4",
+      "artifacts": "outputs/phase1d/evaluation/trained-seed48"
+    },
+    {
+      "seed": 49,
+      "checkpoint": "pretrained",
+      "success": false,
+      "instruction": "Close the fridge door.",
+      "door_degrees": {
+        "fridge_right_group_fridge_door_joint": 89.98464884468515
+      },
+      "door_normalized": {
+        "fridge_right_group_fridge_door_joint": 0.9998294316076128
+      },
+      "actions": 600,
+      "inference_calls": 12,
+      "physics_steps": 15000,
+      "simulated_seconds": 29.999999999993975,
+      "wall_clock_rollout_seconds": 91.85324930000206,
+      "mean_chunk_inference_seconds": 0.6530330916678698,
+      "warm_chunk_inference_seconds": 0.5720512636378937,
+      "stop": "registered_horizon_600",
+      "exception": null,
+      "video": "outputs/phase1d/evaluation/pretrained-seed49/rollout.mp4",
+      "artifacts": "outputs/phase1d/evaluation/pretrained-seed49"
+    },
+    {
+      "seed": 49,
+      "checkpoint": "trained",
+      "success": true,
+      "instruction": "Close the fridge door.",
+      "door_degrees": {
+        "fridge_right_group_fridge_door_joint": 0.3971685279071397
+      },
+      "door_normalized": {
+        "fridge_right_group_fridge_door_joint": 0.004412983643412663
+      },
+      "actions": 413,
+      "inference_calls": 9,
+      "physics_steps": 10325,
+      "simulated_seconds": 20.649999999999157,
+      "wall_clock_rollout_seconds": 64.18624450000061,
+      "mean_chunk_inference_seconds": 0.665883388887677,
+      "warm_chunk_inference_seconds": 0.5308938624984876,
+      "stop": "success",
+      "exception": null,
+      "video": "outputs/phase1d/evaluation/trained-seed49/rollout.mp4",
+      "artifacts": "outputs/phase1d/evaluation/trained-seed49"
+    },
+    {
+      "seed": 50,
+      "checkpoint": "pretrained",
+      "success": false,
+      "instruction": "Close the fridge doors.",
+      "door_degrees": {
+        "fridge_right_group_fridge_left_door_joint": 83.14290573858257,
+        "fridge_right_group_fridge_right_door_joint": 87.7781285450701
+      },
+      "door_normalized": {
+        "fridge_right_group_fridge_left_door_joint": 0.9238100637620286,
+        "fridge_right_group_fridge_right_door_joint": 0.9753125393896678
+      },
+      "actions": 600,
+      "inference_calls": 12,
+      "physics_steps": 15000,
+      "simulated_seconds": 29.999999999993975,
+      "wall_clock_rollout_seconds": 116.58680900000036,
+      "mean_chunk_inference_seconds": 0.6995353583339844,
+      "warm_chunk_inference_seconds": 0.6004917909092249,
+      "stop": "registered_horizon_600",
+      "exception": null,
+      "video": "outputs/phase1d/evaluation/pretrained-seed50/rollout.mp4",
+      "artifacts": "outputs/phase1d/evaluation/pretrained-seed50"
+    },
+    {
+      "seed": 50,
+      "checkpoint": "trained",
+      "success": false,
+      "instruction": "Close the fridge doors.",
+      "door_degrees": {
+        "fridge_right_group_fridge_left_door_joint": 83.14290573858257,
+        "fridge_right_group_fridge_right_door_joint": 86.21731147288207
+      },
+      "door_normalized": {
+        "fridge_right_group_fridge_left_door_joint": 0.9238100637620286,
+        "fridge_right_group_fridge_right_door_joint": 0.9579701274764674
+      },
+      "actions": 600,
+      "inference_calls": 12,
+      "physics_steps": 15000,
+      "simulated_seconds": 29.999999999993975,
+      "wall_clock_rollout_seconds": 117.5730739999999,
+      "mean_chunk_inference_seconds": 0.6696180333340939,
+      "warm_chunk_inference_seconds": 0.59331920909145,
+      "stop": "registered_horizon_600",
+      "exception": null,
+      "video": "outputs/phase1d/evaluation/trained-seed50/rollout.mp4",
+      "artifacts": "outputs/phase1d/evaluation/trained-seed50"
+    },
+    {
+      "seed": 51,
+      "checkpoint": "pretrained",
+      "success": false,
+      "instruction": "Close the fridge door.",
+      "door_degrees": {
+        "fridge_right_group_fridge_door_joint": 82.44420456911206
+      },
+      "door_normalized": {
+        "fridge_right_group_fridge_door_joint": 0.9160467174345784
+      },
+      "actions": 600,
+      "inference_calls": 12,
+      "physics_steps": 15000,
+      "simulated_seconds": 29.999999999993975,
+      "wall_clock_rollout_seconds": 73.08835849999741,
+      "mean_chunk_inference_seconds": 0.680615175000033,
+      "warm_chunk_inference_seconds": 0.5781128454545978,
+      "stop": "registered_horizon_600",
+      "exception": null,
+      "video": "outputs/phase1d/evaluation/pretrained-seed51/rollout.mp4",
+      "artifacts": "outputs/phase1d/evaluation/pretrained-seed51"
+    },
+    {
+      "seed": 51,
+      "checkpoint": "trained",
+      "success": false,
+      "instruction": "Close the fridge door.",
+      "door_degrees": {
+        "fridge_right_group_fridge_door_joint": 82.44420456911206
+      },
+      "door_normalized": {
+        "fridge_right_group_fridge_door_joint": 0.9160467174345784
+      },
+      "actions": 600,
+      "inference_calls": 12,
+      "physics_steps": 15000,
+      "simulated_seconds": 29.999999999993975,
+      "wall_clock_rollout_seconds": 95.24933820000297,
+      "mean_chunk_inference_seconds": 0.8074181916666324,
+      "warm_chunk_inference_seconds": 0.7693103090906251,
+      "stop": "registered_horizon_600",
+      "exception": null,
+      "video": "outputs/phase1d/evaluation/trained-seed51/rollout.mp4",
+      "artifacts": "outputs/phase1d/evaluation/trained-seed51"
+    }
+  ],
+  "success_counts": {
+    "pretrained": 0,
+    "trained": 3
+  },
+  "door_strata": {
+    "1": {
+      "pretrained": {
+        "successes": 0,
+        "episodes": 7
+      },
+      "trained": {
+        "successes": 3,
+        "episodes": 7
+      }
+    },
+    "2": {
+      "pretrained": {
+        "successes": 0,
+        "episodes": 3
+      },
+      "trained": {
+        "successes": 0,
+        "episodes": 3
+      }
+    }
+  },
+  "checkpoint_sha256": "0e011aa494e0d4e370b11feb5eec6e0c49af2fadd1f3f97ee03056909de0fe6d",
+  "checkpoint": "outputs/phase1d/training-v2/checkpoints/000300/pretrained_model",
+  "completed_optimizer_steps": 300,
+  "fixed_losses": [
+    {
+      "step": 0,
+      "validation": {
+        "mean": 0.531797094270587,
+        "samples": [
+          0.26987943053245544,
+          0.33183902502059937,
+          1.2631725072860718,
+          0.4150756299495697,
+          0.34207573533058167,
+          0.2489243596792221,
+          0.07057878375053406,
+          1.3128312826156616
+        ],
+        "noise_seeds": [
+          42000,
+          42001,
+          42002,
+          42003,
+          42004,
+          42005,
+          42006,
+          42007
+        ]
+      },
+      "fixed_training_probe": {
+        "mean": 0.30132371559739113,
+        "samples": [
+          0.18310043215751648,
+          0.24619947373867035,
+          0.1259339153766632,
+          0.42915821075439453,
+          0.4521970748901367,
+          0.1506335586309433,
+          0.32857030630111694,
+          0.4947967529296875
+        ],
+        "noise_seeds": [
+          42000,
+          42001,
+          42002,
+          42003,
+          42004,
+          42005,
+          42006,
+          42007
+        ]
+      }
+    },
+    {
+      "step": 50,
+      "validation": {
+        "mean": 0.6374624408781528,
+        "samples": [
+          0.3925619125366211,
+          0.6371843218803406,
+          1.4027765989303589,
+          0.5152973532676697,
+          0.5401692986488342,
+          0.3248763680458069,
+          0.41025540232658386,
+          0.8765782713890076
+        ],
+        "noise_seeds": [
+          42000,
+          42001,
+          42002,
+          42003,
+          42004,
+          42005,
+          42006,
+          42007
+        ]
+      },
+      "fixed_training_probe": {
+        "mean": 0.5428853332996368,
+        "samples": [
+          0.29200220108032227,
+          0.5607264041900635,
+          0.29901570081710815,
+          0.7542490363121033,
+          0.5914488434791565,
+          0.34847885370254517,
+          0.47985243797302246,
+          1.0173091888427734
+        ],
+        "noise_seeds": [
+          42000,
+          42001,
+          42002,
+          42003,
+          42004,
+          42005,
+          42006,
+          42007
+        ]
+      }
+    },
+    {
+      "step": 100,
+      "validation": {
+        "mean": 0.5573195591568947,
+        "samples": [
+          0.4913467466831207,
+          0.6390484571456909,
+          1.042616844177246,
+          0.4653342664241791,
+          0.416514128446579,
+          0.23786340653896332,
+          0.1712818592786789,
+          0.9945507645606995
+        ],
+        "noise_seeds": [
+          42000,
+          42001,
+          42002,
+          42003,
+          42004,
+          42005,
+          42006,
+          42007
+        ]
+      },
+      "fixed_training_probe": {
+        "mean": 0.4395386856049299,
+        "samples": [
+          0.19347897171974182,
+          0.4654938876628876,
+          0.18727879226207733,
+          0.8189910054206848,
+          0.5396037101745605,
+          0.130001038312912,
+          0.2585752308368683,
+          0.922886848449707
+        ],
+        "noise_seeds": [
+          42000,
+          42001,
+          42002,
+          42003,
+          42004,
+          42005,
+          42006,
+          42007
+        ]
+      }
+    },
+    {
+      "step": 150,
+      "validation": {
+        "mean": 0.5798786552622914,
+        "samples": [
+          0.3751959800720215,
+          0.6705918312072754,
+          1.1748172044754028,
+          0.5191743969917297,
+          0.38713622093200684,
+          0.39277857542037964,
+          0.09559319168329239,
+          1.0237418413162231
+        ],
+        "noise_seeds": [
+          42000,
+          42001,
+          42002,
+          42003,
+          42004,
+          42005,
+          42006,
+          42007
+        ]
+      },
+      "fixed_training_probe": {
+        "mean": 0.4431479685008526,
+        "samples": [
+          0.26358121633529663,
+          0.42520850896835327,
+          0.3096165955066681,
+          0.7633982300758362,
+          0.4169114828109741,
+          0.2532038986682892,
+          0.345371812582016,
+          0.7678920030593872
+        ],
+        "noise_seeds": [
+          42000,
+          42001,
+          42002,
+          42003,
+          42004,
+          42005,
+          42006,
+          42007
+        ]
+      }
+    },
+    {
+      "step": 200,
+      "validation": {
+        "mean": 0.5796460919082165,
+        "samples": [
+          0.338737428188324,
+          0.5874465107917786,
+          1.242228388786316,
+          0.47960662841796875,
+          0.4007248282432556,
+          0.3325176537036896,
+          0.0782860517501831,
+          1.1776212453842163
+        ],
+        "noise_seeds": [
+          42000,
+          42001,
+          42002,
+          42003,
+          42004,
+          42005,
+          42006,
+          42007
+        ]
+      },
+      "fixed_training_probe": {
+        "mean": 0.3573836646974087,
+        "samples": [
+          0.19749166071414948,
+          0.3457809090614319,
+          0.18795815110206604,
+          0.7058400511741638,
+          0.4118447005748749,
+          0.1512785702943802,
+          0.35739433765411377,
+          0.5014809370040894
+        ],
+        "noise_seeds": [
+          42000,
+          42001,
+          42002,
+          42003,
+          42004,
+          42005,
+          42006,
+          42007
+        ]
+      }
+    },
+    {
+      "step": 250,
+      "validation": {
+        "mean": 0.6104961717501283,
+        "samples": [
+          0.32781147956848145,
+          0.491965115070343,
+          1.517499566078186,
+          0.5080773830413818,
+          0.3967328667640686,
+          0.3509800136089325,
+          0.10310480743646622,
+          1.1877981424331665
+        ],
+        "noise_seeds": [
+          42000,
+          42001,
+          42002,
+          42003,
+          42004,
+          42005,
+          42006,
+          42007
+        ]
+      },
+      "fixed_training_probe": {
+        "mean": 0.3583701830357313,
+        "samples": [
+          0.19069962203502655,
+          0.3359285891056061,
+          0.2078576534986496,
+          0.6799647808074951,
+          0.4247223734855652,
+          0.19663377106189728,
+          0.3488609790802002,
+          0.4822936952114105
+        ],
+        "noise_seeds": [
+          42000,
+          42001,
+          42002,
+          42003,
+          42004,
+          42005,
+          42006,
+          42007
+        ]
+      }
+    },
+    {
+      "step": 300,
+      "validation": {
+        "mean": 0.5941866030916572,
+        "samples": [
+          0.3277631998062134,
+          0.4909851551055908,
+          1.4640311002731323,
+          0.49365103244781494,
+          0.3808034360408783,
+          0.3508318364620209,
+          0.0945158526301384,
+          1.1509112119674683
+        ],
+        "noise_seeds": [
+          42000,
+          42001,
+          42002,
+          42003,
+          42004,
+          42005,
+          42006,
+          42007
+        ]
+      },
+      "fixed_training_probe": {
+        "mean": 0.35254982113838196,
+        "samples": [
+          0.18895739316940308,
+          0.3337932229042053,
+          0.2043750137090683,
+          0.6432325839996338,
+          0.4185774624347687,
+          0.19200022518634796,
+          0.34673622250556946,
+          0.4927264451980591
+        ],
+        "noise_seeds": [
+          42000,
+          42001,
+          42002,
+          42003,
+          42004,
+          42005,
+          42006,
+          42007
+        ]
+      }
+    }
+  ],
+  "peak_allocated_bytes": 1809369088,
+  "peak_reserved_bytes": 1933574144,
+  "training_loop_seconds": 188.7010691999967
+}
