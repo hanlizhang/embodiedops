@@ -91,6 +91,15 @@ def canonical_scene(value, key=None):
     return value
 
 
+def validate_reference_instruction(reference_task, task, environment_task, contrast=False):
+    if contrast:
+        assert task == "CloseFridge", "Contrast arm must use the task identifier"
+        assert reference_task == environment_task, "Reference must use native language"
+        assert reference_task in ("Close the fridge door.", "Close the fridge doors.")
+    else:
+        assert reference_task == task, "Paired language mismatch"
+
+
 def action_gate(env, action):
     """No clipping here: retain the Phase 1B controller's actual semantics."""
     assert action.shape == (12,) and np.isfinite(action).all(), "Invalid public action"
@@ -187,10 +196,16 @@ def main():
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--checkpoint", default=MODEL, help="Pinned base model or saved local full checkpoint")
     parser.add_argument("--reference", type=Path, help="Paired baseline artifacts; verify reset before inference")
+    parser.add_argument("--instruction-contrast", action="store_true",
+                        help="Explicit pretrained CloseFridge task-ID versus native-language reference")
     args = parser.parse_args()
     OUT = args.output.resolve()
     checkpoint = args.checkpoint
     revision = MODEL_REV if checkpoint == MODEL else None
+    if args.instruction_contrast:
+        assert args.reference and checkpoint == MODEL and args.instruction == "CloseFridge"
+        assert OUT.is_relative_to(ROOT / "outputs/probes/instruction-distribution-v1")
+        os.environ["NUMBA_CACHE_DIR"] = str(OUT.parent / "numba-cache")
     assert Path(sys.prefix).name == "embodiedops-robocasa", sys.prefix
     OUT.mkdir(parents=True, exist_ok=True)
     # Exclusive marker prevents accidental launch of a second experiment over these results.
@@ -242,6 +257,16 @@ def main():
         if name.endswith(".json") and (checkpoint == MODEL or name != "config.json"):
             assert json.loads(path.read_text()) == json.loads((ROOT / "outputs/phase1a" / name).read_text())
     manifest["checkpoint_file_hashes"] = processor_hashes
+    if args.instruction_contrast:
+        weights = Path(hf_hub_download(MODEL, "model.safetensors", revision=MODEL_REV, local_files_only=True))
+        with weights.open("rb") as f:
+            manifest["model_sha256"] = hashlib.file_digest(f, "sha256").hexdigest()
+        assert manifest["model_sha256"] == "96ae6628166a7dc1b41f8a2d92176c48e394988294b0b44755409acbb3f9bc2b"
+        reference_manifest = json.loads((args.reference / "manifest.json").read_text(encoding="utf-8"))
+        for key in ("model", "model_revision", "backbone_revision", "seed", "versions", "simulator_sources", "checkpoint_file_hashes"):
+            assert manifest[key] == reference_manifest[key], f"Contrast protocol mismatch: {key}"
+        manifest["instruction_contrast"] = True
+        manifest["optional_noise_fingerprints"] = "disabled; original sampler unchanged"
     emit("manifest", manifest)
     torch.manual_seed(args.seed)
     torch.cuda.manual_seed_all(args.seed)
@@ -261,6 +286,8 @@ def main():
                     "parameter_dtypes": sorted({str(p.dtype) for p in policy.parameters()}),
                     "preprocessor": [{"class": type(s).__name__, "config": s.get_config()} for s in pre.steps],
                     "postprocessor": [{"class": type(s).__name__, "config": s.get_config()} for s in post.steps]})
+    if args.instruction_contrast:
+        assert json.loads((OUT / "policy.json").read_text()) == json.loads((args.reference / "policy.json").read_text()), "Paired policy/processor mismatch"
 
     env = SingleEpisodeEnv("CloseFridge", camera_name=CAMERAS)
     video = None
@@ -308,7 +335,8 @@ def main():
                        "physical": initial, "hashes": {k: hashlib.sha256(initial[k].tobytes()).hexdigest() for k in ("qpos", "qvel")}})
         if args.reference:
             reference = json.loads((args.reference / "reset.json").read_text(encoding="utf-8"))
-            assert reference["task"] == env.task_description, "Paired language mismatch"
+            validate_reference_instruction(reference["task"], env.task_description,
+                                           environment_instruction, args.instruction_contrast)
             for k in ("qpos", "qvel"):
                 assert np.array_equal(initial[k], reference["physical"][k]), f"Paired reset mismatch: {k}"
             assert np.array_equal(obs["agent_pos"], reference["state"]), "Paired observation mismatch"
@@ -326,6 +354,8 @@ def main():
                 assert args.seed == 42, "Paired scene metadata missing"
                 assert canonical_scene(serial(low.get_ep_meta())) == canonical_scene(old_reset["ep_meta"]), "Original seed-42 metadata mismatch"
             emit("paired-reset-validation", {"passed": True, "reference": str(args.reference.resolve()),
+                 "instruction_contrast": args.instruction_contrast,
+                 "reference_task": reference["task"], "task": env.task_description,
                  "qpos_qvel_state_exact": True, "camera_errors": camera_errors,
                  "scene_metadata_compared": True,
                  "metadata_reference": "paired" if (args.reference / "scene.json").exists() else "Phase 1B seed42",
@@ -376,10 +406,10 @@ def main():
             captured["internal"] = output.detach().cpu().clone()
             return output
 
-        def chunk(*args, **kwargs):
+        def chunk(*chunk_args, **chunk_kwargs):
             torch.cuda.synchronize()
             start = time.perf_counter()
-            output = old_chunk(*args, **kwargs)
+            output = old_chunk(*chunk_args, **chunk_kwargs)
             torch.cuda.synchronize()
             elapsed = time.perf_counter() - start
             latencies.append(elapsed)

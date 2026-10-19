@@ -1,0 +1,234 @@
+{
+  "matrix": [
+    {
+      "seed": 42,
+      "arm": "natural",
+      "reused": true,
+      "artifacts": "outputs/phase1c/retry-20261018",
+      "summary_sha256": "dcac537547ab30d31180c6d65a60c9b55322de38c556e1d208421e88e816b50e",
+      "task": "Close the fridge doors.",
+      "success": false,
+      "stop": "registered_horizon_600",
+      "door_degrees": {
+        "fridge_right_group_fridge_left_door_joint": 87.26492142627175,
+        "fridge_right_group_fridge_right_door_joint": 80.18330071754576
+      },
+      "actions": 600,
+      "inference_calls": 12,
+      "physics_steps": 15000,
+      "simulated_seconds": 29.999999999993975,
+      "wall_clock_rollout_seconds": 83.35512320001726,
+      "mean_chunk_seconds": 0.7137514999994892,
+      "motion": {
+        "base_net_m": 0.14052709482410639,
+        "base_path_m": 0.15478377561720513,
+        "eef_world_net_m": 0.5124583470322651,
+        "eef_world_path_m": 1.6582210250478104,
+        "gripper_close_command_steps": 0,
+        "desired_control_mode_steps": 55,
+        "initial_door_degrees": {
+          "fridge_right_group_fridge_left_door_joint": 87.38424848835186,
+          "fridge_right_group_fridge_right_door_joint": 82.55605458707858
+        },
+        "minimum_door_degrees": {
+          "fridge_right_group_fridge_left_door_joint": 87.26492142627175,
+          "fridge_right_group_fridge_right_door_joint": 79.4329059362232
+        }
+      },
+      "video": "outputs/phase1c/retry-20261018/rollout.mp4",
+      "decoded_video_frames": 601
+    },
+    {
+      "seed": 42,
+      "arm": "task-id",
+      "reused": true,
+      "artifacts": "outputs/phase1d/language-control-native",
+      "summary_sha256": "b1f55068868c3c6a83192990ca205d56f7a321605170b0a1a30ba2cb3ba705f2",
+      "task": "CloseFridge",
+      "success": false,
+      "stop": "registered_horizon_600",
+      "door_degrees": {
+        "fridge_right_group_fridge_left_door_joint": 87.86680548323142,
+        "fridge_right_group_fridge_right_door_joint": -6.077686342870898e-55
+      },
+      "actions": 600,
+      "inference_calls": 12,
+      "physics_steps": 15000,
+      "simulated_seconds": 29.999999999993975,
+      "wall_clock_rollout_seconds": 49.724103300000024,
+      "mean_chunk_seconds": 0.5768596166666763,
+      "motion": {
+        "base_net_m": 0.003978307508445002,
+        "base_path_m": 0.010728162652222324,
+        "eef_world_net_m": 0.4025940759573383,
+        "eef_world_path_m": 3.1575453845825496,
+        "gripper_close_command_steps": 0,
+        "desired_control_mode_steps": 0,
+        "initial_door_degrees": {
+          "fridge_right_group_fridge_left_door_joint": 87.38424848835186,
+          "fridge_right_group_fridge_right_door_joint": 82.55605458707858
+        },
+        "minimum_door_degrees": {
+          "fridge_right_group_fridge_left_door_joint": 87.24798238859603,
+          "fridge_right_group_fridge_right_door_joint": -0.08371264010524686
+        }
+      },
+      "video": "outputs/phase1d/language-control-native/rollout.mp4",
+      "decoded_video_frames": 601
+    },
+    {
+      "seed": 43,
+      "arm": "natural",
+      "reused": true,
+      "artifacts": "outputs/phase1d/evaluation/pretrained-seed43",
+      "summary_sha256": "07563cedb8cd227174912445e1bcd2691b2bde77e5dd33192149a9db38fcab6d",
+      "task": "Close the fridge door.",
+      "success": false,
+      "stop": "registered_horizon_600",
+      "door_degrees": {
+        "fridgebottomfreezer_main_group_1_fridge_door_joint": 89.9880854171089
+      },
+      "actions": 600,
+      "inference_calls": 12,
+      "physics_steps": 15000,
+      "simulated_seconds": 29.999999999993975,
+      "wall_clock_rollout_seconds": 75.77056989999983,
+      "mean_chunk_seconds": 0.6652391000025091,
+      "motion": {
+        "base_net_m": 0.14034049581006267,
+        "base_path_m": 0.18242388319861458,
+        "eef_world_net_m": 0.5342202948833095,
+        "eef_world_path_m": 2.099213750311086,
+        "gripper_close_command_steps": 72,
+        "desired_control_mode_steps": 32,
+        "initial_door_degrees": {
+          "fridgebottomfreezer_main_group_1_fridge_door_joint": 85.5238776175674
+        },
+        "minimum_door_degrees": {
+          "fridgebottomfreezer_main_group_1_fridge_door_joint": 85.52229771394315
+        }
+      },
+      "video": "outputs/phase1d/evaluation/pretrained-seed43/rollout.mp4",
+      "decoded_video_frames": 601
+    },
+    {
+      "seed": 43,
+      "arm": "task-id",
+      "reused": false,
+      "artifacts": "outputs/probes/instruction-distribution-v1/approved-retry-1/task-id-seed43",
+      "task": "CloseFridge",
+      "success": false,
+      "stop": "registered_horizon_600",
+      "door_degrees": {
+        "fridgebottomfreezer_main_group_1_fridge_door_joint": 81.68723077575937
+      },
+      "actions": 600,
+      "inference_calls": 12,
+      "physics_steps": 15000,
+      "simulated_seconds": 29.999999999993975,
+      "wall_clock_rollout_seconds": 65.58774470000935,
+      "mean_chunk_seconds": 0.7107941083340847,
+      "motion": {
+        "base_net_m": 0.003838076231910727,
+        "base_path_m": 0.010043094269877397,
+        "eef_world_net_m": 0.34339094903198725,
+        "eef_world_path_m": 2.0285632303549996,
+        "gripper_close_command_steps": 0,
+        "desired_control_mode_steps": 1,
+        "initial_door_degrees": {
+          "fridgebottomfreezer_main_group_1_fridge_door_joint": 85.5238776175674
+        },
+        "minimum_door_degrees": {
+          "fridgebottomfreezer_main_group_1_fridge_door_joint": 80.85591480812509
+        }
+      },
+      "video": "outputs/probes/instruction-distribution-v1/approved-retry-1/task-id-seed43/rollout.mp4",
+      "decoded_video_frames": 601
+    },
+    {
+      "seed": 44,
+      "arm": "natural",
+      "reused": true,
+      "artifacts": "outputs/phase1d/evaluation/pretrained-seed44",
+      "summary_sha256": "a188e3fc69801938c0fc8063a89b95cf397c315b6198d9f92af9d35b207f8748",
+      "task": "Close the fridge door.",
+      "success": false,
+      "stop": "registered_horizon_600",
+      "door_degrees": {
+        "fridgesidebyside_main_group_1_fridge_door_joint": 89.96302403658699
+      },
+      "actions": 600,
+      "inference_calls": 12,
+      "physics_steps": 15000,
+      "simulated_seconds": 29.999999999993975,
+      "wall_clock_rollout_seconds": 65.88684049999574,
+      "mean_chunk_seconds": 0.6465129333325118,
+      "motion": {
+        "base_net_m": 0.009401278854605913,
+        "base_path_m": 0.013061377253261931,
+        "eef_world_net_m": 0.41061840539767336,
+        "eef_world_path_m": 0.9864935204452627,
+        "gripper_close_command_steps": 0,
+        "desired_control_mode_steps": 2,
+        "initial_door_degrees": {
+          "fridgesidebyside_main_group_1_fridge_door_joint": 83.3170929825454
+        },
+        "minimum_door_degrees": {
+          "fridgesidebyside_main_group_1_fridge_door_joint": 83.29594390230191
+        }
+      },
+      "video": "outputs/phase1d/evaluation/pretrained-seed44/rollout.mp4",
+      "decoded_video_frames": 601
+    },
+    {
+      "seed": 44,
+      "arm": "task-id",
+      "reused": false,
+      "artifacts": "outputs/probes/instruction-distribution-v1/approved-retry-1/task-id-seed44",
+      "task": "CloseFridge",
+      "success": true,
+      "stop": "success",
+      "door_degrees": {
+        "fridgesidebyside_main_group_1_fridge_door_joint": -0.08388957464971503
+      },
+      "actions": 342,
+      "inference_calls": 7,
+      "physics_steps": 8550,
+      "simulated_seconds": 17.100000000001124,
+      "wall_clock_rollout_seconds": 32.62523779999174,
+      "mean_chunk_seconds": 0.7180279285717656,
+      "motion": {
+        "base_net_m": 0.0031057485871266795,
+        "base_path_m": 0.005267664119070362,
+        "eef_world_net_m": 0.34023262133403703,
+        "eef_world_path_m": 1.418628873640185,
+        "gripper_close_command_steps": 0,
+        "desired_control_mode_steps": 0,
+        "initial_door_degrees": {
+          "fridgesidebyside_main_group_1_fridge_door_joint": 83.3170929825454
+        },
+        "minimum_door_degrees": {
+          "fridgesidebyside_main_group_1_fridge_door_joint": -0.08388957464971503
+        }
+      },
+      "video": "outputs/probes/instruction-distribution-v1/approved-retry-1/task-id-seed44/rollout.mp4",
+      "decoded_video_frames": 343
+    }
+  ],
+  "success_counts": {
+    "natural": 0,
+    "task-id": 1
+  },
+  "seeds_per_arm": 3,
+  "new_episodes": 2,
+  "old_files_unchanged": 1157,
+  "fine_tuning_language": {
+    "Close the fridge door.": 157,
+    "Close the fridge doors.": 143
+  },
+  "status": "all_six_paired_episode_records_complete",
+  "excluded_attempt": {
+    "artifacts": "outputs/probes/instruction-distribution-v1/task-id-seed43",
+    "reason": "Instrumentation error after one inference, zero actions; preserved, not counted as policy failure"
+  }
+}
