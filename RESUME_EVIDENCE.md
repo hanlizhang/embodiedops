@@ -101,3 +101,47 @@ generalization improvement.
 - Evidence: `environment/control-horizon-v1.md`, its results JSON, and
   `outputs/control-horizon-v1/verification.json`. No measured success-rate gain,
   new training, autonomous diagnosis or repair claim follows from this experiment.
+
+## Sustained VLA learning evidence — 2026-10-20
+
+- Completed two independent 5,000-update SmolVLA fine-tunes from pinned original
+  weights using 461 demonstration episodes, unchanged normalization and native
+  masked flow matching. Compared episode-balanced sampling with a motion-proxy
+  mixture; these inferred regimes are not verified contact labels.
+- Used identical 104 validation anchors from 52 episode-disjoint episodes.
+  Selected step5,000 in both arms by held-out task-ID loss: pretrained0.369275,
+  uniform0.367256, motion0.370945. All ten saved checkpoints passed independent
+  model/optimizer/scheduler/processor and validation reload checks.
+- Executed new trained-policy RoboCasa rollouts. On valid matched seeds43–45:
+  pretrained1/3, uniform1/3, motion0/3 success. Uniform increased door progress on
+  seeds43/45 but regressed in seed44 peak contact force; motion lost seed44 success
+  and regressed in contact force and door progress. Existing acceptance gate
+  rejected both on the observed common scenes; no measured success gain.
+- Ten valid episodes completed. Episode11 (uniform seed46) stopped after one
+  action when all raw observation cameras became zero. The guard prevented a
+  prediction on black images. Final seeds120–123 were not run. Full train-and-final-
+  verification milestone remains incomplete; the camera cause is unresolved.
+- Peak training CUDA allocation1.732GiB; serial GPU-worker wall-time2.269hours
+  including CPU/I/O, not active kernel time. Energy not measured. All protected
+  historical checkpoint hashes unchanged; no dependencies changed.
+- Evidence: `environment/learning-repair-v1.md`, concise results JSON, and
+  `outputs/agent-workflow-v1/learning-5000-v1/{trace.jsonl,partial-acceptance.json,audited-summary.json}`.
+  This supports actual VLA fine-tuning and partial closed-loop repair verification,
+  not accepted autonomous repair, official benchmark reproduction or robust
+  generalization. Earlier broad "not yet fine-tuned" statements are historical.
+
+## 2026-10-20 — Learning repair diagnostic evaluation completed
+
+- Reproduced all-zero RGB at MuJoCo readback after garbage collection; validated
+  owner-context renderer cleanup before policy evaluation. Exact historical
+  collection timing remains inferred. Three cleanup unit tests and all 15
+  lightweight tests passed.
+- Executed only the two missing seed-46 candidates: both failed after 600 actions
+  with valid cameras and no physical guard failures. All 12 diagnostic pairs
+  are complete: pretrained 1/4, episode-balanced 1/4, motion-mixture 0/4.
+- Both repairs rejected; final 120–123 not run because diagnostic gates failed.
+  Better partial door closure does not establish better task success.
+- Preserved all 808 original experiment files by hash; invalid attempt indexed
+  in place and excluded. No retraining, model changes, dependency changes or commit.
+- Evidence: `environment/learning-repair-v1-completion.md` and
+  `outputs/agent-workflow-v1/learning-5000-resume-v1/completion-audit.json`.

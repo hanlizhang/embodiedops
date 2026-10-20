@@ -497,3 +497,32 @@ bitwise identical, and H50 contact measurements are unavailable. No H10, extra
 seeds, training or dependency changes were made. Phase2 A/B training remains a
 deferred proposal. Next proposed work is contact-progress/controller-tracking
 analysis and execution safeguards, not an LLM diagnostic agent.
+
+## Current learning milestone — 2026-10-20
+
+The later deterministic workflow is implemented; its reviewed initial milestone
+is commit628f820 (implementation bfc1978). The new sustained learning comparison
+completed 5,000 updates per arm from original SmolVLA weights, comparing episode-
+balanced and inferred-motion sampling. All ten checkpoints reloaded correctly.
+Actual matched seeds43–45 yielded pretrained1/3, uniform1/3, motion0/3 success.
+Both trained candidates were rejected for observed regressions. Uniform seed46
+then produced all-zero raw cameras after action1; the observation guard stopped
+the run before another prediction. Ten valid and one invalid episodes exist;
+final seeds120–123 remain unexecuted. Do not label the full milestone complete.
+
+See `environment/learning-repair-v1.md` and its results JSON for the registered
+matrix, loss curves, physical evidence, checkpoint hashes and blocked decision.
+All existing weights/results are preserved. No further training is planned;
+the specific raw-camera integrity blocker must be resolved before an explicitly
+registered continuation of the unchanged checkpoint/seed matrix. The earlier
+natural-language/mixed-instruction A/B proposal remains separate and unexecuted.
+
+### 2026-10-20 continuation completed
+
+The camera fault was reproduced at MuJoCo readback after obsolete-renderer
+garbage collection and corrected with owner-context resource cleanup. Two missing
+seed-46 candidate episodes completed; all 12 diagnostic pairs are now valid.
+Success is pretrained 1/4, episode-balanced 1/4, motion-mixture 0/4. Both candidates
+are rejected by the existing gate; final seeds 120–123 remain unused because
+neither qualifies. All 808 original experiment files are hash-preserved. No new
+training or dependencies. See `environment/learning-repair-v1-completion.md`.

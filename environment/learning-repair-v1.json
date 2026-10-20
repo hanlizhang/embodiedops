@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "diagnostic_seeds": [43, 44, 45, 46],
+  "final_seeds": [120, 121, 122, 123],
+  "arms": ["episode_balanced", "motion_mixture"],
+  "instruction": "CloseFridge",
+  "max_optimizer_updates_total": 10000,
+  "max_simulator_episodes": 24,
+  "max_wall_seconds": 21600,
+  "training_timeout_seconds": 5400,
+  "reload_timeout_seconds": 300,
+  "episode_timeout_seconds": 420,
+  "training": {
+    "sanity": false, "condition": "task_id", "seed": 142,
+    "steps": 5000, "learning_rate": 0.00005, "end_learning_rate": 0.000005,
+    "warmup_steps": 250, "validation_samples": 104,
+    "probe_interval": 500, "checkpoint_interval": 1000,
+    "selection_metric": "task_id", "multiple_reload_checks": true
+  },
+  "checkpoint_steps": [1000, 2000, 3000, 4000, 5000],
+  "research_only_evaluation_on_validation_regression": true,
+  "promotion_requires_validation_improvement": true,
+  "acceptance_policy_source": "environment/agent-workflow-v1.json",
+  "notes": "Both arms start from original pinned weights. Same episode order, optimizer and per-update noise; only anchor sampling changes. Five-frame motion regimes are proxies, not verified contacts or semantic phases. Evaluate both validation-selected candidates on all fixed scenes regardless of validation warning, provided integrity/camera/controller checks pass. Final scenes never select a checkpoint. No automatic new-result commit."
+}

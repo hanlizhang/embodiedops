@@ -36,8 +36,9 @@ def plot(out):
     """Dependency-free standalone SVG of actual measured losses."""
     rows = [json.loads(s) for s in (out/'updates.jsonl').read_text().splitlines()]
     probes = [json.loads(s) for s in (out/'probes.jsonl').read_text().splitlines()]
+    train_key = 'task_id' if json.loads((out/'settings.json').read_text())['condition']=='task_id' else 'natural'
     series = [('train EMA .05', '#777', [(r['step'], r['loss_ema']) for r in rows]),
-              ('fixed train NL', '#15803d', [(r['step'], r['train']['natural']['mean']) for r in probes]),
+              ('fixed train '+train_key, '#15803d', [(r['step'], r['train'][train_key]['mean']) for r in probes]),
               ('validation NL', '#2563eb', [(r['step'], r['validation']['natural']['mean']) for r in probes]),
               ('validation task ID', '#c2410c', [(r['step'], r['validation']['task_id']['mean']) for r in probes])]
     xmax = max(r['step'] for r in rows)
@@ -70,7 +71,8 @@ def main():
     # Training refuses an existing directory; verification uses an exclusive marker.
     if args.verify:
         assert json.loads((out/'settings.json').read_text()) == settings
-        with (out/'verify-started.json').open('x') as f:
+        verify_marker = f'verify-{args.verify.name}-started.json' if settings.get('multiple_reload_checks') else 'verify-started.json'
+        with (out/verify_marker).open('x') as f:
             json.dump({'checkpoint': str(args.verify)}, f)
     else:
         out.mkdir(parents=True, exist_ok=False)
@@ -97,7 +99,7 @@ def main():
     from lerobot.utils.logging_utils import MetricsTracker, AverageMeter
 
     assert md.version('lerobot') == '0.6.1' and torch.cuda.is_available()
-    assert settings['condition'] in ('natural', 'mixed')
+    assert settings['condition'] in ('natural', 'mixed', 'task_id')
     assert 64 <= settings['validation_samples'] <= 128
     assert 0 < settings['warmup_steps'] < settings['steps']
     torch.manual_seed(settings['seed'])
@@ -141,13 +143,25 @@ def main():
         return plan
 
     train_plan = sample_plan(train, max(settings['steps'], 32), settings['seed'])
+    train_probe_plan = train_plan[:32]
+    if 'sampling' in settings:
+        from learning_sampling import build_plan, dataset_labels, LABELS
+        episodes, labels = dataset_labels(train)
+        train_plan = build_plan(episodes, settings['steps'], settings['seed'], settings['sampling'], labels)
+        # Shared independent probe anchors, regardless of the training sampling arm.
+        train_probe_plan = build_plan(episodes, 32, 31415)
+        sampling_audit = {'regime_counts': {name: int((labels==i).sum()) for i,name in enumerate(LABELS)},
+                          'labels_are_contacts': False,
+                          'selected_regime_counts': {name: int(sum(labels[r['index']]==i for r in train_plan)) for i,name in enumerate(LABELS)},
+                          'sampler_sha256': sha(ROOT/'scripts/learning_sampling.py')}
+        if not args.verify: dump(out/'sampling-audit.json', sampling_audit)
     if settings['sanity']:
         train_plan = [train_plan[i % 32] for i in range(settings['steps'])]
     val_plan = sample_plan(val, settings['validation_samples'], settings['seed']+1)
     split = {'train_episodes': train.episodes, 'validation_episodes': val.episodes,
              'train_frames': len(train), 'validation_frames': len(val),
              'training_order': train_plan, 'validation_samples': val_plan,
-             'training_probe': train_plan[:32], 'pretraining_overlap_unknown': True,
+             'training_probe': train_probe_plan, 'pretraining_overlap_unknown': True,
              'rule': 'last ceil(10%) episodes per natural instruction; sample one frame per shuffled episode per cycle'}
     if args.verify:
         assert json.loads((out/'split.json').read_text()) == split
@@ -191,7 +205,7 @@ def main():
             assert batch[cam].shape == (1, 3, 256, 256) and batch[cam].min() >= 0 and batch[cam].max() <= 1
         return batch
 
-    train_raw = [train[r['index']] for r in train_plan[:32]]
+    train_raw = [train[r['index']] for r in train_probe_plan]
     val_raw = [val[r['index']] for r in val_plan]
 
     def evaluate(raws, seed):
@@ -210,7 +224,8 @@ def main():
                     draws.append({'noise': digest(noise), 'time': digest(t), 'seed': seed+i})
                 result[name] = {'mean': float(np.mean(losses)), 'samples': losses, 'draws': draws}
         assert result['natural']['draws'] == result['task_id']['draws']
-        result['selection_mean'] = (result['natural']['mean']+result['task_id']['mean'])/2
+        result['selection_mean'] = (result['task_id']['mean'] if settings.get('selection_metric')=='task_id' else
+                                    (result['natural']['mean']+result['task_id']['mean'])/2)
         return result
 
     if args.verify:
@@ -225,7 +240,8 @@ def main():
             assert actual[arm]['draws'] == target['validation'][arm]['draws']
             assert np.allclose(actual[arm]['samples'], target['validation'][arm]['samples'], rtol=1e-5, atol=1e-6)
         assert all(sha(source/n) == sha(MODEL/n) for n in PROCESSORS)
-        dump(out/'reload-verification.json', {'passed': True, 'step': step,
+        reload_name = f'reload-{step:06d}.json' if settings.get('multiple_reload_checks') else 'reload-verification.json'
+        dump(out/reload_name, {'passed': True, 'step': step,
             'model_tensors_equal': len(target['model']), 'optimizer_state_equal': True,
             'scheduler_state_equal': True, 'validation_equal': True, 'processors_byte_identical': True,
             'checkpoint_sha256': sha(source/'model.safetensors')})
@@ -273,7 +289,7 @@ def main():
         initial = probe()
         for index, row in enumerate(train_plan):
             raw = train_raw[index % 32] if settings['sanity'] else train[row['index']]
-            task_id = settings['condition'] == 'mixed' and index % 2 == 1
+            task_id = settings['condition'] == 'task_id' or (settings['condition'] == 'mixed' and index % 2 == 1)
             batch = prep(raw, task_id)
             assert int(batch['episode_index'].item()) == row['episode']
             old = {n: intended[n].detach().clone() for n in (target_name, norm_name)}
@@ -315,7 +331,7 @@ def main():
                 score = measured['validation']['selection_mean']
                 if best is None or score < best['score']:
                     best = {'step': step, 'score': score, 'checkpoint': str(path.relative_to(out))}
-                dump(out/'selected-checkpoint.json', {**best, 'rule': 'lowest mean NL/ID validation loss among saved checkpoints; earliest tie',
+                dump(out/'selected-checkpoint.json', {**best, 'rule': 'lowest '+settings.get('selection_metric','mean NL/ID')+' validation loss among saved checkpoints; earliest tie',
                     'pretrained_score': initial['validation']['selection_mean']})
         after = digest(policy.state_dict())
         changed = [n for n in before if before[n] != after[n]]

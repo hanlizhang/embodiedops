@@ -1,0 +1,663 @@
+{
+  "artifact_root": "outputs/agent-workflow-v1/learning-5000-v1",
+  "source_sha256": {
+    "registered-plan.json": "e46f0e4651c5cbc296bc05fe456e9a1690be4c789ce54c11c20f0fa445a227be",
+    "selected-checkpoints.json": "6e747cf1e6fcea1b31f1b7ee147de7e6e9649ac6e746d36dca9a2a3158dde2da",
+    "trace.jsonl": "51d0d6be39409f33bc397d79a9f691eadddc46e494ed3b8f9f5a7b8dc99dbaff",
+    "partial-acceptance.json": "fcfc3395b77a2de9652c30bb9c8acfa956fd5550cce4463702c0c51a3e714f7f",
+    "blocked.json": "d951336b19e96e10dad7276d9835d2c942a7cf270d3e16c589cb4607aa74ac68",
+    "preservation-after.json": "28dfbb11600de8f2c0b8be189e91df0106856df0558754bdde89e8e01509eea4",
+    "audited-summary.json": "5352586ab5a21c349ca896f011ffc86d198b25864d34e2f9ded7e6345c8be5e6",
+    "audited-episodes.json": "59ef938db2deda5df645cc03d3fffbb8373c97910547aa27bd68b2ad49927412"
+  },
+  "summary": {
+    "passed": true,
+    "experiment_complete": false,
+    "common_valid_seeds": {
+      "diagnostic": [
+        43,
+        44,
+        45
+      ],
+      "final": []
+    },
+    "attempted_episodes": 11,
+    "valid_episodes": 10,
+    "training": {
+      "episode_balanced": {
+        "updates": 5000,
+        "episodes": 461,
+        "distinct_anchors": 4891,
+        "visits_per_episode": [
+          10,
+          11
+        ],
+        "validation_episodes": 52,
+        "validation_anchors": 104,
+        "sampling": {
+          "regime_counts": {
+            "quiet": 963,
+            "commanded_low_motion": 7379,
+            "other_motion": 131382
+          },
+          "labels_are_contacts": false,
+          "selected_regime_counts": {
+            "quiet": 31,
+            "commanded_low_motion": 252,
+            "other_motion": 4717
+          },
+          "sampler_sha256": "851c59771d51dda2cd21d8c87d5f5b050b423859b5988069406596f6dd8feb39"
+        },
+        "selected_step": 5000,
+        "fixed_train_ID": {
+          "0": 0.3214016112033278,
+          "500": 0.3689242033287883,
+          "1000": 0.37299768126104027,
+          "1500": 0.3583629890345037,
+          "2000": 0.34785867808386683,
+          "2500": 0.3369242122862488,
+          "3000": 0.33342551114037633,
+          "3500": 0.3203110755421221,
+          "4000": 0.3202723213471472,
+          "4500": 0.31692650367040187,
+          "5000": 0.3160568366292864
+        },
+        "validation_ID": {
+          "0": 0.369275332070314,
+          "500": 0.4331467129791585,
+          "1000": 0.42592636413442403,
+          "1500": 0.4114018245958365,
+          "2000": 0.3932106089420043,
+          "2500": 0.3884420838708488,
+          "3000": 0.3823919031195916,
+          "3500": 0.3717018799283184,
+          "4000": 0.3707050387747586,
+          "4500": 0.3684162410477606,
+          "5000": 0.36725592783365685
+        },
+        "validation_NL": {
+          "0": 0.4151365522008676,
+          "500": 0.45950472297576755,
+          "1000": 0.4422010247810529,
+          "1500": 0.4354980275966227,
+          "2000": 0.41643964327298677,
+          "2500": 0.40216908236750615,
+          "3000": 0.39672686646764094,
+          "3500": 0.3927575898929857,
+          "4000": 0.3868679588732238,
+          "4500": 0.38519049528986216,
+          "5000": 0.3855144082425305
+        },
+        "grad_norm_median": 4.793947219848633,
+        "grad_norm_max": 71.19847869873047,
+        "updates_above_clip": 461,
+        "lr_min": 1.99203187250996e-07,
+        "lr_max": 4.9800796812749006e-05,
+        "changed_tensors_final": 122,
+        "unchanged_trainable_final": 33,
+        "peak_allocated_GiB": 1.7319927215576172,
+        "peak_reserved_GiB": 1.845703125,
+        "training_seconds": 2847.8280270000105,
+        "worker_seconds": 2904.0620000000054,
+        "synchronized_update_seconds": 1712.8228426997375,
+        "checkpoint_sha256": {
+          "1000": "04d0e5abc97ddf1b1af0ecc5fa6c5f2bbd5b02f661a1566738789718aab6e8be",
+          "2000": "0ef10d4c45fb920728a386bff3e42a7a7c3c7f129f447cebeb9087ec6ef88e71",
+          "3000": "be1b96f6f49c6400e5338850674db23acf17d545dee72bceefd6ee275f2429c1",
+          "4000": "3512c894704f2e7a15f6847a948269c1547553bc53862426b3a2f36911de3faf",
+          "5000": "36fa77a84e598df895729895f78ac66088ec458e62457738d9f08178a7fd7f6e"
+        }
+      },
+      "motion_mixture": {
+        "updates": 5000,
+        "episodes": 461,
+        "distinct_anchors": 4735,
+        "visits_per_episode": [
+          10,
+          11
+        ],
+        "validation_episodes": 52,
+        "validation_anchors": 104,
+        "sampling": {
+          "regime_counts": {
+            "quiet": 963,
+            "commanded_low_motion": 7379,
+            "other_motion": 131382
+          },
+          "labels_are_contacts": false,
+          "selected_regime_counts": {
+            "quiet": 328,
+            "commanded_low_motion": 1220,
+            "other_motion": 3452
+          },
+          "sampler_sha256": "851c59771d51dda2cd21d8c87d5f5b050b423859b5988069406596f6dd8feb39"
+        },
+        "selected_step": 5000,
+        "fixed_train_ID": {
+          "0": 0.3214016112033278,
+          "500": 0.3769830814562738,
+          "1000": 0.3689992850413546,
+          "1500": 0.3552706996561028,
+          "2000": 0.3571605006000027,
+          "2500": 0.333305794862099,
+          "3000": 0.33080889598932117,
+          "3500": 0.3194737717276439,
+          "4000": 0.32114084460772574,
+          "4500": 0.3160777176381089,
+          "5000": 0.31552652281243354
+        },
+        "validation_ID": {
+          "0": 0.369275332070314,
+          "500": 0.44032504165974945,
+          "1000": 0.43032434518234086,
+          "1500": 0.4163831712391514,
+          "2000": 0.41977479097505027,
+          "2500": 0.386990535323723,
+          "3000": 0.3783101280255673,
+          "3500": 0.37845807164334333,
+          "4000": 0.37563693115057856,
+          "4500": 0.37276795868260354,
+          "5000": 0.37094527850142467
+        },
+        "validation_NL": {
+          "0": 0.4151365522008676,
+          "500": 0.47009076113597703,
+          "1000": 0.4612078067058554,
+          "1500": 0.43087598925026566,
+          "2000": 0.4426336989093285,
+          "2500": 0.4079446237391004,
+          "3000": 0.3914003258642669,
+          "3500": 0.3958049180845802,
+          "4000": 0.3933327796224218,
+          "4500": 0.3927212728617283,
+          "5000": 0.3900909684598446
+        },
+        "grad_norm_median": 4.960249185562134,
+        "grad_norm_max": 44.719970703125,
+        "updates_above_clip": 568,
+        "lr_min": 1.99203187250996e-07,
+        "lr_max": 4.9800796812749006e-05,
+        "changed_tensors_final": 122,
+        "unchanged_trainable_final": 33,
+        "peak_allocated_GiB": 1.7319927215576172,
+        "peak_reserved_GiB": 1.845703125,
+        "training_seconds": 2964.200467100003,
+        "worker_seconds": 3024.1089999999967,
+        "synchronized_update_seconds": 1768.251093200597,
+        "checkpoint_sha256": {
+          "1000": "f510531ac3cddd8063439f2b1ce78e760c7533fc29b10498179b6b8b9731c448",
+          "2000": "a10d14cfce55bba3cb09553972e9ee0b85b81bf262225f50d40301056f4feda0",
+          "3000": "7fd4ec4c7f80f5cbe4540777b5e144dc5249b72848e052a66819198644206072",
+          "4000": "6a33aff1a1e0fb747ff99cf06b376a2f39235350e630f31ba3f92c9a5c415fa5",
+          "5000": "528c57b3eb8407606a29e1c6166156c7a8ab00bd5ef01fae0f1a3e9d97b55070"
+        }
+      }
+    },
+    "robot_groups": {
+      "diagnostic-pretrained": {
+        "successes": 1,
+        "episodes": 3,
+        "mean_closing_deg": 50.356250115036865,
+        "max_contact_normal_N": 428.0372579162881,
+        "mean_inference_seconds": 0.6407637567482731,
+        "guard_failures": 0,
+        "rollout_seconds": 232.92485979999765
+      },
+      "diagnostic-episode_balanced": {
+        "successes": 1,
+        "episodes": 3,
+        "mean_closing_deg": 98.36046227451791,
+        "max_contact_normal_N": 405.1573325259668,
+        "mean_inference_seconds": 0.6559734538875798,
+        "guard_failures": 0,
+        "rollout_seconds": 230.060295400006
+      },
+      "diagnostic-motion_mixture": {
+        "successes": 0,
+        "episodes": 3,
+        "mean_closing_deg": 26.294728292521086,
+        "max_contact_normal_N": 633.4480370457693,
+        "mean_inference_seconds": 0.6551747944439639,
+        "guard_failures": 0,
+        "rollout_seconds": 260.84437609997985
+      }
+    },
+    "decisions": {
+      "episode_balanced": {
+        "accepted": false,
+        "reasons": [
+          "contact_force_regression",
+          "incomplete_registered_matrix",
+          "invalid_observation_black_camera",
+          "no_success_gain"
+        ],
+        "technically_completed": false,
+        "final_evaluation": "not_run"
+      },
+      "motion_mixture": {
+        "accepted": false,
+        "reasons": [
+          "contact_force_regression",
+          "door_progress_regression",
+          "incomplete_registered_matrix",
+          "invalid_observation_black_camera",
+          "no_success_gain",
+          "per_seed_success_regression",
+          "validation_regression_blocks_promotion"
+        ],
+        "technically_completed": false,
+        "final_evaluation": "not_run"
+      }
+    },
+    "wall_seconds": 8177.719000000012,
+    "gpu_worker_process_hours": 2.268679444444444,
+    "active_gpu_hours": null,
+    "energy_kWh": null
+  },
+  "episodes": [
+    {
+      "path": "outputs\\agent-workflow-v1\\learning-5000-v1\\diagnostic-43-pretrained",
+      "success": false,
+      "actions": 600,
+      "valid": true,
+      "guard_failure": false,
+      "termination": "registered_horizon_600",
+      "initial_angles_deg": [
+        85.5238776175674
+      ],
+      "final_angles_deg": [
+        88.64434173915436
+      ],
+      "closing_deg": -3.120464121586963,
+      "best_closing_deg": 12.120153690782018,
+      "eef_path_m": 1.93285383076235,
+      "contacts_available": true,
+      "loaded_actions": 452,
+      "peak_contact_normal_N": 428.0372579162881,
+      "mean_inference_seconds": 0.5983654416680414,
+      "peak_cuda_allocated": 971354112,
+      "rollout_seconds": 67.68005029999767,
+      "scene_type": "single_door",
+      "peak_contact_detail": {
+        "normal_N": 428.0372579162881,
+        "step": 74,
+        "substep_zero_based": 16,
+        "geoms": [
+          "fridgebottomfreezer_main_group_1_g47",
+          "gripper0_right_hand_collision"
+        ],
+        "robot_self_contact": false
+      },
+      "stage": "diagnostic",
+      "seed": 43,
+      "arm": "pretrained"
+    },
+    {
+      "path": "outputs\\agent-workflow-v1\\learning-5000-v1\\diagnostic-43-episode_balanced",
+      "success": false,
+      "actions": 600,
+      "valid": true,
+      "guard_failure": false,
+      "termination": "registered_horizon_600",
+      "initial_angles_deg": [
+        85.5238776175674
+      ],
+      "final_angles_deg": [
+        13.113753478633098
+      ],
+      "closing_deg": 72.4101241389343,
+      "best_closing_deg": 72.4101241389343,
+      "eef_path_m": 2.8415388913951802,
+      "contacts_available": true,
+      "loaded_actions": 263,
+      "peak_contact_normal_N": 405.1573325259668,
+      "mean_inference_seconds": 0.6371812249987366,
+      "peak_cuda_allocated": 971354112,
+      "rollout_seconds": 68.60491579999507,
+      "scene_type": "single_door",
+      "peak_contact_detail": {
+        "normal_N": 405.1573325259668,
+        "step": 99,
+        "substep_zero_based": 17,
+        "geoms": [
+          "fridgebottomfreezer_main_group_1_g47",
+          "gripper0_right_hand_collision"
+        ],
+        "robot_self_contact": false
+      },
+      "stage": "diagnostic",
+      "seed": 43,
+      "arm": "episode_balanced"
+    },
+    {
+      "path": "outputs\\agent-workflow-v1\\learning-5000-v1\\diagnostic-43-motion_mixture",
+      "success": false,
+      "actions": 600,
+      "valid": true,
+      "guard_failure": false,
+      "termination": "registered_horizon_600",
+      "initial_angles_deg": [
+        85.5238776175674
+      ],
+      "final_angles_deg": [
+        17.3259288039159
+      ],
+      "closing_deg": 68.1979488136515,
+      "best_closing_deg": 68.1979488136515,
+      "eef_path_m": 2.663373512643374,
+      "contacts_available": true,
+      "loaded_actions": 209,
+      "peak_contact_normal_N": 633.4480370457693,
+      "mean_inference_seconds": 0.7185904250012148,
+      "peak_cuda_allocated": 971354112,
+      "rollout_seconds": 67.13344959999085,
+      "scene_type": "single_door",
+      "peak_contact_detail": {
+        "normal_N": 633.4480370457693,
+        "step": 200,
+        "substep_zero_based": 6,
+        "geoms": [
+          "robot0_link5_collision",
+          "robot0_link7_collision"
+        ],
+        "robot_self_contact": true
+      },
+      "stage": "diagnostic",
+      "seed": 43,
+      "arm": "motion_mixture"
+    },
+    {
+      "path": "outputs\\agent-workflow-v1\\learning-5000-v1\\diagnostic-44-pretrained",
+      "success": true,
+      "actions": 304,
+      "valid": true,
+      "guard_failure": false,
+      "termination": "success",
+      "initial_angles_deg": [
+        83.3170929825454
+      ],
+      "final_angles_deg": [
+        0.19617895148718914
+      ],
+      "closing_deg": 83.12091403105822,
+      "best_closing_deg": 83.12091403105822,
+      "eef_path_m": 1.5873591600710237,
+      "contacts_available": true,
+      "loaded_actions": 133,
+      "peak_contact_normal_N": 88.55190810827449,
+      "mean_inference_seconds": 0.6703727285722769,
+      "peak_cuda_allocated": 971354112,
+      "rollout_seconds": 29.72994319999998,
+      "scene_type": "single_door",
+      "peak_contact_detail": {
+        "normal_N": 88.55190810827449,
+        "step": 224,
+        "substep_zero_based": 24,
+        "geoms": [
+          "fridgesidebyside_main_group_1_fridge_door_handle_main",
+          "gripper0_right_finger1_collision"
+        ],
+        "robot_self_contact": false
+      },
+      "stage": "diagnostic",
+      "seed": 44,
+      "arm": "pretrained"
+    },
+    {
+      "path": "outputs\\agent-workflow-v1\\learning-5000-v1\\diagnostic-44-episode_balanced",
+      "success": true,
+      "actions": 220,
+      "valid": true,
+      "guard_failure": false,
+      "termination": "success",
+      "initial_angles_deg": [
+        83.3170929825454
+      ],
+      "final_angles_deg": [
+        0.3082046128659335
+      ],
+      "closing_deg": 83.00888836967947,
+      "best_closing_deg": 83.00888836967947,
+      "eef_path_m": 1.49369390795064,
+      "contacts_available": true,
+      "loaded_actions": 69,
+      "peak_contact_normal_N": 171.22247823775552,
+      "mean_inference_seconds": 0.7114940199971898,
+      "peak_cuda_allocated": 971354112,
+      "rollout_seconds": 21.9921822000033,
+      "scene_type": "single_door",
+      "peak_contact_detail": {
+        "normal_N": 171.22247823775552,
+        "step": 152,
+        "substep_zero_based": 17,
+        "geoms": [
+          "fridgesidebyside_main_group_1_fridge_door_handle_main",
+          "gripper0_right_hand_collision"
+        ],
+        "robot_self_contact": false
+      },
+      "stage": "diagnostic",
+      "seed": 44,
+      "arm": "episode_balanced"
+    },
+    {
+      "path": "outputs\\agent-workflow-v1\\learning-5000-v1\\diagnostic-44-motion_mixture",
+      "success": false,
+      "actions": 600,
+      "valid": true,
+      "guard_failure": false,
+      "termination": "registered_horizon_600",
+      "initial_angles_deg": [
+        83.3170929825454
+      ],
+      "final_angles_deg": [
+        65.1632349881978
+      ],
+      "closing_deg": 18.153857994347604,
+      "best_closing_deg": 18.153857994347604,
+      "eef_path_m": 2.5744126269995715,
+      "contacts_available": true,
+      "loaded_actions": 87,
+      "peak_contact_normal_N": 219.74327541129114,
+      "mean_inference_seconds": 0.6257091583332416,
+      "peak_cuda_allocated": 971354112,
+      "rollout_seconds": 60.483750699990196,
+      "scene_type": "single_door",
+      "peak_contact_detail": {
+        "normal_N": 219.74327541129114,
+        "step": 224,
+        "substep_zero_based": 16,
+        "geoms": [
+          "fridgesidebyside_main_group_1_g91",
+          "gripper0_right_hand_collision"
+        ],
+        "robot_self_contact": false
+      },
+      "stage": "diagnostic",
+      "seed": 44,
+      "arm": "motion_mixture"
+    },
+    {
+      "path": "outputs\\agent-workflow-v1\\learning-5000-v1\\diagnostic-45-pretrained",
+      "success": false,
+      "actions": 600,
+      "valid": true,
+      "guard_failure": false,
+      "termination": "registered_horizon_600",
+      "initial_angles_deg": [
+        85.58268158551247,
+        82.33903760112925
+      ],
+      "final_angles_deg": [
+        85.45560136947222,
+        11.397817381530182
+      ],
+      "closing_deg": 71.06830043563933,
+      "best_closing_deg": 71.06830043563933,
+      "eef_path_m": 3.1067782431402584,
+      "contacts_available": true,
+      "loaded_actions": 150,
+      "peak_contact_normal_N": 328.2062441787541,
+      "mean_inference_seconds": 0.6535531000045012,
+      "peak_cuda_allocated": 971354112,
+      "rollout_seconds": 135.5148663,
+      "scene_type": "two_door",
+      "peak_contact_detail": {
+        "normal_N": 328.2062441787541,
+        "step": 226,
+        "substep_zero_based": 22,
+        "geoms": [
+          "fridgefrenchdoor_main_group_1_fridge_right_door_main",
+          "robot0_link7_collision"
+        ],
+        "robot_self_contact": false
+      },
+      "stage": "diagnostic",
+      "seed": 45,
+      "arm": "pretrained"
+    },
+    {
+      "path": "outputs\\agent-workflow-v1\\learning-5000-v1\\diagnostic-45-episode_balanced",
+      "success": false,
+      "actions": 600,
+      "valid": true,
+      "guard_failure": false,
+      "termination": "registered_horizon_600",
+      "initial_angles_deg": [
+        85.58268158551247,
+        82.33903760112925
+      ],
+      "final_angles_deg": [
+        -0.011126958271295978,
+        28.270471829973037
+      ],
+      "closing_deg": 139.66237431494,
+      "best_closing_deg": 139.7335369701971,
+      "eef_path_m": 3.516317794244355,
+      "contacts_available": true,
+      "loaded_actions": 151,
+      "peak_contact_normal_N": 188.6916500615684,
+      "mean_inference_seconds": 0.619245116666813,
+      "peak_cuda_allocated": 971354112,
+      "rollout_seconds": 139.46319740000763,
+      "scene_type": "two_door",
+      "peak_contact_detail": {
+        "normal_N": 188.6916500615684,
+        "step": 571,
+        "substep_zero_based": 23,
+        "geoms": [
+          "fridgefrenchdoor_main_group_1_fridge_left_door_main",
+          "gripper0_right_hand_collision"
+        ],
+        "robot_self_contact": false
+      },
+      "stage": "diagnostic",
+      "seed": 45,
+      "arm": "episode_balanced"
+    },
+    {
+      "path": "outputs\\agent-workflow-v1\\learning-5000-v1\\diagnostic-45-motion_mixture",
+      "success": false,
+      "actions": 600,
+      "valid": true,
+      "guard_failure": false,
+      "termination": "registered_horizon_600",
+      "initial_angles_deg": [
+        85.58268158551247,
+        82.33903760112925
+      ],
+      "final_angles_deg": [
+        85.45560136947222,
+        89.93373974760534
+      ],
+      "closing_deg": -7.46762193043584,
+      "best_closing_deg": 0.06478294721182465,
+      "eef_path_m": 2.067087170539885,
+      "contacts_available": true,
+      "loaded_actions": 54,
+      "peak_contact_normal_N": 350.09433279619043,
+      "mean_inference_seconds": 0.6212247999974352,
+      "peak_cuda_allocated": 971354112,
+      "rollout_seconds": 133.2271757999988,
+      "scene_type": "two_door",
+      "peak_contact_detail": {
+        "normal_N": 350.09433279619043,
+        "step": 154,
+        "substep_zero_based": 23,
+        "geoms": [
+          "fridgefrenchdoor_main_group_1_fridge_right_door_main",
+          "gripper0_right_hand_collision"
+        ],
+        "robot_self_contact": false
+      },
+      "stage": "diagnostic",
+      "seed": 45,
+      "arm": "motion_mixture"
+    },
+    {
+      "path": "outputs\\agent-workflow-v1\\learning-5000-v1\\diagnostic-46-pretrained",
+      "success": false,
+      "actions": 600,
+      "valid": true,
+      "guard_failure": false,
+      "termination": "registered_horizon_600",
+      "initial_angles_deg": [
+        86.41876476353674
+      ],
+      "final_angles_deg": [
+        89.99488131197097
+      ],
+      "closing_deg": -3.5761165484342285,
+      "best_closing_deg": 0.0025037891338257623,
+      "eef_path_m": 1.473618431153478,
+      "contacts_available": true,
+      "loaded_actions": 329,
+      "peak_contact_normal_N": 400.57126820403226,
+      "mean_inference_seconds": 0.6402837999994517,
+      "peak_cuda_allocated": 971354112,
+      "rollout_seconds": 68.84966759999224,
+      "scene_type": "single_door",
+      "peak_contact_detail": {
+        "normal_N": 400.57126820403226,
+        "step": 103,
+        "substep_zero_based": 14,
+        "geoms": [
+          "robot0_link5_collision",
+          "gripper0_right_hand_collision"
+        ],
+        "robot_self_contact": true
+      },
+      "stage": "diagnostic",
+      "seed": 46,
+      "arm": "pretrained"
+    },
+    {
+      "path": "outputs\\agent-workflow-v1\\learning-5000-v1\\diagnostic-46-episode_balanced",
+      "success": false,
+      "actions": 1,
+      "valid": false,
+      "guard_failure": false,
+      "termination": "invalid_observation_black_camera",
+      "initial_angles_deg": [
+        86.41876476353674
+      ],
+      "final_angles_deg": [
+        86.41873137920446
+      ],
+      "closing_deg": 3.338433228350368e-05,
+      "best_closing_deg": 3.338433228350368e-05,
+      "eef_path_m": 0.0003044086588991825,
+      "contacts_available": true,
+      "loaded_actions": 0,
+      "peak_contact_normal_N": 0.0,
+      "mean_inference_seconds": 1.3482026999990921,
+      "peak_cuda_allocated": 971354112,
+      "rollout_seconds": 1.9824557999963872,
+      "scene_type": "single_door",
+      "peak_contact_detail": null,
+      "stage": "diagnostic",
+      "seed": 46,
+      "arm": "episode_balanced"
+    }
+  ]
+}

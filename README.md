@@ -2,6 +2,15 @@
 
 **Agentic debugging and repair for learned robot policies.**
 
+**2026-10-20: sustained learning comparison executed, verification blocked.** Two
+independently initialized SmolVLA arms completed 5,000 updates each and all ten
+checkpoint reload checks. New real RoboCasa rollouts on matched seeds43–45 gave
+1/3 pretrained, 1/3 episode-balanced, and 0/3 motion-mixture success; both candidates
+were rejected for observed regressions. A raw-camera blackout invalidated the
+eleventh episode and stopped evaluation before final seeds120–123. No success gain
+or completed final evaluation is claimed. See [the learning case study](environment/learning-repair-v1.md)
+for losses, physical measurements, resource use, exact commands and the blocker.
+
 **2026-10-19: bounded deterministic workflow executed.** The CLI now connects
 historical VLA evidence, diagnostic tool selection, versioned instruction repair,
 SmolVLA training, checkpoint verification and matched RoboCasa evaluation.
@@ -119,3 +128,7 @@ Before implementing the full diagnosis agent, the project will first establish a
 Planned features are not treated as completed features.
 
 `RESUME_EVIDENCE.md` is the authoritative record for what has actually been implemented and verified.
+
+Latest learning milestone: [camera correction and completed diagnostic evaluation](environment/learning-repair-v1-completion.md).
+Both 5,000-update arms were evaluated on all four diagnostic seeds and rejected;
+no robot-success improvement is claimed. Final seeds remain gated and unused.

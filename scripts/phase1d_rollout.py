@@ -200,6 +200,8 @@ def main():
     parser.add_argument("--control-diagnostics", action="store_true")
     parser.add_argument("--workflow-diagnostics", action="store_true",
                         help="New versioned workflow: contacts, RGB guards and matched per-chunk RNG")
+    parser.add_argument("--renderer-owner-cleanup", action="store_true",
+                        help="Explicit pinned Windows renderer resource-lifetime correction")
     parser.add_argument("--instruction-contrast", action="store_true",
                         help="Explicit pretrained CloseFridge task-ID versus native-language reference")
     args = parser.parse_args()
@@ -260,6 +262,14 @@ def main():
                 "simulator_sources": baseline["source_verification"], "versions": versions,
                 "seed": args.seed, "python": sys.executable, "hf_cache": os.environ["HF_HOME"],
                 "numba_cache": os.environ["NUMBA_CACHE_DIR"], "script_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}
+    if args.renderer_owner_cleanup:
+        assert args.workflow_diagnostics and sys.platform == "win32"
+        import renderer_lifecycle
+        renderer_lifecycle.install()
+        manifest["renderer_owner_cleanup"] = {
+            "enabled": True,
+            "sha256": hashlib.sha256(Path(renderer_lifecycle.__file__).read_bytes()).hexdigest(),
+            "scope": "Free obsolete MjrContext in its owning GLFW context; restore previous live context"}
     processor_hashes = {}
     for name in ("config.json", "policy_preprocessor.json", "policy_postprocessor.json",
                  "policy_preprocessor_step_5_normalizer_processor.safetensors",
