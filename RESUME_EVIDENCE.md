@@ -166,3 +166,22 @@ generalization improvement.
   change; final seeds 120–123 untouched.
 - Evidence: `environment/optimizer-precision-v1.md` and
   `outputs/agent-workflow-v1/optimizer-precision-v1/audited-summary.json`.
+
+## 2026-10-20 — Terminal-window learning repair rejected after actual evaluation
+
+- Executed one 5,000-update native-precision candidate with the frozen reward-window
+  sampler. Exact episode order and global probes preserved; 2,438 targeted anchor
+  replacements; 461 train / 52 validation episodes; no rollout-derived labels.
+- Selected step5,000 by global validation before simulation. All five independent
+  model/optimizer/scheduler/processor and fixed-loss reload checks passed.
+- Terminal held-out loss improved 0.307188 → 0.296408 versus native; global loss
+  worsened 0.367256 → 0.377230. Actual success remained1/4 on43–46. Seed43
+  regressed13.11° → 90.00°; seed45 ended40.76°/31.09° versus−0.01°/28.27°.
+  Contact-force regressions also failed the acceptance gate. Final120–123 untouched.
+- Training worker109.02min, peak CUDA allocation1.732GiB; 1,122 historical files
+  preserved. No dependency changes or new-result commit.
+- Runtime deviation: reload4000 took1,414.422s despite a900s timeout. Content
+  verification passed; not all runtime bounds were met. Cause unresolved.
+  A post-run elapsed-deadline guard and regression test were added without rerunning.
+- Evidence: `environment/terminal-window-experiment-v1.md` and
+  `outputs/agent-workflow-v1/terminal-window-v1/{result,protocol-audit}.json`.

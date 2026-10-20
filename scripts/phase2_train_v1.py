@@ -70,9 +70,23 @@ def main():
     parser.add_argument('--preflight-evidence', type=Path)
     parser.add_argument('--dataset-cache', type=Path,
                         help='Optional short generated-cache path to avoid Windows lock filename limits')
+    parser.add_argument('--terminal-preflight', action='store_true',
+                        help='Check frozen reward-window indices and decoded chunks; no model or optimizer updates')
+    parser.add_argument('--terminal-reference', type=Path,
+                        help='Measure fixed global/terminal probes on the archived native checkpoint; no updates')
     args = parser.parse_args()
     settings = json.loads(args.config.read_text())
     master_mode = settings.get('optimizer_precision') == 'fp32_master'
+    terminal_mode = settings.get('sampling') == 'terminal_window_v1'
+    assert not (terminal_mode and master_mode)
+    assert not (args.terminal_preflight and args.terminal_reference)
+    assert not (args.verify and (args.terminal_preflight or args.terminal_reference))
+    if args.terminal_preflight or args.terminal_reference:
+        assert terminal_mode
+    if terminal_mode and not (args.terminal_preflight or args.terminal_reference or args.verify):
+        assert args.preflight_evidence
+        evidence = json.loads(args.preflight_evidence.read_text())
+        assert evidence['passed'] and evidence['settings_sha256'] == sha(args.config)
     assert args.preflight_steps in (0, 8)
     if args.preflight_steps:
         assert master_mode
@@ -158,11 +172,13 @@ def main():
     if 'sampling' in settings:
         from learning_sampling import build_plan, dataset_labels, LABELS
         episodes, labels = dataset_labels(train)
-        train_plan = build_plan(episodes, settings['steps'], settings['seed'], settings['sampling'], labels)
+        train_plan = build_plan(episodes, settings['steps'], settings['seed'],
+                                'episode_balanced' if terminal_mode else settings['sampling'], labels)
         # Shared independent probe anchors, regardless of the training sampling arm.
         train_probe_plan = build_plan(episodes, 32, 31415)
         sampling_audit = {'regime_counts': {name: int((labels==i).sum()) for i,name in enumerate(LABELS)},
                           'labels_are_contacts': False,
+                          'scope': 'original episode-balanced anchors before terminal replacement' if terminal_mode else 'actual training anchors',
                           'selected_regime_counts': {name: int(sum(labels[r['index']]==i for r in train_plan)) for i,name in enumerate(LABELS)},
                           'sampler_sha256': sha(ROOT/'scripts/learning_sampling.py')}
         if not args.verify: dump(out/'sampling-audit.json', sampling_audit)
@@ -175,17 +191,33 @@ def main():
              'training_probe': train_probe_plan, 'pretraining_overlap_unknown': True,
              'rule': 'last ceil(10%) episodes per natural instruction; sample one frame per shuffled episode per cycle'}
     baseline_folder = ROOT/'outputs/agent-workflow-v1/learning-5000-v1/episode_balanced'
-    if master_mode:
+    terminal_plan = None
+    if master_mode or terminal_mode:
         original_settings = json.loads((baseline_folder/'settings.json').read_text())
-        assert all(settings[k] == v for k, v in original_settings.items())
+        assert all(settings[k] == v for k, v in original_settings.items()
+                   if not (terminal_mode and k == 'sampling'))
         assert split == json.loads((baseline_folder/'split.json').read_text())
         baseline_updates = [json.loads(r) for r in (baseline_folder/'updates.jsonl').read_text().splitlines()]
+    if terminal_mode:
+        from terminal_sampling import prepare, verify_reader_alignment
+        train_plan, terminal_plan, terminal_audit = prepare(train, val, split)
+        split = dict(split, training_order=train_plan, terminal_validation_samples=terminal_plan,
+                     rule='Frozen terminal-window-v1 replacement; original split/global probes unchanged')
+        if not args.verify:
+            dump(out/'terminal-sampling-audit.json', terminal_audit)
     if args.verify:
         assert json.loads((out/'split.json').read_text()) == split
     else:
         dump(out/'split.json', split)
-    source = args.verify/'pretrained_model' if args.verify else MODEL
-    policy = SmolVLAPolicy.from_pretrained(str(source), config=None if args.verify else pc, strict=True)
+    if args.terminal_preflight:
+        aligned = verify_reader_alignment(train, val, train_plan, terminal_plan)
+        dump(out/'preflight-passed.json', dict(passed=True, settings_sha256=sha(args.config),
+             sampling=terminal_audit, reader_alignment=aligned, optimizer_updates=0))
+        print('Terminal-window dataset preflight passed; zero optimizer updates.', flush=True)
+        return
+    source = args.verify/'pretrained_model' if args.verify else (
+        args.terminal_reference/'pretrained_model' if args.terminal_reference else MODEL)
+    policy = SmolVLAPolicy.from_pretrained(str(source), config=None if args.verify or args.terminal_reference else pc, strict=True)
     assert policy.model.vlm_with_expert.config._commit_hash == '7b375e1b73b11138ff12fe22c8f2822d8fe03467'
     pre, post = make_pre_post_processors(policy.config, pretrained_path=str(source))
     assert pre.steps[0].get_config()['rename_map'] == mapping
@@ -243,12 +275,13 @@ def main():
 
     train_raw = [train[r['index']] for r in train_probe_plan]
     val_raw = [val[r['index']] for r in val_plan]
+    terminal_raw = [val[r['index']] for r in terminal_plan] if terminal_mode else None
 
-    def evaluate(raws, seed):
+    def evaluate(raws, seed, languages=('natural', 'task_id')):
         result = {}
         policy.eval()
         with torch.random.fork_rng(devices=[0]), torch.no_grad():
-            for name in ('natural', 'task_id'):
+            for name in languages:
                 losses, draws = [], []
                 for i, raw in enumerate(raws):
                     torch.manual_seed(seed+i)
@@ -259,10 +292,29 @@ def main():
                     losses.append(loss.item())
                     draws.append({'noise': digest(noise), 'time': digest(t), 'seed': seed+i})
                 result[name] = {'mean': float(np.mean(losses)), 'samples': losses, 'draws': draws}
-        assert result['natural']['draws'] == result['task_id']['draws']
+        if 'natural' in result:
+            assert result['natural']['draws'] == result['task_id']['draws']
         result['selection_mean'] = (result['task_id']['mean'] if settings.get('selection_metric')=='task_id' else
                                     (result['natural']['mean']+result['task_id']['mean'])/2)
         return result
+
+    if args.terminal_reference:
+        assert source.resolve() == (baseline_folder/'checkpoints/005000/pretrained_model').resolve()
+        target = json.loads((args.terminal_reference/'verification-target.json').read_text())
+        assert digest(policy.state_dict()) == target['model']
+        assert all(sha(source/n) == sha(MODEL/n) for n in PROCESSORS)
+        tick = time.perf_counter()
+        actual = evaluate(val_raw, 82000)
+        for language in ('natural', 'task_id'):
+            assert actual[language]['draws'] == target['validation'][language]['draws']
+            assert np.allclose(actual[language]['samples'], target['validation'][language]['samples'], rtol=1e-5, atol=1e-6)
+        terminal = evaluate(terminal_raw, 92000, ('task_id',))
+        dump(out/'reference-probes.json', dict(passed=True, checkpoint=str(args.terminal_reference),
+             checkpoint_sha256=sha(source/'model.safetensors'), global_validation=actual,
+             terminal_validation=terminal, seconds=time.perf_counter()-tick,
+             peak_allocated=torch.cuda.max_memory_allocated(), optimizer_updates=0))
+        print('Archived native global validation reproduced; terminal reference measured.', flush=True)
+        return
 
     if args.verify:
         target = json.loads((args.verify/'verification-target.json').read_text())
@@ -277,6 +329,11 @@ def main():
         for arm in ('natural', 'task_id'):
             assert actual[arm]['draws'] == target['validation'][arm]['draws']
             assert np.allclose(actual[arm]['samples'], target['validation'][arm]['samples'], rtol=1e-5, atol=1e-6)
+        if terminal_mode:
+            terminal_actual = evaluate(terminal_raw, 92000, ('task_id',))
+            expected = target['terminal_validation']['task_id']
+            assert terminal_actual['task_id']['draws'] == expected['draws']
+            assert np.allclose(terminal_actual['task_id']['samples'], expected['samples'], rtol=1e-5, atol=1e-6)
         assert all(sha(source/n) == sha(MODEL/n) for n in PROCESSORS)
         continuation_verified = None
         if args.preflight_steps:
@@ -298,11 +355,14 @@ def main():
             'model_tensors_equal': len(target['model']), 'optimizer_state_equal': True,
             'scheduler_state_equal': True, 'validation_equal': True, 'processors_byte_identical': True,
             'master_parameters_equal': bool(master), 'resumed_update_equal': continuation_verified,
+            'terminal_validation_equal': True if terminal_mode else None,
             'checkpoint_sha256': sha(source/'model.safetensors')})
         print('Model, optimizer, scheduler, fixed validation and processors reload verified.', flush=True)
         return
 
     before = digest(policy.state_dict())
+    if terminal_mode:
+        assert before == json.loads((baseline_folder/'parameters-before.json').read_text())
     dump(out/'manifest.json', {'model': 'lerobot/smolvla_robocasa', 'model_revision': MODEL_REV,
         'dataset': 'pepijn223/robocasa_CloseFridge', 'dataset_revision': DATA_REV,
         'base_sha256': sha(MODEL/'model.safetensors'), 'script_sha256': sha(Path(__file__)),
@@ -337,6 +397,8 @@ def main():
 
     def probe():
         record = {'step': step, 'train': evaluate(train_raw, 72000), 'validation': evaluate(val_raw, 82000)}
+        if terminal_mode:
+            record['terminal_validation'] = evaluate(terminal_raw, 92000, ('task_id',))
         with (out/'probes.jsonl').open('a') as f:
             f.write(json.dumps(record)+'\n')
         print(json.dumps({'probe_step': step, 'train_nl': record['train']['natural']['mean'],
@@ -345,26 +407,35 @@ def main():
 
     try:
         initial = probe()
-        if master:
+        if master or terminal_mode:
             original_probe = json.loads((baseline_folder/'probes.jsonl').read_text().splitlines()[0])
             for part in ('train','validation'):
                 for language in ('natural','task_id'):
                     assert initial[part][language]['draws'] == original_probe[part][language]['draws']
                     assert np.allclose(initial[part][language]['samples'], original_probe[part][language]['samples'], rtol=1e-5, atol=1e-6)
-            dump(out/'initial-contract.json', {'passed':True,'sample_order_identical':True,
+            dump(out/'initial-contract.json', {'passed':True,'sample_order_identical':not terminal_mode,
+                 'episode_order_identical':True, 'terminal_sampling_only_change':terminal_mode,
                  'original_forward_weights_and_dtypes_equal':True,'fixed_initial_losses_equal':True,
-                 'gradient_path':'loss -> native forward cast -> FP32 master leaf -> AdamW',
-                 'clipping_note':'Same global threshold10; gradient accumulation and norm arithmetic now FP32'})
+                 'gradient_path':('loss -> native forward cast -> FP32 master leaf -> AdamW' if master
+                                  else 'unchanged native loss -> native parameters -> native AdamW'),
+                 'clipping_note':('Same global threshold10; gradient accumulation and norm arithmetic now FP32'
+                                  if master else 'unchanged native clipping threshold10')})
         for index, row in enumerate(train_plan):
             raw = train_raw[index % 32] if settings['sanity'] else train[row['index']]
             task_id = settings['condition'] == 'task_id' or (settings['condition'] == 'mixed' and index % 2 == 1)
             batch = prep(raw, task_id)
             assert int(batch['episode_index'].item()) == row['episode']
+            if terminal_mode:
+                assert int(raw['frame_index']) == row['frame']
+                if row['sampling_component'] == 'pre_success_full_chunk':
+                    assert not batch['action_is_pad'].any()
+                assert row['episode'] == baseline_updates[index]['episode']
             old = {n: intended[n].detach().clone() for n in (target_name, norm_name)}
             old_native = {n: master.forward_weight(n).detach().clone() for n in old} if master else {}
             lr = optimizer.param_groups[0]['lr']
             if master:
                 assert row == {k:baseline_updates[index][k] for k in row}
+            if master or terminal_mode:
                 assert lr == baseline_updates[index]['lr_used']
             torch.manual_seed(100000+index)
             torch.cuda.synchronize()
@@ -394,6 +465,7 @@ def main():
                 'lr_used': lr, 'seconds': time.perf_counter()-tick,
                 'peak_allocated': peak, 'peak_reserved': reserved, 'updates': changes,
                 'native_forward_updates':native_changes, 'gradient_clipped':tracker.grad_norm.val>cfg.optimizer.grad_clip_norm,
+                'valid_action_rows':int((~batch['action_is_pad']).sum()),
                 **grad}
             with (out/'updates.jsonl').open('a') as f:
                 f.write(json.dumps(record)+'\n')
@@ -413,7 +485,8 @@ def main():
                     master.save(path/'training_state/fp32_masters.safetensors')
                 dump(path/'verification-target.json', {'step': step, 'model': digest(policy.state_dict()),
                     'optimizer': digest(optimizer.state_dict()), 'scheduler': digest(scheduler.state_dict()),
-                    'validation': measured['validation'], 'masters':digest(master.state()) if master else None})
+                    'validation': measured['validation'], 'masters':digest(master.state()) if master else None,
+                    'terminal_validation':measured.get('terminal_validation')})
                 score = measured['validation']['selection_mean']
                 if best is None or score < best['score']:
                     best = {'step': step, 'score': score, 'checkpoint': str(path.relative_to(out))}

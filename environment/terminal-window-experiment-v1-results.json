@@ -1,0 +1,530 @@
+{
+  "status": "rejected_after_completed_training_and_diagnostic_evaluation",
+  "source_root": "outputs/agent-workflow-v1/terminal-window-v1",
+  "source_sha256": {
+    "result.json": "a22b60f8a249a8334073336505da5f00c824e66b5de2b0479ac83a71a0cee376",
+    "protocol-audit.json": "1a3ee2db1dafa75290b2e5632b9d2882526d8d6a5cb3f8b5f673bb07ebd6df7e",
+    "candidate/probes.jsonl": "c7cfc7935c05a605e0714736cb02d349f82f501ae1fd019f4da3c47ab5d93b1a",
+    "candidate/updates.jsonl": "af3f60a7473ee3228de43d1e7280da7b84a428ed84888f665e772489dff61ce9",
+    "candidate/terminal-sampling-audit.json": "37f5b8878d9f8704acfdc4ff3881544fbeceb5d3d8655b786e54be6bf54c3569",
+    "diagnostic-progress.json": "2f97ee169155ac9e96e6c89bba9ffbc51c9be6ff08235166b8aebbae4b63e36d",
+    "native-terminal-reference/reference-probes.json": "1128325e77afd06d3e14379c55e4d0230629cd2f9b51a752a04864332571da4d"
+  },
+  "optimizer_updates": 5000,
+  "selected": {
+    "step": 5000,
+    "score": 0.3772301237242153,
+    "checkpoint": "checkpoints\\005000",
+    "rule": "lowest task_id validation loss among saved checkpoints; earliest tie",
+    "pretrained_score": 0.369275332070314
+  },
+  "selected_model_sha256": "3246ea6ec205e08530674bb7f91040b0ec6ee919043116971ee2d7724b2c32e3",
+  "curves": {
+    "Episode-balanced": [
+      {
+        "step": 0,
+        "fixed_train": 0.3214016112033278,
+        "global_validation": 0.369275332070314,
+        "terminal_validation": null
+      },
+      {
+        "step": 500,
+        "fixed_train": 0.3689242033287883,
+        "global_validation": 0.4331467129791585,
+        "terminal_validation": null
+      },
+      {
+        "step": 1000,
+        "fixed_train": 0.37299768126104027,
+        "global_validation": 0.42592636413442403,
+        "terminal_validation": null
+      },
+      {
+        "step": 1500,
+        "fixed_train": 0.3583629890345037,
+        "global_validation": 0.4114018245958365,
+        "terminal_validation": null
+      },
+      {
+        "step": 2000,
+        "fixed_train": 0.34785867808386683,
+        "global_validation": 0.3932106089420043,
+        "terminal_validation": null
+      },
+      {
+        "step": 2500,
+        "fixed_train": 0.3369242122862488,
+        "global_validation": 0.3884420838708488,
+        "terminal_validation": null
+      },
+      {
+        "step": 3000,
+        "fixed_train": 0.33342551114037633,
+        "global_validation": 0.3823919031195916,
+        "terminal_validation": null
+      },
+      {
+        "step": 3500,
+        "fixed_train": 0.3203110755421221,
+        "global_validation": 0.3717018799283184,
+        "terminal_validation": null
+      },
+      {
+        "step": 4000,
+        "fixed_train": 0.3202723213471472,
+        "global_validation": 0.3707050387747586,
+        "terminal_validation": null
+      },
+      {
+        "step": 4500,
+        "fixed_train": 0.31692650367040187,
+        "global_validation": 0.3684162410477606,
+        "terminal_validation": null
+      },
+      {
+        "step": 5000,
+        "fixed_train": 0.3160568366292864,
+        "global_validation": 0.36725592783365685,
+        "terminal_validation": null
+      }
+    ],
+    "Terminal-window": [
+      {
+        "step": 0,
+        "fixed_train": 0.3214016112033278,
+        "global_validation": 0.369275332070314,
+        "terminal_validation": 0.3018639844197493
+      },
+      {
+        "step": 500,
+        "fixed_train": 0.3742953803157434,
+        "global_validation": 0.4374644039915158,
+        "terminal_validation": 0.3454916822150923
+      },
+      {
+        "step": 1000,
+        "fixed_train": 0.3816084684804082,
+        "global_validation": 0.42927574581251693,
+        "terminal_validation": 0.3441944677167787
+      },
+      {
+        "step": 1500,
+        "fixed_train": 0.35569920868147165,
+        "global_validation": 0.41002040567736214,
+        "terminal_validation": 0.32341435352841824
+      },
+      {
+        "step": 2000,
+        "fixed_train": 0.35003171453718096,
+        "global_validation": 0.3999447939344324,
+        "terminal_validation": 0.3227817844241284
+      },
+      {
+        "step": 2500,
+        "fixed_train": 0.3393414936726913,
+        "global_validation": 0.3959307423434578,
+        "terminal_validation": 0.3137802015810918
+      },
+      {
+        "step": 3000,
+        "fixed_train": 0.33598451275611296,
+        "global_validation": 0.39170001950473166,
+        "terminal_validation": 0.3102998309231435
+      },
+      {
+        "step": 3500,
+        "fixed_train": 0.32968232984421775,
+        "global_validation": 0.38146492534388715,
+        "terminal_validation": 0.30269973357924473
+      },
+      {
+        "step": 4000,
+        "fixed_train": 0.3305490290513262,
+        "global_validation": 0.3791020401359464,
+        "terminal_validation": 0.29734983040879553
+      },
+      {
+        "step": 4500,
+        "fixed_train": 0.3270985896815546,
+        "global_validation": 0.3780016936719991,
+        "terminal_validation": 0.2979583994915279
+      },
+      {
+        "step": 5000,
+        "fixed_train": 0.3268273666035384,
+        "global_validation": 0.3772301237242153,
+        "terminal_validation": 0.2964079073236252
+      }
+    ]
+  },
+  "native_terminal_reference": 0.30718844769021064,
+  "sampling": {
+    "components": {
+      "pre_success_full_chunk": 2438,
+      "archived_uniform": 2500,
+      "ineligible_keep_archived_uniform": 62
+    },
+    "baseline": {
+      "updates": 5000,
+      "unique_anchors": 4891,
+      "padded_chunks": 939,
+      "valid_action_rows": 226916,
+      "anchors_in_pool": 274
+    },
+    "candidate": {
+      "updates": 5000,
+      "unique_anchors": 4614,
+      "padded_chunks": 469,
+      "valid_action_rows": 238655,
+      "anchors_in_pool": 2566
+    },
+    "eligible_train_episodes": 450,
+    "eligible_train_anchors": 7200,
+    "train_episodes": 461,
+    "validation_episodes": 52,
+    "unique_targeted_anchors": 2109,
+    "order_sha256": "94bba1a70cda870c30d9cea3404af24ae2a6ee199c78d26713e36c30c518c5e0",
+    "terminal_validation_sha256": "97172a32b8f264436f06b8d997bed66f3ffcf53bd0b5a3d782289e54484c289a"
+  },
+  "reloads": {
+    "1000": {
+      "passed": true,
+      "step": 1000,
+      "model_tensors_equal": 500,
+      "optimizer_state_equal": true,
+      "scheduler_state_equal": true,
+      "validation_equal": true,
+      "processors_byte_identical": true,
+      "master_parameters_equal": false,
+      "resumed_update_equal": null,
+      "terminal_validation_equal": true,
+      "checkpoint_sha256": "935b0e5b707faf283541bf03e07b82d2737e60364180563d9181a18daae61ebe"
+    },
+    "2000": {
+      "passed": true,
+      "step": 2000,
+      "model_tensors_equal": 500,
+      "optimizer_state_equal": true,
+      "scheduler_state_equal": true,
+      "validation_equal": true,
+      "processors_byte_identical": true,
+      "master_parameters_equal": false,
+      "resumed_update_equal": null,
+      "terminal_validation_equal": true,
+      "checkpoint_sha256": "6954c385373a4e3b2a8bc4d3e6f55bc7c5f7b1f58624117aab06cdd16398820e"
+    },
+    "3000": {
+      "passed": true,
+      "step": 3000,
+      "model_tensors_equal": 500,
+      "optimizer_state_equal": true,
+      "scheduler_state_equal": true,
+      "validation_equal": true,
+      "processors_byte_identical": true,
+      "master_parameters_equal": false,
+      "resumed_update_equal": null,
+      "terminal_validation_equal": true,
+      "checkpoint_sha256": "5c0fdcbb7031a485d5f82049920573e0b243626e408fd909715f20ae3464c77d"
+    },
+    "4000": {
+      "passed": true,
+      "step": 4000,
+      "model_tensors_equal": 500,
+      "optimizer_state_equal": true,
+      "scheduler_state_equal": true,
+      "validation_equal": true,
+      "processors_byte_identical": true,
+      "master_parameters_equal": false,
+      "resumed_update_equal": null,
+      "terminal_validation_equal": true,
+      "checkpoint_sha256": "911dc17a0d5f1b511d59d3f569dfe139b9d4e7106ab6884b149b2cf39d80cb47"
+    },
+    "5000": {
+      "passed": true,
+      "step": 5000,
+      "model_tensors_equal": 500,
+      "optimizer_state_equal": true,
+      "scheduler_state_equal": true,
+      "validation_equal": true,
+      "processors_byte_identical": true,
+      "master_parameters_equal": false,
+      "resumed_update_equal": null,
+      "terminal_validation_equal": true,
+      "checkpoint_sha256": "3246ea6ec205e08530674bb7f91040b0ec6ee919043116971ee2d7724b2c32e3"
+    }
+  },
+  "diagnostic_pairs": [
+    {
+      "seed": 43,
+      "baseline": {
+        "path": "outputs\\agent-workflow-v1\\learning-5000-v1\\diagnostic-43-episode_balanced",
+        "success": false,
+        "actions": 600,
+        "valid": true,
+        "guard_failure": false,
+        "termination": "registered_horizon_600",
+        "initial_angles_deg": [
+          85.5238776175674
+        ],
+        "final_angles_deg": [
+          13.113753478633098
+        ],
+        "closing_deg": 72.4101241389343,
+        "best_closing_deg": 72.4101241389343,
+        "eef_path_m": 2.8415388913951802,
+        "contacts_available": true,
+        "loaded_actions": 263,
+        "peak_contact_normal_N": 405.1573325259668,
+        "mean_inference_seconds": 0.6371812249987366,
+        "peak_cuda_allocated": 971354112,
+        "rollout_seconds": 68.60491579999507
+      },
+      "candidate": {
+        "path": "outputs\\agent-workflow-v1\\terminal-window-v1\\diagnostic-43",
+        "success": false,
+        "actions": 600,
+        "valid": true,
+        "guard_failure": false,
+        "termination": "registered_horizon_600",
+        "initial_angles_deg": [
+          85.5238776175674
+        ],
+        "final_angles_deg": [
+          89.99962026824406
+        ],
+        "closing_deg": -4.475742650676665,
+        "best_closing_deg": 12.772803260984475,
+        "eef_path_m": 2.405937216358483,
+        "contacts_available": true,
+        "loaded_actions": 346,
+        "peak_contact_normal_N": 575.1219103767096,
+        "mean_inference_seconds": 0.5939651833347549,
+        "peak_cuda_allocated": 971354112,
+        "rollout_seconds": 65.37907769999583
+      },
+      "matched_reset": true
+    },
+    {
+      "seed": 44,
+      "baseline": {
+        "path": "outputs\\agent-workflow-v1\\learning-5000-v1\\diagnostic-44-episode_balanced",
+        "success": true,
+        "actions": 220,
+        "valid": true,
+        "guard_failure": false,
+        "termination": "success",
+        "initial_angles_deg": [
+          83.3170929825454
+        ],
+        "final_angles_deg": [
+          0.3082046128659335
+        ],
+        "closing_deg": 83.00888836967947,
+        "best_closing_deg": 83.00888836967947,
+        "eef_path_m": 1.49369390795064,
+        "contacts_available": true,
+        "loaded_actions": 69,
+        "peak_contact_normal_N": 171.22247823775552,
+        "mean_inference_seconds": 0.7114940199971898,
+        "peak_cuda_allocated": 971354112,
+        "rollout_seconds": 21.9921822000033
+      },
+      "candidate": {
+        "path": "outputs\\agent-workflow-v1\\terminal-window-v1\\diagnostic-44",
+        "success": true,
+        "actions": 251,
+        "valid": true,
+        "guard_failure": false,
+        "termination": "success",
+        "initial_angles_deg": [
+          83.3170929825454
+        ],
+        "final_angles_deg": [
+          -0.09272733765396873
+        ],
+        "closing_deg": 83.40982032019937,
+        "best_closing_deg": 83.40982032019937,
+        "eef_path_m": 1.4822962825162826,
+        "contacts_available": true,
+        "loaded_actions": 81,
+        "peak_contact_normal_N": 152.13904997783246,
+        "mean_inference_seconds": 0.6930837166679945,
+        "peak_cuda_allocated": 971354112,
+        "rollout_seconds": 24.77243760001147
+      },
+      "matched_reset": true
+    },
+    {
+      "seed": 45,
+      "baseline": {
+        "path": "outputs\\agent-workflow-v1\\learning-5000-v1\\diagnostic-45-episode_balanced",
+        "success": false,
+        "actions": 600,
+        "valid": true,
+        "guard_failure": false,
+        "termination": "registered_horizon_600",
+        "initial_angles_deg": [
+          85.58268158551247,
+          82.33903760112925
+        ],
+        "final_angles_deg": [
+          -0.011126958271295978,
+          28.270471829973037
+        ],
+        "closing_deg": 139.66237431494,
+        "best_closing_deg": 139.7335369701971,
+        "eef_path_m": 3.516317794244355,
+        "contacts_available": true,
+        "loaded_actions": 151,
+        "peak_contact_normal_N": 188.6916500615684,
+        "mean_inference_seconds": 0.619245116666813,
+        "peak_cuda_allocated": 971354112,
+        "rollout_seconds": 139.46319740000763
+      },
+      "candidate": {
+        "path": "outputs\\agent-workflow-v1\\terminal-window-v1\\diagnostic-45",
+        "success": false,
+        "actions": 600,
+        "valid": true,
+        "guard_failure": false,
+        "termination": "registered_horizon_600",
+        "initial_angles_deg": [
+          85.58268158551247,
+          82.33903760112925
+        ],
+        "final_angles_deg": [
+          40.76464145585815,
+          31.09247951850615
+        ],
+        "closing_deg": 96.06459821227742,
+        "best_closing_deg": 96.06459821227742,
+        "eef_path_m": 3.428550342959598,
+        "contacts_available": true,
+        "loaded_actions": 118,
+        "peak_contact_normal_N": 500.3460709961605,
+        "mean_inference_seconds": 0.6075023250062562,
+        "peak_cuda_allocated": 971354112,
+        "rollout_seconds": 130.81227640001453
+      },
+      "matched_reset": true
+    },
+    {
+      "seed": 46,
+      "baseline": {
+        "path": "outputs\\agent-workflow-v1\\learning-5000-resume-v1\\diagnostic-46-episode_balanced",
+        "success": false,
+        "actions": 600,
+        "valid": true,
+        "guard_failure": false,
+        "termination": "registered_horizon_600",
+        "initial_angles_deg": [
+          86.41876476353674
+        ],
+        "final_angles_deg": [
+          85.39273451006203
+        ],
+        "closing_deg": 1.0260302534747154,
+        "best_closing_deg": 1.0260302534747154,
+        "eef_path_m": 1.8798314330771684,
+        "contacts_available": true,
+        "loaded_actions": 395,
+        "peak_contact_normal_N": 231.6554344316461,
+        "mean_inference_seconds": 0.7443366083292252,
+        "peak_cuda_allocated": 971354112,
+        "rollout_seconds": 82.55520560001605
+      },
+      "candidate": {
+        "path": "outputs\\agent-workflow-v1\\terminal-window-v1\\diagnostic-46",
+        "success": false,
+        "actions": 600,
+        "valid": true,
+        "guard_failure": false,
+        "termination": "registered_horizon_600",
+        "initial_angles_deg": [
+          86.41876476353674
+        ],
+        "final_angles_deg": [
+          87.83641583101395
+        ],
+        "closing_deg": -1.417651067477209,
+        "best_closing_deg": 1.833895834013262,
+        "eef_path_m": 1.5850193823319008,
+        "contacts_available": true,
+        "loaded_actions": 441,
+        "peak_contact_normal_N": 534.9261977811959,
+        "mean_inference_seconds": 0.6312153250037227,
+        "peak_cuda_allocated": 971354112,
+        "rollout_seconds": 73.01555829998688
+      },
+      "matched_reset": true
+    }
+  ],
+  "acceptance_reasons": [
+    "global_validation_regression",
+    "incomplete_closing_cases_not_repaired",
+    "individual_door_regression",
+    "insufficient_diagnostic_success",
+    "native:contact_force_regression",
+    "native:door_progress_regression",
+    "native:no_success_gain",
+    "pretrained:contact_force_regression",
+    "pretrained:door_progress_regression",
+    "pretrained:no_success_gain"
+  ],
+  "accepted": false,
+  "final_seeds_evaluated": [],
+  "worker_seconds": {
+    "preflight": 63.046999999991385,
+    "native-terminal-reference": 203.125,
+    "training": 6540.921999999991,
+    "reload-1000": 277.51500000001397,
+    "reload-2000": 271.0469999999914,
+    "reload-3000": 443.375,
+    "reload-4000": 1414.4219999999914,
+    "reload-5000": 167.07800000000861,
+    "diagnostic-43": 121.07800000000861,
+    "diagnostic-44": 70.0,
+    "diagnostic-45": 183.32800000000861,
+    "diagnostic-46": 121.84400000001187
+  },
+  "peak_cuda_allocated_bytes": 1859713024,
+  "gpu_worker_hours": 2.7260372222222293,
+  "active_gpu_hours": null,
+  "energy_kWh": null,
+  "runtime_deviation": {
+    "all_worker_wall_caps_met": false,
+    "overruns": [
+      {
+        "worker": "reload-4000",
+        "limit_seconds": 900,
+        "recorded_seconds": 1414.4219999999914,
+        "overrun_seconds": 514.4219999999914
+      }
+    ],
+    "verified": "Reload-4000 start/result file timestamps also span about 23.6 minutes; reload content checks passed.",
+    "root_cause": "Unresolved. A host suspension or scheduling delay is possible; not established. The subprocess wait returned success despite the measured elapsed limit.",
+    "scientific_results_preserved": true,
+    "raw_result_sha256": "a22b60f8a249a8334073336505da5f00c824e66b5de2b0479ac83a71a0cee376",
+    "executed_runner_sha256": "df3ee4bd7bd96c2d10dc7b1e0d26f55f3143b880a881b1662c17bd0087572df7",
+    "post_run_runner_sha256": "60576fd5447deb0d439da468d6e0fc1bc0dc59a19483efeb54633ea37707ba92",
+    "post_run_fix": "Check measured duration even after exit code 0; reject late completion and stop subsequent workers. Not applied retroactively; no rerun.",
+    "targeted_tests": {
+      "command": "python -B -m unittest discover -s tests -p test_terminal_sampling.py -v",
+      "passed": 4,
+      "seconds": 0.353
+    },
+    "max_5000_updates_met": true,
+    "max_4_diagnostic_episodes_met": true,
+    "final_seeds_untouched": true,
+    "whole_workflow_within_6_hours": true
+  },
+  "historical_preservation": {
+    "files_rehashed": 1122,
+    "passed": true
+  },
+  "review_tests": {
+    "passed": 21,
+    "command": "python -B -m unittest discover -s tests -v",
+    "note": "Passed outside sandbox; initial sandbox run blocked two temporary-file writes."
+  }
+}
