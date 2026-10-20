@@ -5,6 +5,17 @@ diagnosis/repair tool loop. Successful and failed rollouts come first; the four
 sustained learning experiments share one table. Terminal-window is an expandable
 case study, not the entire presentation.
 
+## Watch the public recordings
+
+The three original videos are now connected in `docs/demo/index.html`. No local
+video directory is required for online playback. Download that HTML and open it
+in a browser; use the clip selectors to switch recordings. Each clip also has an
+**Open video** link.
+
+- [Completed task: episode-balanced, seed 44](https://drive.google.com/file/d/1v1GlguQ2h86hdpv7uq4vtzRITG5HGdgZ/view?usp=drivesdk)
+- [Incomplete closure: episode-balanced, seed 43](https://drive.google.com/file/d/1HovTLk54HdhBUJH_UcA2cx4Ky4ebHMIJ/view?usp=drivesdk)
+- [Terminal-window candidate: seed 43](https://drive.google.com/file/d/1N2Vh7-ny13ELoIvPfFjYbKI4KfzzLTq8/view?usp=drivesdk)
+
 ## Play locally with the existing recordings
 
 On the Windows evidence machine, update the checkout and choose a fresh output:
@@ -39,9 +50,11 @@ These are selected illustrations, not success-rate estimates. The page includes
 the complete four-scene comparison. Playback follows recorded simulation time,
 not wall-clock inference speed. Original recording overlays remain unchanged.
 
-## Publish with Google Drive or MP4 links
+## Hosting and future video updates
 
-1. Upload these three original files. For Drive, allow anyone with the link to
+The public recording links are already configured. To replace a recording:
+
+1. Upload the corresponding original file. For Drive, allow anyone with the link to
    view each video and wait until processing completes.
 2. Check playback while signed out.
 3. Insert the three file-sharing URLs into the `video-sources` JSON block in
@@ -52,8 +65,10 @@ not wall-clock inference speed. Original recording overlays remain unchanged.
    three clips before adding the hosted URL to a CV. A `github.com/.../blob/...`
    address opens the source file and should not be labelled as a playable demo.
 
-Until video links are connected, the source template explicitly shows that the
-upload is pending. Never replace a missing recording with generated imagery.
+For GitHub Pages, select **Deploy from a branch**, **main**, **/docs** in the
+repository Pages settings. The presentation is served at the `/demo/` path.
+`docs/.nojekyll` keeps the HTML as a static file. Never replace a missing recording
+with generated imagery.
 
 ## Evidence
 

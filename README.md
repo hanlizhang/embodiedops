@@ -13,8 +13,8 @@ diagnosis with NVIDIA Nemotron; completed workflow runs use evidence-based rules
 
 ## Explore the project
 
-- [Demo setup and recordings](docs/DEMO.md): build the complete interactive
-  presentation with existing local videos, or connect public video links.
+- [Demo and recordings](docs/DEMO.md): watch the three public rollout videos
+  and open or download the complete interactive presentation.
 - [Demo HTML source](docs/demo/index.html): system architecture, successful and
   failed manipulation, engineering details and the full experiment comparison.
 - [Technical overview](docs/TECHNICAL_OVERVIEW.md): model, dataset, interfaces,
@@ -22,9 +22,10 @@ diagnosis with NVIDIA Nemotron; completed workflow runs use evidence-based rules
 - [Implementation evidence](RESUME_EVIDENCE.md).
 
 The demo covers the complete system. The terminal-window result is one detailed
-case study within it. The source template awaits public recording links; the local
-builder connects the original MP4s automatically. A GitHub file page displays
-source code, not a hosted interactive demo.
+case study within it. The HTML includes three publicly viewable Google Drive
+recordings and requires no local video files. Download the HTML and open it in a
+browser, or use the hosted Demo once GitHub Pages is enabled. The local builder
+can still connect the original MP4s for offline viewing.
 
 ## What is implemented
 
@@ -108,8 +109,9 @@ This standard-library script checks recorded outcomes and hashes, then loads
 `docs/demo/index.html` and connects the existing videos. Measured plots are embedded
 in the HTML. It performs no model loading, training, inference,
 physics or network requests. It refuses an existing output directory.
-Videos/checkpoints/caches are intentionally excluded from Git; a source-only clone
-can read the reports and compact JSON, but cannot play missing local recordings.
+Videos/checkpoints/caches are intentionally excluded from Git. A source-only clone
+can open `docs/demo/index.html` and play the public recordings online; the verified
+local builder requires the original evidence artifacts.
 
 Lightweight implementation checks, using the pinned environment:
 
