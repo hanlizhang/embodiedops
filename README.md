@@ -132,3 +132,8 @@ Planned features are not treated as completed features.
 Latest learning milestone: [camera correction and completed diagnostic evaluation](environment/learning-repair-v1-completion.md).
 Both 5,000-update arms were evaluated on all four diagnostic seeds and rejected;
 no robot-success improvement is claimed. Final seeds remain gated and unused.
+
+Latest controlled follow-up: [FP32-master optimizer experiment](environment/optimizer-precision-v1.md).
+Training completed 5,000 updates and changed previously unchanged BF16
+norm weights, but worsened fixed losses. Post-training reload timed out before
+robot evaluation; no new robot-success claim or promotion.

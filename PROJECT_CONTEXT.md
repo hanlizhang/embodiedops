@@ -526,3 +526,16 @@ Success is pretrained 1/4, episode-balanced 1/4, motion-mixture 0/4. Both candid
 are rejected by the existing gate; final seeds 120–123 remain unused because
 neither qualifies. All 808 original experiment files are hash-preserved. No new
 training or dependencies. See `environment/learning-repair-v1-completion.md`.
+
+### 2026-10-20 controlled optimizer-precision result
+
+One matched episode-balanced FP32-master run completed 5,000 updates. Actual BF16
+forward changes appeared in all 33 normalization tensors unchanged under native
+training, but fixed task-ID validation worsened: 0.387121 versus native 0.367256
+and original 0.369275. The early loss spike also increased. Preflight reload and
+exact resumed-update checks passed; the first sustained-checkpoint independent
+reload timed out after 300 seconds. All five saved checkpoints passed CPU
+serialized-state hash checks, which do not replace operational reload validation.
+No new robot episodes ran, no candidate was promoted, and final seeds remain unused.
+All 957 protected historical files are unchanged. See
+`environment/optimizer-precision-v1.md`. No automatic retry or further variant.

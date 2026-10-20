@@ -1,7 +1,9 @@
 """Versioned, offline SmolVLA conditioning experiment; never creates a simulator.
 
 Use --config and an exclusive --output for training. --verify reloads a saved
-checkpoint in a separate process without doing an optimizer update.
+checkpoint in a separate process. Only the disposable --preflight-steps mode
+also checks one resumed optimizer update; sustained-checkpoint verification
+does not update weights.
 """
 import argparse
 import hashlib
@@ -63,10 +65,19 @@ def main():
     parser.add_argument('--config', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--verify', type=Path)
+    parser.add_argument('--preflight-steps', type=int, default=0,
+                        help='Master-precision only: eight disposable updates, same full schedule')
+    parser.add_argument('--preflight-evidence', type=Path)
     parser.add_argument('--dataset-cache', type=Path,
                         help='Optional short generated-cache path to avoid Windows lock filename limits')
     args = parser.parse_args()
     settings = json.loads(args.config.read_text())
+    master_mode = settings.get('optimizer_precision') == 'fp32_master'
+    assert args.preflight_steps in (0, 8)
+    if args.preflight_steps:
+        assert master_mode
+    if master_mode and not args.preflight_steps and not args.verify:
+        assert args.preflight_evidence and json.loads(args.preflight_evidence.read_text())['passed']
     out = args.output.resolve()
     # Training refuses an existing directory; verification uses an exclusive marker.
     if args.verify:
@@ -163,6 +174,12 @@ def main():
              'training_order': train_plan, 'validation_samples': val_plan,
              'training_probe': train_probe_plan, 'pretraining_overlap_unknown': True,
              'rule': 'last ceil(10%) episodes per natural instruction; sample one frame per shuffled episode per cycle'}
+    baseline_folder = ROOT/'outputs/agent-workflow-v1/learning-5000-v1/episode_balanced'
+    if master_mode:
+        original_settings = json.loads((baseline_folder/'settings.json').read_text())
+        assert all(settings[k] == v for k, v in original_settings.items())
+        assert split == json.loads((baseline_folder/'split.json').read_text())
+        baseline_updates = [json.loads(r) for r in (baseline_folder/'updates.jsonl').read_text().splitlines()]
     if args.verify:
         assert json.loads((out/'split.json').read_text()) == split
     else:
@@ -187,6 +204,25 @@ def main():
         if isinstance(value, (tuple, list)):
             return [digest(v) for v in value]
         return value
+
+    master = None
+    if master_mode:
+        from fp32_master import FP32Masters
+        from torch.nn.utils import parametrize
+        native_before = digest(policy.state_dict())
+        master = FP32Masters(policy)
+        assert len(master.masters) == 129
+        assert all(p.dtype == torch.float32 for p in intended.values())
+        assert digest(policy.state_dict()) == native_before
+        original_forward = policy.forward
+        def native_forward(*a, **kw):
+            with parametrize.cached():
+                return original_forward(*a, **kw)
+        policy.forward = native_forward
+        if args.verify:
+            master.load(args.verify/'training_state/fp32_masters.safetensors')
+        else:
+            assert native_before == json.loads((baseline_folder/'parameters-before.json').read_text())
 
     def prep(raw, task_id=False):
         batch = lerobot_collate_fn([raw])
@@ -235,15 +271,33 @@ def main():
         assert step == target['step']
         assert digest(optimizer.state_dict()) == target['optimizer']
         assert digest(scheduler.state_dict()) == target['scheduler']
+        if master:
+            assert digest(master.state()) == target['masters']
         actual = evaluate(val_raw, 82000)
         for arm in ('natural', 'task_id'):
             assert actual[arm]['draws'] == target['validation'][arm]['draws']
             assert np.allclose(actual[arm]['samples'], target['validation'][arm]['samples'], rtol=1e-5, atol=1e-6)
         assert all(sha(source/n) == sha(MODEL/n) for n in PROCESSORS)
+        continuation_verified = None
+        if args.preflight_steps:
+            # Verify a real resumed update against a separately saved next-step
+            # target. This checkpoint is disposable and never initializes training.
+            expected = json.loads((out/'preflight-next-update.json').read_text())
+            batch = prep(train[train_plan[step]['index']], True)
+            meters = {k: AverageMeter(k, ':.6f') for k in ('loss','grad_norm','lr','update_s','gpu_mem_gb')}
+            tracker = MetricsTracker(1,len(train),len(train.episodes),meters,accelerator=accelerator)
+            torch.manual_seed(100000+step)
+            tracker, _ = update_policy(tracker, policy, batch, optimizer, cfg.optimizer.grad_clip_norm, accelerator, scheduler)
+            assert digest(policy.state_dict()) == expected['model']
+            assert digest(master.state()) == expected['masters']
+            assert digest(optimizer.state_dict()) == expected['optimizer']
+            assert digest(scheduler.state_dict()) == expected['scheduler']
+            continuation_verified = True
         reload_name = f'reload-{step:06d}.json' if settings.get('multiple_reload_checks') else 'reload-verification.json'
         dump(out/reload_name, {'passed': True, 'step': step,
             'model_tensors_equal': len(target['model']), 'optimizer_state_equal': True,
             'scheduler_state_equal': True, 'validation_equal': True, 'processors_byte_identical': True,
+            'master_parameters_equal': bool(master), 'resumed_update_equal': continuation_verified,
             'checkpoint_sha256': sha(source/'model.safetensors')})
         print('Model, optimizer, scheduler, fixed validation and processors reload verified.', flush=True)
         return
@@ -255,7 +309,9 @@ def main():
         'settings_sha256': sha(args.config), 'processor_hashes': {n: sha(MODEL/n) for n in PROCESSORS},
         'packages': {n: md.version(n) for n in ('torch', 'lerobot', 'accelerate', 'numpy', 'av')},
         'device': torch.cuda.get_device_name(), 'trainable_parameters': 99880992,
-        'precision': 'unchanged native BF16/FP32; no AMP, PEFT or gradient checkpointing',
+        'precision': ('native BF16/FP32 forward; differentiable FP32 masters, gradients and Adam moments'
+                      if master else 'unchanged native BF16/FP32; no AMP, PEFT or gradient checkpointing'),
+        'master_adapter_sha256': sha(ROOT/'scripts/fp32_master.py') if master else None,
         'train_noise': 'fresh per update; torch.manual_seed(100000 + update index), identical across A/B',
         'validation_noise': 'explicit noise/time with seeds 82000+i; both language arms share draws',
         'determinism': 'deterministic algorithms warn_only; cross-hardware bit identity not guaranteed'})
@@ -271,6 +327,8 @@ def main():
         assert all(p.grad is None for p in policy.parameters() if not p.requires_grad)
         grad.update(all_trainable_gradients_finite=True, tensors_with_grad=len(intended),
                     norm_probe_grad_norm=float(intended[norm_name].grad.float().norm()))
+        if master:
+            assert all(p.grad.dtype == torch.float32 for p in intended.values())
 
     handle = optimizer.register_step_pre_hook(check_grad)
     started = time.perf_counter()
@@ -287,13 +345,27 @@ def main():
 
     try:
         initial = probe()
+        if master:
+            original_probe = json.loads((baseline_folder/'probes.jsonl').read_text().splitlines()[0])
+            for part in ('train','validation'):
+                for language in ('natural','task_id'):
+                    assert initial[part][language]['draws'] == original_probe[part][language]['draws']
+                    assert np.allclose(initial[part][language]['samples'], original_probe[part][language]['samples'], rtol=1e-5, atol=1e-6)
+            dump(out/'initial-contract.json', {'passed':True,'sample_order_identical':True,
+                 'original_forward_weights_and_dtypes_equal':True,'fixed_initial_losses_equal':True,
+                 'gradient_path':'loss -> native forward cast -> FP32 master leaf -> AdamW',
+                 'clipping_note':'Same global threshold10; gradient accumulation and norm arithmetic now FP32'})
         for index, row in enumerate(train_plan):
             raw = train_raw[index % 32] if settings['sanity'] else train[row['index']]
             task_id = settings['condition'] == 'task_id' or (settings['condition'] == 'mixed' and index % 2 == 1)
             batch = prep(raw, task_id)
             assert int(batch['episode_index'].item()) == row['episode']
             old = {n: intended[n].detach().clone() for n in (target_name, norm_name)}
+            old_native = {n: master.forward_weight(n).detach().clone() for n in old} if master else {}
             lr = optimizer.param_groups[0]['lr']
+            if master:
+                assert row == {k:baseline_updates[index][k] for k in row}
+                assert lr == baseline_updates[index]['lr_used']
             torch.manual_seed(100000+index)
             torch.cuda.synchronize()
             tick = time.perf_counter()
@@ -304,19 +376,31 @@ def main():
             changes = {n: {'changed_elements': int(torch.count_nonzero(intended[n].detach()-v)),
                            'max_abs_delta': float((intended[n].detach().float()-v.float()).abs().max())} for n, v in old.items()}
             assert changes[target_name]['changed_elements'] > 0
+            native_changes = {}
+            if master:
+                for n, v in old_native.items():
+                    d = master.forward_weight(n).detach().float()-v.float()
+                    native_changes[n] = {'changed_elements':int(torch.count_nonzero(d)),
+                                         'max_abs_delta':float(d.abs().max())}
+                assert all(optimizer.state[p]['exp_avg'].dtype == torch.float32 and
+                           optimizer.state[p]['exp_avg_sq'].dtype == torch.float32 for p in intended.values())
+                if step == 1:
+                    assert np.isclose(tracker.loss.val, baseline_updates[0]['loss'], rtol=1e-5, atol=1e-6)
             ema = tracker.loss.val if ema is None else .05*tracker.loss.val+.95*ema
             peak = max(peak, torch.cuda.max_memory_allocated())
             reserved = max(reserved, torch.cuda.max_memory_reserved())
             record = {'step': step, **row, 'task': 'CloseFridge' if task_id else raw['task'],
                 'loss': tracker.loss.val, 'loss_ema': ema, 'grad_norm': tracker.grad_norm.val,
                 'lr_used': lr, 'seconds': time.perf_counter()-tick,
-                'peak_allocated': peak, 'peak_reserved': reserved, 'updates': changes, **grad}
+                'peak_allocated': peak, 'peak_reserved': reserved, 'updates': changes,
+                'native_forward_updates':native_changes, 'gradient_clipped':tracker.grad_norm.val>cfg.optimizer.grad_clip_norm,
+                **grad}
             with (out/'updates.jsonl').open('a') as f:
                 f.write(json.dumps(record)+'\n')
             if step % 32 == 0:
                 print(json.dumps({'step': step, 'loss': record['loss'], 'ema': ema, 'lr': lr}), flush=True)
-            save = step % settings['checkpoint_interval'] == 0 or step == settings['steps']
-            if step % settings['probe_interval'] == 0 or save:
+            save = step % settings['checkpoint_interval'] == 0 or step == settings['steps'] or step == args.preflight_steps
+            if step % settings['probe_interval'] == 0 or step in settings.get('extra_probe_steps',[]) or save:
                 measured = probe()
                 plot(out)
             if save:
@@ -325,14 +409,29 @@ def main():
                 save_checkpoint(path, step, cfg, policy, optimizer, scheduler, pre, post, num_processes=1, batch_size=1)
                 for n in PROCESSORS:
                     shutil.copyfile(MODEL/n, path/'pretrained_model'/n)
+                if master:
+                    master.save(path/'training_state/fp32_masters.safetensors')
                 dump(path/'verification-target.json', {'step': step, 'model': digest(policy.state_dict()),
                     'optimizer': digest(optimizer.state_dict()), 'scheduler': digest(scheduler.state_dict()),
-                    'validation': measured['validation']})
+                    'validation': measured['validation'], 'masters':digest(master.state()) if master else None})
                 score = measured['validation']['selection_mean']
                 if best is None or score < best['score']:
                     best = {'step': step, 'score': score, 'checkpoint': str(path.relative_to(out))}
                 dump(out/'selected-checkpoint.json', {**best, 'rule': 'lowest '+settings.get('selection_metric','mean NL/ID')+' validation loss among saved checkpoints; earliest tie',
                     'pretrained_score': initial['validation']['selection_mean']})
+            if step == args.preflight_steps:
+                assert master and any(json.loads(r)['updates'][norm_name]['changed_elements'] > 0
+                                      for r in (out/'updates.jsonl').read_text().splitlines())
+                batch = prep(train[train_plan[step]['index']], True)
+                torch.manual_seed(100000+step)
+                tracker, _ = update_policy(tracker, policy, batch, optimizer, cfg.optimizer.grad_clip_norm, accelerator, scheduler)
+                dump(out/'preflight-next-update.json', {'model':digest(policy.state_dict()),
+                     'masters':digest(master.state()), 'optimizer':digest(optimizer.state_dict()),
+                     'scheduler':digest(scheduler.state_dict())})
+                dump(out/'preflight-local.json', {'passed':True,'saved_updates':step,'extra_continuation_update':1,
+                     'finite_fp32_master_gradients':True,'norm_master_accumulation_nonzero':True,
+                     'quantized_forward_updates_recorded_separately':True,'peak_allocated':peak})
+                return
         after = digest(policy.state_dict())
         changed = [n for n in before if before[n] != after[n]]
         assert all(n in intended for n in changed)

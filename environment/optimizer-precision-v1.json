@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "baseline": "outputs/agent-workflow-v1/learning-5000-v1/episode_balanced",
+  "optimizer_precision": "fp32_master",
+  "preflight_saved_updates": 8,
+  "preflight_total_updates": 10,
+  "preflight_timeout_seconds": 900,
+  "max_main_wall_seconds": 12600,
+  "training_timeout_seconds": 9000,
+  "reload_timeout_seconds": 300,
+  "episode_timeout_seconds": 420,
+  "max_training_runs": 1,
+  "optimizer_updates": 5000,
+  "checkpoint_steps": [1000, 2000, 3000, 4000, 5000],
+  "extra_probe_steps": [50, 100, 250],
+  "diagnostic_seeds": [43, 44, 45, 46],
+  "max_policy_episodes": 4,
+  "max_actions_per_episode": 600,
+  "final_seeds_prohibited": [120, 121, 122, 123],
+  "instruction": "CloseFridge",
+  "execution_horizon": 50,
+  "flow_steps": 10,
+  "primary_optimization_test": {
+    "common_early_steps": [500, 1000],
+    "minimum_reduction_in_early_validation_excess": 0.5
+  },
+  "acceptance_policy_source": "environment/agent-workflow-v1.json",
+  "notes": "Same original initialization, native BF16/FP32 forward weights, samples, noise and full 5000-step schedule as archived episode-balanced. Autograd passes through casts into FP32 master leaves; gradient accumulation and clipping norm arithmetic are FP32 with unchanged threshold10. Preflight includes saved step8, one continuation target, and one independently reloaded continuation. Preflight weights are discarded. No automatic retry, promotion or final-seed evaluation. Research evaluation is permitted on worse offline loss after integrity checks."
+}

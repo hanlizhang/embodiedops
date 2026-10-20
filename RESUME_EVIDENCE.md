@@ -145,3 +145,24 @@ generalization improvement.
   in place and excluded. No retraining, model changes, dependency changes or commit.
 - Evidence: `environment/learning-repair-v1-completion.md` and
   `outputs/agent-workflow-v1/learning-5000-resume-v1/completion-audit.json`.
+
+## 2026-10-20 — Controlled FP32-master training completed; verification blocked
+
+- Implemented differentiable FP32 masters and Adam moments with native BF16/FP32
+  forward weights; initial hashes, samples, noise, schedule and processors match
+  the archived episode-balanced run. All 17 lightweight tests passed.
+- Preflight independently reloaded model, masters, optimizer, scheduler and
+  processors, reproduced validation and the exact next update. One sustained
+  5,000-update run then completed with finite gradients and unchanged frozen weights.
+- All 33 previously unchanged normalization tensors changed in actual BF16
+  forward weights. This resolved measured update accumulation, but validation
+  worsened to 0.387121 versus native 0.367256; early deterioration also increased.
+- Selected step 5,000 using the registered validation rule. All five serialized
+  checkpoints passed CPU hash checks. Independent sustained-checkpoint reload
+  timed out at step 1,000 after 300 seconds; later reloads and robot evaluation
+  were not executed. No robot improvement or completed acceptance decision claimed.
+- Training worker 132.70 min; peak CUDA allocation 2.648 GiB. No valid energy
+  integral. All 957 protected historical files preserved. No commit or dependency
+  change; final seeds 120–123 untouched.
+- Evidence: `environment/optimizer-precision-v1.md` and
+  `outputs/agent-workflow-v1/optimizer-precision-v1/audited-summary.json`.
