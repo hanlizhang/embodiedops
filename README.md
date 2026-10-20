@@ -13,6 +13,8 @@ diagnosis with NVIDIA Nemotron; completed workflow runs use evidence-based rules
 
 ## Explore the project
 
+- **[Live Demo](https://hanlizhang.github.io/embodiedops/demo/)**: watch recorded
+  robot manipulation and explore the model, controller and diagnostic workflow.
 - [Demo and recordings](docs/DEMO.md): watch the three public rollout videos
   and open or download the complete interactive presentation.
 - [Demo HTML source](docs/demo/index.html): system architecture, successful and
@@ -23,8 +25,7 @@ diagnosis with NVIDIA Nemotron; completed workflow runs use evidence-based rules
 
 The demo covers the complete system. The terminal-window result is one detailed
 case study within it. The HTML includes three publicly viewable Google Drive
-recordings and requires no local video files. Download the HTML and open it in a
-browser, or use the hosted Demo once GitHub Pages is enabled. The local builder
+recordings and requires no local video files. Open the Live Demo above, or download the HTML and open it in a browser. The local builder
 can still connect the original MP4s for offline viewing.
 
 ## What is implemented

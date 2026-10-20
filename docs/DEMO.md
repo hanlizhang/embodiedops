@@ -7,6 +7,8 @@ case study, not the entire presentation.
 
 ## Watch the public recordings
 
+**[Open the interactive Demo](https://hanlizhang.github.io/embodiedops/demo/)**
+
 The three original videos are now connected in `docs/demo/index.html`. No local
 video directory is required for online playback. Download that HTML and open it
 in a browser; use the clip selectors to switch recordings. Each clip also has an
@@ -65,8 +67,8 @@ The public recording links are already configured. To replace a recording:
    three clips before adding the hosted URL to a CV. A `github.com/.../blob/...`
    address opens the source file and should not be labelled as a playable demo.
 
-For GitHub Pages, select **Deploy from a branch**, **main**, **/docs** in the
-repository Pages settings. The presentation is served at the `/demo/` path.
+GitHub Pages publishes **main → /docs**. The presentation is served at the
+`/demo/` path; future pushes to `main` update the hosted page.
 `docs/.nojekyll` keeps the HTML as a static file. Never replace a missing recording
 with generated imagery.
 
