@@ -18,7 +18,6 @@ This is a simulation research case study, not an official benchmark reproduction
   and failed rollouts, measured training curves and a rejected repair.
 - [Technical overview](docs/TECHNICAL_OVERVIEW.md): objective, dataset, interfaces,
   controller, tools and experimental controls.
-- [English / 中文 resume material and interview answers](docs/INTERVIEW.md).
 - [Verified evidence ledger](RESUME_EVIDENCE.md).
 
 ```text
