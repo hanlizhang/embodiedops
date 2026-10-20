@@ -1,139 +1,137 @@
 # EmbodiedOps
 
-**Agentic debugging and repair for learned robot policies.**
+**Reproducible VLA fine-tuning, manipulation failure analysis and repair verification.**
 
-**2026-10-20: sustained learning comparison executed, verification blocked.** Two
-independently initialized SmolVLA arms completed 5,000 updates each and all ten
-checkpoint reload checks. New real RoboCasa rollouts on matched seeds43–45 gave
-1/3 pretrained, 1/3 episode-balanced, and 0/3 motion-mixture success; both candidates
-were rejected for observed regressions. A raw-camera blackout invalidated the
-eleventh episode and stopped evaluation before final seeds120–123. No success gain
-or completed final evaluation is claimed. See [the learning case study](environment/learning-repair-v1.md)
-for losses, physical measurements, resource use, exact commands and the blocker.
+EmbodiedOps connects SmolVLA Flow Matching training to actual RoboCasa/MuJoCo
+`CloseFridge` execution. It records what the policy saw, what it commanded, what
+the robot did and whether a proposed repair passed a separate acceptance gate.
+The executed orchestration backend uses deterministic evidence rules.
 
-**2026-10-19: bounded deterministic workflow executed.** The CLI now connects
-historical VLA evidence, diagnostic tool selection, versioned instruction repair,
-SmolVLA training, checkpoint verification and matched RoboCasa evaluation.
-Four new episodes and 512 optimizer updates completed. Instruction repair increased
-diagnostic success from 0/2 to 1/2 but was rejected for regressions; the learning
-candidate was rejected for worse validation loss. No accepted improvement or LLM
-agent is claimed. See [the executable case study](environment/agent-workflow-v1.md)
-and `scripts/agent_workflow.py`. Earlier status/roadmap text below is historical.
+**Result:** real training and closed-loop evaluation are complete; no candidate
+established a reliable robot-success improvement. Negative results are retained,
+including an optimizer-precision ablation and targeted terminal-window sampling.
+This is a simulation research case study, not an official benchmark reproduction.
 
-> Diagnose why a robot policy fails, choose the right repair, and verify the fix.
+## Start here
 
-EmbodiedOps is an experimental open-source framework for closing the loop between robot-policy evaluation and repair.
-
-The core question is:
-
-> A robot policy failed in rollout. Why did it fail, what should we change, and did that change actually make it better?
-
-Rather than assuming every failure requires another training run, EmbodiedOps aims to use controlled simulation evidence to distinguish between issues such as:
-
-- instruction / task-conditioning mismatch,
-- camera or observation-pipeline errors,
-- preprocessing / normalization mismatch,
-- action-scaling or temporal issues,
-- environment distribution shift,
-- insufficient demonstration coverage,
-- genuine policy limitations.
-
-The intended closed loop is:
+- [Three-minute local demo and speaker script](docs/DEMO.md): authentic successful
+  and failed rollouts, measured training curves and a rejected repair.
+- [Technical overview](docs/TECHNICAL_OVERVIEW.md): objective, dataset, interfaces,
+  controller, tools and experimental controls.
+- [English / 中文 resume material and interview answers](docs/INTERVIEW.md).
+- [Verified evidence ledger](RESUME_EVIDENCE.md).
 
 ```text
-ROLLOUT
-  ↓
-DIAGNOSE
-  ↓
-CONTROLLED PROBE
-  ↓
-REPAIR ROUTING
-  ├─ pipeline / config fix
-  ├─ targeted data
-  ├─ augmentation
-  ├─ VLA post-training
-  └─ RL-based improvement later
-  ↓
-VERIFY
+Saved failure evidence → contract / instruction / physical probes
+                     → versioned configuration or learning candidate
+                     → checkpoint verification → matched RoboCasa episodes
+                     → independent acceptance / rejection
 ```
 
-## Current status
+## What is implemented
 
-Verified locally:
+- **SmolVLA fine-tuning:** native masked Flow Matching, frozen VLM, trainable
+  action expert and state projection; reproducible samples/noise, gradient and
+  weight-change audits, fixed validation curves and checkpoint selection.
+- **Demonstration data:** 513 CloseFridge episodes / 155,443 frames; 461 training
+  and 52 episode-disjoint validation episodes. Local validation overlap with the
+  released model's pretraining data is unknown.
+- **Closed-loop manipulation:** three RGB cameras, 16D state, 12D controller
+  action, saved normalization, 50-action predictions and 10 flow steps. Actual
+  task predicates, individual door angles, trajectories and latency are recorded.
+- **Physical diagnostics:** geometry identities and positive MuJoCo solver
+  contact forces, separate from visual proximity. Privileged simulator diagnostics
+  are not added to policy inputs.
+- **Bounded deterministic orchestration:** a tool registry, evidence-dependent
+  routing, versioned candidates, subprocess budgets and acceptance gates.
+  Historical hypotheses and later experimental designs were human-directed;
+  they were not discoveries by an autonomous LLM.
+- **Matched evaluation:** reset/camera/model/processor contracts, retained failures
+  and invalid-episode exclusions, with final seeds gated separately.
 
-- PyTorch + CUDA on an RTX 3060 Laptop GPU
-- Hugging Face LeRobot 0.6.1
-- PushT simulation
-- Diffusion Policy forward / backward training on GPU
-- checkpoint saving
-- PushT evaluation and rollout-video generation
-- MuJoCo 3.3.7
-- robosuite 1.5.2
-- Panda `Lift` simulation
+## Measured findings
 
-PushT is a lightweight development / regression backend, not the intended headline demo.
+The learning comparison below uses `CloseFridge` task-ID conditioning,
+H=50, 600-action cap and diagnostic seeds **43–46**. Counts describe these four
+development scenes, not population success rates.
 
-The immediate project milestone is:
+| Model / method | Updates | Global held-out loss | Actual diagnostic success | Outcome |
+|---|---:|---:|---:|---|
+| Pinned pretrained | 0 | 0.369275 | 1/4 | Reference |
+| Episode-balanced | 5,000 | 0.367256 | 1/4 | Rejected: no success gain; force regression |
+| Motion-mixture | 5,000 | 0.370945 | 0/4 | Rejected: lost success and physical regressions |
+| FP32 master | 5,000 | 0.387121 | **Not evaluated** | Negative optimization result; full reload blocked |
+| Terminal-window | 5,000 | 0.377230 | 1/4 | Rejected: door/force/global-loss regressions |
 
-**SmolVLA + RoboCasa + CloseFridge**
+- **Motion-mixture:** balancing inferred motion regimes did not repair execution.
+  Those regimes are action/state proxies, not verified contact or manipulation
+  stages. [Training report](environment/learning-repair-v1.md) ·
+  [completed diagnostic matrix](environment/learning-repair-v1-completion.md).
+- **FP32 masters:** all 33 normalization tensors unchanged in native training
+  changed in actual BF16 forward weights. This numerical correction worsened
+  early and final validation loss. Serialized integrity checks passed, but an
+  independent sustained-checkpoint reload timed out; no robot result is claimed.
+  [Negative ablation](environment/optimizer-precision-v1.md).
+- **Terminal windows:** reward-aligned sampling reduced terminal held-out loss
+  from **0.307188 to 0.296408**, while seed 43's residual opening worsened from
+  **13.11° to 90.00°**. All five content reload checks passed; one exceeded its
+  runtime cap. [Report](environment/terminal-window-experiment-v1.md) ·
+  [compact numerical evidence](environment/terminal-window-experiment-v1-results.json).
 
-Before implementing the full diagnosis agent, the project will first establish a real VLA baseline and small post-training experiment with measurable success rate, inference latency, and rollout videos.
+The earlier **natural-language baseline is a different experiment**. In the
+three-seed instruction probe, pretrained NL conditioning achieved 0/3 versus
+1/3 with the bare `CloseFridge` task ID. The earlier 300-update NL comparison was
+0/10 pretrained versus 3/10 fine-tuned, with worse fixed held-out loss. These
+small, different protocols cannot be pooled into an official or generalization
+claim. [Instruction probe](environment/phase1e.md) · [early fine-tuning](environment/phase1d.md).
 
-## Planned roadmap
+Final seeds **120–123 remain unused**: no candidate qualified. A camera-invalid
+attempt was preserved and excluded, then only the missing registered pairs were
+completed after renderer validation. Contact-force gates are comparative simulator
+checks, not hardware safety certification.
 
-1. **VLA baseline**
-   - SmolVLA
-   - RoboCasa / CloseFridge
-   - dataset / state / action inspection
-   - baseline evaluation
-   - small fine-tuning run
+![Measured terminal-window and episode-balanced loss curves](docs/assets/terminal-window-loss.svg)
 
-2. **Fault injection**
-   - instruction-conditioning faults
-   - camera / observation faults
-   - normalization / action faults
-   - controlled distribution shifts
+The terminal loss measures successful demonstration windows, not robot task
+success. The native terminal reference was measured only at the selected
+checkpoint. [All four paired door traces](docs/assets/terminal-window-doors.svg)
+and the [delivery review](docs/DELIVERY_REVIEW.md) remain available in a source-only clone.
 
-3. **Diagnostic probes**
-   - controlled A/B tests
-   - pose / camera sweeps
-   - preprocessing / action checks
+## Reproduce the presentation without running a policy
 
-4. **Agentic diagnosis**
-   - NVIDIA / Nebius reasoning model
-   - observe → hypothesize → probe → update
+With the existing local artifact tree:
 
-5. **Repair routing**
-   - config / pipeline fix
-   - targeted data
-   - VLA post-training
-   - other bounded repair operators
+```powershell
+python -B scripts/build_portfolio_demo.py --output outputs/portfolio-demo-v1
+# Open outputs/portfolio-demo-v1/index.html in a browser.
+```
 
-6. **Verification**
-   - before / after success rate
-   - latency
-   - regression checks
-   - recovery metrics
+This standard-library script checks recorded outcomes and hashes, then references
+existing videos and plots. It performs no model loading, training, inference,
+physics or network requests. It refuses an existing output directory.
+Videos/checkpoints/caches are intentionally excluded from Git; a source-only clone
+can read the reports and compact JSON, but cannot play missing local recordings.
 
-## Project documentation
+Lightweight implementation checks, using the pinned environment:
 
-- `PROJECT_CONTEXT.md` — current direction, verified setup, project phases
-- `AGENTS.md` — rules for coding agents
-- `WORKFLOW.md` — ChatGPT / Codex / Git / training workflow
-- `RESUME_EVIDENCE.md` — evidence ledger for completed work
-- `environment/` — verified environment notes
+```powershell
+conda activate embodiedops-robocasa
+python -B -m unittest discover -s tests -v
+```
 
-## Evidence discipline
+Tests include tiny CPU optimizer and MuJoCo contact fixtures, not RoboCasa policy
+episodes. Experiment commands in the reports require pinned assets, fresh output
+directories and explicit compute approval. No new run is needed to view the demo.
 
-Planned features are not treated as completed features.
+## Environment and scope
 
-`RESUME_EVIDENCE.md` is the authoritative record for what has actually been implemented and verified.
+Executed on Windows 11 / RTX 3060 Laptop 6 GB: LeRobot 0.6.1, RoboCasa 1.0.0,
+robosuite 1.5.2, MuJoCo 3.3.1, PyTorch 2.11.0+cu128.
+See [policy environment](environment/policy.md),
+[simulation environment](environment/simulation.md) and pinned Phase1A/1B manifests.
+The separate PushT and Panda Lift environments are historical regression backends.
 
-Latest learning milestone: [camera correction and completed diagnostic evaluation](environment/learning-repair-v1-completion.md).
-Both 5,000-update arms were evaluated on all four diagnostic seeds and rejected;
-no robot-success improvement is claimed. Final seeds remain gated and unused.
-
-Latest controlled follow-up: [FP32-master optimizer experiment](environment/optimizer-precision-v1.md).
-Training completed 5,000 updates and changed previously unchanged BF16
-norm weights, but worsened fixed losses. Post-training reload timed out before
-robot evaluation; no new robot-success claim or promotion.
+No autonomous LLM reasoning, world-model training, real hardware deployment or
+proven success-rate improvement is claimed. The external reasoning endpoint
+adapter is untested and was unused. The contribution is an auditable connection
+between VLA optimization, physical failure evidence and repair rejection.

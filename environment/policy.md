@@ -1,5 +1,16 @@
 # Policy / Robot Learning Environment
 
+## Current integrated VLA environment
+
+SmolVLA/RoboCasa work uses the separate **`embodiedops-robocasa`** environment:
+Python3.12, PyTorch2.11.0+cu128, LeRobot0.6.1, NumPy2.2.5 after the pinned RoboCasa
+installation. The action expert/state projection were fine-tuned; saved
+normalization and original model architecture were retained.
+See [Phase1A](phase1a.md), [Phase1B](phase1b.md) and the current
+[technical overview](../docs/TECHNICAL_OVERVIEW.md).
+The commands below document the earlier PushT environment, not the current VLA
+setup. Do not reinstall or merge environments for portfolio work.
+
 Verified locally on Windows 11 with an NVIDIA GeForce RTX 3060 Laptop GPU (6 GB VRAM).
 
 ## Conda environment

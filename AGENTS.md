@@ -20,7 +20,11 @@ The immediate milestone is:
 
 **SmolVLA + RoboCasa + CloseFridge**
 
-First establish a real VLA baseline and a small real fine-tuning / post-training run before implementing the full diagnosis agent.
+The baseline, sustained fine-tuning, physical diagnostics and bounded deterministic
+workflow are implemented. The current milestone is portfolio delivery from
+completed evidence. Further training, policy inference, simulation evaluation,
+sampling/precision/horizon sweeps and new Agent features are stopped unless
+explicitly requested. See `PROJECT_CONTEXT.md` for current measured outcomes.
 
 ## Current project direction
 Longer-term loop:
@@ -54,17 +58,8 @@ PushT is only a lightweight regression / learning backend.
 - Update `RESUME_EVIDENCE.md` only after real implementation and verification.
 
 ## Immediate task
-Before modifying the environment, produce a concrete plan for:
-- current LeRobot RoboCasa / SmolVLA support,
-- dependency strategy,
-- whether a third environment is needed,
-- local vs Nebius compute split,
-- dataset and pretrained checkpoint,
-- observation space,
-- action space,
-- baseline evaluation,
-- small fine-tuning experiment,
-- expected GPU memory,
-- likely Windows/Linux risks.
-
-Wait for user approval before environment changes or long-running training.
+Preserve original experiments and present only verified results. Use existing
+artifacts for portfolio work. The executed backend is deterministic, not an LLM
+agent. Do not claim proven robot-success improvement, world-model training or
+hardware deployment. Wait for explicit approval before environment changes or
+new training/evaluation.

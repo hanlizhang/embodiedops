@@ -1,5 +1,20 @@
 # Resume Evidence
 
+## Current claim boundary — portfolio delivery, 2026-10-20
+
+Verified: SmolVLA Flow Matching fine-tuning, episode-disjoint local validation,
+RoboCasa closed-loop execution, camera/state/action/controller contracts,
+physical contact diagnostics, deterministic repair routing and candidate
+acceptance/rejection. Four sustained runs completed 5,000 updates each.
+Episode-balanced, motion-mixture and terminal-window checkpoints were actually
+evaluated; the FP32 candidate was not, because its independent reload timed out.
+No reliable success improvement, autonomous LLM reasoning, world-model training
+or hardware deployment is claimed. Final seeds 120–123 remain unused.
+See [resume/interview wording](docs/INTERVIEW.md) and [demo](docs/DEMO.md).
+
+The dated entries below preserve what was known at each milestone. Later
+completion entries supersede earlier blockers without erasing them.
+
 ## Verified integrated workflow — 2026-10-19
 
 This dated entry supersedes the old unverified checklist only for these measured
@@ -41,40 +56,16 @@ Do not convert planned work into resume claims.
 - [x] robosuite 1.5.2
 - [x] Panda `Lift` simulation
 
-## Not yet verified
+## Unverified or out of scope
 
-- [ ] RoboCasa integration
-- [ ] SmolVLA baseline evaluation
-- [ ] SmolVLA fine-tuning / post-training
-- [ ] CloseFridge success-rate benchmark
-- [ ] VLA inference-latency benchmark
-- [ ] Controlled fault injection
-- [ ] Diagnostic probe library
-- [ ] NVIDIA / Nebius reasoning-agent integration
-- [ ] Agentic root-cause diagnosis
-- [ ] Automatic repair routing
-- [ ] Targeted VLA post-training triggered by diagnosis
-- [ ] Before/after repair benchmark
-- [ ] pi0 integration
-- [ ] RL-based policy improvement
+- Autonomous LLM root-cause diagnosis or reasoning-agent integration.
+- Reliable robot-success improvement or generalization on untouched final scenes.
+- World-model training, real hardware deployment, pi0 integration or RL repair.
+- Operational full reload and robot evaluation of the sustained FP32 candidate.
 
-## Resume claim status
-
-Current status: environment, simulation, and robot-policy pipeline validation only.
-
-It is accurate to say that the project has:
-- run LeRobot-based Diffusion Policy training and evaluation on CUDA,
-- generated simulation rollout videos,
-- established a MuJoCo/robosuite Panda manipulation environment.
-
-Do **not** yet claim:
-- SmolVLA/VLA fine-tuning,
-- RoboCasa policy training,
-- agentic diagnosis,
-- autonomous policy repair,
-- measured policy improvement,
-
-until those results are actually implemented and verified.
+The former Phase0-only resume restriction is superseded by the measured VLA
+training and evaluation entries below. Those later results support integration
+and controlled experimentation, not an accepted autonomous policy repair.
 
 ## Update rule
 

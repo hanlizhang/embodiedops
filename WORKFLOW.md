@@ -1,162 +1,61 @@
-# EmbodiedOps — Development Workflow
+# EmbodiedOps workflow
 
-## Roles
+The current deliverable is the completed-evidence portfolio. Research entry points
+below are capabilities to inspect, not automatic next steps. Opening this
+repository does not authorize another training or evaluation run.
 
-### ChatGPT Project chat
-Use for:
-- project direction,
-- architecture decisions,
-- VLA / robot-learning explanations,
-- paper / benchmark discussion,
-- debugging strategy,
-- hackathon narrative,
-- resume / portfolio framing.
+## Review and presentation
 
-### Codex local project
-Use for:
-- reading and modifying the local Git repository,
-- writing Python / configs / tests,
-- running short diagnostics,
-- inspecting datasets and tensor shapes,
-- running approved training / evaluation commands,
-- reviewing diffs,
-- committing code.
+1. Read AGENTS, PROJECT_CONTEXT, README, RESUME_EVIDENCE and the policy/simulation
+   environment notes; inspect Git status.
+2. Verify claims against compact results and original artifacts. Keep invalid
+   attempts and runtime deviations visible.
+3. Build the local demo with `scripts/build_portfolio_demo.py`. It reads files
+   only and requires no GPU or simulator.
+4. Run relevant lightweight tests for code changes. Do not turn a documentation
+   task into policy evaluation or training.
+5. Review exact staged paths and `git diff --cached --check` before an authorized
+   commit. Exclude outputs, weights, videos, caches, logs and unrelated work.
 
-### Windows terminal / GPU
-This machine is the primary local compute worker:
-- RTX 3060 Laptop GPU, 6 GB VRAM,
-- local Conda environments,
-- MuJoCo / robosuite,
-- LeRobot / CUDA.
+## Existing executable research workflow
 
-### GitHub
-Canonical remote source:
-- code,
-- configuration,
-- project documentation,
-- small structured metrics / reports.
+| Responsibility | Entry point |
+|---|---|
+| Deterministic evidence/tool routing | `scripts/agent_workflow.py` |
+| Matched learned-policy rollout and observation guards | `scripts/phase1d_rollout.py` |
+| Flow Matching training / independent reload | `scripts/phase2_train_v1.py` |
+| Episode-balanced / motion-proxy sampling | `scripts/learning_sampling.py` |
+| Two-arm sustained experiment | `scripts/learning_repair_experiment.py` |
+| Camera cleanup / missing-pair continuation | `scripts/renderer_lifecycle.py`, `scripts/learning_repair_resume.py` |
+| Reward-window sampling / registered candidate | `scripts/terminal_sampling.py`, `scripts/terminal_window_experiment.py` |
+| Physical contact instrumentation | `scripts/control_diagnostics.py` |
 
-Do not commit:
-- large checkpoints,
-- large generated datasets,
-- secrets,
-- unnecessary binary artifacts.
+Later runners reuse training, rollout and acceptance components; they are not all
+experiments autonomously selected by the deterministic loop. Exact commands and
+source snapshots remain in each ignored run directory. The two-arm runner's
+historical unconditional final loop was superseded by the documented continuation
+gate. Do not blindly execute an archived command.
 
-Use Hugging Face Hub or cloud storage later for large checkpoints if needed.
+## Controls for any separately approved future run
 
-## Local repository
+Use exclusive output/cache paths, pinned revisions and saved processors. Declare
+training/episode/runtime bounds and seeds before execution. Store sample order,
+noise seeds, losses, gradients, parameter hashes, costs and checkpoint rules.
+Separate integrity, offline validation and physical success: research-only
+rollouts do not promote a candidate.
 
-```text
-C:\Users\Alan\Projects\embodiedops
-```
+Require matched reset, instruction, cameras, controller and sampling settings.
+Keep privileged contact/door diagnostics out of policy inputs. Stop on invalid
+observations and preserve the attempt. Never select checkpoints or scenes by
+final-test results. Report negative and partial outcomes.
 
-Codex should open this exact local repository.
+## Environment and Git
 
-Do not create a duplicate Codex copy of the project.
+Use `embodiedops-robocasa` for integrated VLA work. The older `embodiedops` PushT
+and `embodiedops-mujoco` Lift environments remain separate. Installation, upgrades
+and environment changes require explicit approval.
 
-## Context persistence
-
-The durable context lives in:
-- `PROJECT_CONTEXT.md` — project state and direction,
-- `AGENTS.md` — coding-agent rules,
-- `RESUME_EVIDENCE.md` — verified implementation evidence,
-- `environment/*.md` — verified environments,
-- `README.md` — public-facing project description.
-
-Chat history is useful but is not the source of truth.
-
-At the end of each milestone:
-1. update `PROJECT_CONTEXT.md`,
-2. update `RESUME_EVIDENCE.md` only with verified facts,
-3. commit the changes.
-
-## Git workflow
-
-Before work:
-
-```powershell
-cd C:\Users\Alan\Projects\embodiedops
-git status
-git pull
-```
-
-After a small verified change:
-
-```powershell
-git status
-git diff
-git add <specific files>
-git commit -m "<meaningful message>"
-git push
-```
-
-Avoid large unreviewed commits.
-
-## Environment workflow
-
-### Policy environment
-
-```powershell
-conda activate embodiedops
-```
-
-Use for:
-- LeRobot,
-- PyTorch / CUDA,
-- PushT,
-- Diffusion Policy,
-- future policy-side tooling where dependencies remain compatible.
-
-### Simulation environment
-
-```powershell
-conda activate embodiedops-mujoco
-```
-
-Use for:
-- MuJoCo,
-- robosuite,
-- Panda simulation.
-
-### RoboCasa / SmolVLA
-
-Do not assume either existing environment is correct.
-
-Codex must first propose:
-- dependency requirements,
-- environment strategy,
-- whether a third Conda environment is needed.
-
-No installation until approved.
-
-## Training workflow
-
-For every real training run:
-
-1. Record the exact config.
-2. Record dataset / revision.
-3. Record seed.
-4. Record model / checkpoint.
-5. Record device and GPU.
-6. Record start / end time.
-7. Save machine-readable metrics.
-8. Save only useful rollout videos.
-9. Summarize the result in a report.
-10. Update `RESUME_EVIDENCE.md` only if the result is verified.
-
-Do not treat a smoke test as a meaningful model result.
-
-## Current immediate workflow
-
-```text
-1. Inspect current repo and docs
-2. Research current LeRobot 0.6.1 RoboCasa + SmolVLA support
-3. Propose environment strategy
-4. Inspect dataset and observation/action spaces
-5. Run baseline evaluation
-6. Inspect one real batch and model config
-7. Run a small approved SmolVLA fine-tuning experiment
-8. Evaluate success rate and inference latency
-9. Save rollout video + metrics + technical note
-10. Only then begin fault injection / agentic diagnosis work
-```
+Git is the code/documentation source of truth. No automatic commits, pushes or
+artifact publication without task authorization. Historical measurements are
+immutable; add a labeled audit or addendum when needed. Public clones intentionally
+omit model weights, simulator assets and local media.

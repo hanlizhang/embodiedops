@@ -1,0 +1,14 @@
+{
+  "terminal-window-loss.svg": {
+    "source": "outputs/agent-workflow-v1/terminal-window-v1/analysis/loss-comparison.svg",
+    "bytes": 7562,
+    "sha256": "234effa17faac988fbe2367ab9ff12698a86507797f818e414706633ad1b4c60",
+    "transformation": "none; exact copy"
+  },
+  "terminal-window-doors.svg": {
+    "source": "outputs/agent-workflow-v1/terminal-window-v1/analysis/door-progress.svg",
+    "bytes": 116038,
+    "sha256": "78e94eee819a5035a81929151c380100ff0234003f2bc9b7c13b45f11a3870c8",
+    "transformation": "none; exact copy"
+  }
+}

@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1050" height="970">
+<rect width="100%" height="100%" fill="white"/>
+<text x="70" y="28" font-family="Arial" font-size="20">Terminal-window repair: actual fixed losses</text>
+<path d="M75 245H995" stroke="#ddd"/>
+<text x="8" y="250" font-size="12">0</text>
+<text x="75" y="265" font-size="12">0</text>
+<path d="M75 200H995" stroke="#ddd"/>
+<text x="8" y="205" font-size="12">0.103</text>
+<text x="305" y="265" font-size="12">1250</text>
+<path d="M75 155H995" stroke="#ddd"/>
+<text x="8" y="160" font-size="12">0.206</text>
+<text x="535" y="265" font-size="12">2500</text>
+<path d="M75 110H995" stroke="#ddd"/>
+<text x="8" y="115" font-size="12">0.309</text>
+<text x="765" y="265" font-size="12">3750</text>
+<path d="M75 65H995" stroke="#ddd"/>
+<text x="8" y="70" font-size="12">0.412</text>
+<text x="995" y="265" font-size="12">5000</text>
+<text x="75" y="53" font-size="16">Original fixed training anchors — Flow Matching loss</text>
+<text x="450" y="284" font-size="12">Optimizer update</text>
+<polyline points="75.00,104.63 167.00,83.87 259.00,82.09 351.00,88.49 443.00,93.07 535.00,97.85 627.00,99.38 719.00,105.10 811.00,105.12 903.00,106.58 995.00,106.96" fill="none" stroke="#2563eb" stroke-width="2"/>
+<circle cx="75.00" cy="104.63" r="3" fill="#2563eb"/>
+<circle cx="167.00" cy="83.87" r="3" fill="#2563eb"/>
+<circle cx="259.00" cy="82.09" r="3" fill="#2563eb"/>
+<circle cx="351.00" cy="88.49" r="3" fill="#2563eb"/>
+<circle cx="443.00" cy="93.07" r="3" fill="#2563eb"/>
+<circle cx="535.00" cy="97.85" r="3" fill="#2563eb"/>
+<circle cx="627.00" cy="99.38" r="3" fill="#2563eb"/>
+<circle cx="719.00" cy="105.10" r="3" fill="#2563eb"/>
+<circle cx="811.00" cy="105.12" r="3" fill="#2563eb"/>
+<circle cx="903.00" cy="106.58" r="3" fill="#2563eb"/>
+<circle cx="995.00" cy="106.96" r="3" fill="#2563eb"/>
+<text x="75" y="305" fill="#2563eb" font-size="12">Episode-balanced</text>
+<polyline points="75.00,104.63 167.00,81.53 259.00,78.33 351.00,89.65 443.00,92.12 535.00,96.79 627.00,98.26 719.00,101.01 811.00,100.63 903.00,102.14 995.00,102.26" fill="none" stroke="#c2410c" stroke-width="2"/>
+<circle cx="75.00" cy="104.63" r="3" fill="#c2410c"/>
+<circle cx="167.00" cy="81.53" r="3" fill="#c2410c"/>
+<circle cx="259.00" cy="78.33" r="3" fill="#c2410c"/>
+<circle cx="351.00" cy="89.65" r="3" fill="#c2410c"/>
+<circle cx="443.00" cy="92.12" r="3" fill="#c2410c"/>
+<circle cx="535.00" cy="96.79" r="3" fill="#c2410c"/>
+<circle cx="627.00" cy="98.26" r="3" fill="#c2410c"/>
+<circle cx="719.00" cy="101.01" r="3" fill="#c2410c"/>
+<circle cx="811.00" cy="100.63" r="3" fill="#c2410c"/>
+<circle cx="903.00" cy="102.14" r="3" fill="#c2410c"/>
+<circle cx="995.00" cy="102.26" r="3" fill="#c2410c"/>
+<text x="380" y="305" fill="#c2410c" font-size="12">Terminal-window</text>
+<path d="M75 545H995" stroke="#ddd"/>
+<text x="8" y="550" font-size="12">0</text>
+<text x="75" y="565" font-size="12">0</text>
+<path d="M75 500H995" stroke="#ddd"/>
+<text x="8" y="505" font-size="12">0.118</text>
+<text x="305" y="565" font-size="12">1250</text>
+<path d="M75 455H995" stroke="#ddd"/>
+<text x="8" y="460" font-size="12">0.236</text>
+<text x="535" y="565" font-size="12">2500</text>
+<path d="M75 410H995" stroke="#ddd"/>
+<text x="8" y="415" font-size="12">0.354</text>
+<text x="765" y="565" font-size="12">3750</text>
+<path d="M75 365H995" stroke="#ddd"/>
+<text x="8" y="370" font-size="12">0.472</text>
+<text x="995" y="565" font-size="12">5000</text>
+<text x="75" y="353" font-size="16">Original global held-out anchors — Flow Matching loss</text>
+<text x="450" y="584" font-size="12">Optimizer update</text>
+<polyline points="75.00,404.31 167.00,379.98 259.00,382.73 351.00,388.26 443.00,395.19 535.00,397.01 627.00,399.32 719.00,403.39 811.00,403.77 903.00,404.64 995.00,405.08" fill="none" stroke="#2563eb" stroke-width="2"/>
+<circle cx="75.00" cy="404.31" r="3" fill="#2563eb"/>
+<circle cx="167.00" cy="379.98" r="3" fill="#2563eb"/>
+<circle cx="259.00" cy="382.73" r="3" fill="#2563eb"/>
+<circle cx="351.00" cy="388.26" r="3" fill="#2563eb"/>
+<circle cx="443.00" cy="395.19" r="3" fill="#2563eb"/>
+<circle cx="535.00" cy="397.01" r="3" fill="#2563eb"/>
+<circle cx="627.00" cy="399.32" r="3" fill="#2563eb"/>
+<circle cx="719.00" cy="403.39" r="3" fill="#2563eb"/>
+<circle cx="811.00" cy="403.77" r="3" fill="#2563eb"/>
+<circle cx="903.00" cy="404.64" r="3" fill="#2563eb"/>
+<circle cx="995.00" cy="405.08" r="3" fill="#2563eb"/>
+<text x="75" y="605" fill="#2563eb" font-size="12">Episode-balanced</text>
+<polyline points="75.00,404.31 167.00,378.33 259.00,381.45 351.00,388.79 443.00,392.63 535.00,394.16 627.00,395.77 719.00,399.67 811.00,400.57 903.00,400.99 995.00,401.28" fill="none" stroke="#c2410c" stroke-width="2"/>
+<circle cx="75.00" cy="404.31" r="3" fill="#c2410c"/>
+<circle cx="167.00" cy="378.33" r="3" fill="#c2410c"/>
+<circle cx="259.00" cy="381.45" r="3" fill="#c2410c"/>
+<circle cx="351.00" cy="388.79" r="3" fill="#c2410c"/>
+<circle cx="443.00" cy="392.63" r="3" fill="#c2410c"/>
+<circle cx="535.00" cy="394.16" r="3" fill="#c2410c"/>
+<circle cx="627.00" cy="395.77" r="3" fill="#c2410c"/>
+<circle cx="719.00" cy="399.67" r="3" fill="#c2410c"/>
+<circle cx="811.00" cy="400.57" r="3" fill="#c2410c"/>
+<circle cx="903.00" cy="400.99" r="3" fill="#c2410c"/>
+<circle cx="995.00" cy="401.28" r="3" fill="#c2410c"/>
+<text x="380" y="605" fill="#c2410c" font-size="12">Terminal-window</text>
+<path d="M75 845H995" stroke="#ddd"/>
+<text x="8" y="850" font-size="12">0</text>
+<text x="75" y="865" font-size="12">0</text>
+<path d="M75 800H995" stroke="#ddd"/>
+<text x="8" y="805" font-size="12">0.0933</text>
+<text x="305" y="865" font-size="12">1250</text>
+<path d="M75 755H995" stroke="#ddd"/>
+<text x="8" y="760" font-size="12">0.187</text>
+<text x="535" y="865" font-size="12">2500</text>
+<path d="M75 710H995" stroke="#ddd"/>
+<text x="8" y="715" font-size="12">0.28</text>
+<text x="765" y="865" font-size="12">3750</text>
+<path d="M75 665H995" stroke="#ddd"/>
+<text x="8" y="670" font-size="12">0.373</text>
+<text x="995" y="865" font-size="12">5000</text>
+<text x="75" y="653" font-size="16">Held-out terminal anchors (baseline measured only at selected step 5000) — Flow Matching loss</text>
+<text x="450" y="884" font-size="12">Optimizer update</text>
+<polyline points="75.00,699.38 167.00,678.33 259.00,678.96 351.00,688.98 443.00,689.29 535.00,693.63 627.00,695.31 719.00,698.98 811.00,701.56 903.00,701.26 995.00,702.01" fill="none" stroke="#c2410c" stroke-width="2"/>
+<circle cx="75.00" cy="699.38" r="3" fill="#c2410c"/>
+<circle cx="167.00" cy="678.33" r="3" fill="#c2410c"/>
+<circle cx="259.00" cy="678.96" r="3" fill="#c2410c"/>
+<circle cx="351.00" cy="688.98" r="3" fill="#c2410c"/>
+<circle cx="443.00" cy="689.29" r="3" fill="#c2410c"/>
+<circle cx="535.00" cy="693.63" r="3" fill="#c2410c"/>
+<circle cx="627.00" cy="695.31" r="3" fill="#c2410c"/>
+<circle cx="719.00" cy="698.98" r="3" fill="#c2410c"/>
+<circle cx="811.00" cy="701.56" r="3" fill="#c2410c"/>
+<circle cx="903.00" cy="701.26" r="3" fill="#c2410c"/>
+<circle cx="995.00" cy="702.01" r="3" fill="#c2410c"/>
+<text x="75" y="905" fill="#c2410c" font-size="12">Terminal-window</text>
+<polyline points="995.00,696.81" fill="none" stroke="#2563eb" stroke-width="2"/>
+<circle cx="995.00" cy="696.81" r="3" fill="#2563eb"/>
+<text x="380" y="905" fill="#2563eb" font-size="12">Native selected reference only</text>
+</svg>

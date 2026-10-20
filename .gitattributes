@@ -1,0 +1,3 @@
+# Preserve copied scientific evidence bytes, including their original CRLF.
+# Treat CR as the line terminator, not trailing content, for these two plots.
+docs/assets/*.svg -text whitespace=cr-at-eol
