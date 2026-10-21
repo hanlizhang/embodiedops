@@ -1,32 +1,32 @@
 # EmbodiedOps
 
-**Reproducible VLA fine-tuning, manipulation failure analysis and repair verification.**
+**VLA post-training, closed-loop manipulation and tool-driven policy diagnosis.**
 
-EmbodiedOps connects SmolVLA Flow Matching training to actual RoboCasa/MuJoCo
-`CloseFridge` execution. It records what the policy saw, what it commanded, what
-the robot did and whether a proposed repair passed a separate acceptance gate.
-The executed orchestration backend uses deterministic evidence rules.
+EmbodiedOps connects SmolVLA training to a robot executing tasks in RoboCasa and
+MuJoCo. It combines action-model fine-tuning, controller integration, physical
+contact analysis and tools for diagnosing, modifying and evaluating a policy.
 
-**Result:** real training and closed-loop evaluation are complete; no candidate
-established a reliable robot-success improvement. Negative results are retained,
-including an optimizer-precision ablation and targeted terminal-window sampling.
-This is a simulation research case study, not an official benchmark reproduction.
+The implemented system includes four 5,000-update training experiments, a
+99.9M-parameter trainable action module, three-camera observations, 12D robot
+control and matched-scene verification. The next extension is model-driven
+diagnosis with NVIDIA Nemotron; completed workflow runs use evidence-based rules.
 
-## Start here
+## Explore the project
 
-- [Three-minute local demo and speaker script](docs/DEMO.md): authentic successful
-  and failed rollouts, measured training curves and a rejected repair.
-- [Technical overview](docs/TECHNICAL_OVERVIEW.md): objective, dataset, interfaces,
-  controller, tools and experimental controls.
-- [English / 中文 resume material and interview answers](docs/INTERVIEW.md).
-- [Verified evidence ledger](RESUME_EVIDENCE.md).
+- **[Live Demo](https://hanlizhang.github.io/embodiedops/demo/)**: watch recorded
+  robot manipulation and explore the model, controller and diagnostic workflow.
+- [Demo and recordings](docs/DEMO.md): watch the three public rollout videos
+  and open or download the complete interactive presentation.
+- [Demo HTML source](docs/demo/index.html): system architecture, successful and
+  failed manipulation, engineering details and the full experiment comparison.
+- [Technical overview](docs/TECHNICAL_OVERVIEW.md): model, dataset, interfaces,
+  control, diagnostic tools and experimental conditions.
+- [Implementation evidence](RESUME_EVIDENCE.md).
 
-```text
-Saved failure evidence → contract / instruction / physical probes
-                     → versioned configuration or learning candidate
-                     → checkpoint verification → matched RoboCasa episodes
-                     → independent acceptance / rejection
-```
+The demo covers the complete system. The terminal-window result is one detailed
+case study within it. The HTML includes three publicly viewable Google Drive
+recordings and requires no local video files. Open the Live Demo above, or download the HTML and open it in a browser. The local builder
+can still connect the original MP4s for offline viewing.
 
 ## What is implemented
 
@@ -102,15 +102,17 @@ and the [delivery review](docs/DELIVERY_REVIEW.md) remain available in a source-
 With the existing local artifact tree:
 
 ```powershell
-python -B scripts/build_portfolio_demo.py --output outputs/portfolio-demo-v1
-# Open outputs/portfolio-demo-v1/index.html in a browser.
+python -B scripts/build_portfolio_demo.py --output outputs/portfolio-demo-v3
+# Open outputs/portfolio-demo-v3/index.html in a browser.
 ```
 
-This standard-library script checks recorded outcomes and hashes, then references
-existing videos and plots. It performs no model loading, training, inference,
+This standard-library script checks recorded outcomes and hashes, then loads
+`docs/demo/index.html` and connects the existing videos. Measured plots are embedded
+in the HTML. It performs no model loading, training, inference,
 physics or network requests. It refuses an existing output directory.
-Videos/checkpoints/caches are intentionally excluded from Git; a source-only clone
-can read the reports and compact JSON, but cannot play missing local recordings.
+Videos/checkpoints/caches are intentionally excluded from Git. A source-only clone
+can open `docs/demo/index.html` and play the public recordings online; the verified
+local builder requires the original evidence artifacts.
 
 Lightweight implementation checks, using the pinned environment:
 
@@ -135,3 +137,4 @@ No autonomous LLM reasoning, world-model training, real hardware deployment or
 proven success-rate improvement is claimed. The external reasoning endpoint
 adapter is untested and was unused. The contribution is an auditable connection
 between VLA optimization, physical failure evidence and repair rejection.
+

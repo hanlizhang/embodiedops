@@ -1,53 +1,81 @@
-# Three-minute artifact-only demonstration
+# EmbodiedOps interactive demonstration
 
-Build on the existing evidence machine:
+The presentation covers VLA training, robot control, physical diagnostics and the
+diagnosis/repair tool loop. Successful and failed rollouts come first; the four
+sustained learning experiments share one table. Terminal-window is an expandable
+case study, not the entire presentation.
+
+## Watch the public recordings
+
+**[Open the interactive Demo](https://hanlizhang.github.io/embodiedops/demo/)**
+
+The three original videos are now connected in `docs/demo/index.html`. No local
+video directory is required for online playback. Download that HTML and open it
+in a browser; use the clip selectors to switch recordings. Each clip also has an
+**Open video** link.
+
+- [Completed task: episode-balanced, seed 44](https://drive.google.com/file/d/1v1GlguQ2h86hdpv7uq4vtzRITG5HGdgZ/view?usp=drivesdk)
+- [Incomplete closure: episode-balanced, seed 43](https://drive.google.com/file/d/1HovTLk54HdhBUJH_UcA2cx4Ky4ebHMIJ/view?usp=drivesdk)
+- [Terminal-window candidate: seed 43](https://drive.google.com/file/d/1N2Vh7-ny13ELoIvPfFjYbKI4KfzzLTq8/view?usp=drivesdk)
+
+## Play locally with the existing recordings
+
+On the Windows evidence machine, update the checkout and choose a fresh output:
 
 ```powershell
-python -B scripts/build_portfolio_demo.py --output outputs/portfolio-demo-v1
+git pull --ff-only
+python -B scripts/build_portfolio_demo.py --output outputs/portfolio-demo-v3
+ii .\outputs\portfolio-demo-v3\index.html
 ```
 
-Open `outputs/portfolio-demo-v1/index.html` in a browser. For another build use a
-fresh destination. No dependencies beyond Python's standard library are needed
-to build. The page uses original local MP4s and measured SVGs; it does not start
-training, load a policy, replay state through a simulator or request network data.
+If `portfolio-demo-v3` already exists, choose another fresh name. The builder
+never overwrites historical outputs. It verifies original results, summaries,
+manifests and MP4 containers, uses `docs/demo/index.html`, and inserts correct
+relative video paths. Google Drive is not needed for local playback. No model,
+training, inference or simulation is started, and no new dependency is required.
 
-Missing artifacts stop the build with their paths. No placeholder or fabricated
-video is substituted. A fresh Git clone has the source, reports and compact JSON,
-but not the ignored media/checkpoints. The generated `provenance.json` records
-the exact files, sizes and SHA256 hashes used. The page is local to this checkout;
-do not send its HTML alone and expect the referenced videos to travel with it.
+A source-only clone does not contain the videos. Missing original artifacts stop
+the local build with exact paths. The resulting `provenance.json` retains input
+hashes, template, builder and generated-HTML provenance.
 
-## Talk track
+## Three original recordings
 
-| Time | Show | Say |
+All paths below are relative to the repository root.
+
+| Slot | Original recording | Recorded outcome |
 |---|---|---|
-| 0:00–0:25 | Episode-balanced seed 44, full original video | “This is an actual learned-policy rollout after 5,000 updates. The task predicate is true at action 220; the final opening is 0.31°. It demonstrates execution, not generalization.” |
-| 0:25–0:55 | Episode-balanced seed 43; play or seek to 12.5s and end | “The same selected checkpoint makes substantial progress but leaves 13.11° open after 600 actions. Recorded door contact ends after 251; the opening settles around 285. Visual near-contact is not sufficient evidence of force.” |
-| 0:55–1:30 | Diagnosis → sampling → training → reload timeline | “Human analysis identified incomplete closure. We audited 513 demonstrations and used reward timing to emphasize full action chunks around success. The 461 / 52 episode split, original initialization and global checkpoint rule stayed fixed. This was real 5,000-update training, followed by five independent content reload checks.” |
-| 1:30–2:15 | Fixed loss chart and full four-seed table | “Terminal held-out loss fell 3.51%, but global loss worsened 2.72%. We still executed the registered research-only robot pilot. Both methods succeeded on only seed 44.” |
-| 2:15–2:45 | Terminal-window seed 43 original video and door traces | “The candidate leaves 90° open here and has a 575 N recorded peak, including self-contact. Seed 45 also regresses. The candidate fails the success, door, force and offline gates.” |
-| 2:45–3:00 | Decision and limitations | “The useful result is a verified rejection. The backend is deterministic; final seeds stayed untouched. Lower loss on successful demonstrations did not establish a repair.” |
+| `success` | `outputs/agent-workflow-v1/learning-5000-v1/diagnostic-44-episode_balanced/rollout.mp4` | Task success at action 220; final opening 0.31° |
+| `incomplete` | `outputs/agent-workflow-v1/learning-5000-v1/diagnostic-43-episode_balanced/rollout.mp4` | 600 actions; 13.11° remains open |
+| `candidate` | `outputs/agent-workflow-v1/terminal-window-v1/diagnostic-43/rollout.mp4` | 600 actions; 90.00° remains open |
 
-These three videos are deliberately selected illustrations from the full matrix.
-The four-seed table prevents presenting the success clip as a success-rate claim.
-All video playback is the recorded 20 Hz simulation timeline, not wall-clock
-inference throughput. Text overlays were generated by the original rollout runner.
-The page adds labels outside the videos and does not alter the recordings.
+These are selected illustrations, not success-rate estimates. The page includes
+the complete four-scene comparison. Playback follows recorded simulation time,
+not wall-clock inference speed. Original recording overlays remain unchanged.
 
-## Exact media
+## Hosting and future video updates
 
-- Success: `outputs/agent-workflow-v1/learning-5000-v1/diagnostic-44-episode_balanced/rollout.mp4`
-- Incomplete closing: `outputs/agent-workflow-v1/learning-5000-v1/diagnostic-43-episode_balanced/rollout.mp4`
-- Rejected candidate: `outputs/agent-workflow-v1/terminal-window-v1/diagnostic-43/rollout.mp4`
-- Loss chart: `outputs/agent-workflow-v1/terminal-window-v1/analysis/loss-comparison.svg`
-- Door traces: `outputs/agent-workflow-v1/terminal-window-v1/analysis/door-progress.svg`
+The public recording links are already configured. To replace a recording:
 
-Paired outcomes come from the reviewed
-[compact record](../environment/terminal-window-experiment-v1-results.json),
-cross-checked against the original summaries during the build. Selection was by
-global held-out loss before robot evaluation. The recorded runtime deviation
-(reload 4000 took 23.6 min against 15 min) stays visible, even though its content check
-passed. FP32 had a different unresolved full-reload timeout and no robot evaluation.
+1. Upload the corresponding original file. For Drive, allow anyone with the link to
+   view each video and wait until processing completes.
+2. Check playback while signed out.
+3. Insert the three file-sharing URLs into the `video-sources` JSON block in
+   `docs/demo/index.html`, using the slot names above. Do not use a folder link.
+4. The page converts Drive URLs to iframe previews and preserves `resourcekey`.
+   HTTPS MP4 URLs use the native video player.
+5. Publish the HTML through GitHub Pages or another static host and check all
+   three clips before adding the hosted URL to a CV. A `github.com/.../blob/...`
+   address opens the source file and should not be labelled as a playable demo.
 
-The rest of the project is covered in the [technical overview](TECHNICAL_OVERVIEW.md)
-and [English/Chinese interview material](INTERVIEW.md).
+GitHub Pages publishes **main → /docs**. The presentation is served at the
+`/demo/` path; future pushes to `main` update the hosted page.
+`docs/.nojekyll` keeps the HTML as a static file. Never replace a missing recording
+with generated imagery.
+
+## Evidence
+
+The presentation embeds the measured plots from `docs/assets/terminal-window-loss.svg`
+and `docs/assets/terminal-window-doors.svg`. Its results come from the compact
+[record](../environment/terminal-window-experiment-v1-results.json) and
+[technical overview](TECHNICAL_OVERVIEW.md). Experimental limitations and the
+runtime-cap deviation remain in the expandable case study and original reports.
