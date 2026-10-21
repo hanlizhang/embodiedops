@@ -74,6 +74,7 @@ class ContactRecorder:
             with (self.output / 'contacts.jsonl').open('a', encoding='utf-8') as f:
                 f.write(json.dumps({'step': index, 'samples': samples}) + '\n')
             self.last_sample_count = len(samples)
+            self.last_samples = samples
 
 
 def action_change(previous, current):

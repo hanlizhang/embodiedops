@@ -1,0 +1,1877 @@
+{
+  "status": {
+    "complete": true,
+    "planned_pairs": 4,
+    "completed_pairs": 4,
+    "valid_seeds": [
+      43,
+      44,
+      45,
+      46
+    ],
+    "missing_seeds": [],
+    "excluded_attempts": [
+      {
+        "episode": "original-baseline-46",
+        "path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\agent-workflow-v1\\contact-replanning-v1\\baseline-46",
+        "termination": "exception",
+        "actions": 0,
+        "inference_calls": 0,
+        "exception": "Traceback (most recent call last):\n  File \"C:\\Users\\Alan\\Projects\\embodiedops\\scripts\\phase1d_rollout.py\", line 547, in main\n    batch = prepare(obs, first=index == 1)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Alan\\Projects\\embodiedops\\scripts\\phase1d_rollout.py\", line 467, in prepare\n    assert all(torch.isfinite(v).all() for v in batch.values() if isinstance(v, torch.Tensor))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Alan\\Projects\\embodiedops\\scripts\\phase1d_rollout.py\", line 467, in <genexpr>\n    assert all(torch.isfinite(v).all() for v in batch.values() if isinstance(v, torch.Tensor))\n               ^^^^^^^^^^^^^^^^^\ntorch.AcceleratorError: CUDA error: out of memory\nSearch for `cudaErrorMemoryAllocation' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\nCUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\nFor debugging consider passing CUDA_LAUNCH_BLOCKING=1\nCompile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n\n"
+      }
+    ],
+    "candidate_46_executed": true
+  },
+  "decision": "rejected_on_four_completed_pairs",
+  "gate_reasons": [
+    "contact_force_regression",
+    "door_progress_regression",
+    "no_success_gain",
+    "per_seed_success_regression"
+  ],
+  "metrics": {
+    "baseline-43": {
+      "path": "outputs\\agent-workflow-v1\\contact-replanning-v1\\baseline-43",
+      "success": true,
+      "actions": 472,
+      "valid": true,
+      "guard_failure": false,
+      "termination": "success",
+      "initial_angles_deg": [
+        85.5238776175674
+      ],
+      "final_angles_deg": [
+        0.4236394254326241
+      ],
+      "closing_deg": 85.10023819213477,
+      "best_closing_deg": 85.10023819213477,
+      "eef_path_m": 2.1219457171247855,
+      "contacts_available": true,
+      "loaded_actions": 305,
+      "peak_contact_normal_N": 451.1166402450891,
+      "mean_inference_seconds": 0.765710590002709,
+      "peak_cuda_allocated": 971354112,
+      "rollout_seconds": 102.32347420000588,
+      "worker_seconds": 168.68700000000536,
+      "inference_calls": 10,
+      "replan_events": 0,
+      "discarded_actions": 0,
+      "inference_total_seconds": 7.657105900027091,
+      "simulated_seconds": 23.59999999999752,
+      "guard_activations": [],
+      "doors": {
+        "fridgebottomfreezer_main_group_1_fridge_door_joint": {
+          "initial_deg": 85.5238776175674,
+          "final_deg": 0.4236394254326241,
+          "best_closing_deg": 85.10023819213477
+        }
+      },
+      "mean_target_error_m": 0.024243667020727108,
+      "sum_target_delta_m": 13.117975722975999,
+      "sum_achieved_delta_m": 2.1219457171247855,
+      "contact_peaks_N": {
+        "robot_fridge": 358.4284637211462,
+        "robot_self": 451.1166402450891,
+        "robot_environment": 0.0
+      },
+      "fridge_loaded_actions": 305,
+      "blocked_actions": 43,
+      "peak_contact_details": {
+        "robot_fridge": {
+          "step": 100,
+          "normal_N": 358.4284637211462,
+          "geom_ids": [
+            67,
+            261
+          ],
+          "geoms": [
+            "gripper0_right_hand_collision",
+            "fridgebottomfreezer_main_group_1_g47"
+          ]
+        },
+        "robot_self": {
+          "step": 200,
+          "normal_N": 451.1166402450891,
+          "geom_ids": [
+            38,
+            65
+          ],
+          "geoms": [
+            "robot0_link5_collision",
+            "robot0_link7_collision"
+          ]
+        },
+        "robot_environment": null
+      },
+      "criteria_counts": {
+        "whole_episode": {
+          "actions": 472,
+          "loaded_fridge": 305,
+          "large_target_residual": 429,
+          "low_eef_motion": 45,
+          "all_three": 43,
+          "longest_all_three_run": 8
+        },
+        "last_100_actions": {
+          "actions": 100,
+          "loaded_fridge": 37,
+          "large_target_residual": 76,
+          "low_eef_motion": 0,
+          "all_three": 0,
+          "longest_all_three_run": 0
+        }
+      },
+      "deterministic_decision_replay_exact": true,
+      "predicted_executed_actions_exact": true,
+      "final_cameras_nonblack": true
+    },
+    "candidate-43": {
+      "path": "outputs\\agent-workflow-v1\\contact-replanning-v1\\candidate-43",
+      "success": false,
+      "actions": 600,
+      "valid": true,
+      "guard_failure": false,
+      "termination": "registered_horizon_600",
+      "initial_angles_deg": [
+        85.5238776175674
+      ],
+      "final_angles_deg": [
+        6.6022202998161585
+      ],
+      "closing_deg": 78.92165731775124,
+      "best_closing_deg": 78.92165731775124,
+      "eef_path_m": 2.790545996930084,
+      "contacts_available": true,
+      "loaded_actions": 124,
+      "peak_contact_normal_N": 1339.6142367436219,
+      "mean_inference_seconds": 0.8057955307662129,
+      "peak_cuda_allocated": 971354112,
+      "rollout_seconds": 128.71787960000802,
+      "worker_seconds": 176.90599999998813,
+      "inference_calls": 13,
+      "replan_events": 1,
+      "discarded_actions": 28,
+      "inference_total_seconds": 10.475341899960767,
+      "simulated_seconds": 29.999999999993975,
+      "guard_activations": [],
+      "doors": {
+        "fridgebottomfreezer_main_group_1_fridge_door_joint": {
+          "initial_deg": 85.5238776175674,
+          "final_deg": 6.6022202998161585,
+          "best_closing_deg": 78.92165731775124
+        }
+      },
+      "mean_target_error_m": 0.01806464916253856,
+      "sum_target_delta_m": 13.24144367638961,
+      "sum_achieved_delta_m": 2.7905459969300828,
+      "contact_peaks_N": {
+        "robot_fridge": 398.7853425765077,
+        "robot_self": 1339.6142367436219,
+        "robot_environment": 196.98929729157697
+      },
+      "fridge_loaded_actions": 113,
+      "blocked_actions": 16,
+      "peak_contact_details": {
+        "robot_fridge": {
+          "step": 99,
+          "normal_N": 398.7853425765077,
+          "geom_ids": [
+            67,
+            261
+          ],
+          "geoms": [
+            "gripper0_right_hand_collision",
+            "fridgebottomfreezer_main_group_1_g47"
+          ]
+        },
+        "robot_self": {
+          "step": 140,
+          "normal_N": 1339.6142367436219,
+          "geom_ids": [
+            38,
+            65
+          ],
+          "geoms": [
+            "robot0_link5_collision",
+            "robot0_link7_collision"
+          ]
+        },
+        "robot_environment": {
+          "step": 590,
+          "normal_N": 196.98929729157697,
+          "geom_ids": [
+            67,
+            95
+          ],
+          "geoms": [
+            "gripper0_right_hand_collision",
+            "wall_left_1_room_g0"
+          ]
+        }
+      },
+      "criteria_counts": {
+        "whole_episode": {
+          "actions": 600,
+          "loaded_fridge": 113,
+          "large_target_residual": 383,
+          "low_eef_motion": 76,
+          "all_three": 16,
+          "longest_all_three_run": 6
+        },
+        "last_100_actions": {
+          "actions": 100,
+          "loaded_fridge": 0,
+          "large_target_residual": 41,
+          "low_eef_motion": 22,
+          "all_three": 0,
+          "longest_all_three_run": 0
+        }
+      },
+      "deterministic_decision_replay_exact": true,
+      "predicted_executed_actions_exact": true,
+      "final_cameras_nonblack": true
+    },
+    "baseline-44": {
+      "path": "outputs\\agent-workflow-v1\\contact-replanning-v1\\baseline-44",
+      "success": true,
+      "actions": 219,
+      "valid": true,
+      "guard_failure": false,
+      "termination": "success",
+      "initial_angles_deg": [
+        83.3170929825454
+      ],
+      "final_angles_deg": [
+        -0.07934592230053006
+      ],
+      "closing_deg": 83.39643890484594,
+      "best_closing_deg": 83.39643890484594,
+      "eef_path_m": 1.4859381900627024,
+      "contacts_available": true,
+      "loaded_actions": 67,
+      "peak_contact_normal_N": 181.20906647325415,
+      "mean_inference_seconds": 0.9045854400028475,
+      "peak_cuda_allocated": 971354112,
+      "rollout_seconds": 42.67926879998413,
+      "worker_seconds": 96.76600000000326,
+      "inference_calls": 5,
+      "replan_events": 0,
+      "discarded_actions": 0,
+      "inference_total_seconds": 4.522927200014237,
+      "simulated_seconds": 10.950000000000493,
+      "guard_activations": [],
+      "doors": {
+        "fridgesidebyside_main_group_1_fridge_door_joint": {
+          "initial_deg": 83.3170929825454,
+          "final_deg": -0.07934592230053006,
+          "best_closing_deg": 83.39643890484594
+        }
+      },
+      "mean_target_error_m": 0.020747191349615147,
+      "sum_target_delta_m": 5.9733740458786375,
+      "sum_achieved_delta_m": 1.4859381900627018,
+      "contact_peaks_N": {
+        "robot_fridge": 181.20906647325415,
+        "robot_self": 0.0,
+        "robot_environment": 0.0
+      },
+      "fridge_loaded_actions": 67,
+      "blocked_actions": 0,
+      "peak_contact_details": {
+        "robot_fridge": {
+          "step": 219,
+          "normal_N": 181.20906647325415,
+          "geom_ids": [
+            67,
+            586
+          ],
+          "geoms": [
+            "gripper0_right_hand_collision",
+            "fridgesidebyside_main_group_1_fridge_door_handle_main"
+          ]
+        },
+        "robot_self": null,
+        "robot_environment": null
+      },
+      "criteria_counts": {
+        "whole_episode": {
+          "actions": 219,
+          "loaded_fridge": 67,
+          "large_target_residual": 189,
+          "low_eef_motion": 1,
+          "all_three": 0,
+          "longest_all_three_run": 0
+        },
+        "last_100_actions": {
+          "actions": 100,
+          "loaded_fridge": 67,
+          "large_target_residual": 82,
+          "low_eef_motion": 0,
+          "all_three": 0,
+          "longest_all_three_run": 0
+        }
+      },
+      "deterministic_decision_replay_exact": true,
+      "predicted_executed_actions_exact": true,
+      "final_cameras_nonblack": true
+    },
+    "candidate-44": {
+      "path": "outputs\\agent-workflow-v1\\contact-replanning-v1\\candidate-44",
+      "success": true,
+      "actions": 220,
+      "valid": true,
+      "guard_failure": false,
+      "termination": "success",
+      "initial_angles_deg": [
+        83.3170929825454
+      ],
+      "final_angles_deg": [
+        0.27424668958639403
+      ],
+      "closing_deg": 83.04284629295901,
+      "best_closing_deg": 83.04284629295901,
+      "eef_path_m": 1.4930180460790177,
+      "contacts_available": true,
+      "loaded_actions": 69,
+      "peak_contact_normal_N": 172.97992126058682,
+      "mean_inference_seconds": 0.900276959995972,
+      "peak_cuda_allocated": 971354112,
+      "rollout_seconds": 42.10818800001289,
+      "worker_seconds": 91.48399999999674,
+      "inference_calls": 5,
+      "replan_events": 0,
+      "discarded_actions": 0,
+      "inference_total_seconds": 4.50138479997986,
+      "simulated_seconds": 11.00000000000051,
+      "guard_activations": [],
+      "doors": {
+        "fridgesidebyside_main_group_1_fridge_door_joint": {
+          "initial_deg": 83.3170929825454,
+          "final_deg": 0.27424668958639403,
+          "best_closing_deg": 83.04284629295901
+        }
+      },
+      "mean_target_error_m": 0.020835433062287908,
+      "sum_target_delta_m": 6.021612123004871,
+      "sum_achieved_delta_m": 1.4930180460790177,
+      "contact_peaks_N": {
+        "robot_fridge": 172.97992126058682,
+        "robot_self": 0.0,
+        "robot_environment": 0.0
+      },
+      "fridge_loaded_actions": 69,
+      "blocked_actions": 0,
+      "peak_contact_details": {
+        "robot_fridge": {
+          "step": 152,
+          "normal_N": 172.97992126058682,
+          "geom_ids": [
+            67,
+            586
+          ],
+          "geoms": [
+            "gripper0_right_hand_collision",
+            "fridgesidebyside_main_group_1_fridge_door_handle_main"
+          ]
+        },
+        "robot_self": null,
+        "robot_environment": null
+      },
+      "criteria_counts": {
+        "whole_episode": {
+          "actions": 220,
+          "loaded_fridge": 69,
+          "large_target_residual": 194,
+          "low_eef_motion": 1,
+          "all_three": 0,
+          "longest_all_three_run": 0
+        },
+        "last_100_actions": {
+          "actions": 100,
+          "loaded_fridge": 69,
+          "large_target_residual": 85,
+          "low_eef_motion": 0,
+          "all_three": 0,
+          "longest_all_three_run": 0
+        }
+      },
+      "deterministic_decision_replay_exact": true,
+      "predicted_executed_actions_exact": true,
+      "final_cameras_nonblack": true
+    },
+    "baseline-45": {
+      "path": "outputs\\agent-workflow-v1\\contact-replanning-v1\\baseline-45",
+      "success": false,
+      "actions": 600,
+      "valid": true,
+      "guard_failure": false,
+      "termination": "registered_horizon_600",
+      "initial_angles_deg": [
+        85.58268158551247,
+        82.33903760112925
+      ],
+      "final_angles_deg": [
+        -0.004487224755358617,
+        24.914319049056573
+      ],
+      "closing_deg": 143.01188736234053,
+      "best_closing_deg": 143.09471349786742,
+      "eef_path_m": 3.485028879344378,
+      "contacts_available": true,
+      "loaded_actions": 163,
+      "peak_contact_normal_N": 137.1790166007481,
+      "mean_inference_seconds": 0.7693362666638374,
+      "peak_cuda_allocated": 971354112,
+      "rollout_seconds": 203.99895360000664,
+      "worker_seconds": 267.6720000000205,
+      "inference_calls": 12,
+      "replan_events": 0,
+      "discarded_actions": 0,
+      "inference_total_seconds": 9.232035199966049,
+      "simulated_seconds": 29.999999999993975,
+      "guard_activations": [],
+      "doors": {
+        "fridgefrenchdoor_main_group_1_fridge_left_door_joint": {
+          "initial_deg": 85.58268158551247,
+          "final_deg": -0.004487224755358617,
+          "best_closing_deg": 85.67191528371274
+        },
+        "fridgefrenchdoor_main_group_1_fridge_right_door_joint": {
+          "initial_deg": 82.33903760112925,
+          "final_deg": 24.914319049056573,
+          "best_closing_deg": 57.424718552072676
+        }
+      },
+      "mean_target_error_m": 0.018920635475067733,
+      "sum_target_delta_m": 14.638176043142842,
+      "sum_achieved_delta_m": 3.4850288793443776,
+      "contact_peaks_N": {
+        "robot_fridge": 137.1790166007481,
+        "robot_self": 0.0,
+        "robot_environment": 75.53670976478945
+      },
+      "fridge_loaded_actions": 153,
+      "blocked_actions": 5,
+      "peak_contact_details": {
+        "robot_fridge": {
+          "step": 507,
+          "normal_N": 137.1790166007481,
+          "geom_ids": [
+            67,
+            325
+          ],
+          "geoms": [
+            "gripper0_right_hand_collision",
+            "fridgefrenchdoor_main_group_1_fridge_left_door_handle_main"
+          ]
+        },
+        "robot_self": null,
+        "robot_environment": {
+          "step": 492,
+          "normal_N": 75.53670976478945,
+          "geom_ids": [
+            67,
+            95
+          ],
+          "geoms": [
+            "gripper0_right_hand_collision",
+            "wall_main_2_room_g0"
+          ]
+        }
+      },
+      "criteria_counts": {
+        "whole_episode": {
+          "actions": 600,
+          "loaded_fridge": 153,
+          "large_target_residual": 482,
+          "low_eef_motion": 44,
+          "all_three": 5,
+          "longest_all_three_run": 2
+        },
+        "last_100_actions": {
+          "actions": 100,
+          "loaded_fridge": 81,
+          "large_target_residual": 69,
+          "low_eef_motion": 26,
+          "all_three": 5,
+          "longest_all_three_run": 2
+        }
+      },
+      "deterministic_decision_replay_exact": true,
+      "predicted_executed_actions_exact": true,
+      "final_cameras_nonblack": true
+    },
+    "candidate-45": {
+      "path": "outputs\\agent-workflow-v1\\contact-replanning-v1\\candidate-45",
+      "success": false,
+      "actions": 600,
+      "valid": true,
+      "guard_failure": false,
+      "termination": "registered_horizon_600",
+      "initial_angles_deg": [
+        85.58268158551247,
+        82.33903760112925
+      ],
+      "final_angles_deg": [
+        -0.006389436086064527,
+        26.523335971027617
+      ],
+      "closing_deg": 141.40477265170017,
+      "best_closing_deg": 141.43764154597727,
+      "eef_path_m": 3.448006502423732,
+      "contacts_available": true,
+      "loaded_actions": 149,
+      "peak_contact_normal_N": 135.2757063179263,
+      "mean_inference_seconds": 0.6532343166715388,
+      "peak_cuda_allocated": 971354112,
+      "rollout_seconds": 165.5488271000213,
+      "worker_seconds": 229.90600000001723,
+      "inference_calls": 12,
+      "replan_events": 0,
+      "discarded_actions": 0,
+      "inference_total_seconds": 7.8388118000584655,
+      "simulated_seconds": 29.999999999993975,
+      "guard_activations": [],
+      "doors": {
+        "fridgefrenchdoor_main_group_1_fridge_left_door_joint": {
+          "initial_deg": 85.58268158551247,
+          "final_deg": -0.006389436086064527,
+          "best_closing_deg": 85.62275763985144
+        },
+        "fridgefrenchdoor_main_group_1_fridge_right_door_joint": {
+          "initial_deg": 82.33903760112925,
+          "final_deg": 26.523335971027617,
+          "best_closing_deg": 55.81570163010163
+        }
+      },
+      "mean_target_error_m": 0.01841763385965569,
+      "sum_target_delta_m": 14.311865628930427,
+      "sum_achieved_delta_m": 3.4480065024237323,
+      "contact_peaks_N": {
+        "robot_fridge": 135.2757063179263,
+        "robot_self": 0.0,
+        "robot_environment": 84.29598881230297
+      },
+      "fridge_loaded_actions": 145,
+      "blocked_actions": 0,
+      "peak_contact_details": {
+        "robot_fridge": {
+          "step": 507,
+          "normal_N": 135.2757063179263,
+          "geom_ids": [
+            67,
+            325
+          ],
+          "geoms": [
+            "gripper0_right_hand_collision",
+            "fridgefrenchdoor_main_group_1_fridge_left_door_handle_main"
+          ]
+        },
+        "robot_self": null,
+        "robot_environment": {
+          "step": 490,
+          "normal_N": 84.29598881230297,
+          "geom_ids": [
+            67,
+            95
+          ],
+          "geoms": [
+            "gripper0_right_hand_collision",
+            "wall_main_2_room_g0"
+          ]
+        }
+      },
+      "criteria_counts": {
+        "whole_episode": {
+          "actions": 600,
+          "loaded_fridge": 145,
+          "large_target_residual": 464,
+          "low_eef_motion": 33,
+          "all_three": 0,
+          "longest_all_three_run": 0
+        },
+        "last_100_actions": {
+          "actions": 100,
+          "loaded_fridge": 75,
+          "large_target_residual": 63,
+          "low_eef_motion": 11,
+          "all_three": 0,
+          "longest_all_three_run": 0
+        }
+      },
+      "deterministic_decision_replay_exact": true,
+      "predicted_executed_actions_exact": true,
+      "final_cameras_nonblack": true
+    },
+    "baseline-46": {
+      "path": "outputs\\agent-workflow-v1\\contact-replanning-v1-seed46-continuation\\baseline-46",
+      "success": false,
+      "actions": 600,
+      "valid": true,
+      "guard_failure": false,
+      "termination": "registered_horizon_600",
+      "initial_angles_deg": [
+        86.41876476353674
+      ],
+      "final_angles_deg": [
+        84.42251116072013
+      ],
+      "closing_deg": 1.9962536028166085,
+      "best_closing_deg": 1.9962536028166085,
+      "eef_path_m": 1.8857718882813346,
+      "contacts_available": true,
+      "loaded_actions": 388,
+      "peak_contact_normal_N": 232.3331470200707,
+      "mean_inference_seconds": 0.7167662749949765,
+      "peak_cuda_allocated": 971354112,
+      "rollout_seconds": 124.67226059999666,
+      "worker_seconds": 176.75,
+      "inference_calls": 12,
+      "replan_events": 0,
+      "discarded_actions": 0,
+      "inference_total_seconds": 8.601195299939718,
+      "simulated_seconds": 29.999999999993975,
+      "guard_activations": [],
+      "doors": {
+        "fridgebottomfreezer_main_group_1_fridge_door_joint": {
+          "initial_deg": 86.41876476353674,
+          "final_deg": 84.42251116072013,
+          "best_closing_deg": 1.9962536028166085
+        }
+      },
+      "mean_target_error_m": 0.017039752718828936,
+      "sum_target_delta_m": 11.834028508878326,
+      "sum_achieved_delta_m": 1.885771888281333,
+      "contact_peaks_N": {
+        "robot_fridge": 232.3331470200707,
+        "robot_self": 112.76417274782324,
+        "robot_environment": 0.0
+      },
+      "fridge_loaded_actions": 387,
+      "blocked_actions": 120,
+      "peak_contact_details": {
+        "robot_fridge": {
+          "step": 385,
+          "normal_N": 232.3331470200707,
+          "geom_ids": [
+            56,
+            250
+          ],
+          "geoms": [
+            "robot0_link6_collision",
+            "fridgebottomfreezer_main_group_1_fridge_door_main"
+          ]
+        },
+        "robot_self": {
+          "step": 291,
+          "normal_N": 112.76417274782324,
+          "geom_ids": [
+            38,
+            67
+          ],
+          "geoms": [
+            "robot0_link5_collision",
+            "gripper0_right_hand_collision"
+          ]
+        },
+        "robot_environment": null
+      },
+      "criteria_counts": {
+        "whole_episode": {
+          "actions": 600,
+          "loaded_fridge": 387,
+          "large_target_residual": 472,
+          "low_eef_motion": 174,
+          "all_three": 120,
+          "longest_all_three_run": 17
+        },
+        "last_100_actions": {
+          "actions": 100,
+          "loaded_fridge": 6,
+          "large_target_residual": 71,
+          "low_eef_motion": 4,
+          "all_three": 0,
+          "longest_all_three_run": 0
+        }
+      },
+      "deterministic_decision_replay_exact": true,
+      "predicted_executed_actions_exact": true,
+      "final_cameras_nonblack": true
+    },
+    "candidate-46": {
+      "path": "outputs\\agent-workflow-v1\\contact-replanning-v1-seed46-continuation\\candidate-46",
+      "success": false,
+      "actions": 600,
+      "valid": true,
+      "guard_failure": false,
+      "termination": "registered_horizon_600",
+      "initial_angles_deg": [
+        86.41876476353674
+      ],
+      "final_angles_deg": [
+        89.99357807320776
+      ],
+      "closing_deg": -3.574813309671015,
+      "best_closing_deg": 0.03362474846018415,
+      "eef_path_m": 2.2753575488252737,
+      "contacts_available": true,
+      "loaded_actions": 249,
+      "peak_contact_normal_N": 208.85360736663495,
+      "mean_inference_seconds": 0.7103495615413592,
+      "peak_cuda_allocated": 971354112,
+      "rollout_seconds": 124.86877430000459,
+      "worker_seconds": 176.95300000000861,
+      "inference_calls": 13,
+      "replan_events": 1,
+      "discarded_actions": 1,
+      "inference_total_seconds": 9.234544300037669,
+      "simulated_seconds": 29.999999999993975,
+      "guard_activations": [],
+      "doors": {
+        "fridgebottomfreezer_main_group_1_fridge_door_joint": {
+          "initial_deg": 86.41876476353674,
+          "final_deg": 89.99357807320776,
+          "best_closing_deg": 0.03362474846018415
+        }
+      },
+      "mean_target_error_m": 0.017703041213310407,
+      "sum_target_delta_m": 12.59004253132728,
+      "sum_achieved_delta_m": 2.2753575488252733,
+      "contact_peaks_N": {
+        "robot_fridge": 208.04022972989782,
+        "robot_self": 208.85360736663495,
+        "robot_environment": 0.0
+      },
+      "fridge_loaded_actions": 249,
+      "blocked_actions": 91,
+      "peak_contact_details": {
+        "robot_fridge": {
+          "step": 368,
+          "normal_N": 208.04022972989782,
+          "geom_ids": [
+            56,
+            266
+          ],
+          "geoms": [
+            "robot0_link6_collision",
+            "fridgebottomfreezer_main_group_1_g57"
+          ]
+        },
+        "robot_self": {
+          "step": 243,
+          "normal_N": 208.85360736663495,
+          "geom_ids": [
+            38,
+            67
+          ],
+          "geoms": [
+            "robot0_link5_collision",
+            "gripper0_right_hand_collision"
+          ]
+        },
+        "robot_environment": null
+      },
+      "criteria_counts": {
+        "whole_episode": {
+          "actions": 600,
+          "loaded_fridge": 249,
+          "large_target_residual": 474,
+          "low_eef_motion": 112,
+          "all_three": 91,
+          "longest_all_three_run": 23
+        },
+        "last_100_actions": {
+          "actions": 100,
+          "loaded_fridge": 0,
+          "large_target_residual": 36,
+          "low_eef_motion": 8,
+          "all_three": 0,
+          "longest_all_three_run": 0
+        }
+      },
+      "deterministic_decision_replay_exact": true,
+      "predicted_executed_actions_exact": true,
+      "final_cameras_nonblack": true
+    }
+  },
+  "prefixes": {
+    "43": {
+      "compared_actions": 122,
+      "first_action_max_abs": 0.0030196458101272583,
+      "max_action_difference": 0.024501249194145203,
+      "max_qpos_difference": 0.0471487536514823
+    },
+    "44": {
+      "compared_actions": 219,
+      "first_action_max_abs": 0.0006781220436096191,
+      "max_action_difference": 0.033791184425354004,
+      "max_qpos_difference": 0.049870740837492544
+    },
+    "45": {
+      "compared_actions": 600,
+      "first_action_max_abs": 0.0,
+      "max_action_difference": 0.8370283767580986,
+      "max_qpos_difference": 0.6804023679233127
+    },
+    "46": {
+      "compared_actions": 99,
+      "first_action_max_abs": 0.0,
+      "max_action_difference": 0.0,
+      "max_qpos_difference": 0.0
+    }
+  },
+  "events": {
+    "baseline-43": [],
+    "candidate-43": [
+      {
+        "step": 122,
+        "simulation_time": 6.599999999999495,
+        "reason": "loaded_fridge_tracking_stall",
+        "discarded_actions": 28,
+        "preceding_five": [
+          {
+            "step": 118,
+            "tracking": {
+              "command_target_delta_m": [
+                0.00674903422037966,
+                -0.002015614228997653,
+                -0.013983760222075148
+              ],
+              "achieved_delta_m": [
+                -0.0001820343414950243,
+                -0.00013214959816842953,
+                -0.00012854464963485412
+              ],
+              "target_error_m": 0.015606221483234957,
+              "achieved_motion_m": 0.0002590825056412569,
+              "scaled_public_translation_m": [
+                0.0067439451813697815,
+                -0.0019739160779863596,
+                -0.013933097012341022
+              ],
+              "goal_update_mode": "achieved",
+              "target_base_m": [
+                -0.08305651924144208,
+                -0.5151507799844954,
+                0.5862749280363552
+              ],
+              "origin_world_m": [
+                0.8918145155445473,
+                -1.4038454870185886,
+                0.7021761042701947
+              ],
+              "origin_rotation": [
+                [
+                  0.022148264085202318,
+                  -0.9997546971122524,
+                  0.0
+                ],
+                [
+                  0.9997546971122524,
+                  0.022148264085202318,
+                  0.0
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.9999999999999997
+                ]
+              ]
+            },
+            "contacts": {
+              "peak_normal_N": {
+                "robot_fridge": 68.68183172369903,
+                "robot_self": 0.0,
+                "robot_environment": 0.0
+              },
+              "pairs": [
+                {
+                  "kind": "robot_fridge",
+                  "geom_ids": [
+                    67,
+                    261
+                  ],
+                  "peak_normal_N": 68.68183172369903
+                },
+                {
+                  "kind": "robot_fridge",
+                  "geom_ids": [
+                    69,
+                    261
+                  ],
+                  "peak_normal_N": 18.731963865324435
+                }
+              ]
+            }
+          },
+          {
+            "step": 119,
+            "tracking": {
+              "command_target_delta_m": [
+                0.007404407143379962,
+                -0.0031516946671373836,
+                -0.007612013474109891
+              ],
+              "achieved_delta_m": [
+                -0.00022162394559048504,
+                0.00022759886568946008,
+                0.00042005903701602954
+              ],
+              "target_error_m": 0.011579730729811197,
+              "achieved_motion_m": 0.0005266573948033553,
+              "scaled_public_translation_m": [
+                0.00741547578945756,
+                -0.003166873473674059,
+                -0.007627090904861689
+              ],
+              "goal_update_mode": "achieved",
+              "target_base_m": [
+                -0.08237352162916797,
+                -0.5163632878991169,
+                0.5924747264875428
+              ],
+              "origin_world_m": [
+                0.8918991431390939,
+                -1.4038868425931565,
+                0.7022195079173377
+              ],
+              "origin_rotation": [
+                [
+                  0.022479804760016597,
+                  -0.9997472972596382,
+                  0.0
+                ],
+                [
+                  0.9997472972596382,
+                  0.022479804760016597,
+                  0.0
+                ],
+                [
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ]
+            },
+            "contacts": {
+              "peak_normal_N": {
+                "robot_fridge": 30.814956448057746,
+                "robot_self": 0.0,
+                "robot_environment": 0.0
+              },
+              "pairs": [
+                {
+                  "kind": "robot_fridge",
+                  "geom_ids": [
+                    67,
+                    261
+                  ],
+                  "peak_normal_N": 30.814956448057746
+                },
+                {
+                  "kind": "robot_fridge",
+                  "geom_ids": [
+                    69,
+                    261
+                  ],
+                  "peak_normal_N": 15.035504203697819
+                }
+              ]
+            }
+          },
+          {
+            "step": 120,
+            "tracking": {
+              "command_target_delta_m": [
+                0.017724515042142508,
+                -0.002777867057371597,
+                -0.005670454067345898
+              ],
+              "achieved_delta_m": [
+                -5.567054067659449e-05,
+                0.0001771305972727566,
+                0.00036626517084648036
+              ],
+              "target_error_m": 0.019008129567614062,
+              "achieved_motion_m": 0.00041063929788152194,
+              "scaled_public_translation_m": [
+                0.017731530591845512,
+                -0.0027821010444313288,
+                -0.005687044467777014
+              ],
+              "goal_update_mode": "achieved",
+              "target_base_m": [
+                -0.07209057358661006,
+                -0.5157247293348118,
+                0.5948030249496054
+              ],
+              "origin_world_m": [
+                0.8919621481525543,
+                -1.4039208277588497,
+                0.7022528278990551
+              ],
+              "origin_rotation": [
+                [
+                  0.022775876163852793,
+                  -0.9997405960872893,
+                  0.0
+                ],
+                [
+                  0.9997405960872893,
+                  0.022775876163852793,
+                  0.0
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.9999999999999998
+                ]
+              ]
+            },
+            "contacts": {
+              "peak_normal_N": {
+                "robot_fridge": 56.84904762923794,
+                "robot_self": 0.0,
+                "robot_environment": 0.0
+              },
+              "pairs": [
+                {
+                  "kind": "robot_fridge",
+                  "geom_ids": [
+                    67,
+                    261
+                  ],
+                  "peak_normal_N": 56.84904762923794
+                },
+                {
+                  "kind": "robot_fridge",
+                  "geom_ids": [
+                    69,
+                    261
+                  ],
+                  "peak_normal_N": 17.881206185177582
+                }
+              ]
+            }
+          },
+          {
+            "step": 121,
+            "tracking": {
+              "command_target_delta_m": [
+                0.024944494700152448,
+                -0.00427842084474872,
+                -0.00533793396134874
+              ],
+              "achieved_delta_m": [
+                5.2202467342374326e-05,
+                0.00013878586504123547,
+                0.00041579950382808484
+              ],
+              "target_error_m": 0.02592765659501309,
+              "achieved_motion_m": 0.00044144743890474347,
+              "scaled_public_translation_m": [
+                0.02494455687701702,
+                -0.004286397248506546,
+                -0.0053505427204072475
+              ],
+              "goal_update_mode": "achieved",
+              "target_base_m": [
+                -0.06460773899815737,
+                -0.5169830486657204,
+                0.5954755094115797
+              ],
+              "origin_world_m": [
+                0.8920725920125923,
+                -1.4039757166226443,
+                0.7022791287139244
+              ],
+              "origin_rotation": [
+                [
+                  0.023294903561210334,
+                  -0.9997286369150749,
+                  0.0
+                ],
+                [
+                  0.9997286369150749,
+                  0.023294903561210334,
+                  0.0
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.9999999999999999
+                ]
+              ]
+            },
+            "contacts": {
+              "peak_normal_N": {
+                "robot_fridge": 71.6600534918261,
+                "robot_self": 0.0,
+                "robot_environment": 0.0
+              },
+              "pairs": [
+                {
+                  "kind": "robot_fridge",
+                  "geom_ids": [
+                    67,
+                    261
+                  ],
+                  "peak_normal_N": 71.6600534918261
+                },
+                {
+                  "kind": "robot_fridge",
+                  "geom_ids": [
+                    69,
+                    261
+                  ],
+                  "peak_normal_N": 30.834240737348622
+                }
+              ]
+            }
+          },
+          {
+            "step": 122,
+            "tracking": {
+              "command_target_delta_m": [
+                0.022795683673513298,
+                -0.011655390403458199,
+                -0.011379626345084604
+              ],
+              "achieved_delta_m": [
+                4.9802622051633993e-05,
+                -0.00028971809975719687,
+                0.0005335152289935863
+              ],
+              "target_error_m": 0.02807982467691686,
+              "achieved_motion_m": 0.0006091431507110769,
+              "scaled_public_translation_m": [
+                0.022793179377913475,
+                -0.01165976095944643,
+                -0.01139860413968563
+              ],
+              "goal_update_mode": "achieved",
+              "target_base_m": [
+                -0.06625662578924114,
+                -0.5241322361895078,
+                0.5898132023794808
+              ],
+              "origin_world_m": [
+                0.8922249468240991,
+                -1.404053070180705,
+                0.7023155428661155
+              ],
+              "origin_rotation": [
+                [
+                  0.02402441426266877,
+                  -0.9997113721066373,
+                  0.0
+                ],
+                [
+                  0.9997113721066373,
+                  0.02402441426266877,
+                  0.0
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.9999999999999999
+                ]
+              ]
+            },
+            "contacts": {
+              "peak_normal_N": {
+                "robot_fridge": 66.96690290357668,
+                "robot_self": 0.0,
+                "robot_environment": 0.0
+              },
+              "pairs": [
+                {
+                  "kind": "robot_fridge",
+                  "geom_ids": [
+                    67,
+                    261
+                  ],
+                  "peak_normal_N": 66.96690290357668
+                },
+                {
+                  "kind": "robot_fridge",
+                  "geom_ids": [
+                    69,
+                    261
+                  ],
+                  "peak_normal_N": 31.775271938013773
+                }
+              ]
+            }
+          }
+        ],
+        "contact_pairs": [
+          {
+            "kind": "robot_fridge",
+            "geom_ids": [
+              67,
+              261
+            ],
+            "peak_normal_N": 66.96690290357668,
+            "geoms": [
+              "gripper0_right_hand_collision",
+              "fridgebottomfreezer_main_group_1_g47"
+            ],
+            "bodies": [
+              [
+                "gripper0_right_right_gripper",
+                "robot0_right_hand",
+                "robot0_link7",
+                "robot0_link6",
+                "robot0_link5",
+                "robot0_link4",
+                "robot0_link3",
+                "robot0_link2",
+                "robot0_link1",
+                "robot0_link0",
+                "manipulator_mount",
+                "mobilebase0_support",
+                "mobilebase0_fixed_support",
+                "mobilebase0_base",
+                "robot0_base"
+              ],
+              [
+                "fridgebottomfreezer_main_group_1_fridge_door",
+                "fridgebottomfreezer_main_group_1_main"
+              ]
+            ]
+          },
+          {
+            "kind": "robot_fridge",
+            "geom_ids": [
+              69,
+              261
+            ],
+            "peak_normal_N": 31.775271938013773,
+            "geoms": [
+              "gripper0_right_finger1_collision",
+              "fridgebottomfreezer_main_group_1_g47"
+            ],
+            "bodies": [
+              [
+                "gripper0_right_leftfinger",
+                "gripper0_right_right_gripper",
+                "robot0_right_hand",
+                "robot0_link7",
+                "robot0_link6",
+                "robot0_link5",
+                "robot0_link4",
+                "robot0_link3",
+                "robot0_link2",
+                "robot0_link1",
+                "robot0_link0",
+                "manipulator_mount",
+                "mobilebase0_support",
+                "mobilebase0_fixed_support",
+                "mobilebase0_base",
+                "robot0_base"
+              ],
+              [
+                "fridgebottomfreezer_main_group_1_fridge_door",
+                "fridgebottomfreezer_main_group_1_main"
+              ]
+            ]
+          }
+        ],
+        "old_next_action": [
+          -0.0011281445622444153,
+          -0.001985648414120078,
+          -0.00022104318486526608,
+          0.0,
+          -1.005632758140564,
+          0.14789491891860962,
+          -0.13805417716503143,
+          -0.2413521111011505,
+          0.10114492475986481,
+          -0.06201277673244476,
+          0.02678980864584446,
+          -0.9979009032249451
+        ],
+        "new_next_action": [
+          -0.0005060993134975433,
+          -0.0022690414916723967,
+          -0.0023021637462079525,
+          0.0,
+          -0.995527982711792,
+          0.2630695104598999,
+          0.18232163786888123,
+          -0.07069523632526398,
+          0.049570124596357346,
+          -0.00262244138866663,
+          -0.019281217828392982,
+          -1.022119164466858
+        ],
+        "replacement_translation_rms_public_units": 0.4802505769907885,
+        "replacement_all_dimensions_max_abs": 1.0880091786384583,
+        "before_20": {
+          "actions": 20,
+          "closing_deg": 0.026261846433598635,
+          "per_door_closing_deg": [
+            0.026261846433598635
+          ],
+          "per_door_opening_steps_over_0_1deg": [
+            0
+          ],
+          "opening_steps_over_0_1deg": 0,
+          "door_stall_steps_under_0_05deg": 18,
+          "mean_eef_motion_m": 0.0024633039415377775,
+          "mean_target_error_m": 0.026189793224634522,
+          "blocked_steps": 8
+        },
+        "after_20": {
+          "actions": 20,
+          "closing_deg": 7.627751596858957,
+          "per_door_closing_deg": [
+            7.627751596858957
+          ],
+          "per_door_opening_steps_over_0_1deg": [
+            0
+          ],
+          "opening_steps_over_0_1deg": 0,
+          "door_stall_steps_under_0_05deg": 1,
+          "mean_eef_motion_m": 0.004558032164780896,
+          "mean_target_error_m": 0.0387349321164915,
+          "blocked_steps": 1
+        }
+      }
+    ],
+    "baseline-44": [],
+    "candidate-44": [],
+    "baseline-45": [],
+    "candidate-45": [],
+    "baseline-46": [],
+    "candidate-46": [
+      {
+        "step": 99,
+        "simulation_time": 5.449999999999622,
+        "reason": "loaded_fridge_tracking_stall",
+        "discarded_actions": 1,
+        "preceding_five": [
+          {
+            "step": 95,
+            "tracking": {
+              "command_target_delta_m": [
+                0.02032779045730247,
+                -0.015256506060887909,
+                -0.009440155579267584
+              ],
+              "achieved_delta_m": [
+                -0.00074010217675375,
+                -0.00030206195166282424,
+                -0.0003912319299277378
+              ],
+              "target_error_m": 0.027374705804220783,
+              "achieved_motion_m": 0.0008899747623797967,
+              "scaled_public_translation_m": [
+                0.020358970388770103,
+                -0.01524318940937519,
+                -0.00942628551274538
+              ],
+              "goal_update_mode": "achieved",
+              "target_base_m": [
+                -0.016074197313699388,
+                -0.6043684224890901,
+                0.5028770402337186
+              ],
+              "origin_world_m": [
+                0.6866604189084095,
+                -1.3783470856856257,
+                0.7001990596089324
+              ],
+              "origin_rotation": [
+                [
+                  0.00744200681116769,
+                  -0.9999723078838845,
+                  0.0
+                ],
+                [
+                  0.9999723078838845,
+                  0.00744200681116769,
+                  0.0
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.9999999999999999
+                ]
+              ]
+            },
+            "contacts": {
+              "peak_normal_N": {
+                "robot_fridge": 24.46517336966131,
+                "robot_self": 0.0,
+                "robot_environment": 0.0
+              },
+              "pairs": [
+                {
+                  "kind": "robot_fridge",
+                  "geom_ids": [
+                    67,
+                    244
+                  ],
+                  "peak_normal_N": 24.399547605178
+                },
+                {
+                  "kind": "robot_fridge",
+                  "geom_ids": [
+                    67,
+                    264
+                  ],
+                  "peak_normal_N": 24.46517336966131
+                }
+              ]
+            }
+          },
+          {
+            "step": 96,
+            "tracking": {
+              "command_target_delta_m": [
+                0.02335066187397719,
+                -0.009520092394152302,
+                -0.007104724917703864
+              ],
+              "achieved_delta_m": [
+                -0.0006224069356124615,
+                -0.00024358081304143298,
+                -0.00038936911246612027
+              ],
+              "target_error_m": 0.02656798258910045,
+              "achieved_motion_m": 0.0007735181392333825,
+              "scaled_public_translation_m": [
+                0.023377802222967148,
+                -0.00950861256569624,
+                -0.007088025100529194
+              ],
+              "goal_update_mode": "achieved",
+              "target_base_m": [
+                -0.01344209031130865,
+                -0.5989204876856838,
+                0.504808741631725
+              ],
+              "origin_world_m": [
+                0.6866921598497796,
+                -1.3784006107042188,
+                0.700211556942562
+              ],
+              "origin_rotation": [
+                [
+                  0.00794429071614916,
+                  -0.9999684436246059,
+                  0.0
+                ],
+                [
+                  0.9999684436246059,
+                  0.00794429071614916,
+                  0.0
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.9999999999999998
+                ]
+              ]
+            },
+            "contacts": {
+              "peak_normal_N": {
+                "robot_fridge": 27.613448630553815,
+                "robot_self": 0.0,
+                "robot_environment": 0.0
+              },
+              "pairs": [
+                {
+                  "kind": "robot_fridge",
+                  "geom_ids": [
+                    67,
+                    244
+                  ],
+                  "peak_normal_N": 27.53937788316855
+                },
+                {
+                  "kind": "robot_fridge",
+                  "geom_ids": [
+                    67,
+                    264
+                  ],
+                  "peak_normal_N": 27.613448630553815
+                }
+              ]
+            }
+          },
+          {
+            "step": 97,
+            "tracking": {
+              "command_target_delta_m": [
+                0.026077179890533233,
+                -0.016987904966769163,
+                -0.0038363178388899355
+              ],
+              "achieved_delta_m": [
+                -0.00044887678633945965,
+                -0.00018618890443855562,
+                -0.00022077604616388413
+              ],
+              "target_error_m": 0.031606984796383054,
+              "achieved_motion_m": 0.000533759065506365,
+              "scaled_public_translation_m": [
+                0.02609909139573574,
+                -0.01697920449078083,
+                -0.00382207497023046
+              ],
+              "goal_update_mode": "achieved",
+              "target_base_m": [
+                -0.010899357824534304,
+                -0.6065665147513245,
+                0.50767313079004
+              ],
+              "origin_world_m": [
+                0.6867811327448485,
+                -1.3784582616469874,
+                0.7002262057505948
+              ],
+              "origin_rotation": [
+                [
+                  0.008591657878098513,
+                  -0.9999630910263164,
+                  0.0
+                ],
+                [
+                  0.9999630910263164,
+                  0.008591657878098513,
+                  0.0
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.9999999999999998
+                ]
+              ]
+            },
+            "contacts": {
+              "peak_normal_N": {
+                "robot_fridge": 28.084355630648158,
+                "robot_self": 0.0,
+                "robot_environment": 0.0
+              },
+              "pairs": [
+                {
+                  "kind": "robot_fridge",
+                  "geom_ids": [
+                    67,
+                    244
+                  ],
+                  "peak_normal_N": 28.009021714945437
+                },
+                {
+                  "kind": "robot_fridge",
+                  "geom_ids": [
+                    67,
+                    264
+                  ],
+                  "peak_normal_N": 28.084355630648158
+                }
+              ]
+            }
+          },
+          {
+            "step": 98,
+            "tracking": {
+              "command_target_delta_m": [
+                0.018181969807318503,
+                -0.009562602983074653,
+                -0.010030062175840015
+              ],
+              "achieved_delta_m": [
+                -0.00033575713836480475,
+                -8.702469126786738e-05,
+                -0.0002339277923093519
+              ],
+              "target_error_m": 0.022992543227299527,
+              "achieved_motion_m": 0.0004183639143950127,
+              "scaled_public_translation_m": [
+                0.01819653809070587,
+                -0.009557496756315231,
+                -0.010025200434029102
+              ],
+              "goal_update_mode": "achieved",
+              "target_base_m": [
+                -0.01879381651464418,
+                -0.5992834972464597,
+                0.5012492502118467
+              ],
+              "origin_world_m": [
+                0.6868494170518424,
+                -1.378514141931616,
+                0.700235565945674
+              ],
+              "origin_rotation": [
+                [
+                  0.00926032879658728,
+                  -0.999957122236038,
+                  0.0
+                ],
+                [
+                  0.999957122236038,
+                  0.00926032879658728,
+                  0.0
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.9999999999999998
+                ]
+              ]
+            },
+            "contacts": {
+              "peak_normal_N": {
+                "robot_fridge": 24.712274497421305,
+                "robot_self": 0.0,
+                "robot_environment": 0.0
+              },
+              "pairs": [
+                {
+                  "kind": "robot_fridge",
+                  "geom_ids": [
+                    67,
+                    244
+                  ],
+                  "peak_normal_N": 24.64598590500013
+                },
+                {
+                  "kind": "robot_fridge",
+                  "geom_ids": [
+                    67,
+                    264
+                  ],
+                  "peak_normal_N": 24.712274497421305
+                }
+              ]
+            }
+          },
+          {
+            "step": 99,
+            "tracking": {
+              "command_target_delta_m": [
+                0.011516083817026578,
+                -0.00807996864291416,
+                -0.006104364296560583
+              ],
+              "achieved_delta_m": [
+                -0.0001876260149744069,
+                -7.808341890191972e-05,
+                -0.0003107688903996042
+              ],
+              "target_error_m": 0.015315767649720714,
+              "achieved_motion_m": 0.00037131906097423846,
+              "scaled_public_translation_m": [
+                0.0115268649533391,
+                -0.008076399564743042,
+                -0.0060916803777217865
+              ],
+              "goal_update_mode": "achieved",
+              "target_base_m": [
+                -0.025417250820129977,
+                -0.5978187083990975,
+                0.5049199319599162
+              ],
+              "origin_world_m": [
+                0.6869383944154448,
+                -1.3785702315456936,
+                0.7002566542845747
+              ],
+              "origin_rotation": [
+                [
+                  0.009807921185471857,
+                  -0.9999519011842617,
+                  0.0
+                ],
+                [
+                  0.9999519011842617,
+                  0.009807921185471857,
+                  0.0
+                ],
+                [
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ]
+            },
+            "contacts": {
+              "peak_normal_N": {
+                "robot_fridge": 16.031033064628808,
+                "robot_self": 0.0,
+                "robot_environment": 0.0
+              },
+              "pairs": [
+                {
+                  "kind": "robot_fridge",
+                  "geom_ids": [
+                    67,
+                    244
+                  ],
+                  "peak_normal_N": 15.98803117028588
+                },
+                {
+                  "kind": "robot_fridge",
+                  "geom_ids": [
+                    67,
+                    264
+                  ],
+                  "peak_normal_N": 16.031033064628808
+                }
+              ]
+            }
+          }
+        ],
+        "contact_pairs": [
+          {
+            "kind": "robot_fridge",
+            "geom_ids": [
+              67,
+              244
+            ],
+            "peak_normal_N": 15.98803117028588,
+            "geoms": [
+              "gripper0_right_hand_collision",
+              "fridgebottomfreezer_main_group_1_g35"
+            ],
+            "bodies": [
+              [
+                "gripper0_right_right_gripper",
+                "robot0_right_hand",
+                "robot0_link7",
+                "robot0_link6",
+                "robot0_link5",
+                "robot0_link4",
+                "robot0_link3",
+                "robot0_link2",
+                "robot0_link1",
+                "robot0_link0",
+                "manipulator_mount",
+                "mobilebase0_support",
+                "mobilebase0_fixed_support",
+                "mobilebase0_base",
+                "robot0_base"
+              ],
+              [
+                "fridgebottomfreezer_main_group_1_fridge_door",
+                "fridgebottomfreezer_main_group_1_main"
+              ]
+            ]
+          },
+          {
+            "kind": "robot_fridge",
+            "geom_ids": [
+              67,
+              264
+            ],
+            "peak_normal_N": 16.031033064628808,
+            "geoms": [
+              "gripper0_right_hand_collision",
+              "fridgebottomfreezer_main_group_1_g55"
+            ],
+            "bodies": [
+              [
+                "gripper0_right_right_gripper",
+                "robot0_right_hand",
+                "robot0_link7",
+                "robot0_link6",
+                "robot0_link5",
+                "robot0_link4",
+                "robot0_link3",
+                "robot0_link2",
+                "robot0_link1",
+                "robot0_link0",
+                "manipulator_mount",
+                "mobilebase0_support",
+                "mobilebase0_fixed_support",
+                "mobilebase0_base",
+                "robot0_base"
+              ],
+              [
+                "fridgebottomfreezer_main_group_1_fridge_door_Clear",
+                "fridgebottomfreezer_main_group_1_fridge_door",
+                "fridgebottomfreezer_main_group_1_main"
+              ]
+            ]
+          }
+        ],
+        "old_next_action": [
+          -0.005393983796238899,
+          0.0003398343687877059,
+          -0.0011653618421405554,
+          0.0,
+          -0.991294264793396,
+          0.126441091299057,
+          -0.06856400519609451,
+          -0.09228818118572235,
+          0.003402981674298644,
+          0.0025574816390872,
+          0.017066573724150658,
+          -1.0288143157958984
+        ],
+        "new_next_action": [
+          -0.004798527806997299,
+          -0.0014867130666971207,
+          -0.0008806491969153285,
+          0.0,
+          -1.0056184530258179,
+          -0.15067589282989502,
+          -0.04831418767571449,
+          -0.21053580939769745,
+          0.07769211381673813,
+          0.004679178819060326,
+          0.006761565804481506,
+          -1.0137686729431152
+        ],
+        "replacement_translation_rms_public_units": 0.17434293751118993,
+        "replacement_all_dimensions_max_abs": 0.277116984128952,
+        "before_20": {
+          "actions": 20,
+          "closing_deg": -3.585536772173654,
+          "per_door_closing_deg": [
+            -3.585536772173654
+          ],
+          "per_door_opening_steps_over_0_1deg": [
+            10
+          ],
+          "opening_steps_over_0_1deg": 10,
+          "door_stall_steps_under_0_05deg": 10,
+          "mean_eef_motion_m": 0.002925141476988362,
+          "mean_target_error_m": 0.024635625318622612,
+          "blocked_steps": 5
+        },
+        "after_20": {
+          "actions": 20,
+          "closing_deg": 0.19072110174552392,
+          "per_door_closing_deg": [
+            0.19072110174552392
+          ],
+          "per_door_opening_steps_over_0_1deg": [
+            0
+          ],
+          "opening_steps_over_0_1deg": 0,
+          "door_stall_steps_under_0_05deg": 20,
+          "mean_eef_motion_m": 0.00079899267316417,
+          "mean_target_error_m": 0.014086756389591079,
+          "blocked_steps": 12
+        }
+      }
+    ]
+  },
+  "preservation": {
+    "checked": 1355,
+    "changed": [],
+    "passed": true
+  },
+  "raw_artifacts": [
+    "outputs\\agent-workflow-v1\\contact-replanning-v1",
+    "outputs\\agent-workflow-v1\\contact-replanning-v1-seed46-continuation"
+  ],
+  "policy_checkpoint_sha256": "36fa77a84e598df895729895f78ac66088ec458e62457738d9f08178a7fd7f6e"
+}

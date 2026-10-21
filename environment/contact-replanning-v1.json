@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "seeds": [43, 44, 45, 46],
+  "rule": {
+    "target_error_m": 0.01,
+    "max_motion_m": 0.001,
+    "loaded_normal_N": 1.0,
+    "consecutive_steps": 5,
+    "release_steps": 5,
+    "cooldown_steps": 20,
+    "max_events": 12
+  },
+  "max_actions": 600,
+  "max_candidate_episodes": 4,
+  "max_new_baseline_episodes": 4,
+  "episode_timeout_seconds": 600,
+  "instruction": "CloseFridge",
+  "prediction_chunk": 50,
+  "flow_steps": 10,
+  "baseline_rerun_reason": "Archived steps lack per-step actual controller targets and full predicted chunks needed for matched tracking and discarded-action analysis.",
+  "acceptance": {
+    "max_door_progress_regression_deg": 1.0,
+    "max_peak_force_ratio": 1.25,
+    "max_peak_force_slack_N": 25.0
+  }
+}

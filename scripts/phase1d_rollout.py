@@ -200,11 +200,21 @@ def main():
     parser.add_argument("--control-diagnostics", action="store_true")
     parser.add_argument("--workflow-diagnostics", action="store_true",
                         help="New versioned workflow: contacts, RGB guards and matched per-chunk RNG")
+    parser.add_argument("--execution-feedback", choices=('baseline', 'candidate'))
+    parser.add_argument("--feedback-config", type=Path)
     parser.add_argument("--renderer-owner-cleanup", action="store_true",
                         help="Explicit pinned Windows renderer resource-lifetime correction")
     parser.add_argument("--instruction-contrast", action="store_true",
                         help="Explicit pretrained CloseFridge task-ID versus native-language reference")
     args = parser.parse_args()
+    feedback = None
+    if args.execution_feedback:
+        import contact_replanning as feedback
+        from dataclasses import asdict
+        assert args.workflow_diagnostics and args.renderer_owner_cleanup and args.feedback_config
+        feedback_config = json.loads(args.feedback_config.read_text())
+        assert args.seed in feedback_config['seeds'] and args.execution_horizon == 50
+        supervisor = feedback.Supervisor(feedback.Rule(**feedback_config['rule']))
     OUT = args.output.resolve()
     checkpoint = args.checkpoint
     revision = MODEL_REV if checkpoint == MODEL else None
@@ -311,6 +321,11 @@ def main():
         manifest["instruction_contrast"] = True
         manifest["optional_noise_fingerprints"] = "disabled; original sampler unchanged"
     emit("manifest", manifest)
+    if feedback:
+        assert args.reference and args.instruction == 'CloseFridge'
+        reference_manifest = json.loads((args.reference / 'manifest.json').read_text())
+        for key in ('model_sha256', 'checkpoint_file_hashes', 'versions', 'rng_rule', 'execution_horizon'):
+            assert manifest[key] == reference_manifest[key], f'Feedback protocol mismatch: {key}'
     torch.manual_seed(args.seed)
     torch.cuda.manual_seed_all(args.seed)
     policy = SmolVLAPolicy.from_pretrained(checkpoint, revision=revision)
@@ -331,6 +346,8 @@ def main():
                     "postprocessor": [{"class": type(s).__name__, "config": s.get_config()} for s in post.steps]})
     if args.instruction_contrast:
         assert json.loads((OUT / "policy.json").read_text()) == json.loads((args.reference / "policy.json").read_text()), "Paired policy/processor mismatch"
+    if feedback:
+        assert json.loads((OUT / 'policy.json').read_text()) == json.loads((args.reference / 'policy.json').read_text())
     if args.control_diagnostics:
         assert json.loads((OUT / 'policy.json').read_text()) == json.loads((args.reference / 'policy.json').read_text())
         # Change only the execution queue, after verifying the saved configuration.
@@ -379,6 +396,8 @@ def main():
         emit("manifest", manifest)
         emit("scene", {"ep_meta": low.get_ep_meta(), "robot": type(robot.robot_model).__name__,
                        "controller": robot.composite_controller_config})
+        if feedback:
+            assert serial(robot.composite_controller_config) == json.loads((args.reference / 'scene.json').read_text())['controller']
         frames(obs, "reset")
         emit("reset", {"state": obs["agent_pos"], "task": env.task_description, "fridge": fridge(low),
                        "physical": initial, "hashes": {k: hashlib.sha256(initial[k].tobytes()).hexdigest() for k in ("qpos", "qvel")}})
@@ -412,6 +431,16 @@ def main():
         assert not low._check_success(), "Task already successful at reset"
         assert env.task_description == (environment_instruction if args.instruction == "environment" else args.instruction)
         recorder = control_diagnostics.ContactRecorder(low.sim, OUT) if (args.control_diagnostics or args.workflow_diagnostics) else None
+        if feedback:
+            arm = robot.composite_controller.part_controllers['right']
+            assert arm.input_ref_frame == 'base' and arm.input_type == 'delta'
+            fridge_names = set(low.fxtr.contact_geoms)
+            fridge_ids = {g['id'] for g in recorder.catalog if g['name'] in fridge_names}
+            assert fridge_ids and not fridge_ids.intersection(recorder.robot_ids)
+            emit('feedback-contract', dict(arm=args.execution_feedback, rule=asdict(supervisor.rule),
+                 fridge_geom_ids=sorted(fridge_ids), fridge_geom_names=sorted(fridge_names),
+                 module_sha256=hashlib.sha256(Path(feedback.__file__).read_bytes()).hexdigest(),
+                 config_sha256=hashlib.sha256(args.feedback_config.read_bytes()).hexdigest()))
         previous_action = None
 
         def prepare(observation, first=False):
@@ -466,6 +495,8 @@ def main():
             latencies.append(elapsed)
             summary["inference_calls"] += 1
             final = post(output.clone())
+            if feedback:
+                captured['final_chunk'] = final[0].detach().cpu().numpy().copy()
             assert tuple(captured["internal"].shape) == (1, 50, 32) and torch.isfinite(captured["internal"]).all()
             assert tuple(output.shape) == (1, 50, 12) and torch.isfinite(output).all()
             assert tuple(final.shape) == (1, 50, 12) and torch.isfinite(final).all()
@@ -476,6 +507,8 @@ def main():
                     "per_dim_max": final.amax(dim=(0, 1)).tolist(),
                     "peak_cuda_allocated": torch.cuda.max_memory_allocated(),
                     "peak_cuda_reserved": torch.cuda.max_memory_reserved()}
+            if feedback:
+                item['all_actions'] = captured['final_chunk'].tolist()
             emit(f"chunk-{summary['inference_calls']:02d}", item)
             if summary["inference_calls"] == 1:
                 torch.save({"internal": captured["internal"], "normalized": output.detach().cpu(),
@@ -541,6 +574,22 @@ def main():
                     record['action_change'] = control_diagnostics.action_change(previous_action, action)
                     record['simulation_step_seconds_including_diagnostics'] = recorder.last_step_seconds
                     previous_action = action.copy()
+                if feedback:
+                    tracking = feedback.tracking_evidence(trace, action)
+                    contact = feedback.contact_evidence(recorder.last_samples, recorder.robot_ids, fridge_ids)
+                    safe = not trace['guard_failures'] and feedback.valid_cameras(obs)
+                    terminal = trace['terminated'] or trace['truncated'] or index == 600
+                    # Task predicates never enter the event rule. Simulator termination only suppresses queue changes.
+                    decision = supervisor.update(index, tracking, contact,
+                                                 len(policy._queues['action']), safe=safe and not terminal)
+                    decision['enabled'] = args.execution_feedback == 'candidate'
+                    decision['simulation_time'] = trace['after']['time']
+                    if decision['trigger'] and decision['enabled']:
+                        n = len(policy._queues['action'])
+                        decision['discarded_actions'] = captured['final_chunk'][-n:].tolist()
+                        feedback.interrupt(policy, decision)
+                    record['feedback'] = dict(tracking=tracking, contacts=contact, decision=decision)
+                    record['queue_after_feedback'] = len(policy._queues['action'])
                 log.write(json.dumps(serial(record)) + "\n")
                 log.flush()
                 video_frame(obs, f"STEP {index}")
