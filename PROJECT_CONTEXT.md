@@ -1,9 +1,25 @@
 # EmbodiedOps — current project context
 
-Updated 2026-10-20. This file describes current scope; dated experiment reports
+Updated 2026-10-22. This file describes current scope; dated experiment reports
 retain original stopped-run findings and subsequent completion addenda.
 
 ## Current milestone
+
+The instruction-controlled 300-update SmolVLA study is **closed at 52/60 valid
+cells**: one timeout-invalid cell and seven unrun cells will not be resumed.
+Task-ID success is A 3/9, B 3/9, C 1/8; NL success is A 0/9, B 1/9, C 0/8.
+These are incomplete diagnostic results, not a complete benchmark. Neither
+fine-tune demonstrates task-ID improvement; the historical NL 0/10 → 3/10 gain
+was not reproduced in the completed evidence. Runtime/numerical limitations and
+all interrupted attempts are retained. C's step-300 inference validation passed,
+but optimizer/scheduler state remains incomplete; no replay is authorized.
+
+Next research milestone: a separately scoped **Corrective Imitation Learning**
+design. Failure root cause remains unresolved; missing recovery demonstrations
+are a hypothesis, not an established finding. The
+[closed study and handoff](environment/instruction-control-v1.md) are authoritative
+for this result. No data collection, training, inference, simulation or additional
+diagnostics are authorized by this handoff.
 
 Portfolio delivery from completed SmolVLA / RoboCasa / CloseFridge evidence.
 Further fine-tuning, sampling/precision/horizon sweeps and unrelated diagnostics
