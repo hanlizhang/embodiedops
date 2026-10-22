@@ -50,7 +50,12 @@ def main():
     parser.add_argument('--mode', choices=['smoke', 'verify', 'continue'], required=True)
     parser.add_argument('--checkpoint', type=Path)
     parser.add_argument('--output', type=Path, default=OUT)
+    parser.add_argument('--task-id', action='store_true', help='Controlled instruction-only arm: CloseFridge before saved preprocessing')
+    parser.add_argument('--verify-output', type=Path, help='Write verification outside a historical checkpoint')
+    parser.add_argument('--dataset-cache', type=Path)
     args = parser.parse_args()
+    if args.dataset_cache:
+        os.environ['HF_DATASETS_CACHE'] = str(args.dataset_cache.resolve())
     OUT = args.output.resolve()
     OUT.mkdir(parents=True, exist_ok=True)
     marker = OUT / (args.mode + ('-' + args.checkpoint.name if args.checkpoint else '') + '-started.json')
@@ -103,6 +108,9 @@ def main():
              'split_rule': 'LeRobot last ceil(10%) episodes per instruction; no episode overlap',
              'pretraining_overlap_unknown': True}
     dump(OUT/'split.json', split)
+    if args.task_id:
+        historical_split = json.loads((ROOT/'outputs/phase1d/training-v2/split.json').read_text())
+        assert split == historical_split, 'Instruction study must retain original samples and split'
 
     source = str(args.checkpoint/'pretrained_model') if args.checkpoint else str(MODEL_ROOT)
     policy = SmolVLAPolicy.from_pretrained(source, config=None if args.checkpoint else cfg_policy, strict=True)
@@ -120,6 +128,8 @@ def main():
     accelerator = Accelerator(mixed_precision='no', step_scheduler_with_optimizer=False)
 
     def prep(raw):
+        if args.task_id:
+            raw = dict(raw, task='CloseFridge')
         batch = lerobot_collate_fn([raw])
         for cam in train.meta.camera_keys:
             if batch[cam].dtype == torch.uint8:
@@ -163,7 +173,7 @@ def main():
             assert filehash(args.checkpoint/'pretrained_model'/name)==filehash(MODEL_ROOT/name)
         result={'passed':True,'checkpoint':str(args.checkpoint),'step':saved['step'],
                 'state_tensors_equal':len(actual_hashes),'validation':loss,'processors_byte_identical':True}
-        dump(args.checkpoint/'reload-verification.json',result)
+        dump(args.verify_output or args.checkpoint/'reload-verification.json',result)
         print(json.dumps(result),flush=True)
         return
 
@@ -187,6 +197,7 @@ def main():
               'supported_freezing':True,'gradient_checkpointing':False,'peft':False,'precision':'native BF16/FP32, use_amp=false',
               'optimizer':cfg.optimizer.to_dict() if hasattr(cfg.optimizer,'to_dict') else vars(cfg.optimizer),
               'scheduler':vars(cfg.scheduler),'effective_warmup_steps':int(cfg.scheduler.num_warmup_steps*cfg.steps/cfg.scheduler.num_decay_steps)}
+    manifest['instruction_intervention'] = 'CloseFridge' if args.task_id else 'original dataset task'
     dump(OUT/'manifest.json',manifest)
     if step==0:
         initial={'step':0,'validation':evaluate(val_raw),'fixed_training_probe':evaluate(train_probe)}

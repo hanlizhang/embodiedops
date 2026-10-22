@@ -1,3 +1,22 @@
 # Preserve copied scientific evidence bytes, including their original CRLF.
 # Treat CR as the line terminator, not trailing content, for these two plots.
 docs/assets/*.svg -text whitespace=cr-at-eol
+
+# Retain exact scientific source bytes for registered SHA256 provenance.
+/scripts/phase1d_train.py -text whitespace=cr-at-eol
+/scripts/phase1d_rollout.py -text whitespace=cr-at-eol
+/scripts/instruction_control_audit.py -text whitespace=cr-at-eol
+/scripts/instruction_control_train.py -text whitespace=cr-at-eol
+/scripts/instruction_control_partial_audit.py -text whitespace=cr-at-eol
+/scripts/instruction_control_reload_only.py -text whitespace=cr-at-eol
+/scripts/instruction_control_evaluate.py -text whitespace=cr-at-eol
+/scripts/instruction_control_resume.py -text whitespace=cr-at-eol
+/scripts/instruction_control_resume_after_archive.py -text whitespace=cr-at-eol
+/scripts/instruction_control_report.py -text whitespace=cr-at-eol
+/scripts/instruction_completion_analysis.py -text whitespace=cr-at-eol
+/scripts/instruction_existing_action_analysis.py -text whitespace=cr-at-eol
+/scripts/instruction_comparison_plot.py -text whitespace=cr-at-eol
+/scripts/instruction_final_integrity.py -text whitespace=cr-at-eol
+/scripts/instruction_disk_guard.py -text whitespace=cr-at-eol
+/scripts/instruction_runtime_storage.py -text whitespace=cr-at-eol
+/scripts/instruction_storage_contract.py -text whitespace=cr-at-eol

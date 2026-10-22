@@ -206,7 +206,11 @@ def main():
                         help="Explicit pinned Windows renderer resource-lifetime correction")
     parser.add_argument("--instruction-contrast", action="store_true",
                         help="Explicit pretrained CloseFridge task-ID versus native-language reference")
+    parser.add_argument('--study-observations', action='store_true',
+                        help='Save raw RGB/state at native replans for fixed-state action comparison')
     args = parser.parse_args()
+    if args.study_observations:
+        assert args.workflow_diagnostics and args.seed in range(42, 52)
     feedback = None
     if args.execution_feedback:
         import contact_replanning as feedback
@@ -215,7 +219,11 @@ def main():
         feedback_config = json.loads(args.feedback_config.read_text())
         assert args.seed in feedback_config['seeds'] and args.execution_horizon == 50
         supervisor = feedback.Supervisor(feedback.Rule(**feedback_config['rule']))
-    OUT = args.output.resolve()
+    if args.study_observations:
+        from instruction_storage_contract import episode_path
+        OUT = episode_path(args.output)
+    else:
+        OUT = args.output.resolve()
     checkpoint = args.checkpoint
     revision = MODEL_REV if checkpoint == MODEL else None
     if args.workflow_diagnostics:
@@ -431,6 +439,8 @@ def main():
         assert not low._check_success(), "Task already successful at reset"
         assert env.task_description == (environment_instruction if args.instruction == "environment" else args.instruction)
         recorder = control_diagnostics.ContactRecorder(low.sim, OUT) if (args.control_diagnostics or args.workflow_diagnostics) else None
+        if args.study_observations:
+            save('study-fixture.json', {'fridge_contact_geoms': sorted(low.fxtr.contact_geoms)})
         if feedback:
             arm = robot.composite_controller.part_controllers['right']
             assert arm.input_ref_frame == 'base' and arm.input_type == 'delta'
@@ -495,7 +505,7 @@ def main():
             latencies.append(elapsed)
             summary["inference_calls"] += 1
             final = post(output.clone())
-            if feedback:
+            if feedback or args.study_observations:
                 captured['final_chunk'] = final[0].detach().cpu().numpy().copy()
             assert tuple(captured["internal"].shape) == (1, 50, 32) and torch.isfinite(captured["internal"]).all()
             assert tuple(output.shape) == (1, 50, 12) and torch.isfinite(output).all()
@@ -507,7 +517,7 @@ def main():
                     "per_dim_max": final.amax(dim=(0, 1)).tolist(),
                     "peak_cuda_allocated": torch.cuda.max_memory_allocated(),
                     "peak_cuda_reserved": torch.cuda.max_memory_reserved()}
-            if feedback:
+            if feedback or args.study_observations:
                 item['all_actions'] = captured['final_chunk'].tolist()
             emit(f"chunk-{summary['inference_calls']:02d}", item)
             if summary["inference_calls"] == 1:
@@ -541,6 +551,9 @@ def main():
                         summary['termination_reason'] = 'invalid_observation_black_camera'
                         break
                     if not policy._queues['action']:
+                        if args.study_observations:
+                            np.savez_compressed(OUT/f'observation-{index:04d}.npz',
+                                                state=obs['agent_pos'], **obs['pixels'])
                         torch.manual_seed(args.seed * 100000 + index)
                         torch.cuda.manual_seed_all(args.seed * 100000 + index)
                         emit(f'input-{index:04d}', {'before_step': index, 'cameras': health})

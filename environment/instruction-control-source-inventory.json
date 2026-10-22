@@ -1,0 +1,293 @@
+{
+  "purpose": "Reviewed source inventory for implementation commit; closed 52/60 study is not resumed.",
+  "base_commit": "66c4b69bd23cb3a938912e8f68a025647f6b06b0",
+  "files": [
+    {
+      "path": "scripts/phase1d_train.py",
+      "category": "essential_experiment_source",
+      "action": "commit_reviewed_source",
+      "reason": "Commit the executed training snapshot only: task-ID preprocessing, original split assertion, external verification destination/cache, and intervention metadata. Leave unused step-150 recovery hunks unstaged.",
+      "original_sha256": "0aaa528fb611d133c6affb1d426972ef1001fb6647d11bfbeed92184385297a3"
+    },
+    {
+      "path": "scripts/phase1d_rollout.py",
+      "category": "essential_experiment_source",
+      "action": "commit_reviewed_source",
+      "reason": "Executed opt-in raw observation/action recording and logical junction output path; default control/inference remains unchanged.",
+      "original_sha256": "f590daaf5aa3634bc9856c2ee8f497c1e5a0b90d5722ca767de3e8f651e64ba6"
+    },
+    {
+      "path": "scripts/instruction_control_audit.py",
+      "category": "essential_experiment_source",
+      "action": "commit_reviewed_source",
+      "reason": "Pinned A/B identities, tensor/processor/sample checks and shared JSON/SHA helpers.",
+      "original_sha256": "8293e33dc3ea2932e0b9306009a979587a4bfaea209c10a2295a40218af1f46f"
+    },
+    {
+      "path": "scripts/instruction_control_train.py",
+      "category": "essential_experiment_source",
+      "action": "commit_reviewed_source",
+      "reason": "Executed bounded C smoke/reload/300-update orchestration; retain for provenance, not as permission to rerun.",
+      "original_sha256": "c5fbaa4d600c2ecffed1ec450ed2c79b0a529a1947818b8ea945dbd5257fb41d"
+    },
+    {
+      "path": "scripts/instruction_control_partial_audit.py",
+      "category": "essential_experiment_source",
+      "action": "commit_reviewed_source",
+      "reason": "Explains partial serialization, tensor changes, saved RNG and losses.",
+      "original_sha256": "c14ae450bc16da0b4b9b976ee8b9c826b06e3d6011af953e40de3160e7ff5203"
+    },
+    {
+      "path": "scripts/instruction_control_reload_only.py",
+      "category": "essential_experiment_source",
+      "action": "commit_reviewed_source",
+      "reason": "Executed inference-only C reload and fixed-probe validation; GPU entry point, not run during cleanup.",
+      "original_sha256": "1ff3da3c4e601f6214a6b45855ef243bb22a722a5a10a1f6d3c54cabf2011e91"
+    },
+    {
+      "path": "scripts/instruction_control_evaluate.py",
+      "category": "essential_experiment_source",
+      "action": "commit_reviewed_source",
+      "reason": "Frozen original evaluation source and reusable detailed_metrics reader.",
+      "original_sha256": "49feb2ae67f040459d76a605ce60e8139a6195e555fd293928a3008980dacef5"
+    },
+    {
+      "path": "scripts/instruction_control_resume.py",
+      "category": "essential_experiment_source",
+      "action": "commit_reviewed_source",
+      "reason": "Executed 18-to-21 continuation, paired validations and original ledger provenance.",
+      "original_sha256": "d10a8f9336daede8beb05de84224628520e76faca0c98c07bd80ad4ae602ff0c"
+    },
+    {
+      "path": "scripts/instruction_control_resume_after_archive.py",
+      "category": "essential_experiment_source",
+      "action": "commit_reviewed_source",
+      "reason": "Executed 21-to-52 continuation, active storage telemetry and worker cap.",
+      "original_sha256": "13e185caf0cc374ed0979da71bedb706acdde5ce015d5a5f0fba23fe271e3a29"
+    },
+    {
+      "path": "scripts/instruction_control_report.py",
+      "category": "essential_experiment_source",
+      "action": "commit_reviewed_source",
+      "reason": "Offline valid-cell rates, per-door/contact windows and explicit invalid/unrun reporting.",
+      "original_sha256": "cadbce1260111c7f8e92df2a177f9e8e9b0e4679d188464a53512dace7bff32c"
+    },
+    {
+      "path": "scripts/instruction_completion_analysis.py",
+      "category": "essential_experiment_source",
+      "action": "commit_reviewed_source",
+      "reason": "Offline physical metrics, costs and historical NL comparison.",
+      "original_sha256": "18f40823eb2f393f300925c2586aaa8aa2252612703a103c4b62b51fec87b6af"
+    },
+    {
+      "path": "scripts/instruction_existing_action_analysis.py",
+      "category": "essential_experiment_source",
+      "action": "commit_reviewed_source",
+      "reason": "Existing first-chunk RGB/state equality and action differences; no new inference.",
+      "original_sha256": "7b29af5ef8d8b73d3adc6a081f366f4daf988a09c22cac284ef976aeb97f75ef"
+    },
+    {
+      "path": "scripts/instruction_comparison_plot.py",
+      "category": "useful_development_tooling",
+      "action": "commit_reviewed_source",
+      "reason": "Offline partial-result chart; requires ReportLab and pypdfium2 from the existing document runtime.",
+      "original_sha256": "c1d1556704c7730512b65944b41a219d3866909691474279c2a7b5e0a1d8bb3e"
+    },
+    {
+      "path": "scripts/instruction_final_integrity.py",
+      "category": "useful_development_tooling",
+      "action": "commit_reviewed_source",
+      "reason": "Saved-result, ledger, checkpoint/source preservation checks; writes a report and samples Windows storage when invoked.",
+      "original_sha256": "46b96d083234263d4fe18adb21ec47ca8f7369450b0936ee5cb7dba23391c8bf"
+    },
+    {
+      "path": "scripts/instruction_disk_guard.py",
+      "category": "useful_development_tooling",
+      "action": "commit_reviewed_source",
+      "reason": "Windows free-space API checks and unchanged 2 GiB floor.",
+      "original_sha256": "1cf26771be8ed776354ef68c6b81ae7a889b7b173c32223c4f61b533c267b8d8"
+    },
+    {
+      "path": "scripts/instruction_runtime_storage.py",
+      "category": "useful_development_tooling",
+      "action": "commit_reviewed_source",
+      "reason": "Windows EnumPageFilesW telemetry used by the final continuation.",
+      "original_sha256": "d1368ea3a9c8db7c24229086ada67740e343d5c853c03333d2db14139557da7c"
+    },
+    {
+      "path": "scripts/instruction_storage_contract.py",
+      "category": "useful_development_tooling",
+      "action": "commit_reviewed_source",
+      "reason": "Logical/physical junction, token and episode-path contract.",
+      "original_sha256": "ef936f1f6c88a9ba347011ddcdea417cf709dee5a0d6624361b6eaa8be21a3b1"
+    },
+    {
+      "path": "scripts/instruction_cache_cleanup.ps1",
+      "category": "temporary_or_obsolete",
+      "action": "propose_archive_only_no_action",
+      "reason": "Executed one-off deletion list for 1008 cache files; not reusable cleanup tooling.",
+      "original_sha256": "8b841aaf3f000ee7df68644b739e71996fb53eb3c4f61d8ea515bc85ef0f0db2",
+      "proposed_destination": "outputs/git-cleanup-archive-20261022/instruction_cache_cleanup.ps1",
+      "approval_required": true
+    },
+    {
+      "path": "scripts/instruction_control_recover.py",
+      "category": "temporary_or_obsolete",
+      "action": "propose_archive_only_no_action",
+      "reason": "Unexecuted 150-to-300 training replay; explicitly prohibited and unnecessary for inference.",
+      "original_sha256": "6617fdee21194db039e1ad8a8e13198a4c1c5b6b7652a9d3c4a50e202a758eeb",
+      "proposed_destination": "outputs/git-cleanup-archive-20261022/instruction_control_recover.py",
+      "approval_required": true
+    },
+    {
+      "path": "scripts/instruction_control_stop_audit.py",
+      "category": "temporary_or_obsolete",
+      "action": "propose_archive_only_no_action",
+      "reason": "One-off first storage-stop narrative writer; result already retained.",
+      "original_sha256": "39ef68fbf26c28d6929498e050306318dbb308625b2113005bcfa2296e4d223a",
+      "proposed_destination": "outputs/git-cleanup-archive-20261022/instruction_control_stop_audit.py",
+      "approval_required": true
+    },
+    {
+      "path": "scripts/instruction_disk_windows.ps1",
+      "category": "temporary_or_obsolete",
+      "action": "propose_archive_only_no_action",
+      "reason": "One-off fixed-path Windows API sampling wrapper; saved audit exists.",
+      "original_sha256": "7dd3511aaa05b3a9eeffccbc0f6a78a46bfcd2f2c26808523c4dc516bc7d00ce",
+      "proposed_destination": "outputs/git-cleanup-archive-20261022/instruction_disk_windows.ps1",
+      "approval_required": true
+    },
+    {
+      "path": "scripts/instruction_evaluation_storage.ps1",
+      "category": "temporary_or_obsolete",
+      "action": "propose_archive_only_no_action",
+      "reason": "One-off existing junction creation; not to be rerun.",
+      "original_sha256": "0b3c2da23c5244b0be4e06371885e6ca89bfdc4e6778ddf1672c1b63f6d5f1cf",
+      "proposed_destination": "outputs/git-cleanup-archive-20261022/instruction_evaluation_storage.ps1",
+      "approval_required": true
+    },
+    {
+      "path": "scripts/instruction_fixed_actions.py",
+      "category": "temporary_or_obsolete",
+      "action": "propose_archive_only_no_action",
+      "reason": "Unexecuted GPU probe requiring a completed 60-cell study; superseded by existing-action offline analysis.",
+      "original_sha256": "6089dd39be6a29855a9c9cac8518a1be5ca07bfa3c0268cba1e752bfb510cda0",
+      "proposed_destination": "outputs/git-cleanup-archive-20261022/instruction_fixed_actions.py",
+      "approval_required": true
+    },
+    {
+      "path": "scripts/instruction_pagefile_audit.ps1",
+      "category": "temporary_or_obsolete",
+      "action": "propose_archive_only_no_action",
+      "reason": "Machine-specific pagefile/registry inventory; saved audit exists, not needed for result reconstruction.",
+      "original_sha256": "20f19ec6bf7fa32237dafc245f0add6b833066258d061a06db97f50a09860703",
+      "proposed_destination": "outputs/git-cleanup-archive-20261022/instruction_pagefile_audit.ps1",
+      "approval_required": true
+    },
+    {
+      "path": "scripts/instruction_reboot_preservation.py",
+      "category": "temporary_or_obsolete",
+      "action": "propose_archive_only_no_action",
+      "reason": "Superseded 21-cell manual-reboot workflow; current preservation evidence exists.",
+      "original_sha256": "e2659d5348d73d4334249336b33919e71754f5ad48da54d06ae0a9d534c5941f",
+      "proposed_destination": "outputs/git-cleanup-archive-20261022/instruction_reboot_preservation.py",
+      "approval_required": true
+    },
+    {
+      "path": "scripts/instruction_resume_stop_audit.py",
+      "category": "temporary_or_obsolete",
+      "action": "propose_archive_only_no_action",
+      "reason": "One-off external-stop ledger correction; preserve its recorded result.",
+      "original_sha256": "4203d57106884deb928c7a7c8ac6b34970744cc7cffc18945a09600e6dfde644",
+      "proposed_destination": "outputs/git-cleanup-archive-20261022/instruction_resume_stop_audit.py",
+      "approval_required": true
+    },
+    {
+      "path": "scripts/instruction_storage_audit.py",
+      "category": "temporary_or_obsolete",
+      "action": "propose_archive_only_no_action",
+      "reason": "Historical broad repository/cache inventory; no new storage audit needed.",
+      "original_sha256": "c362cd3d2ff99d424d84288051b099727b93bb136a265596bf5edbbe3a559948",
+      "proposed_destination": "outputs/git-cleanup-archive-20261022/instruction_storage_audit.py",
+      "approval_required": true
+    },
+    {
+      "path": "scripts/instruction_storage_report.py",
+      "category": "temporary_or_obsolete",
+      "action": "propose_archive_only_no_action",
+      "reason": "Historical storage report generator with fixed findings and sizes.",
+      "original_sha256": "a736f0f0d06ea67e327c054216b1f211c69265bd83eac93096eaa46089a62935",
+      "proposed_destination": "outputs/git-cleanup-archive-20261022/instruction_storage_report.py",
+      "approval_required": true
+    },
+    {
+      "path": "scripts/instruction_storage_watch.ps1",
+      "category": "temporary_or_obsolete",
+      "action": "propose_archive_only_no_action",
+      "reason": "Obsolete watcher tied to PID 34040; superseded by parent-owned telemetry.",
+      "original_sha256": "130b4b2e7d4e724ce7107f4992ff4f67fcf53cb9b9430dc9f38838c9b45dca17",
+      "proposed_destination": "outputs/git-cleanup-archive-20261022/instruction_storage_watch.ps1",
+      "approval_required": true
+    },
+    {
+      "path": "environment/learning-dynamics-followup-v1.md",
+      "category": "unrelated_preexisting",
+      "action": "leave_untouched",
+      "reason": "Pre-existing learning-dynamics/FP32 follow-up; outside this closed instruction study.",
+      "original_sha256": "469dc769c7d5c75e37af02c6f0b1fe2e515af1797ecb460fa020fc346768dcc2"
+    },
+    {
+      "path": "scripts/learning_followup_audit.py",
+      "category": "unrelated_preexisting",
+      "action": "leave_untouched",
+      "reason": "Pre-existing offline 5000-update learning audit; outside this task.",
+      "original_sha256": "0259fe63a7adb8f62ffccc3270cc6366a9949bec407d507c6516be56d3467716"
+    }
+  ],
+  "generated_artifacts": {
+    "changed_files_in_initial_porcelain": 0,
+    "policy": "Keep ignored; do not stage, delete, migrate or regenerate originals.",
+    "paths": [
+      "outputs/agent-workflow-v1/instruction-control-v1/attempt02",
+      "outputs/instruction-storage-audit",
+      "outputs/instruction-storage-guard-audit"
+    ],
+    "junction": "D:/EmbodiedOpsOutputs/instruction-control-v1-evaluation"
+  },
+  "training_partial_stage": {
+    "source": "outputs/agent-workflow-v1/instruction-control-v1/attempt02/training-source.py.txt",
+    "executed_snapshot_sha256": "b5b71e020e823c7633685f05e0265c3f93d3acabd32d89e5599d973e7dbcfbdb",
+    "reason": "The current file differs only by later, unexecuted recovery additions. Index the executed snapshot without changing working-tree bytes.",
+    "remaining_hunks": [
+      "--resume-verification argument",
+      "External verification record selection",
+      "Step-150 continuation allowance"
+    ],
+    "proposal": "After separate approval, archive the remaining git diff to outputs/git-cleanup-archive-20261022/phase1d_train-recovery-only.patch, verify it, then remove only those unused hunks. No patch archival/removal performed now."
+  },
+  "archive_procedure": "Proposal only: copy each listed original to its exact destination, verify bytes/SHA256, then seek/confirm approval before removing originals. No blanket ignore rule; no deletion in this cleanup.",
+  "reproducibility_limits": [
+    "Original 52 valid cells, 1 timeout-invalid cell and 7 unrun cells are retained; earlier zero-action A-NL-45 and 12-action B-ID-45 remain separately preserved.",
+    "Model and processor hashes, source manifests and recorded losses support artifact-level audit. No model or simulator was executed for cleanup.",
+    "C's complete 500-tensor inference weights and original processors are available; optimizer/scheduler serialization is incomplete. No replay occurred.",
+    "Historical executed entry points are study-specific and not production/general-purpose launchers. Closure forbids further execution of the matrix.",
+    "Original evaluator's guard_failure allowance is weaker than the later continuation's stop rule; no accepted result has guard_failure. Preserve frozen source, do not reuse the initial launcher for future studies.",
+    "The unexecuted training recovery option is excluded from the commit; its working-tree hunks remain intact.",
+    "Evaluation depends on local ignored models/data/simulator assets and a verified Windows D: junction. Public clones do not contain those assets.",
+    "Training snapshot, frozen evaluation sources and runner hashes are checked. Attributes disable newline conversion for newly retained study source to preserve byte identities.",
+    "The rollout source was previously normalized to LF in Git but the recorded executed file uses CRLF. Exact-byte retention expands its raw diff; git diff --ignore-space-at-eol isolates the reviewed 19-line functional diff.",
+    "Offline reconstruction from all 52 saved cells exactly matched success/validity, action counts, per-door final/best progress, contact metrics and instrumented inference totals. No model or simulator was loaded.",
+    "Historical RNG/renderer and numerical sensitivity prohibit claiming bitwise trajectory reproducibility.",
+    "Reporting entry points write output files when run; use a disposable copy for reproduction, not preserved evidence directories. Plotting assumes a nonempty subgroup for each model/condition/door type, which holds for this study.",
+    "Tests use synthetic files and API mocks. They do not validate training, GPU reload, simulator physics or all orchestration paths."
+  ],
+  "tests": [
+    "test_instruction_control.py: 4 offline tests (API disagreement/floor, path escape, contact categories/reopening, incomplete-report denominators/status)",
+    "test_renderer_lifecycle.py: 3 existing mock tests"
+  ],
+  "additional_commit_files": [
+    ".gitattributes",
+    "tests/test_instruction_control.py",
+    "environment/instruction-control-source-inventory.json"
+  ]
+}
