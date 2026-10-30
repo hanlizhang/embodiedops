@@ -1,0 +1,120 @@
+{
+  "source": "new",
+  "new_physical_verification": true,
+  "rationale": "Archived evidence shows recontact_mix_300 fails qualified success (raw_success: false, qualified_success: false) with horizon stop at 600 actions, peak contact force 449.55 N vs frozen 189.83 N (2.37x regression), closing door at 89.76° vs frozen -0.03° (89.79° regression > 1.0° gate). Contact force regression and door progress regression are concrete needs. One fixed pair verification will confirm whether new execution matches archived pattern or reveals different outcome.",
+  "pair_complete": true,
+  "episodes_attempted": 2,
+  "workers": [
+    {
+      "id": "full-64-r1-frozen",
+      "returncode": 0,
+      "seconds": 134.125,
+      "status": "completed",
+      "started_unix": 1793402594.840203,
+      "result_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\result.json"
+    },
+    {
+      "id": "full-64-r1-recontact_mix_300",
+      "returncode": 0,
+      "seconds": 93.0789999999106,
+      "status": "completed",
+      "started_unix": 1793402729.2310913,
+      "result_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\result.json"
+    }
+  ],
+  "comparison": {
+    "case": "seed64",
+    "source": "new",
+    "new_simulation_in_this_tool": false,
+    "matched_pair": true,
+    "conditions": {
+      "frozen": {
+        "id": "full-64-r1-frozen",
+        "model": "frozen",
+        "seed": 64,
+        "execution_validity": true,
+        "restoration_validity": true,
+        "raw_success": false,
+        "qualified_success": false,
+        "hard_stop": false,
+        "actions": 600,
+        "initial_deg": {
+          "fridgebottomfreezer_main_group_1_fridge_door_joint": 86.03615347501615
+        },
+        "final_deg": {
+          "fridgebottomfreezer_main_group_1_fridge_door_joint": 2.227968952476207
+        },
+        "min_deg": {
+          "fridgebottomfreezer_main_group_1_fridge_door_joint": 2.227658983517108
+        },
+        "peaks": {
+          "all": 198.16000869546616,
+          "fridge": 198.16000869546616,
+          "other_fridge": 155.423717149651,
+          "self": 0.0,
+          "target_hand_door": 198.16000869546616
+        },
+        "first_success_action": null,
+        "first_success_seconds": null,
+        "first_contact_seconds": {
+          "fridgebottomfreezer_main_group_1_fridge_door_joint": 3.809999999999747
+        },
+        "first_recontact_seconds": {
+          "fridgebottomfreezer_main_group_1_fridge_door_joint": 6.737999999999425
+        },
+        "relative_ceiling_N": 272.7000108693327,
+        "relative_pass": true,
+        "stop_reason": "horizon",
+        "inference_seconds": 6.983999999705702,
+        "execution_seconds": 28.66000000271015,
+        "worker_seconds": 131.71900000004098,
+        "video": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\rollout.mp4"
+      },
+      "recontact_mix_300": {
+        "id": "full-64-r1-recontact_mix_300",
+        "model": "recontact_mix_300",
+        "seed": 64,
+        "execution_validity": true,
+        "restoration_validity": true,
+        "raw_success": false,
+        "qualified_success": false,
+        "hard_stop": false,
+        "actions": 600,
+        "initial_deg": {
+          "fridgebottomfreezer_main_group_1_fridge_door_joint": 86.03615347501615
+        },
+        "final_deg": {
+          "fridgebottomfreezer_main_group_1_fridge_door_joint": 90.0163912978562
+        },
+        "min_deg": {
+          "fridgebottomfreezer_main_group_1_fridge_door_joint": 77.71163178974024
+        },
+        "peaks": {
+          "all": 298.5515715363655,
+          "fridge": 298.5515715363655,
+          "other_fridge": 0.0,
+          "self": 0.0,
+          "target_hand_door": 298.5515715363655
+        },
+        "first_success_action": null,
+        "first_success_seconds": null,
+        "first_contact_seconds": {
+          "fridgebottomfreezer_main_group_1_fridge_door_joint": 3.9219999999997346
+        },
+        "first_recontact_seconds": {},
+        "relative_ceiling_N": 272.7000108693327,
+        "relative_pass": false,
+        "stop_reason": "horizon",
+        "inference_seconds": 6.75,
+        "execution_seconds": 29.924000000581145,
+        "worker_seconds": 91.01499999989755,
+        "video": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\rollout.mp4"
+      }
+    },
+    "relative_contact_gate": "candidate all robot active normal peak <=1.25*matched frozen peak+25 N; hard ceiling1500 N",
+    "scope": "One fixed scene regression; no claim of benchmark/generalization improvement."
+  },
+  "failure_policy": "Infrastructure failure preserved; no retries or substitution; acceptance cannot approve an incomplete pair.",
+  "status": "completed",
+  "elapsed_seconds": 229.60900000017136
+}

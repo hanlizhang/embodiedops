@@ -1,0 +1,822 @@
+{
+  "conditions": {
+    "frozen": {
+      "job": {
+        "id": "full-64-r1-frozen",
+        "kind": "full",
+        "seed": 64,
+        "replicate": 1,
+        "model": "frozen",
+        "prefix": 0,
+        "target_door": null,
+        "cap": 600,
+        "noise_seeds": [
+          42064001,
+          42064051,
+          42064101,
+          42064151,
+          42064201,
+          42064251,
+          42064301,
+          42064351,
+          42064401,
+          42064451,
+          42064501,
+          42064551
+        ],
+        "checkpoint": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\phase1a\\hf-cache\\hub\\models--lerobot--smolvla_robocasa\\snapshots\\f7af588d11e30b0069f200792fb285904b74c80b",
+        "checkpoint_sha256": "96ae6628166a7dc1b41f8a2d92176c48e394988294b0b44755409acbb3f9bc2b",
+        "folder": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen",
+        "reference": "D:\\EmbodiedOpsOutputs\\recontact-self-imitation-v2\\full\\full-64-r1-frozen",
+        "paired_boundary_reference": "D:\\EmbodiedOpsOutputs\\recontact-self-imitation-v2\\full\\full-64-r1-frozen"
+      },
+      "execution_validity": true,
+      "restoration_validity": true,
+      "status": "completed",
+      "actions": 600,
+      "prefix_actions": 0,
+      "success": false,
+      "hard_stop": false,
+      "stop_reason": "horizon",
+      "inference_seconds": 6.983999999705702,
+      "execution_seconds": 28.66000000271015,
+      "replay_seconds": 0.0,
+      "first_success_action": null,
+      "first_contact_seconds": {
+        "fridgebottomfreezer_main_group_1_fridge_door_joint": 3.809999999999747
+      },
+      "first_recontact_seconds": {
+        "fridgebottomfreezer_main_group_1_fridge_door_joint": 6.737999999999425
+      },
+      "first_recontact_action": {
+        "fridgebottomfreezer_main_group_1_fridge_door_joint": 135
+      },
+      "recontact_events": [
+        {
+          "door": "fridgebottomfreezer_main_group_1_fridge_door_joint",
+          "local_action": 135,
+          "global_action": 135,
+          "seconds": 6.737999999999425,
+          "prior_gap_actions": 5
+        },
+        {
+          "door": "fridgebottomfreezer_main_group_1_fridge_door_joint",
+          "local_action": 152,
+          "global_action": 152,
+          "seconds": 7.551999999999358,
+          "prior_gap_actions": 7
+        },
+        {
+          "door": "fridgebottomfreezer_main_group_1_fridge_door_joint",
+          "local_action": 244,
+          "global_action": 244,
+          "seconds": 12.174000000000902,
+          "prior_gap_actions": 79
+        },
+        {
+          "door": "fridgebottomfreezer_main_group_1_fridge_door_joint",
+          "local_action": 256,
+          "global_action": 256,
+          "seconds": 12.790000000001108,
+          "prior_gap_actions": 5
+        },
+        {
+          "door": "fridgebottomfreezer_main_group_1_fridge_door_joint",
+          "local_action": 280,
+          "global_action": 280,
+          "seconds": 13.978000000001504,
+          "prior_gap_actions": 20
+        },
+        {
+          "door": "fridgebottomfreezer_main_group_1_fridge_door_joint",
+          "local_action": 510,
+          "global_action": 510,
+          "seconds": 25.483999999996477,
+          "prior_gap_actions": 208
+        },
+        {
+          "door": "fridgebottomfreezer_main_group_1_fridge_door_joint",
+          "local_action": 554,
+          "global_action": 554,
+          "seconds": 27.685999999995257,
+          "prior_gap_actions": 19
+        }
+      ],
+      "raw_all_door_success": false,
+      "policy_success": false,
+      "first_success_seconds": null,
+      "first_success_global_action": null,
+      "per_door_peaks_N": {
+        "fridgebottomfreezer_main_group_1_fridge_door_joint": 198.16000869546616
+      },
+      "peaks": {
+        "all": 198.16000869546616,
+        "fridge": 198.16000869546616,
+        "other_fridge": 155.423717149651,
+        "self": 0.0,
+        "target_hand_door": 198.16000869546616
+      },
+      "inferences": [
+        {
+          "pre_action": 1,
+          "local_pre_action": 1,
+          "seed": 42064001,
+          "noise_sha256": "79e76bc34784f6a6a969c1e102c006f9ffaf3476122757394a914600dfadedde",
+          "seconds": 1.422000000020489,
+          "observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\common-policy-input.npz",
+          "policy_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\common-policy-input.npz",
+          "observation_sha256": "e0647798bde6ff3b4d9615446b4c3444366524488cce74e7768aa0a3d9feb4e1",
+          "actual_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\observations\\0001.npz",
+          "actual_observation_sha256": "352c9d6a4a45aa9b53dd1e30cf150ed6a5315fb646c5d77b286cb9a64f71dd9e"
+        },
+        {
+          "pre_action": 51,
+          "local_pre_action": 51,
+          "seed": 42064051,
+          "noise_sha256": "2a6cdd6d182aab4b129b2bab77af93bf80ae429e53994fe4e7c3b4bc66dff84b",
+          "seconds": 0.5930000001098961,
+          "observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\observations\\0051.npz",
+          "policy_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\observations\\0051.npz",
+          "observation_sha256": "f202de90fe10b1c1063d2fe9ad9df3c4416dc79f787a196e9b75b101b6bdeaa8",
+          "actual_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\observations\\0051.npz",
+          "actual_observation_sha256": "f202de90fe10b1c1063d2fe9ad9df3c4416dc79f787a196e9b75b101b6bdeaa8"
+        },
+        {
+          "pre_action": 101,
+          "local_pre_action": 101,
+          "seed": 42064101,
+          "noise_sha256": "677d5039b34e44e9ec1f67bd1b8832a89c6f1182096d0b74eeed44a4ce3ece9f",
+          "seconds": 0.5,
+          "observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\observations\\0101.npz",
+          "policy_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\observations\\0101.npz",
+          "observation_sha256": "a69d730a167b1d6cb81fa7936c8f1a1285293c1929dd58bc3dea500bc01b0bfd",
+          "actual_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\observations\\0101.npz",
+          "actual_observation_sha256": "a69d730a167b1d6cb81fa7936c8f1a1285293c1929dd58bc3dea500bc01b0bfd"
+        },
+        {
+          "pre_action": 151,
+          "local_pre_action": 151,
+          "seed": 42064151,
+          "noise_sha256": "28c0bd2929d8bfac76179f3e35147160cba8107350cefaf50effe0ac6a55b4d8",
+          "seconds": 0.4529999999795109,
+          "observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\observations\\0151.npz",
+          "policy_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\observations\\0151.npz",
+          "observation_sha256": "e58f8695806f9d439c7ae720af6375f2778f07b786372c91e7f42476b6cfbe5f",
+          "actual_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\observations\\0151.npz",
+          "actual_observation_sha256": "e58f8695806f9d439c7ae720af6375f2778f07b786372c91e7f42476b6cfbe5f"
+        },
+        {
+          "pre_action": 201,
+          "local_pre_action": 201,
+          "seed": 42064201,
+          "noise_sha256": "ffb729e0936252920c3f9054b125b8905b6ce6ca2ae468021821444d8788e75a",
+          "seconds": 0.5940000000409782,
+          "observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\observations\\0201.npz",
+          "policy_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\observations\\0201.npz",
+          "observation_sha256": "bcf861260855a3414573e868fe10d340d9f36e730d3c02e979963be6196fc832",
+          "actual_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\observations\\0201.npz",
+          "actual_observation_sha256": "bcf861260855a3414573e868fe10d340d9f36e730d3c02e979963be6196fc832"
+        },
+        {
+          "pre_action": 251,
+          "local_pre_action": 251,
+          "seed": 42064251,
+          "noise_sha256": "9f889a821684ba25b440763b585b7796a63e625f56c29971e1f3f4625187a9bf",
+          "seconds": 0.4839999999385327,
+          "observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\observations\\0251.npz",
+          "policy_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\observations\\0251.npz",
+          "observation_sha256": "47e92079ec2c2e9603ec2f901238c9b5c7c7e5d87a0f276edffcf20a97532a39",
+          "actual_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\observations\\0251.npz",
+          "actual_observation_sha256": "47e92079ec2c2e9603ec2f901238c9b5c7c7e5d87a0f276edffcf20a97532a39"
+        },
+        {
+          "pre_action": 301,
+          "local_pre_action": 301,
+          "seed": 42064301,
+          "noise_sha256": "2cf9a08e6ae2afd63ced168d176ada1e09e8c93332ccb08c96d1dbe02146b7c0",
+          "seconds": 0.5940000000409782,
+          "observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\observations\\0301.npz",
+          "policy_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\observations\\0301.npz",
+          "observation_sha256": "c259b6963e20a002ca8ce4e49ac1ffb794be50f3ba479b02796774cc6c15c25c",
+          "actual_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\observations\\0301.npz",
+          "actual_observation_sha256": "c259b6963e20a002ca8ce4e49ac1ffb794be50f3ba479b02796774cc6c15c25c"
+        },
+        {
+          "pre_action": 351,
+          "local_pre_action": 351,
+          "seed": 42064351,
+          "noise_sha256": "e7db038b2f39bdc6343d1b22abcacb7e3d44131d1122b11918b09430e6681e77",
+          "seconds": 0.5619999999180436,
+          "observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\observations\\0351.npz",
+          "policy_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\observations\\0351.npz",
+          "observation_sha256": "d6103508f612e245f6b29159b1a88987ccf317e66254815911f6ac31867f52bc",
+          "actual_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\observations\\0351.npz",
+          "actual_observation_sha256": "d6103508f612e245f6b29159b1a88987ccf317e66254815911f6ac31867f52bc"
+        },
+        {
+          "pre_action": 401,
+          "local_pre_action": 401,
+          "seed": 42064401,
+          "noise_sha256": "5d9c64560d6c4f234180ec47cfd8f40cc7a4814c2e2573a6ffd28cedd2dae4ac",
+          "seconds": 0.5470000000204891,
+          "observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\observations\\0401.npz",
+          "policy_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\observations\\0401.npz",
+          "observation_sha256": "cb4e399306146db286c42eaf32277a71f34bf4f808d637f9c746344f29969208",
+          "actual_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\observations\\0401.npz",
+          "actual_observation_sha256": "cb4e399306146db286c42eaf32277a71f34bf4f808d637f9c746344f29969208"
+        },
+        {
+          "pre_action": 451,
+          "local_pre_action": 451,
+          "seed": 42064451,
+          "noise_sha256": "b0ea52de75a176152fe2c1bc9c0f3bbfd93f0973ae95d1f9d72ada5c0e7c3ae6",
+          "seconds": 0.5159999998286366,
+          "observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\observations\\0451.npz",
+          "policy_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\observations\\0451.npz",
+          "observation_sha256": "6c7605d8a7499d2fc8fcc76a2288916f28fba00f3ecff01fdfa0436d4dbd73ed",
+          "actual_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\observations\\0451.npz",
+          "actual_observation_sha256": "6c7605d8a7499d2fc8fcc76a2288916f28fba00f3ecff01fdfa0436d4dbd73ed"
+        },
+        {
+          "pre_action": 501,
+          "local_pre_action": 501,
+          "seed": 42064501,
+          "noise_sha256": "eafdc6d251072d264bc1f0b7d5acbf30152aa317fbd4f53e32ac9ea71fdef4e8",
+          "seconds": 0.375,
+          "observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\observations\\0501.npz",
+          "policy_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\observations\\0501.npz",
+          "observation_sha256": "2c3471d04c590dac64c846a1bb52b7a4e38106678d1c99f037152cef171a066a",
+          "actual_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\observations\\0501.npz",
+          "actual_observation_sha256": "2c3471d04c590dac64c846a1bb52b7a4e38106678d1c99f037152cef171a066a"
+        },
+        {
+          "pre_action": 551,
+          "local_pre_action": 551,
+          "seed": 42064551,
+          "noise_sha256": "5beb24da293a2f5291200583b4fe1c554044bc1e0274463bebfc9d64bf10c857",
+          "seconds": 0.34399999980814755,
+          "observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\observations\\0551.npz",
+          "policy_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\observations\\0551.npz",
+          "observation_sha256": "c7d7d53c058a8a44090a4774a3850b789ecfab506d5166bd6f1bace3b78eb24a",
+          "actual_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\observations\\0551.npz",
+          "actual_observation_sha256": "c7d7d53c058a8a44090a4774a3850b789ecfab506d5166bd6f1bace3b78eb24a"
+        }
+      ],
+      "action_budget": 600,
+      "horizon": 600,
+      "global_end_action": 600,
+      "reset_camera_errors": {
+        "robot0_agentview_left": {
+          "max": 1.0,
+          "mean": 9.1552734375e-05
+        },
+        "robot0_agentview_right": {
+          "max": 0.0,
+          "mean": 0.0
+        },
+        "robot0_eye_in_hand": {
+          "max": 0.0,
+          "mean": 0.0
+        }
+      },
+      "boundary_camera_errors": {
+        "robot0_agentview_left": {
+          "max": 1.0,
+          "mean": 9.1552734375e-05
+        },
+        "robot0_agentview_right": {
+          "max": 0.0,
+          "mean": 0.0
+        },
+        "robot0_eye_in_hand": {
+          "max": 0.0,
+          "mean": 0.0
+        }
+      },
+      "observation_schedule": "One reset physical() diagnostic, then original before/after traced_step calls. Reference comparisons reuse cached values; no extra force_update.",
+      "paired_controller_max_error": 0.0,
+      "paired_controller_reference": {
+        "path": "D:\\EmbodiedOpsOutputs\\recontact-self-imitation-v2\\full\\full-64-r1-frozen\\boundary-controller.json",
+        "sha256": "d78b6a4427b3caadd80344059180d2b8f012477124a6db68d547b53c48cdafa3"
+      },
+      "paired_observable_clock_basis": "Historical frozen baseline lacks clock snapshot; exact original diagnostic call schedule retained, with unchanged controller/physical/raw-camera gates.",
+      "controller_restore_basis": "Full historical public-action replay with exact converted inputs and per-step physical/state/time/counter checks; historical controller internal snapshot absent. Current boundary numeric state/targets/integrators/gripper saved and compared with first frozen restored boundary when supplied.",
+      "actual_boundary_sha256": "352c9d6a4a45aa9b53dd1e30cf150ed6a5315fb646c5d77b286cb9a64f71dd9e",
+      "common_policy_input_sha256": "e0647798bde6ff3b4d9615446b4c3444366524488cce74e7768aa0a3d9feb4e1",
+      "common_policy_input_reference": "D:\\EmbodiedOpsOutputs\\recontact-self-imitation-v2\\full\\full-64-r1-frozen\\observations\\0001.npz",
+      "initial_deg": {
+        "fridgebottomfreezer_main_group_1_fridge_door_joint": 86.03615347501615
+      },
+      "final_deg": {
+        "fridgebottomfreezer_main_group_1_fridge_door_joint": 2.227968952476207
+      },
+      "min_deg": {
+        "fridgebottomfreezer_main_group_1_fridge_door_joint": 2.227658983517108
+      },
+      "min_abs_deg": {
+        "fridgebottomfreezer_main_group_1_fridge_door_joint": 2.227658983517108
+      },
+      "origin_time": 0.5000000000000003,
+      "first_causal_anchor": {
+        "pre_action": 135,
+        "doors": [
+          "fridgebottomfreezer_main_group_1_fridge_door_joint"
+        ],
+        "prior_gap": {
+          "fridgebottomfreezer_main_group_1_fridge_door_joint": 5
+        },
+        "observation": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\observations\\0135.npz"
+      },
+      "worker_seconds": 131.71900000004098,
+      "id": "full-64-r1-frozen",
+      "model": "frozen",
+      "seed": 64,
+      "attempt_folder": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen",
+      "raw_success": false,
+      "qualified_success": false,
+      "video": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\rollout.mp4",
+      "relative_ceiling_N": 272.7000108693327,
+      "relative_pass": true
+    },
+    "recontact_mix_300": {
+      "job": {
+        "id": "full-64-r1-recontact_mix_300",
+        "kind": "full",
+        "seed": 64,
+        "replicate": 1,
+        "model": "recontact_mix_300",
+        "prefix": 0,
+        "target_door": null,
+        "cap": 600,
+        "noise_seeds": [
+          42064001,
+          42064051,
+          42064101,
+          42064151,
+          42064201,
+          42064251,
+          42064301,
+          42064351,
+          42064401,
+          42064451,
+          42064501,
+          42064551
+        ],
+        "checkpoint": "D:\\EmbodiedOpsOutputs\\recontact-self-imitation-v2\\training\\checkpoints\\000300\\pretrained_model",
+        "checkpoint_sha256": "646ebc87d8a9ad8cdd00c4dc8e01e25e8a52e7a8d6f06c0b01ba36234b6f8cce",
+        "folder": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300",
+        "reference": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen",
+        "paired_boundary_reference": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen"
+      },
+      "execution_validity": true,
+      "restoration_validity": true,
+      "status": "completed",
+      "actions": 600,
+      "prefix_actions": 0,
+      "success": false,
+      "hard_stop": false,
+      "stop_reason": "horizon",
+      "inference_seconds": 6.75,
+      "execution_seconds": 29.924000000581145,
+      "replay_seconds": 0.0,
+      "first_success_action": null,
+      "first_contact_seconds": {
+        "fridgebottomfreezer_main_group_1_fridge_door_joint": 3.9219999999997346
+      },
+      "first_recontact_seconds": {},
+      "first_recontact_action": {},
+      "recontact_events": [],
+      "raw_all_door_success": false,
+      "policy_success": false,
+      "first_success_seconds": null,
+      "first_success_global_action": null,
+      "per_door_peaks_N": {
+        "fridgebottomfreezer_main_group_1_fridge_door_joint": 298.5515715363655
+      },
+      "peaks": {
+        "all": 298.5515715363655,
+        "fridge": 298.5515715363655,
+        "other_fridge": 0.0,
+        "self": 0.0,
+        "target_hand_door": 298.5515715363655
+      },
+      "inferences": [
+        {
+          "pre_action": 1,
+          "local_pre_action": 1,
+          "seed": 42064001,
+          "noise_sha256": "79e76bc34784f6a6a969c1e102c006f9ffaf3476122757394a914600dfadedde",
+          "seconds": 1.202999999979511,
+          "observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\common-policy-input.npz",
+          "policy_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\common-policy-input.npz",
+          "observation_sha256": "352c9d6a4a45aa9b53dd1e30cf150ed6a5315fb646c5d77b286cb9a64f71dd9e",
+          "actual_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\observations\\0001.npz",
+          "actual_observation_sha256": "352c9d6a4a45aa9b53dd1e30cf150ed6a5315fb646c5d77b286cb9a64f71dd9e"
+        },
+        {
+          "pre_action": 51,
+          "local_pre_action": 51,
+          "seed": 42064051,
+          "noise_sha256": "2a6cdd6d182aab4b129b2bab77af93bf80ae429e53994fe4e7c3b4bc66dff84b",
+          "seconds": 0.5160000000614673,
+          "observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\observations\\0051.npz",
+          "policy_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\observations\\0051.npz",
+          "observation_sha256": "a922eeb5017bce8a8b350c7772c1ea651c9d64da7e6467077cb70d6d7bc7bca0",
+          "actual_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\observations\\0051.npz",
+          "actual_observation_sha256": "a922eeb5017bce8a8b350c7772c1ea651c9d64da7e6467077cb70d6d7bc7bca0"
+        },
+        {
+          "pre_action": 101,
+          "local_pre_action": 101,
+          "seed": 42064101,
+          "noise_sha256": "677d5039b34e44e9ec1f67bd1b8832a89c6f1182096d0b74eeed44a4ce3ece9f",
+          "seconds": 0.5470000000204891,
+          "observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\observations\\0101.npz",
+          "policy_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\observations\\0101.npz",
+          "observation_sha256": "ab519c6357577a206ae7ba03fd050cfcce60650c102a6ccfb8e968bfb474f935",
+          "actual_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\observations\\0101.npz",
+          "actual_observation_sha256": "ab519c6357577a206ae7ba03fd050cfcce60650c102a6ccfb8e968bfb474f935"
+        },
+        {
+          "pre_action": 151,
+          "local_pre_action": 151,
+          "seed": 42064151,
+          "noise_sha256": "28c0bd2929d8bfac76179f3e35147160cba8107350cefaf50effe0ac6a55b4d8",
+          "seconds": 0.5309999999590218,
+          "observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\observations\\0151.npz",
+          "policy_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\observations\\0151.npz",
+          "observation_sha256": "08ed97f4dbae61da60f16d661151e28d8119ee3a2ef5b47e7169703e80b1c45c",
+          "actual_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\observations\\0151.npz",
+          "actual_observation_sha256": "08ed97f4dbae61da60f16d661151e28d8119ee3a2ef5b47e7169703e80b1c45c"
+        },
+        {
+          "pre_action": 201,
+          "local_pre_action": 201,
+          "seed": 42064201,
+          "noise_sha256": "ffb729e0936252920c3f9054b125b8905b6ce6ca2ae468021821444d8788e75a",
+          "seconds": 0.43799999984912574,
+          "observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\observations\\0201.npz",
+          "policy_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\observations\\0201.npz",
+          "observation_sha256": "3cd48ace4322789c3b32f34e6b341ce3b3d6cb143f610bddb7be4200a41548a2",
+          "actual_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\observations\\0201.npz",
+          "actual_observation_sha256": "3cd48ace4322789c3b32f34e6b341ce3b3d6cb143f610bddb7be4200a41548a2"
+        },
+        {
+          "pre_action": 251,
+          "local_pre_action": 251,
+          "seed": 42064251,
+          "noise_sha256": "9f889a821684ba25b440763b585b7796a63e625f56c29971e1f3f4625187a9bf",
+          "seconds": 0.546000000089407,
+          "observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\observations\\0251.npz",
+          "policy_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\observations\\0251.npz",
+          "observation_sha256": "cc516ecc104b75135a0ba96ad894b1b84d2212db369b7c24707a40facc4f3106",
+          "actual_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\observations\\0251.npz",
+          "actual_observation_sha256": "cc516ecc104b75135a0ba96ad894b1b84d2212db369b7c24707a40facc4f3106"
+        },
+        {
+          "pre_action": 301,
+          "local_pre_action": 301,
+          "seed": 42064301,
+          "noise_sha256": "2cf9a08e6ae2afd63ced168d176ada1e09e8c93332ccb08c96d1dbe02146b7c0",
+          "seconds": 0.5470000000204891,
+          "observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\observations\\0301.npz",
+          "policy_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\observations\\0301.npz",
+          "observation_sha256": "6c2e077d2a1dd27c4829a0fe12e898e829ae3de060088638161d46ef11385590",
+          "actual_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\observations\\0301.npz",
+          "actual_observation_sha256": "6c2e077d2a1dd27c4829a0fe12e898e829ae3de060088638161d46ef11385590"
+        },
+        {
+          "pre_action": 351,
+          "local_pre_action": 351,
+          "seed": 42064351,
+          "noise_sha256": "e7db038b2f39bdc6343d1b22abcacb7e3d44131d1122b11918b09430e6681e77",
+          "seconds": 0.4529999999795109,
+          "observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\observations\\0351.npz",
+          "policy_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\observations\\0351.npz",
+          "observation_sha256": "d494fae8b2fb5affba13a501a66628b783e0cbe5ea2ccd91807c0ae0fd821c91",
+          "actual_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\observations\\0351.npz",
+          "actual_observation_sha256": "d494fae8b2fb5affba13a501a66628b783e0cbe5ea2ccd91807c0ae0fd821c91"
+        },
+        {
+          "pre_action": 401,
+          "local_pre_action": 401,
+          "seed": 42064401,
+          "noise_sha256": "5d9c64560d6c4f234180ec47cfd8f40cc7a4814c2e2573a6ffd28cedd2dae4ac",
+          "seconds": 0.45399999991059303,
+          "observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\observations\\0401.npz",
+          "policy_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\observations\\0401.npz",
+          "observation_sha256": "7f211839e2924eb0357720e5df086a353046d492919068e15b750a85703dafbc",
+          "actual_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\observations\\0401.npz",
+          "actual_observation_sha256": "7f211839e2924eb0357720e5df086a353046d492919068e15b750a85703dafbc"
+        },
+        {
+          "pre_action": 451,
+          "local_pre_action": 451,
+          "seed": 42064451,
+          "noise_sha256": "b0ea52de75a176152fe2c1bc9c0f3bbfd93f0973ae95d1f9d72ada5c0e7c3ae6",
+          "seconds": 0.5150000001303852,
+          "observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\observations\\0451.npz",
+          "policy_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\observations\\0451.npz",
+          "observation_sha256": "712a6ad9252c90dddf86ea0ad51ed8acb5ddd39205656cb74e692e6043cf0fb0",
+          "actual_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\observations\\0451.npz",
+          "actual_observation_sha256": "712a6ad9252c90dddf86ea0ad51ed8acb5ddd39205656cb74e692e6043cf0fb0"
+        },
+        {
+          "pre_action": 501,
+          "local_pre_action": 501,
+          "seed": 42064501,
+          "noise_sha256": "eafdc6d251072d264bc1f0b7d5acbf30152aa317fbd4f53e32ac9ea71fdef4e8",
+          "seconds": 0.48400000017136335,
+          "observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\observations\\0501.npz",
+          "policy_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\observations\\0501.npz",
+          "observation_sha256": "80fa095c310270f86a35c7c21abcfa4f1c380f5458760005ae18db66945cdddb",
+          "actual_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\observations\\0501.npz",
+          "actual_observation_sha256": "80fa095c310270f86a35c7c21abcfa4f1c380f5458760005ae18db66945cdddb"
+        },
+        {
+          "pre_action": 551,
+          "local_pre_action": 551,
+          "seed": 42064551,
+          "noise_sha256": "5beb24da293a2f5291200583b4fe1c554044bc1e0274463bebfc9d64bf10c857",
+          "seconds": 0.5159999998286366,
+          "observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\observations\\0551.npz",
+          "policy_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\observations\\0551.npz",
+          "observation_sha256": "cd5a77be6f2f830ab9548509d06767fe589934cdc6b6df9e73e11e07c2dfcc2b",
+          "actual_observation_path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\observations\\0551.npz",
+          "actual_observation_sha256": "cd5a77be6f2f830ab9548509d06767fe589934cdc6b6df9e73e11e07c2dfcc2b"
+        }
+      ],
+      "action_budget": 600,
+      "horizon": 600,
+      "global_end_action": 600,
+      "reset_camera_errors": {
+        "robot0_agentview_left": {
+          "max": 0.0,
+          "mean": 0.0
+        },
+        "robot0_agentview_right": {
+          "max": 0.0,
+          "mean": 0.0
+        },
+        "robot0_eye_in_hand": {
+          "max": 0.0,
+          "mean": 0.0
+        }
+      },
+      "boundary_camera_errors": {
+        "robot0_agentview_left": {
+          "max": 0.0,
+          "mean": 0.0
+        },
+        "robot0_agentview_right": {
+          "max": 0.0,
+          "mean": 0.0
+        },
+        "robot0_eye_in_hand": {
+          "max": 0.0,
+          "mean": 0.0
+        }
+      },
+      "observation_schedule": "One reset physical() diagnostic, then original before/after traced_step calls. Reference comparisons reuse cached values; no extra force_update.",
+      "paired_controller_max_error": 0.0,
+      "paired_controller_reference": {
+        "path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\boundary-controller.json",
+        "sha256": "d78b6a4427b3caadd80344059180d2b8f012477124a6db68d547b53c48cdafa3"
+      },
+      "paired_observable_clock_max_error": 0.0,
+      "controller_restore_basis": "Full historical public-action replay with exact converted inputs and per-step physical/state/time/counter checks; historical controller internal snapshot absent. Current boundary numeric state/targets/integrators/gripper saved and compared with first frozen restored boundary when supplied.",
+      "actual_boundary_sha256": "352c9d6a4a45aa9b53dd1e30cf150ed6a5315fb646c5d77b286cb9a64f71dd9e",
+      "common_policy_input_sha256": "352c9d6a4a45aa9b53dd1e30cf150ed6a5315fb646c5d77b286cb9a64f71dd9e",
+      "common_policy_input_reference": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\observations\\0001.npz",
+      "initial_deg": {
+        "fridgebottomfreezer_main_group_1_fridge_door_joint": 86.03615347501615
+      },
+      "final_deg": {
+        "fridgebottomfreezer_main_group_1_fridge_door_joint": 90.0163912978562
+      },
+      "min_deg": {
+        "fridgebottomfreezer_main_group_1_fridge_door_joint": 77.71163178974024
+      },
+      "min_abs_deg": {
+        "fridgebottomfreezer_main_group_1_fridge_door_joint": 77.71163178974024
+      },
+      "origin_time": 0.5000000000000003,
+      "first_causal_anchor": null,
+      "worker_seconds": 91.01499999989755,
+      "id": "full-64-r1-recontact_mix_300",
+      "model": "recontact_mix_300",
+      "seed": 64,
+      "attempt_folder": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300",
+      "raw_success": false,
+      "qualified_success": false,
+      "video": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\rollout.mp4",
+      "relative_ceiling_N": 272.7000108693327,
+      "relative_pass": false
+    }
+  },
+  "matched": {
+    "same_scene_controller": true,
+    "same_geometry": true,
+    "same_noise_seed_stream": true,
+    "same_task_budget": true,
+    "reset_max_error": 0.0,
+    "controller_max_error": 0.0,
+    "camera_gate": {
+      "actual": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\actual-boundary.npz",
+      "reference": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\actual-boundary.npz",
+      "actual_sha256": "352c9d6a4a45aa9b53dd1e30cf150ed6a5315fb646c5d77b286cb9a64f71dd9e",
+      "reference_sha256": "352c9d6a4a45aa9b53dd1e30cf150ed6a5315fb646c5d77b286cb9a64f71dd9e",
+      "state_max_error": 0.0,
+      "cameras": {
+        "robot0_agentview_left": {
+          "max": 0,
+          "mean": 0.0
+        },
+        "robot0_agentview_right": {
+          "max": 0,
+          "mean": 0.0
+        },
+        "robot0_eye_in_hand": {
+          "max": 0,
+          "mean": 0.0
+        }
+      }
+    },
+    "boundaries": {
+      "frozen": {
+        "passed": true,
+        "camera_pairs": [
+          {
+            "actual": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\actual-boundary.npz",
+            "reference": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\common-policy-input.npz",
+            "actual_sha256": "352c9d6a4a45aa9b53dd1e30cf150ed6a5315fb646c5d77b286cb9a64f71dd9e",
+            "reference_sha256": "e0647798bde6ff3b4d9615446b4c3444366524488cce74e7768aa0a3d9feb4e1",
+            "state_max_error": 0.0,
+            "cameras": {
+              "robot0_agentview_left": {
+                "max": 1,
+                "mean": 9.1552734375e-05
+              },
+              "robot0_agentview_right": {
+                "max": 0,
+                "mean": 0.0
+              },
+              "robot0_eye_in_hand": {
+                "max": 0,
+                "mean": 0.0
+              }
+            }
+          },
+          {
+            "actual": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\actual-boundary.npz",
+            "reference": "D:\\EmbodiedOpsOutputs\\recontact-self-imitation-v2\\full\\full-64-r1-frozen\\observations\\0001.npz",
+            "actual_sha256": "352c9d6a4a45aa9b53dd1e30cf150ed6a5315fb646c5d77b286cb9a64f71dd9e",
+            "reference_sha256": "e0647798bde6ff3b4d9615446b4c3444366524488cce74e7768aa0a3d9feb4e1",
+            "state_max_error": 0.0,
+            "cameras": {
+              "robot0_agentview_left": {
+                "max": 1,
+                "mean": 9.1552734375e-05
+              },
+              "robot0_agentview_right": {
+                "max": 0,
+                "mean": 0.0
+              },
+              "robot0_eye_in_hand": {
+                "max": 0,
+                "mean": 0.0
+              }
+            }
+          },
+          {
+            "actual": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\actual-boundary.npz",
+            "reference": "D:\\EmbodiedOpsOutputs\\recontact-self-imitation-v2\\full\\full-64-r1-frozen\\actual-boundary.npz",
+            "actual_sha256": "352c9d6a4a45aa9b53dd1e30cf150ed6a5315fb646c5d77b286cb9a64f71dd9e",
+            "reference_sha256": "e0647798bde6ff3b4d9615446b4c3444366524488cce74e7768aa0a3d9feb4e1",
+            "state_max_error": 0.0,
+            "cameras": {
+              "robot0_agentview_left": {
+                "max": 1,
+                "mean": 9.1552734375e-05
+              },
+              "robot0_agentview_right": {
+                "max": 0,
+                "mean": 0.0
+              },
+              "robot0_eye_in_hand": {
+                "max": 0,
+                "mean": 0.0
+              }
+            }
+          }
+        ],
+        "controller_peer": {
+          "path": "D:\\EmbodiedOpsOutputs\\recontact-self-imitation-v2\\full\\full-64-r1-frozen\\boundary-controller.json",
+          "sha256": "d78b6a4427b3caadd80344059180d2b8f012477124a6db68d547b53c48cdafa3",
+          "max_error": 0.0
+        },
+        "errors": [],
+        "observable_clocks": {
+          "recorded": true,
+          "comparison": "not_recorded_in_peer",
+          "peer": {
+            "path": "D:\\EmbodiedOpsOutputs\\recontact-self-imitation-v2\\full\\full-64-r1-frozen\\boundary-observable-clocks.json",
+            "recorded": false
+          },
+          "path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\boundary-observable-clocks.json",
+          "sha256": "7f54f2c07f269ba2325c3eca8b05f88f560ea1796ba0c71b13784268ca2084f7",
+          "basis": "The older frozen peer did not record observable clocks; no clock equality is claimed. Existing controller, physical/state and raw-camera checks retain their original thresholds; historical prefix state gates are unchanged."
+        }
+      },
+      "recontact_mix_300": {
+        "passed": true,
+        "camera_pairs": [
+          {
+            "actual": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\actual-boundary.npz",
+            "reference": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\common-policy-input.npz",
+            "actual_sha256": "352c9d6a4a45aa9b53dd1e30cf150ed6a5315fb646c5d77b286cb9a64f71dd9e",
+            "reference_sha256": "352c9d6a4a45aa9b53dd1e30cf150ed6a5315fb646c5d77b286cb9a64f71dd9e",
+            "state_max_error": 0.0,
+            "cameras": {
+              "robot0_agentview_left": {
+                "max": 0,
+                "mean": 0.0
+              },
+              "robot0_agentview_right": {
+                "max": 0,
+                "mean": 0.0
+              },
+              "robot0_eye_in_hand": {
+                "max": 0,
+                "mean": 0.0
+              }
+            }
+          },
+          {
+            "actual": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\actual-boundary.npz",
+            "reference": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\observations\\0001.npz",
+            "actual_sha256": "352c9d6a4a45aa9b53dd1e30cf150ed6a5315fb646c5d77b286cb9a64f71dd9e",
+            "reference_sha256": "352c9d6a4a45aa9b53dd1e30cf150ed6a5315fb646c5d77b286cb9a64f71dd9e",
+            "state_max_error": 0.0,
+            "cameras": {
+              "robot0_agentview_left": {
+                "max": 0,
+                "mean": 0.0
+              },
+              "robot0_agentview_right": {
+                "max": 0,
+                "mean": 0.0
+              },
+              "robot0_eye_in_hand": {
+                "max": 0,
+                "mean": 0.0
+              }
+            }
+          },
+          {
+            "actual": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\actual-boundary.npz",
+            "reference": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\actual-boundary.npz",
+            "actual_sha256": "352c9d6a4a45aa9b53dd1e30cf150ed6a5315fb646c5d77b286cb9a64f71dd9e",
+            "reference_sha256": "352c9d6a4a45aa9b53dd1e30cf150ed6a5315fb646c5d77b286cb9a64f71dd9e",
+            "state_max_error": 0.0,
+            "cameras": {
+              "robot0_agentview_left": {
+                "max": 0,
+                "mean": 0.0
+              },
+              "robot0_agentview_right": {
+                "max": 0,
+                "mean": 0.0
+              },
+              "robot0_eye_in_hand": {
+                "max": 0,
+                "mean": 0.0
+              }
+            }
+          }
+        ],
+        "controller_peer": {
+          "path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\boundary-controller.json",
+          "sha256": "d78b6a4427b3caadd80344059180d2b8f012477124a6db68d547b53c48cdafa3",
+          "max_error": 0.0
+        },
+        "errors": [],
+        "observable_clocks": {
+          "recorded": true,
+          "comparison": "passed",
+          "peer": {
+            "path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\boundary-observable-clocks.json",
+            "recorded": true,
+            "sha256": "7f54f2c07f269ba2325c3eca8b05f88f560ea1796ba0c71b13784268ca2084f7"
+          },
+          "path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\boundary-observable-clocks.json",
+          "sha256": "7f54f2c07f269ba2325c3eca8b05f88f560ea1796ba0c71b13784268ca2084f7",
+          "tolerance": 1e-08,
+          "max_error": 0.0
+        }
+      }
+    },
+    "same_consumed_native_noise": true,
+    "passed": true
+  }
+}

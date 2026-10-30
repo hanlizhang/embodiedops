@@ -1,0 +1,46 @@
+{
+  "type": "Post-run presentation and narrative review; no API or simulation rerun",
+  "trace_sha256": "deaa5a88b7a0a328d858623a9e1bbbed961e300d4c6ecf48c145b70627abb8a9",
+  "protocol_completed": true,
+  "all_seven_results_returned_to_next_real_model_request": true,
+  "model_narrative_fully_accurate": false,
+  "raw_model_answer_preserved": true,
+  "issues": [
+    {
+      "claim": "Both pairs pass the candidate relative contact ceiling",
+      "correction": "False. Candidate fails the relative contact gate in BOTH archived and new pairs. Both remain below the separate 1500 N hard ceiling.",
+      "archived_candidate_peak_N": 449.54698006440407,
+      "archived_ceiling_N": 262.29104052118595,
+      "new_candidate_peak_N": 298.5515715363655,
+      "new_ceiling_N": 272.7000108693327
+    },
+    {
+      "claim": "The new pair confirms the archived pattern; both models fail qualified success",
+      "correction": "The rejection is consistent, but task outcomes are not identical: archived frozen succeeded, new frozen failed at600actions. Do not claim exact reproduction or unchanged success pattern."
+    },
+    {
+      "claim": "Chinese final answer requested in system prompt",
+      "correction": "Provider returned an English final narrative. The separate delivery report is written in Chinese."
+    }
+  ],
+  "authoritative_decision": {
+    "accepted": false,
+    "source": "new",
+    "reasons": [
+      "contact_force_regression",
+      "door_progress_regression",
+      "no_success_gain"
+    ]
+  },
+  "new_worker_validity": {
+    "frozen": true,
+    "recontact_mix_300": true
+  },
+  "narrative_error_did_not_override_gate": true,
+  "tests": {
+    "new_agent_focused_offline_tests": 12,
+    "passed": 12,
+    "base_smoke_repeated": false
+  },
+  "replication_limit": "Same registered protocol and accepted boundary tolerances do not imply bitwise identical entire rollouts. The frozen outcome changed; cause was not established in this bounded run."
+}

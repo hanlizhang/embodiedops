@@ -1,12 +1,21 @@
 # EmbodiedOps — current project context
 
+Latest verified delivery (2026-10-31): the [real Nemotron Agent demo](environment/nemotron-agent-demo-v1.md)
+completed 8 API requests, 7 native tool calls and one optional fixed two-episode
+physical verification selected by the model. The independent gate rejected the
+existing seed64 candidate. Both new episodes failed; archived frozen success is
+preserved separately. Raw model prose contained a contact-gate error, annotated in
+the report and Demo. No training or accepted learned repair occurred. The generic
+legacy endpoint adapter remains unused; the new runner uses native tool calling.
+
+
 Updated 2026-10-23. This file describes current scope; dated experiment reports
 retain original stopped-run findings and subsequent completion addenda.
 
 Latest delivery index: [2026-10-29 handoff](environment/deadline-handoff-2026-10-29.md)
 (synchronized 2026-10-30). Recontact self-imitation v2 completed training and all
 36 fixed physical conditions with no added qualified success; the real Nemotron
-closed loop remains uncompleted. The dated milestones below are preserved.
+closed loop was not yet completed at that handoff. The dated milestones below are preserved.
 
 ## Current milestone
 

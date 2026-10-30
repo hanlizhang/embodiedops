@@ -22,6 +22,7 @@ repository does not authorize another training or evaluation run.
 | Responsibility | Entry point |
 |---|---|
 | Deterministic evidence/tool routing | `scripts/agent_workflow.py` |
+| Recorded real Nemotron native-tool demo (bounded seed64 case) | `scripts/nemotron_agent_demo.py`, `scripts/nemotron_case_tools.py` |
 | Matched learned-policy rollout and observation guards | `scripts/phase1d_rollout.py` |
 | Flow Matching training / independent reload | `scripts/phase2_train_v1.py` |
 | Episode-balanced / motion-proxy sampling | `scripts/learning_sampling.py` |

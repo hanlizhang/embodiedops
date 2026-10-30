@@ -1,5 +1,25 @@
 # Resume Evidence
 
+## Real bounded Nemotron verification — 2026-10-31
+
+- Executed native Nebius Chat Completions tool calling with
+  `nvidia/Nemotron-3_5-Lightning`: 8 actual requests, 7 model-selected tools;
+  every tool result was returned with its matching `tool_call_id`.
+- The model chose one fixed seed64 frozen/candidate physical pair after querying
+  archived evidence and its gate. Both new 600-action episodes were valid and
+  unsuccessful, with no hard stops; the independent acceptance gate rejected the
+  existing mixture candidate. No training or new repair was performed.
+- The raw model summary wrongly claimed the relative contact gate passed. Its
+  text is preserved with a prominent correction. New frozen failure differs from
+  archived frozen success; no exact outcome reproduction is claimed.
+- Measured usage: 78,982 input / 1,329 output tokens, $0.00505788 list-rate estimate;
+  12 new offline contract tests passed. This supports bounded tool integration,
+  physical verification and independent rejection, not fully reliable autonomous
+  diagnosis, learned recovery improvement or generalization.
+- Evidence: `environment/nemotron-agent-demo-v1.md`,
+  `docs/evidence/nemotron-agent-demo-v1/`, and `scripts/nemotron_agent_demo.py`.
+
+
 ## Current claim boundary — portfolio delivery, 2026-10-20
 
 Verified: SmolVLA Flow Matching fine-tuning, episode-disjoint local validation,

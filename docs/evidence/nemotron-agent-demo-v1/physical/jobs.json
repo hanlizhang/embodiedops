@@ -1,0 +1,60 @@
+[
+  {
+    "id": "full-64-r1-frozen",
+    "kind": "full",
+    "seed": 64,
+    "replicate": 1,
+    "model": "frozen",
+    "prefix": 0,
+    "target_door": null,
+    "cap": 600,
+    "noise_seeds": [
+      42064001,
+      42064051,
+      42064101,
+      42064151,
+      42064201,
+      42064251,
+      42064301,
+      42064351,
+      42064401,
+      42064451,
+      42064501,
+      42064551
+    ],
+    "checkpoint": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\phase1a\\hf-cache\\hub\\models--lerobot--smolvla_robocasa\\snapshots\\f7af588d11e30b0069f200792fb285904b74c80b",
+    "checkpoint_sha256": "96ae6628166a7dc1b41f8a2d92176c48e394988294b0b44755409acbb3f9bc2b",
+    "folder": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen",
+    "reference": "D:\\EmbodiedOpsOutputs\\recontact-self-imitation-v2\\full\\full-64-r1-frozen",
+    "paired_boundary_reference": "D:\\EmbodiedOpsOutputs\\recontact-self-imitation-v2\\full\\full-64-r1-frozen"
+  },
+  {
+    "id": "full-64-r1-recontact_mix_300",
+    "kind": "full",
+    "seed": 64,
+    "replicate": 1,
+    "model": "recontact_mix_300",
+    "prefix": 0,
+    "target_door": null,
+    "cap": 600,
+    "noise_seeds": [
+      42064001,
+      42064051,
+      42064101,
+      42064151,
+      42064201,
+      42064251,
+      42064301,
+      42064351,
+      42064401,
+      42064451,
+      42064501,
+      42064551
+    ],
+    "checkpoint": "D:\\EmbodiedOpsOutputs\\recontact-self-imitation-v2\\training\\checkpoints\\000300\\pretrained_model",
+    "checkpoint_sha256": "646ebc87d8a9ad8cdd00c4dc8e01e25e8a52e7a8d6f06c0b01ba36234b6f8cce",
+    "folder": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300",
+    "reference": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen",
+    "paired_boundary_reference": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen"
+  }
+]

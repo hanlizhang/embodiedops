@@ -1,0 +1,108 @@
+{
+  "source_run": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1",
+  "files": [
+    {
+      "repository_file": "manifest.json",
+      "local_source": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\manifest.json",
+      "bytes": 19099,
+      "sha256": "98925d5df9037e76103a835d249869895f8038124d112818f21bb0d553dc19c7"
+    },
+    {
+      "repository_file": "trace.json",
+      "local_source": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\trace.json",
+      "bytes": 153639,
+      "sha256": "deaa5a88b7a0a328d858623a9e1bbbed961e300d4c6ecf48c145b70627abb8a9"
+    },
+    {
+      "repository_file": "result.json",
+      "local_source": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\result.json",
+      "bytes": 34187,
+      "sha256": "29267043dfc72772766f68211ab12f4e14148b8e781b419354ebb3fa46235476"
+    },
+    {
+      "repository_file": "acceptance.json",
+      "local_source": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\acceptance.json",
+      "bytes": 13972,
+      "sha256": "e5d5d4407c114b578bee9044938de54f141284ec51c456f5bdbbe731b612537e"
+    },
+    {
+      "repository_file": "narrative-review.json",
+      "local_source": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\narrative-review.json",
+      "bytes": 2010,
+      "sha256": "1379c890c3a2990219c2c517f82e360f73ed99ca5a111e092862c7014756fe39"
+    },
+    {
+      "repository_file": "physical/registered-plan.json",
+      "local_source": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\registered-plan.json",
+      "bytes": 22147,
+      "sha256": "9b255574e7c8ad784e4b8bfbe24ab5d8d0d5d48c7cedd0d065eec2727ba82bee"
+    },
+    {
+      "repository_file": "physical/jobs.json",
+      "local_source": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\jobs.json",
+      "bytes": 2079,
+      "sha256": "9cd81dbafb7ce6a9f3fc7317fab7a69f3ac173348538f32938d286de240674ce"
+    },
+    {
+      "repository_file": "physical/preflight.json",
+      "local_source": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\preflight.json",
+      "bytes": 157,
+      "sha256": "46a7ac26d8e364d171f60d021703ae113c4deaf854b90fc1424eba54f64bd76d"
+    },
+    {
+      "repository_file": "physical/execution.json",
+      "local_source": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\execution.json",
+      "bytes": 625,
+      "sha256": "da440e33b5a7769a8dbc6861c7fcab42a96623b8458f72355eb546152ec6a6f2"
+    },
+    {
+      "repository_file": "physical/verification-result.json",
+      "local_source": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\verification-result.json",
+      "bytes": 5077,
+      "sha256": "a30118fac01f8cea214cb7da0844970976450a840deb4e7d19711de4e223ec4c"
+    },
+    {
+      "repository_file": "physical/pair-result.json",
+      "local_source": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\pair-result.json",
+      "bytes": 45688,
+      "sha256": "0fafa0c1456f29432bd9ed9c57edee647adc2d2abef427d6eb99fb79940a2097"
+    },
+    {
+      "repository_file": "physical/full-64-r1-frozen/result.json",
+      "local_source": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\result.json",
+      "bytes": 17316,
+      "sha256": "615a9f248c1f0f0a0fc56abcf1652a2581d699f8b468cedc2fa5ca6dbf1be96d"
+    },
+    {
+      "repository_file": "physical/full-64-r1-frozen/independent-audit.json",
+      "local_source": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\independent-audit.json",
+      "bytes": 6920,
+      "sha256": "5728e644602914cadf455c4ab392cbabc3cc6d9f2606f7fd9b5d455ab9a2a153"
+    },
+    {
+      "repository_file": "physical/full-64-r1-recontact_mix_300/result.json",
+      "local_source": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\result.json",
+      "bytes": 15644,
+      "sha256": "4487a49b56b5d9187107372a7aeba56f331d5fec976e70fddf7c62bf463b309b"
+    },
+    {
+      "repository_file": "physical/full-64-r1-recontact_mix_300/independent-audit.json",
+      "local_source": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\independent-audit.json",
+      "bytes": 5292,
+      "sha256": "dfc088e4a1d78252c14f80f5b5cd16ea68f636c4cdddbbd9caccc7055e7c98c4"
+    },
+    {
+      "repository_file": "demo-provenance.json",
+      "local_source": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\demo-provenance.json",
+      "bytes": 2241,
+      "sha256": "1110f89afee088f385c18a6a71aec598172c6684ff9353532126eccd78348cb3"
+    },
+    {
+      "repository_file": "delivery-checks.json",
+      "local_source": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\delivery-checks.json",
+      "bytes": 1628,
+      "sha256": "f04acbffddea63ba55a650da5710f6c49d780a0cf5eae0c6dd3caa77f714409a"
+    }
+  ],
+  "omitted": "Raw images, videos, model tensors, per-substep contact logs and .env stay local."
+}

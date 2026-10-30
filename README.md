@@ -8,8 +8,9 @@ contact analysis and tools for diagnosing, modifying and evaluating a policy.
 
 The implemented system includes four 5,000-update training experiments, a
 99.9M-parameter trainable action module, three-camera observations, 12D robot
-control and matched-scene verification. The next extension is model-driven
-diagnosis with NVIDIA Nemotron; completed workflow runs use evidence-based rules.
+control and matched-scene verification. A bounded NVIDIA Nemotron demo now performs real native tool calls, chooses
+a fixed physical verification, and receives an independent rejection decision.
+Historical workflow runs use evidence-based rules.
 
 ## Explore the project
 
@@ -48,6 +49,20 @@ can still connect the original MP4s for offline viewing.
   they were not discoveries by an autonomous LLM.
 - **Matched evaluation:** reset/camera/model/processor contracts, retained failures
   and invalid-episode exclusions, with final seeds gated separately.
+
+## Real Nemotron verification demo
+
+On the fixed seed64 case, Nemotron selected seven evidence/verification tools over
+eight real Nebius requests and requested one fixed two-episode RoboCasa pair. The
+independent gate rejected the existing candidate. Both new episodes failed;
+archived frozen success remains separate. The raw model summary contains a
+contact-gate error that is explicitly corrected in the Demo. This demonstrates
+bounded tool use and independent rejection, not a successful learned repair or
+fully reliable autonomous diagnosis.
+
+[Agent Demo](https://hanlizhang.github.io/embodiedops/demo/#agentic) ·
+[Chinese execution report](environment/nemotron-agent-demo-v1.md) ·
+[Actual messages and evidence](docs/evidence/nemotron-agent-demo-v1/README.md).
 
 ## Measured findings
 
@@ -133,8 +148,9 @@ See [policy environment](environment/policy.md),
 [simulation environment](environment/simulation.md) and pinned Phase1A/1B manifests.
 The separate PushT and Panda Lift environments are historical regression backends.
 
-No autonomous LLM reasoning, world-model training, real hardware deployment or
-proven success-rate improvement is claimed. The external reasoning endpoint
-adapter is untested and was unused. The contribution is an auditable connection
-between VLA optimization, physical failure evidence and repair rejection.
+The new bounded Nemotron runner uses real native tool calling; the legacy generic
+endpoint adapter remains unused. No unconstrained autonomous research, world-model
+training, hardware deployment or proven success-rate improvement is claimed. The
+contribution connects VLA optimization, physical failure evidence and independent
+repair rejection, while preserving model narrative errors and negative outcomes.
 

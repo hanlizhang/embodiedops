@@ -1,0 +1,56 @@
+{
+  "videos": [
+    {
+      "video": "D:\\EmbodiedOpsOutputs\\recontact-self-imitation-v2\\full\\full-64-r1-frozen\\rollout.mp4",
+      "frames": 439,
+      "fps": 20.0,
+      "seconds": 21.95,
+      "first_frame_decodes": true,
+      "size": [
+        768,
+        288
+      ]
+    },
+    {
+      "video": "D:\\EmbodiedOpsOutputs\\recontact-self-imitation-v2\\full\\full-64-r1-recontact_mix_300-attempt02\\rollout.mp4",
+      "frames": 600,
+      "fps": 20.0,
+      "seconds": 30.0,
+      "first_frame_decodes": true,
+      "size": [
+        768,
+        288
+      ]
+    },
+    {
+      "video": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\rollout.mp4",
+      "frames": 600,
+      "fps": 20.0,
+      "seconds": 30.0,
+      "first_frame_decodes": true,
+      "size": [
+        768,
+        288
+      ]
+    },
+    {
+      "video": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\rollout.mp4",
+      "frames": 600,
+      "fps": 20.0,
+      "seconds": 30.0,
+      "first_frame_decodes": true,
+      "size": [
+        768,
+        288
+      ]
+    }
+  ],
+  "public_local_media_links": 0,
+  "local_four_seed64_links": true,
+  "browser_local_file_check": "Blocked by IAB URL security policy; no browser file playback claim. Static links and actual MP4 decoding checked.",
+  "new_agent_tests": {
+    "passed": 12,
+    "scope": "offline bounded-loop tests only"
+  },
+  "check_phase": "prepublication: HTTP page review occurs after GitHub Pages deployment"
+}

@@ -1,9 +1,30 @@
 # EmbodiedOps interactive demonstration
 
 The presentation covers VLA training, robot control, physical diagnostics and the
-diagnosis/repair tool loop. Successful and failed rollouts come first; the four
-sustained learning experiments share one table. Terminal-window is an expandable
+diagnosis/repair tool loop. The recorded Nemotron investigation comes first;
+successful and failed historical rollouts and the four sustained learning
+experiments remain available below. Terminal-window is an expandable
 case study, not the entire presentation.
+
+## Recorded Nemotron investigation — 2026-10-31
+
+The Agentic Diagnosis & Verification section records 8 real Nebius requests and
+7 native tool calls. Nemotron selected a new fixed two-episode verification after
+inspecting the archived seed-64 regression. Both new episodes failed the task;
+the independent gate rejected the candidate for no success gain, door-progress
+regression and contact-force regression. The archived frozen success and the new
+frozen failure are shown separately. The model's final prose contains factual
+errors; a prominent correction accompanies the unchanged raw reply.
+
+- [Execution report](../environment/nemotron-agent-demo-v1.md).
+- [Complete trace, acceptance and narrative review](evidence/nemotron-agent-demo-v1/).
+- Local HTML: `C:\Users\Alan\Projects\embodiedops\outputs\nemotron-agent-demo-v1\index.html`.
+- Artifact-only builder: `scripts/build_nemotron_demo.py`.
+
+The local page plays all four original seed-64 videos: archived frozen/candidate
+and this run's new pair. The public page shows their measured results and real
+agent trace; it does not expose local drive URLs or substitute historical clips.
+The public videos listed below remain the earlier seed-44/43 recordings.
 
 ## Watch the public recordings
 

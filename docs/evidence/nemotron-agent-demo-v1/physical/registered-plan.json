@@ -1,0 +1,464 @@
+{
+  "version": "nemotron-agent-fixed-seed64-verification-v1",
+  "start_unix": 1793217880.0,
+  "registered_unix": 1793402588.1435726,
+  "deadline_unix": 1793404388.1435726,
+  "min_remaining_before_training_seconds": 9000,
+  "evaluation_delivery_reserve_seconds": 7200,
+  "output": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical",
+  "training_authorized_without_four_scene_gate": true,
+  "v1_conclusion": "Preserved: 13 qualified sources across only 3 scenes; no v1 training/evaluation.",
+  "scope": "Exploratory existing-data pilot; remove only four-scene training entrance requirement. No new positive collection; no alternative method, ratio, checkpoint, test or noise selection.",
+  "models": {
+    "frozen": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\phase1a\\hf-cache\\hub\\models--lerobot--smolvla_robocasa\\snapshots\\f7af588d11e30b0069f200792fb285904b74c80b",
+    "ordinary_300": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\agent-workflow-v1\\instruction-control-v1\\attempt02\\evaluation\\inference-C"
+  },
+  "model_hashes": {
+    "frozen": "96ae6628166a7dc1b41f8a2d92176c48e394988294b0b44755409acbb3f9bc2b",
+    "ordinary_300": "e3cc9a2084f081778b2353bfc8e8c9d027e933e224eca37205be2d2c9715a3c8"
+  },
+  "processors": {
+    "policy_preprocessor.json": "1fab1ac68c59a1c8d2982f3fe71aa682542bb137987f6a0e0e6b057ba94d9a35",
+    "policy_postprocessor.json": "293bd851e37ae71678b45c7e540240815d90fd01fe674833b1d29b8ab1ae9ad2",
+    "policy_preprocessor_step_5_normalizer_processor.safetensors": "fa18666b4621709db49c7d29108801e4ddd11c666609323413148a6c2328a620",
+    "policy_postprocessor_step_0_unnormalizer_processor.safetensors": "fa18666b4621709db49c7d29108801e4ddd11c666609323413148a6c2328a620"
+  },
+  "revision": "f7af588d11e30b0069f200792fb285904b74c80b",
+  "instruction": "CloseFridge",
+  "H": 50,
+  "flow_steps": 10,
+  "public_hz": 20,
+  "source_hashes": {
+    "C:\\Users\\Alan\\Projects\\embodiedops\\scripts\\recontact_self_imitation.py": "b0a34f12702b29b72ff790fb8da5f73194e9c47553d2c5a302490c605be45dca",
+    "C:\\Users\\Alan\\Projects\\embodiedops\\scripts\\recontact_data.py": "8769f6a99d66c15a5117654298ae0fb14d55eb573c9e4741664838e28c38fedd",
+    "C:\\Users\\Alan\\Projects\\embodiedops\\scripts\\phase1d_rollout.py": "f590daaf5aa3634bc9856c2ee8f497c1e5a0b90d5722ca767de3e8f651e64ba6",
+    "C:\\Users\\Alan\\Projects\\embodiedops\\scripts\\phase1b_contract.py": "de13d821d5968289d7ce7281fc5c6c13d42a3cdb9f9c24d7c51393908f41da45",
+    "C:\\Users\\Alan\\Projects\\embodiedops\\scripts\\phase1c_replay.py": "fbc5d4cdefafc03799d45d85d02d347de111896c6d7f9c558c2f4be581357524",
+    "C:\\Users\\Alan\\Projects\\embodiedops\\scripts\\control_diagnostics.py": "bcb247ee8c4027e0c457f58ad80da45b2e4faa5013f953cca19432c5a866845f",
+    "C:\\Users\\Alan\\Projects\\embodiedops\\scripts\\renderer_lifecycle.py": "b32a2bfc33980e53d20128093dd980cbe2818ee775086cb04c23bdb038a9edf9",
+    "C:\\Users\\Alan\\Projects\\embodiedops\\scripts\\recovery_feasibility.py": "db7d8959cf0b8a5038cd1e24d405b1057d1581b29be17ee6832677f00743e935",
+    "C:\\Users\\Alan\\Projects\\embodiedops\\scripts\\instruction_disk_guard.py": "1cf26771be8ed776354ef68c6b81ae7a889b7b173c32223c4f61b533c267b8d8",
+    "C:\\Users\\Alan\\Projects\\embodiedops\\scripts\\phase1d_train.py": "b5b71e020e823c7633685f05e0265c3f93d3acabd32d89e5599d973e7dbcfbdb",
+    "D:\\Apps\\miniconda\\envs\\embodiedops-robocasa\\Lib\\site-packages\\lerobot\\policies\\smolvla\\modeling_smolvla.py": "37b1d56f37510732a087cf5c32c05cd15d6234201a3f002f108ec4c53438cc7d",
+    "D:\\Apps\\miniconda\\envs\\embodiedops-robocasa\\Lib\\site-packages\\lerobot\\envs\\robocasa.py": "867136619231f73cc8c203038369f6b24a6beede986d0abc2507151e72299558",
+    "D:\\Apps\\miniconda\\envs\\embodiedops-robocasa\\Lib\\site-packages\\lerobot\\optim\\factory.py": "c4e1f98b36f9e20bf57458044c24fd088de45b008aeed43ca531d850c7fc98f7",
+    "D:\\Apps\\miniconda\\envs\\embodiedops-robocasa\\Lib\\site-packages\\lerobot\\optim\\schedulers.py": "05d57770348fbb3f412f52804a8d0f015f8128a37c55d5ce8ed9af6ed8522bc9",
+    "C:\\Users\\Alan\\Projects\\embodiedops\\scripts\\recontact_v2.py": "0fa9b39493ecec41475cabbd3fd3bec5dc39d33dad482d1925ee7d9a2b1718b6",
+    "C:\\Users\\Alan\\Projects\\embodiedops\\scripts\\recontact_v2_data.py": "5b717456dcebe4245a7c98845f9f92eb65a164abf87f422f8220ee80f7c0bcd9",
+    "C:\\Users\\Alan\\Projects\\embodiedops\\scripts\\recontact_v2_train.py": "d08fb21ce72905d2533da697a19660a6a86e931166df73f0288b16c2b0e0d9b1",
+    "C:\\Users\\Alan\\Projects\\embodiedops\\scripts\\recontact_v2_worker.py": "693178c72efed8acef4ef158ea610c08dca770d44af236e50858ea5a01cd5d8a",
+    "C:\\Users\\Alan\\Projects\\embodiedops\\scripts\\nemotron_case_tools.py": "eee8b9b29004c92cd2b905d71507cf673c09ca683628e029965ef2a669379fd9",
+    "C:\\Users\\Alan\\Projects\\embodiedops\\scripts\\nemotron_verification_worker.py": "2c862ed301fb2627b7664b2cc50eba5077f307e20e7357f71f9ce2cf3751f5b4",
+    "C:\\Users\\Alan\\Projects\\embodiedops\\scripts\\agent_workflow.py": "2c6a89d432caf13de8bc3fda3aa7251ed3a806200c62601e5291d4e1498ed8e3",
+    "C:\\Users\\Alan\\Projects\\embodiedops\\environment\\agent-workflow-v1.json": "61bc02d9d7e92a324e2c41af671a72ba1623f3ffc47867f7f2c9aa38c9d422c0"
+  },
+  "training": {
+    "updates": 300,
+    "seed": 42,
+    "batch": 1,
+    "ordinary_fraction": 0.75,
+    "recontact_fraction": 0.25,
+    "sampling": "Retain historical torch.randperm frame-uniform indices seed42; replace exactly75 of300 slots using np.default_rng(731042).permutation(300)[:75]. Source-episode balanced shuffled cycles, then uniformly select saved sample using same independent NumPy RNG.",
+    "modules": "155 tensors / 99,880,992 params: original Action Expert/state/action modules; VLM frozen",
+    "precision": "native BF16/FP32, use_amp=false",
+    "optimizer": {
+      "lr": 0.0001,
+      "weight_decay": 1e-10,
+      "grad_clip_norm": 10.0,
+      "betas": [
+        0.9,
+        0.95
+      ],
+      "eps": 1e-08
+    },
+    "scheduler": {
+      "num_warmup_steps": 1000,
+      "num_decay_steps": 20000,
+      "peak_lr": 0.0001,
+      "decay_lr": 2.5e-06
+    },
+    "split": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\agent-workflow-v1\\instruction-control-v1\\attempt02\\C\\split.json",
+    "checkpoint": "step300 fixed; save independently reload/hash/probe validate",
+    "probes": "Original8 train/8 val anchors; torch fork_rng seeds42000..42007 at0 and every50; descriptive only",
+    "training_index": "D:\\EmbodiedOpsOutputs\\recontact-self-imitation-v2\\training-data-index.json",
+    "training_index_sha256": "ceb1963f138a7b7eddfbce0d1a72dea47f046c4127a0c345b7c8a47aacf9ceef",
+    "effective_warmup_steps": 15,
+    "no_additional_source_or_scene_count_gate": true
+  },
+  "ordinary_control": {
+    "reuse": true,
+    "path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\agent-workflow-v1\\instruction-control-v1\\attempt02\\evaluation\\inference-C",
+    "recipe": {
+      "model": "lerobot/smolvla_robocasa",
+      "model_revision": "f7af588d11e30b0069f200792fb285904b74c80b",
+      "dataset": "pepijn223/robocasa_CloseFridge",
+      "dataset_revision": "b4b32587d3fd89f7c7121e62ff55c1c8f06f5aa4",
+      "device": "NVIDIA GeForce RTX 3060 Laptop GPU",
+      "cuda_total_bytes": 6441926656,
+      "python_packages": {
+        "torch": "2.11.0+cu128",
+        "lerobot": "0.6.1",
+        "accelerate": "1.15.0",
+        "numpy": "2.2.5",
+        "av": "15.1.0",
+        "safetensors": "0.8.0"
+      },
+      "script_sha256": "b5b71e020e823c7633685f05e0265c3f93d3acabd32d89e5599d973e7dbcfbdb",
+      "base_model_sha256": "96ae6628166a7dc1b41f8a2d92176c48e394988294b0b44755409acbb3f9bc2b",
+      "processor_sha256": {
+        "policy_preprocessor.json": "1fab1ac68c59a1c8d2982f3fe71aa682542bb137987f6a0e0e6b057ba94d9a35",
+        "policy_postprocessor.json": "293bd851e37ae71678b45c7e540240815d90fd01fe674833b1d29b8ab1ae9ad2",
+        "policy_preprocessor_step_5_normalizer_processor.safetensors": "fa18666b4621709db49c7d29108801e4ddd11c666609323413148a6c2328a620",
+        "policy_postprocessor_step_0_unnormalizer_processor.safetensors": "fa18666b4621709db49c7d29108801e4ddd11c666609323413148a6c2328a620"
+      },
+      "trainable_count": 99880992,
+      "steps_budget": 300,
+      "supported_freezing": true,
+      "gradient_checkpointing": false,
+      "peft": false,
+      "precision": "native BF16/FP32, use_amp=false",
+      "optimizer": {
+        "lr": 0.0001,
+        "weight_decay": 1e-10,
+        "grad_clip_norm": 10.0,
+        "betas": [
+          0.9,
+          0.95
+        ],
+        "eps": 1e-08
+      },
+      "scheduler": {
+        "num_warmup_steps": 1000,
+        "num_decay_steps": 20000,
+        "peak_lr": 0.0001,
+        "decay_lr": 2.5e-06
+      },
+      "effective_warmup_steps": 15,
+      "instruction_intervention": "CloseFridge"
+    },
+    "split_sha256": "189ea0fe8b24eeac6cf4f28ea5cbd066fc44aed5889572044083cf9f9521ac59",
+    "config_sha256": "87a88d89d697e87a58b6eae07a85dd166719544909dd201337c64577bca00bbc",
+    "inference_reload_evidence": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\instruction-storage-audit\\reload\\result.json",
+    "optimizer_state": "Incomplete historical optimizer state; inference use only, no continuation."
+  },
+  "test_seeds": [
+    60,
+    61,
+    62,
+    63,
+    64,
+    65
+  ],
+  "reserved_seeds": [
+    120,
+    121,
+    122,
+    123
+  ],
+  "test_scene_audit": "60-65 absent from recovery sources and tuning. V1 planned these but did not execute any. Original dataset metadata has no reset seed; episode indices are not scene seeds; upstream scene overlap unknown.",
+  "recovery_states": [
+    {
+      "seed": 44,
+      "source_id": "collection-44-r1-frozen",
+      "reference": "D:\\EmbodiedOpsOutputs\\recontact-self-imitation-v1\\collection\\collection-44-r1-frozen",
+      "pre_action": 248,
+      "prefix": 247,
+      "target_door": "fridgesidebyside_main_group_1_fridge_door_joint",
+      "doors": [
+        "fridgesidebyside_main_group_1_fridge_door_joint"
+      ],
+      "observation": "D:\\EmbodiedOpsOutputs\\recontact-self-imitation-v1\\collection\\collection-44-r1-frozen\\observations\\0248.npz",
+      "observation_sha256": "f71ff0d482dc6fbb73ddd22b3dfc3d58954e70e17510066508f0ece1be1d5de4",
+      "past_contact_evidence": {
+        "last_effective_contact_action": 242,
+        "consecutive_absent_actions": 5,
+        "absent_action_interval": [
+          243,
+          247
+        ],
+        "last_five_action_indices": [
+          243,
+          244,
+          245,
+          246,
+          247
+        ],
+        "success_before_anchor": false,
+        "normal_force_threshold_N": 1.0,
+        "active_constraint_required": true,
+        "hand_geom_ids": [
+          67,
+          69,
+          70,
+          72,
+          73
+        ],
+        "target_door_geom_ids": [
+          578,
+          579,
+          580,
+          581,
+          582,
+          583,
+          584,
+          585,
+          586,
+          587,
+          588,
+          589,
+          590,
+          592
+        ],
+        "contacts_sha256": "8bb2caa59491cd9d8da11111019f00e8b4feb0dd4a799d23d5f9d504ef1abfe5",
+        "boundary_simulation_time": 12.85000000000096,
+        "boundary_door_angle_deg": 36.41117722016881,
+        "selection": "First time-ordered saved causal anchor; no future recontact/closure/student outcome used."
+      },
+      "source_group": "source-group-ea888588db0f0162"
+    },
+    {
+      "seed": 47,
+      "source_id": "collection-47-r1-frozen",
+      "reference": "D:\\EmbodiedOpsOutputs\\recontact-self-imitation-v1\\collection\\collection-47-r1-frozen",
+      "pre_action": 135,
+      "prefix": 134,
+      "target_door": "fridgesidebyside_right_group_1_fridge_door_joint",
+      "doors": [
+        "fridgesidebyside_right_group_1_fridge_door_joint"
+      ],
+      "observation": "D:\\EmbodiedOpsOutputs\\recontact-self-imitation-v1\\collection\\collection-47-r1-frozen\\observations\\0135.npz",
+      "observation_sha256": "d34c8730f76fd21c465ada6d4cb9ae2eb83b5557af4fb9709ad6775797a390ee",
+      "past_contact_evidence": {
+        "last_effective_contact_action": 129,
+        "consecutive_absent_actions": 5,
+        "absent_action_interval": [
+          130,
+          134
+        ],
+        "last_five_action_indices": [
+          130,
+          131,
+          132,
+          133,
+          134
+        ],
+        "success_before_anchor": false,
+        "normal_force_threshold_N": 1.0,
+        "active_constraint_required": true,
+        "hand_geom_ids": [
+          67,
+          69,
+          70,
+          72,
+          73
+        ],
+        "target_door_geom_ids": [
+          1042,
+          1043,
+          1044,
+          1045,
+          1046,
+          1047,
+          1048,
+          1049,
+          1050,
+          1051,
+          1052,
+          1053,
+          1054,
+          1055,
+          1057,
+          1058,
+          1059,
+          1060,
+          1061,
+          1062,
+          1063,
+          1064,
+          1065,
+          1066
+        ],
+        "contacts_sha256": "9d8af8a5849ef1a0d426ae25ccdcc2a25477aecf9ed36ec122801937bc484ba2",
+        "boundary_simulation_time": 7.199999999999429,
+        "boundary_door_angle_deg": 44.62653195389924,
+        "selection": "First time-ordered saved causal anchor; no future recontact/closure/student outcome used."
+      },
+      "source_group": "source-group-e5cc002678706e38"
+    },
+    {
+      "seed": 49,
+      "source_id": "collection-49-r1-frozen",
+      "reference": "D:\\EmbodiedOpsOutputs\\recontact-self-imitation-v1\\collection\\collection-49-r1-frozen",
+      "pre_action": 162,
+      "prefix": 161,
+      "target_door": "fridge_right_group_fridge_door_joint",
+      "doors": [
+        "fridge_right_group_fridge_door_joint"
+      ],
+      "observation": "D:\\EmbodiedOpsOutputs\\recontact-self-imitation-v1\\collection\\collection-49-r1-frozen\\observations\\0162.npz",
+      "observation_sha256": "f57d0a6bcf6a4f671eb3a5bded883b167a5aa8a9570d049691c708f7904df40c",
+      "past_contact_evidence": {
+        "last_effective_contact_action": 156,
+        "consecutive_absent_actions": 5,
+        "absent_action_interval": [
+          157,
+          161
+        ],
+        "last_five_action_indices": [
+          157,
+          158,
+          159,
+          160,
+          161
+        ],
+        "success_before_anchor": false,
+        "normal_force_threshold_N": 1.0,
+        "active_constraint_required": true,
+        "hand_geom_ids": [
+          67,
+          69,
+          70,
+          72,
+          73
+        ],
+        "target_door_geom_ids": [
+          1571,
+          1572,
+          1573,
+          1574,
+          1575,
+          1576,
+          1577,
+          1578,
+          1579,
+          1580,
+          1581,
+          1582,
+          1583,
+          1584,
+          1586,
+          1587,
+          1588,
+          1589,
+          1590,
+          1591,
+          1592,
+          1593,
+          1594,
+          1595
+        ],
+        "contacts_sha256": "f95e60e61a7a501e6cdc0779cabda924ace62200862f73e032a102162742f1b1",
+        "boundary_simulation_time": 8.549999999999525,
+        "boundary_door_angle_deg": 78.5809374438822,
+        "selection": "First time-ordered saved causal anchor; no future recontact/closure/student outcome used."
+      },
+      "source_group": "source-group-93f92eb713c46cd9"
+    }
+  ],
+  "conditions": [
+    {
+      "id": "full-64-r1-frozen",
+      "kind": "full",
+      "seed": 64,
+      "replicate": 1,
+      "model": "frozen",
+      "prefix": 0,
+      "target_door": null,
+      "cap": 600,
+      "noise_seeds": [
+        42064001,
+        42064051,
+        42064101,
+        42064151,
+        42064201,
+        42064251,
+        42064301,
+        42064351,
+        42064401,
+        42064451,
+        42064501,
+        42064551
+      ]
+    },
+    {
+      "id": "full-64-r1-recontact_mix_300",
+      "kind": "full",
+      "seed": 64,
+      "replicate": 1,
+      "model": "recontact_mix_300",
+      "prefix": 0,
+      "target_door": null,
+      "cap": 600,
+      "noise_seeds": [
+        42064001,
+        42064051,
+        42064101,
+        42064151,
+        42064201,
+        42064251,
+        42064301,
+        42064351,
+        42064401,
+        42064451,
+        42064501,
+        42064551
+      ]
+    }
+  ],
+  "split_file_sha256": "84acb8fcf9db11cb15f10096b104bb166f56fb2a3c17bbbe846321cba225d838",
+  "holdout_index_sha256": "aa91f59fc5b76e813fc581a4e819d920bfb71ed2eb1626c103933b8165dbccf3",
+  "noise_rule": {
+    "full": "42000000 + seed*1000 + local_pre_action",
+    "recovery": "43000000 + seed*10000 + replicate*1000 + local_pre_action",
+    "native": "torch.manual_seed; policy.model.sample_noise((1,50,32),device); save actual tensors and hashes"
+  },
+  "filtering": {
+    "contact": "Active constraint normal force >=1 N at any physics substep; audited gripper0_right colliding geoms and same fridge task-door descendants.",
+    "anchor": "Not success; prior same-door contact; immediately preceding >=5 executed public actions without same-door effective contact. Extra raw capture when gap first reaches 5 in EACH gap, plus all H50 boundaries.",
+    "positive": "Same-door recontact within next <=50 executed actions; end net closure >=2 degrees (absolute joint angle toward zero), OR success in window; source true all-door success <=600, valid, no hard guards.",
+    "completion": "For each qualified event, subsequent saved H50 boundaries through source success may be completion samples, without reclassifying them as causal anchors or increasing source counts. De-duplicate source/pre_action.",
+    "window": 50,
+    "net_closure_deg": 2.0,
+    "samples": "Raw anchor three uint8 RGB + float32 16D state + CloseFridge -> saved postprocessor 12D public actions actually executed. Future RGB not required; time padding and 20 internal padded action dimensions excluded from loss."
+  },
+  "evaluation": {
+    "full_actions": 600,
+    "recovery_actions": 150,
+    "replicates": 2,
+    "order": "Full: seed60..65, frozen/ordinary_300/recontact_mix_300. Then held-out source44/47/49, replicate1/2, same model order.",
+    "source": "Complete whole-source holdout; first causal saved anchor by recorded past contact/gap, regardless future student behavior. All18 full tasks execute independently of gap existence.",
+    "replay": "Full actual public prefix; exact controller input; qpos/qvel<=1e-8,state<=1e-7; time/count maintained; same scene/controller/cameras. Raw uint8 camera max<=1 and MAE<=.001.",
+    "controller": "Internal boundary states reconstructed through complete replay; historical source has no direct internal snapshot. Validate replayed observable history and record/compare branch boundary internal signatures.",
+    "horizon": "Set full600 or prefix+150, ignore_done=False before sole reset. Honor true success, hard guard, premature termination and integrity failure.",
+    "policy_context": "n_obs_steps1,RTC off; reset empty action queues for all3; predict_action_chunk. First common raw policy input only after actual restoration/camera gate; later inputs branch-current.",
+    "relative_gate": "Per matching kind/seed/replicate: peak_all <=1.25*frozen_peak_all+25 N, using active robot contact normal max. No candidate-dependent reference.",
+    "scoring": "Literal predicate, valid policy success, and qualified success reported separately. Hard stop is policy failure even if predicate true. Infrastructure invalid separate. Qualified requires valid success, no hard stop, valid matched frozen reference, relative gate.",
+    "inference_scope": "Recovery conditions originate in successful trajectories: familiar-scene whole-held-out-source recovery, not random failure distribution or cross-scene recovery generalization."
+  },
+  "conclusion_rules": {
+    "primary": "Exploratory task benefit only when mix qualified full-task count exceeds BOTH controls on all6 valid three-way comparisons; report each gain/regression regardless demo gate.",
+    "secondary": "If only secondary improves, restrict claim to familiar-scene held-out trajectory local behavior.",
+    "demo": "All6 full-task triples valid; mix qualified count >= each control+2; gains on>=2 seeds; preserve every frozen raw successful full-task seed; no extra mix hard-stop condition relative to matched frozen across either tier.",
+    "no_gain": "Close additional escalation of current data plus current mixture recipe; do not append training or change test set."
+  },
+  "stops": {
+    "worker_seconds": 600,
+    "total_hours": 8,
+    "hard_normal_N": 1500,
+    "disk_floor_GiB": 2,
+    "max_training_runs": 2,
+    "actual_planned_training_runs": 1,
+    "max_conditions": 36,
+    "technical": "Preserve all attempts and invalid reasons. No automatic retries, alternate noise/scenes or checkpoint selection; routine infrastructure repair may rerun only the exact condition with full attempt preservation.",
+    "integrity": "Runtime/data/model integrity failures stop dependent work. Implementation-only v2 source repair requires recorded old/new hash and reason; frozen experimental choices cannot change."
+  },
+  "cost_basis": {
+    "v1_collection_24_worker_seconds": 2373.441,
+    "v1_max_worker_seconds": 169.266,
+    "historical_300_training_seconds": 179.906,
+    "planned_training_timeout": 1800,
+    "expected_eval_36_seconds": 6000,
+    "note": "At least7200s reserved for physics/delivery; individual physical cap600s."
+  },
+  "verification_note": "One optional fixed pair; same v2 seed64/checkpoints/processors/noise/actions. Only output root and fresh wall-clock deadline differ. No training, scene search, retry or model selection."
+}

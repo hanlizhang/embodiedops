@@ -1,0 +1,46 @@
+{
+  "purpose": "Recorded artifact presentation; no new API, ML or physics calls",
+  "inputs": {
+    "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\result.json": {
+      "sha256": "29267043dfc72772766f68211ab12f4e14148b8e781b419354ebb3fa46235476",
+      "bytes": 34187
+    },
+    "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\trace.json": {
+      "sha256": "deaa5a88b7a0a328d858623a9e1bbbed961e300d4c6ecf48c145b70627abb8a9",
+      "bytes": 153639
+    },
+    "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\acceptance.json": {
+      "sha256": "e5d5d4407c114b578bee9044938de54f141284ec51c456f5bdbbe731b612537e",
+      "bytes": 13972
+    },
+    "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\narrative-review.json": {
+      "sha256": "1379c890c3a2990219c2c517f82e360f73ed99ca5a111e092862c7014756fe39",
+      "bytes": 2010
+    },
+    "C:\\Users\\Alan\\Projects\\embodiedops\\docs\\evidence\\recontact-self-imitation-v2\\result.json": {
+      "sha256": "7abe21509a694204f1d69b760e109b3a3137e94371bd49f9981f92ada4a3ad3a",
+      "bytes": 215302
+    }
+  },
+  "videos": {
+    "archived/frozen": {
+      "path": "D:\\EmbodiedOpsOutputs\\recontact-self-imitation-v2\\full\\full-64-r1-frozen\\rollout.mp4",
+      "bytes": 914992
+    },
+    "archived/recontact_mix_300": {
+      "path": "D:\\EmbodiedOpsOutputs\\recontact-self-imitation-v2\\full\\full-64-r1-recontact_mix_300-attempt02\\rollout.mp4",
+      "bytes": 1245914
+    },
+    "this_run/frozen": {
+      "path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-frozen\\rollout.mp4",
+      "bytes": 1229023
+    },
+    "this_run/recontact_mix_300": {
+      "path": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\nemotron-agent-demo-v1\\physical\\full-64-r1-recontact_mix_300\\rollout.mp4",
+      "bytes": 1294321
+    }
+  },
+  "builder_sha256": "841fe9dc057d1d1a4097f0076c594722cf29a69110802507727755a44a03ab58",
+  "public_html_sha256": "f35c2d1e79cea6f25af98a6321540c13376c9b0656f16ee2df78a04306d20bfb",
+  "local_html_sha256": "b17a94c8bc49081c7da3319d14776f7329bc623a323c672410afa8f474b18609"
+}
