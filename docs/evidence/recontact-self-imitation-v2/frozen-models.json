@@ -1,0 +1,14 @@
+{
+  "time": 1793220429.5186813,
+  "data_index_sha256": "ceb1963f138a7b7eddfbce0d1a72dea47f046c4127a0c345b7c8a47aacf9ceef",
+  "paths": {
+    "frozen": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\phase1a\\hf-cache\\hub\\models--lerobot--smolvla_robocasa\\snapshots\\f7af588d11e30b0069f200792fb285904b74c80b",
+    "ordinary_300": "C:\\Users\\Alan\\Projects\\embodiedops\\outputs\\agent-workflow-v1\\instruction-control-v1\\attempt02\\evaluation\\inference-C",
+    "recontact_mix_300": "D:\\EmbodiedOpsOutputs\\recontact-self-imitation-v2\\training\\checkpoints\\000300\\pretrained_model"
+  },
+  "hashes": {
+    "frozen": "96ae6628166a7dc1b41f8a2d92176c48e394988294b0b44755409acbb3f9bc2b",
+    "ordinary_300": "e3cc9a2084f081778b2353bfc8e8c9d027e933e224eca37205be2d2c9715a3c8",
+    "recontact_mix_300": "646ebc87d8a9ad8cdd00c4dc8e01e25e8a52e7a8d6f06c0b01ba36234b6f8cce"
+  }
+}

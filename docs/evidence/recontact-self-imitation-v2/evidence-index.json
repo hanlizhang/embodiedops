@@ -1,0 +1,150 @@
+{
+  "version": "deadline-sync-2026-10-30",
+  "local_output_directory": "D:\\EmbodiedOpsOutputs\\recontact-self-imitation-v2",
+  "provenance": [
+    {
+      "repository_file": "registered-plan.json",
+      "source_path": "D:\\EmbodiedOpsOutputs\\recontact-self-imitation-v2\\registered-plan.json",
+      "source_bytes": 38258,
+      "source_sha256": "972f3b5d415f15b56b1a21a74435998a5ddcb68bc05d925bd6e2aa583e280841",
+      "method": "byte-for-byte copy"
+    },
+    {
+      "repository_file": "data-split.json",
+      "source_path": "D:\\EmbodiedOpsOutputs\\recontact-self-imitation-v2\\data-split.json",
+      "source_bytes": 26471,
+      "source_sha256": "84acb8fcf9db11cb15f10096b104bb166f56fb2a3c17bbbe846321cba225d838",
+      "method": "byte-for-byte copy"
+    },
+    {
+      "repository_file": "result.json",
+      "source_path": "D:\\EmbodiedOpsOutputs\\recontact-self-imitation-v2\\result.json",
+      "source_bytes": 215302,
+      "source_sha256": "7abe21509a694204f1d69b760e109b3a3137e94371bd49f9981f92ada4a3ad3a",
+      "method": "byte-for-byte copy"
+    },
+    {
+      "repository_file": "frozen-models.json",
+      "source_path": "D:\\EmbodiedOpsOutputs\\recontact-self-imitation-v2\\frozen-models.json",
+      "source_bytes": 890,
+      "source_sha256": "ba53df1c1e6519cf4c3c4eacb2f1d693a1999680121146dbc01b219a523c3ca7",
+      "method": "byte-for-byte copy"
+    },
+    {
+      "repository_file": "runtime-source-amendments.jsonl",
+      "source_path": "D:\\EmbodiedOpsOutputs\\recontact-self-imitation-v2\\runtime-source-amendments.jsonl",
+      "source_bytes": 1812,
+      "source_sha256": "b3fa90ff887d4101afb67c1ee01f9558a126c5ca22e6dcc4613cb1b0774e1edb",
+      "method": "byte-for-byte copy"
+    },
+    {
+      "repository_file": "source-index-summary.json",
+      "source_path": "D:\\EmbodiedOpsOutputs\\recontact-self-imitation-v2\\training-data-index.json",
+      "source_bytes": 1250494,
+      "source_sha256": "ceb1963f138a7b7eddfbce0d1a72dea47f046c4127a0c345b7c8a47aacf9ceef",
+      "method": "Keep source metadata/events/input hashes and all sample metadata/masks/hashes; omit action arrays, source-embedded duplicate samples and duplicate candidates"
+    },
+    {
+      "repository_file": "source-index-summary.json",
+      "source_path": "D:\\EmbodiedOpsOutputs\\recontact-self-imitation-v2\\holdout-data-index.json",
+      "source_bytes": 584899,
+      "source_sha256": "aa91f59fc5b76e813fc581a4e819d920bfb71ed2eb1626c103933b8165dbccf3",
+      "method": "Keep source metadata/events/input hashes and all sample metadata/masks/hashes; omit action arrays, source-embedded duplicate samples and duplicate candidates"
+    },
+    {
+      "repository_file": "source-index-summary.json",
+      "source_path": "D:\\EmbodiedOpsOutputs\\recontact-self-imitation-v2\\data-audit.json",
+      "source_bytes": 2016795,
+      "source_sha256": "4ec6308c432cee92c01085f72048b7e36737c4cd2cb7fb6f8978fb5805060c52",
+      "method": "Extract only distribution and test_seed_audit; other large audit fields remain local"
+    },
+    {
+      "repository_file": "evidence-index.json",
+      "source_path": "D:\\EmbodiedOpsOutputs\\recontact-self-imitation-v2\\ordinary-verify-process.json",
+      "source_bytes": 287,
+      "source_sha256": "e13840aff1d4e4f3b1702ccf99d49e79299cbd5a495bd79c1bcf9b6be2411bea",
+      "method": "Embed existing stage record without changes"
+    },
+    {
+      "repository_file": "evidence-index.json",
+      "source_path": "D:\\EmbodiedOpsOutputs\\recontact-self-imitation-v2\\mix-train-process.json",
+      "source_bytes": 264,
+      "source_sha256": "3ac746bac48a5388a8c8a5f4d9c29e06bb6a8d53aac6d5b2eb5f40213f57d2ff",
+      "method": "Embed existing stage record without changes"
+    },
+    {
+      "repository_file": "evidence-index.json",
+      "source_path": "D:\\EmbodiedOpsOutputs\\recontact-self-imitation-v2\\mix-verify-process.json",
+      "source_bytes": 279,
+      "source_sha256": "b0c68ec30eddae634e358a26600a589170cbca213be279e188fb9aacaae0c5ad",
+      "method": "Embed existing stage record without changes"
+    },
+    {
+      "repository_file": "evidence-index.json",
+      "source_path": "D:\\EmbodiedOpsOutputs\\recontact-self-imitation-v2\\evaluation-started.json",
+      "source_bytes": 55,
+      "source_sha256": "7e2fbf7c63e3d250c84fc86ad9f0b837e5e578870a8cf30dd06704bffbe9daca",
+      "method": "Embed existing stage record without changes"
+    },
+    {
+      "repository_file": "evidence-index.json",
+      "source_path": "D:\\EmbodiedOpsOutputs\\recontact-self-imitation-v2\\evaluation-finished.json",
+      "source_bytes": 74,
+      "source_sha256": "327167ad7debc6be71d1e0d4fe3aa41ab9867d7ebd01b5ec85926551742f8371",
+      "method": "Embed existing stage record without changes"
+    }
+  ],
+  "stage_records": {
+    "ordinary-verify-process.json": {
+      "started_unix": 1793220154.570887,
+      "command": [
+        "C:\\Users\\Alan\\Projects\\embodiedops\\scripts\\recontact_v2_train.py",
+        "--verify-ordinary"
+      ],
+      "timeout_seconds": 600,
+      "returncode": 0,
+      "finished_unix": 1793220190.8736763,
+      "seconds": 36.30278921127319
+    },
+    "mix-train-process.json": {
+      "started_unix": 1793220190.8837698,
+      "command": [
+        "C:\\Users\\Alan\\Projects\\embodiedops\\scripts\\recontact_v2_train.py"
+      ],
+      "timeout_seconds": 1800,
+      "returncode": 0,
+      "finished_unix": 1793220397.0129764,
+      "seconds": 206.12920665740967
+    },
+    "mix-verify-process.json": {
+      "started_unix": 1793220397.0626092,
+      "command": [
+        "C:\\Users\\Alan\\Projects\\embodiedops\\scripts\\recontact_v2_train.py",
+        "--verify"
+      ],
+      "timeout_seconds": 600,
+      "returncode": 0,
+      "finished_unix": 1793220431.1064942,
+      "seconds": 34.04388499259949
+    },
+    "evaluation-started.json": {
+      "time": 1793220431.1291196,
+      "conditions": 36
+    },
+    "evaluation-finished.json": {
+      "time": 1793225364.5928197,
+      "conditions": 36,
+      "attempts": 50
+    }
+  },
+  "record_locations": {
+    "final_conditions": "result.json#/conditions",
+    "all_attempts_and_retry_links": "result.json#/attempts (id + attempt_number + ledger_index + current/superseded)",
+    "training_summary_and_checkpoint_hash": "result.json#/training",
+    "independent_reload": "result.json#/training_reload",
+    "per_condition_times": "result.json#/conditions",
+    "total_delivery_elapsed_seconds": "result.json#/elapsed_seconds",
+    "manifest_start_deadline": "registered-plan.json#/start_unix and #/deadline_unix"
+  },
+  "budget_note": "Training and physical execution finished within the registered 8-hour experiment deadline. Final summary delivery exceeded the 8-hour total wall-clock budget; see the report addendum. No new execution during this export."
+}

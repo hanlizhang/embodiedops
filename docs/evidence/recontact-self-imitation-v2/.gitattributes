@@ -1,0 +1,6 @@
+# Preserve original evidence bytes so recorded SHA-256 identities remain valid.
+registered-plan.json -text
+data-split.json -text
+result.json -text
+frozen-models.json -text
+runtime-source-amendments.jsonl -text

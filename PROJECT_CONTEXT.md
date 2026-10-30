@@ -1,9 +1,26 @@
 # EmbodiedOps — current project context
 
-Updated 2026-10-22. This file describes current scope; dated experiment reports
+Updated 2026-10-23. This file describes current scope; dated experiment reports
 retain original stopped-run findings and subsequent completion addenda.
 
+Latest delivery index: [2026-10-29 handoff](environment/deadline-handoff-2026-10-29.md)
+(synchronized 2026-10-30). Recontact self-imitation v2 completed training and all
+36 fixed physical conditions with no added qualified success; the real Nemotron
+closed loop remains uncompleted. The dated milestones below are preserved.
+
 ## Current milestone
+
+The separately authorized **failure-state recovery feasibility pilot is stopped
+and incomplete**. Two historical action-prefix/control audits matched physical
+and 16D state exactly over 1,150 actions. Four pretrained VLA candidates on the
+seed48 failure state produced no fridge contact or success. Seed43's first
+branch stopped before inference because its camera mismatch exceeded the frozen
+tolerance. The one executed geometry expert had a reversed nearest-point
+direction and is invalid as feasibility evidence; a static-tested repair has
+not been rerun physically. No learning intervention is yet justified. The
+[report](environment/recovery-feasibility-v1.md) preserves invalid/unrun attempts
+and a conditional learning proposal. No automatic retries, further evaluation
+or training are authorized by this stopped-run handoff.
 
 The instruction-controlled 300-update SmolVLA study is **closed at 52/60 valid
 cells**: one timeout-invalid cell and seven unrun cells will not be resumed.
