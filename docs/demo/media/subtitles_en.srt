@@ -1,0 +1,83 @@
+1
+00:00:00,685 --> 00:00:04,480
+What happens when a vision-language-action policy learns from demonstrations,
+
+2
+00:00:04,480 --> 00:00:06,830
+but fails during physical execution?
+
+3
+00:00:08,085 --> 00:00:13,410
+This is EmbodiedOps, a failure-driven evaluation and verification system for robot learning.
+
+4
+00:00:16,085 --> 00:00:20,965
+I connected SmolVLA to RoboCasa and MuJoCo, with three camera observations,
+
+5
+00:00:20,965 --> 00:00:26,005
+robot proprioception, action-chunk execution, and physical contact diagnostics.
+
+6
+00:00:28,085 --> 00:00:33,205
+I then tested several post-training strategies. The key finding was that lower imitation loss
+
+7
+00:00:33,205 --> 00:00:36,775
+did not consistently translate into better robot performance.
+
+8
+00:00:40,085 --> 00:00:45,860
+Here is one example. In the archived seed sixty-four evaluation, the frozen policy closes the
+
+9
+00:00:45,860 --> 00:00:49,890
+refrigerator, while the recontact fine-tuned policy fails.
+
+10
+00:01:02,085 --> 00:01:06,845
+Instead of automatically accepting the new checkpoint, EmbodiedOps uses NVIDIA Nemotron through
+
+11
+00:01:06,845 --> 00:01:08,620
+Nebius Token Factory.
+
+12
+00:01:18,085 --> 00:01:22,195
+Nemotron calls real tools to inspect the model, compare trajectories,
+
+13
+00:01:22,195 --> 00:01:26,565
+examine contact evidence, and request independent physical verification.
+
+14
+00:01:45,085 --> 00:01:50,790
+The new evaluation also rejects the candidate. Importantly, the frozen model does not reproduce
+
+15
+00:01:50,790 --> 00:01:55,620
+its earlier success, revealing another limitation in closed-loop reproducibility.
+
+16
+00:01:56,085 --> 00:02:01,695
+The final decision is made by deterministic acceptance checks, not by the language model's narrative.
+
+17
+00:02:01,695 --> 00:02:07,115
+In fact, the model makes a mistake in its final explanation. The structured results contradict
+
+18
+00:02:07,115 --> 00:02:10,310
+it; the independent rejection remains authoritative.
+
+19
+00:02:11,285 --> 00:02:16,655
+EmbodiedOps does not claim a successful autonomous repair. It demonstrates an auditable agentic
+
+20
+00:02:16,655 --> 00:02:22,495
+workflow connecting VLA post-training, physical robot evaluation, evidence-driven tool use,
+
+21
+00:02:22,495 --> 00:02:24,425
+and independent verification.

@@ -34,3 +34,6 @@ wandb/
 .idea/
 .DS_Store
 Thumbs.db
+
+# Explicitly published final hackathon film
+!/docs/demo/media/EmbodiedOps_Hackathon_Demo.mp4
